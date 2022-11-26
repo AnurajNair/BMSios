@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FormElementTableViewCell" id="JuO-uA-iGW" userLabel="TTFormElementTableViewCell" customClass="FormElementTableViewCell" customModule="bms" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JuO-uA-iGW" id="zKN-bj-uWk">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JR3-GV-Fz9" customClass="ReusableFormElementView" customModule="bms" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="JR3-GV-Fz9" secondAttribute="bottom" id="0Hb-BK-KLI"/>
+                    <constraint firstAttribute="trailing" secondItem="JR3-GV-Fz9" secondAttribute="trailing" id="4tI-xE-93a"/>
+                    <constraint firstItem="JR3-GV-Fz9" firstAttribute="leading" secondItem="zKN-bj-uWk" secondAttribute="leading" id="5zm-8P-LBX"/>
+                    <constraint firstAttribute="bottom" secondItem="JR3-GV-Fz9" secondAttribute="bottom" id="ARZ-rh-uw8"/>
+                    <constraint firstItem="JR3-GV-Fz9" firstAttribute="top" secondItem="zKN-bj-uWk" secondAttribute="top" id="u5G-Ua-4dx"/>
+                </constraints>
+            </tableViewCellContentView>
+            <point key="canvasLocation" x="139" y="95"/>
+        </tableViewCell>
+    </objects>
+</document>

@@ -1,0 +1,121 @@
+{
+    "inspection_id":"02",
+"inspection_name":"Routine Inspection",
+"type":"routine",
+"sections":[{
+    "section_name":"General",
+    "isSubSectionPresent":"false",
+    "subSections":[],
+    "questions":[
+    {
+        "type":"text",
+        "question":"Bridge Name",
+        
+    },{
+        "type":"text",
+        "question":"River Name",
+        
+    },{
+        "type":"text",
+        "question":"Highway Name",
+        
+    },{
+        "type":"text",
+        "question":"Highwa Number",
+        
+    },{
+        "type":"text",
+        "question":"Bridge Type",
+        
+    },{
+        "type":"text",
+        "question":"Bridge Location",
+        
+    },
+    {
+        "type":"text",
+        "question":"Date of Inspection",
+        
+    },]
+},{
+    "section_name":"Approach",
+    "isSubSectionPresent":"true",
+    "subSections":[
+    {
+        "subsection_name":"condition of pavement",
+        "questions":[
+        {
+            "type":"option",
+            "question":"Uneveness of approach",
+            "options":[
+            {
+                "option1":"Yes",
+            "options2":"No"
+            }]
+            
+        }, {
+            "type":"option",
+            "question":"Settlement of approach",
+            "options":[
+            {
+                "option1":"Yes",
+            "options2":"No"
+            }]
+            
+        }, {
+            "type":"option",
+            "question":"Cracking of approach",
+            "options":[
+            {
+                "option1":"Yes",
+            "options2":"No"
+            }]
+            
+        }, {
+            "type":"option",
+            "question":"Potholes of approach",
+            "options":[
+            {
+                "option1":"Yes",
+            "options2":"No"
+            }]
+            
+        },]
+    },{
+        "subsection_name":"Approach Slab",
+        "questions":[
+            {
+                "type":"option",
+                "question":"Settlement of approach slab",
+                "options":[
+                {
+                    "option1":"Yes",
+                "options2":"No"
+                }]
+                
+            },
+            {
+                "type":"option",
+                "question":"Cracking of approach slab",
+                "options":[
+                {
+                    "option1":"Yes",
+                "options2":"No"
+                }]
+                
+            },
+            {
+                "type":"option",
+                "question":"Movement of approach slab",
+                "options":[
+                {
+                    "option1":"Yes",
+                "options2":"No"
+                }]
+                
+            },]
+    }],
+    "questions":[]
+  
+}]
+}
