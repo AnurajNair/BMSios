@@ -101,6 +101,9 @@ extension DashboardViewController:UICollectionViewDataSource{
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DashboardStatsCollectionViewCell", for: indexPath) as? DashboardStatsCollectionViewCell else{
             return UICollectionViewCell()
         }
+        let section = self.statsList[indexPath.row]
+        
+        cell.configCell(count: section.statsCount, statName: section.label)
         
         return cell
     }

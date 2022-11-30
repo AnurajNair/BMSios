@@ -27,7 +27,8 @@ class PopUpViewController: UIViewController {
 //        self.getInspectionTemplates()
        // loadJson(filename: "InspectionsTemplates")
         self.setupTableView()
-        getJSON()
+//        getJSON()
+        loadJson(filename: "InspectionsTemplates")
       
     }
     
@@ -54,9 +55,14 @@ class PopUpViewController: UIViewController {
                 } else {
                     json = jsonData
                 }
+                
+                self.inspectionsList = try JSONDecoder().decode(InspectionsTemplate.self, from: data ).inspections ?? []
+                
+                print("json",inspectionsList)
+                self.inspectionTypesTableView.reloadData()
               
-                let apiResponse:InspectionsTemplate = Mapper<InspectionsTemplate>().map(JSON: jsonData!)!
-                print()
+//                let apiResponse:InspectionsTemplate = Mapper<InspectionsTemplate>().map(JSON: jsonData!)!
+//                print()
 //                return jsonData
             } catch {
                 print("error:\(error)")
@@ -68,20 +74,21 @@ class PopUpViewController: UIViewController {
     
     func getJSON(){
       
-        let url = Bundle.main.url(forResource: "InspectionsTemplates", withExtension: "json")
-        AF.request(URLRequest(url:url!)).responseJSON { response in
-            switch response.result{
-            case.success(let data ):
-                print("JSON",data)
-//                json = data as? Dictionary<String,Any>
-//                let res = Mapper<InspectionsTemplate>().map(JSONObject:json)
-                break
-                
-            case .failure(_): break
-                
-            }
-           
-        }
+//        let url = Bundle.main.url(forResource: "InspectionsTemplates", withExtension: "json")
+//        AF.request(URLRequest(url:url!)).response { response in
+//            switch response.result{
+//            case.success(let data ):
+//                print("JSON",data)
+////                json = data as? Dictionary<String,Any>
+////                let res = Mapper<InspectionsTemplate>().map(JSONObject:json)
+//
+//                break
+//
+//            case .failure(_): break
+//
+//            }
+//
+//        }
         
     }
 
@@ -101,19 +108,19 @@ class PopUpViewController: UIViewController {
     }
     
     func onCheckBoxSelection(indexPath:IndexPath){
-        let clickedCheckBox = self.inspectionsList[indexPath.row]
-        let selection = clickedCheckBox.isSelected
-       
-       let cell = inspectionTypesTableView.cellForRow(at: indexPath) as! InspectionTemplateTypeTableViewCell
-       
-//       cell.select(!selection)
-       
-       for var insp in inspectionsList{
-           if insp.inspection_id == clickedCheckBox.inspection_id {
-               insp.isSelected = true
-               break
-           }
-       }
+//        let clickedCheckBox = self.inspectionsList[indexPath.row]
+//        let selection = clickedCheckBox.isSelected
+//
+//       let cell = inspectionTypesTableView.cellForRow(at: indexPath) as! InspectionTemplateTypeTableViewCell
+//
+////       cell.select(!selection)
+//
+//       for var insp in inspectionsList{
+//           if insp.inspection_id == clickedCheckBox.inspection_id {
+//               insp.isSelected = true
+//               break
+//           }
+//       }
         
         print(inspectionsList)
     }
@@ -155,7 +162,7 @@ extension PopUpViewController:UITableViewDataSource{
         }
         let section = self.inspectionsList[indexPath.row]
         
-        cell.inspectionTypeCheckboxView.setupCheckboxField(id: indexPath.row, fieldLabel: section.inspection_name!, isSelectedByDefault: false, height: 44, isEditable: false, isUserInteractionEnabled: true)
+        cell.configCellView(label: section.inspection_name!)
         
         return cell
     }

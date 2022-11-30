@@ -7,97 +7,101 @@
 
 import UIKit
 
-class FormViewController: UIViewController {
-    @IBOutlet weak var inspectionDatePicker: UIDatePicker!
-    
-    @IBOutlet weak var datePickerBtn: UIButton!
+class FormViewController: UIViewController, UICollectionViewDataSource {
+  
     
     
-    @IBOutlet weak var bridgeNameTextField: UITextField!
     
     
-    @IBOutlet weak var gradeNameTextField: UITextField!
+    let itemsPerRow: CGFloat = 2
     
+    private let sectionInsets = UIEdgeInsets(
+      top: 20.0,
+      left: 20.0,
+      bottom: 20.0,
+      right: 20.0)
+    let arr = [1,2,3]
     
-    @IBOutlet weak var highwayNameTextField: UITextField!
-    
-    @IBOutlet weak var highwayNoTextField: UITextField!
-    
-    @IBOutlet weak var mainStackView: UIStackView!
-    
-    @IBOutlet weak var bridgeLocationTextField: UITextField!
-    
-    @IBOutlet weak var bridgeTypeTextField: UITextField!
+   
+    @IBOutlet weak var collection: UICollectionView!
     
     @IBOutlet weak var formTitleLbl: UILabel!
     var formDetails: sections?  = nil
+    
+    var questions:[question_ans]? = nil
   
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-       setupViews()
+        setupViews()
+        setupCollectionView()
+        print(formDetails)
         
       
-print(formDetails)
     }
+    
+    
     
     
     func setupViews(){
         self.view.translatesAutoresizingMaskIntoConstraints = true
-//        self.mainStackView.translatesAutoresizingMaskIntoConstraints = false
-//        self.mainStackView.addConstraint(mainStackView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width))
-//
-//       // self.mainStackView.bounds.size.width = UIScreen.main.bounds.width
-//        self.mainStackView.frame.size.width = UIScreen.main.bounds.width
         
         self.formTitleLbl.text = formDetails?.section_name
-        self.bridgeNameTextField.translatesAutoresizingMaskIntoConstraints = false
-        self.gradeNameTextField.translatesAutoresizingMaskIntoConstraints = false
-        self.highwayNameTextField.translatesAutoresizingMaskIntoConstraints = false
-        self.highwayNoTextField.translatesAutoresizingMaskIntoConstraints = false
-        self.bridgeLocationTextField.translatesAutoresizingMaskIntoConstraints = false
-        self.bridgeTypeTextField.translatesAutoresizingMaskIntoConstraints = false
-//        self.inspectionDatePicker.isHidden = true
-        self.bridgeNameTextField.addConstraint(bridgeNameTextField.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width/2.5))
-        self.gradeNameTextField.addConstraint(gradeNameTextField.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width/2.5))
-      
-        self.highwayNameTextField.addConstraint(self.highwayNameTextField.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width/2.5))
-        self.highwayNoTextField.addConstraint(self.highwayNoTextField.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width/2.5))
-        self.bridgeLocationTextField.addConstraint(self.bridgeLocationTextField.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width/2.5))
-        self.bridgeTypeTextField.addConstraint(self.bridgeTypeTextField.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width/2.5))
-        
-        self.bridgeNameTextField.addConstraint(self.bridgeNameTextField.heightAnchor.constraint(equalToConstant: 48))
-        self.gradeNameTextField.addConstraint(self.gradeNameTextField.heightAnchor.constraint(equalToConstant: 48))
-        self.highwayNameTextField.addConstraint(self.highwayNameTextField.heightAnchor.constraint(equalToConstant: 48))
-        self.highwayNoTextField.addConstraint(self.highwayNoTextField.heightAnchor.constraint(equalToConstant: 48))
-
-        self.bridgeLocationTextField.addConstraint(self.bridgeLocationTextField.heightAnchor.constraint(equalToConstant: 48))
-        self.bridgeTypeTextField.addConstraint(self.bridgeTypeTextField.heightAnchor.constraint(equalToConstant: 48))
-
+        if(self.formDetails?.isSubSectionPresent != "true"){
+            self.questions = self.formDetails?.questions ?? []
+            setupCollectionView()
+        }
+     print(questions)
+        //self.formCollection.reloadData()
+       
 
     }
 
     @IBAction func onDatePickerBtnClick(_ sender: Any) {
-        if inspectionDatePicker.isHidden {
-                   // save the date for your need
-//                   showDate.text = "\(myDatePicker.date)"
-                   inspectionDatePicker.isHidden = false
-                  /// myButtonx.setTitle("Done",forState: UIControlState.Normal)
-               } else {
-                   inspectionDatePicker.isHidden = true
-                  // myButtonx.setTitle("Pick Date",forState: UIControlState.Normal)
-               }
+     
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+   
+    func setupCollectionView(){
+        self.collection.delegate = self
+        self.collection.dataSource = self
+        self.collection.registerNibs(["FormCollectionViewCell"])
+       // self.formCollection.reloadData()
     }
-    */
+    
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 3
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FormCollectionViewCell", for: indexPath) as? FormCollectionViewCell else{
+            return UICollectionViewCell()
+        }
+        
+        return cell
+    }
 
 }
+
+extension FormViewController:UICollectionViewDelegateFlowLayout{
+    func collectionView(
+       _ collectionView: UICollectionView,
+       layout collectionViewLayout: UICollectionViewLayout,
+       sizeForItemAt indexPath: IndexPath
+     ) -> CGSize {
+       // 2
+         let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
+             let availableWidth = view.frame.width - paddingSpace
+             let widthPerItem = availableWidth / itemsPerRow
+             
+             return CGSize(width: widthPerItem, height: widthPerItem)
+     }
+    
+}
+
+extension FormViewController:UICollectionViewDelegate{
+    
+}
+

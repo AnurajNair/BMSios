@@ -263,211 +263,39 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gbg-tN-2aW">
                                 <rect key="frame" x="34" y="36" width="700" height="930"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="20" id="Wfc-Ul-ohF">
-                                        <rect key="frame" x="0.0" y="8" width="996" height="495"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="jbx-Vn-3cK">
+                                        <rect key="frame" x="8" y="8" width="684" height="914"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zzo-ek-v0x">
-                                                <rect key="frame" x="0.0" y="0.0" width="996" height="194.5"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bridge Details" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iii-yb-5dw">
-                                                        <rect key="frame" x="0.0" y="25" width="156" height="143.5"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="26"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                </subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bridge Details" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iii-yb-5dw">
+                                                <rect key="frame" x="0.0" y="0.0" width="156" height="31.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="YXM-Dc-bcH">
+                                                <rect key="frame" x="0.0" y="31.5" width="684" height="882.5"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="100" id="1rH-Ks-Iga"/>
-                                                    <constraint firstAttribute="bottom" secondItem="Iii-yb-5dw" secondAttribute="bottom" constant="26" id="479-UF-dQJ"/>
-                                                    <constraint firstItem="Iii-yb-5dw" firstAttribute="top" secondItem="zzo-ek-v0x" secondAttribute="top" constant="25" id="HGi-5l-qM4"/>
-                                                    <constraint firstItem="Iii-yb-5dw" firstAttribute="leading" secondItem="zzo-ek-v0x" secondAttribute="leading" id="vPA-2V-ppM"/>
-                                                </constraints>
-                                            </view>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" id="vy7-p7-2EG">
-                                                <rect key="frame" x="0.0" y="214.5" width="328" height="34.5"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date of Inspection" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eRN-RJ-Lrj">
-                                                        <rect key="frame" x="0.0" y="0.0" width="164" height="34.5"/>
-                                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
-                                                        <color key="textColor" red="0.37254902719999999" green="0.37647059560000001" blue="0.37647059560000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="Zrh-21-rPO">
-                                                        <rect key="frame" x="164" y="0.0" width="164" height="34.5"/>
-                                                    </datePicker>
-                                                </subviews>
-                                            </stackView>
-                                            <stackView autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="UOH-zb-8UX">
-                                                <rect key="frame" x="0.0" y="269" width="647" height="226"/>
-                                                <subviews>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="3zT-bu-GXx">
-                                                        <rect key="frame" x="0.0" y="0.0" width="647" height="62"/>
-                                                        <subviews>
-                                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="14" id="oHM-bD-kfj">
-                                                                <rect key="frame" x="0.0" y="0.0" width="313.5" height="62"/>
-                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                <subviews>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name of the bridge" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rfb-6k-XFV">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="313.5" height="24"/>
-                                                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
-                                                                        <color key="textColor" red="0.37254902719999999" green="0.37647059560000001" blue="0.37647059560000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                                        <nil key="highlightedColor"/>
-                                                                    </label>
-                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mjk-wd-lCJ">
-                                                                        <rect key="frame" x="0.0" y="38" width="313.5" height="24"/>
-                                                                        <subviews>
-                                                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name of the bridge" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EFq-b6-hD6">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="313.5" height="25"/>
-                                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                                <textInputTraits key="textInputTraits"/>
-                                                                            </textField>
-                                                                        </subviews>
-                                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                                    </view>
-                                                                </subviews>
-                                                            </stackView>
-                                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="14" id="k6n-uW-C2g">
-                                                                <rect key="frame" x="333.5" y="0.0" width="313.5" height="62"/>
-                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                <subviews>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name of the river / grade seperator" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7wI-0Z-cdH">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="313.5" height="24"/>
-                                                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
-                                                                        <color key="textColor" red="0.37254902719999999" green="0.37647059560000001" blue="0.37647059560000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                                        <nil key="highlightedColor"/>
-                                                                    </label>
-                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l95-Cd-xHf">
-                                                                        <rect key="frame" x="0.0" y="38" width="313.5" height="24"/>
-                                                                        <subviews>
-                                                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name of the river " textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aZj-d4-OOl">
-                                                                                <rect key="frame" x="-0.5" y="0.0" width="313.5" height="25"/>
-                                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                                <textInputTraits key="textInputTraits"/>
-                                                                            </textField>
-                                                                        </subviews>
-                                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                                    </view>
-                                                                </subviews>
-                                                            </stackView>
-                                                        </subviews>
-                                                    </stackView>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="eb3-d5-qh2">
-                                                        <rect key="frame" x="0.0" y="82" width="647" height="62"/>
-                                                        <subviews>
-                                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="14" id="nhn-5j-vQV">
-                                                                <rect key="frame" x="0.0" y="0.0" width="313.5" height="62"/>
-                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                <subviews>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name of the higway" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4YA-29-07f">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="313.5" height="24"/>
-                                                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
-                                                                        <color key="textColor" red="0.37254902719999999" green="0.37647059560000001" blue="0.37647059560000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                                        <nil key="highlightedColor"/>
-                                                                    </label>
-                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FG3-z0-DP0">
-                                                                        <rect key="frame" x="0.0" y="38" width="313.5" height="24"/>
-                                                                        <subviews>
-                                                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name of the higway" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9IG-50-cO4">
-                                                                                <rect key="frame" x="0.0" y="-1" width="178.5" height="25.5"/>
-                                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                                <textInputTraits key="textInputTraits"/>
-                                                                            </textField>
-                                                                        </subviews>
-                                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                                    </view>
-                                                                </subviews>
-                                                            </stackView>
-                                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="14" id="Rag-mr-Unc">
-                                                                <rect key="frame" x="333.5" y="0.0" width="313.5" height="62"/>
-                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                <subviews>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No of the higway" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p7r-B3-hgK">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="313.5" height="24"/>
-                                                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
-                                                                        <color key="textColor" red="0.37254902719999999" green="0.37647059560000001" blue="0.37647059560000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                                        <nil key="highlightedColor"/>
-                                                                    </label>
-                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jww-QV-MGI">
-                                                                        <rect key="frame" x="0.0" y="38" width="313.5" height="24"/>
-                                                                        <subviews>
-                                                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="No of the higway" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eaF-JM-MuK">
-                                                                                <rect key="frame" x="-0.5" y="-1" width="178.5" height="25.5"/>
-                                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                                <textInputTraits key="textInputTraits"/>
-                                                                            </textField>
-                                                                        </subviews>
-                                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                                    </view>
-                                                                </subviews>
-                                                            </stackView>
-                                                        </subviews>
-                                                    </stackView>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Ple-FP-hGs">
-                                                        <rect key="frame" x="0.0" y="164" width="647" height="62"/>
-                                                        <subviews>
-                                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="14" id="vn3-6L-Q4v">
-                                                                <rect key="frame" x="0.0" y="0.0" width="313.5" height="62"/>
-                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                <subviews>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bridge location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QU0-yf-eSE">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="313.5" height="24"/>
-                                                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
-                                                                        <color key="textColor" red="0.37254902719999999" green="0.37647059560000001" blue="0.37647059560000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                                        <nil key="highlightedColor"/>
-                                                                    </label>
-                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Mf-9n-9hR">
-                                                                        <rect key="frame" x="0.0" y="38" width="313.5" height="24"/>
-                                                                        <subviews>
-                                                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Bridge location" minimumFontSize="17" id="YtZ-vj-cDu">
-                                                                                <rect key="frame" x="0.0" y="-0.5" width="135.5" height="25"/>
-                                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                                <textInputTraits key="textInputTraits"/>
-                                                                            </textField>
-                                                                        </subviews>
-                                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                                    </view>
-                                                                </subviews>
-                                                            </stackView>
-                                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="14" id="usa-j6-Xqt">
-                                                                <rect key="frame" x="333.5" y="0.0" width="313.5" height="62"/>
-                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                <subviews>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type of bridge" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zu8-I5-IWi">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="313.5" height="24"/>
-                                                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
-                                                                        <color key="textColor" red="0.37254902719999999" green="0.37647059560000001" blue="0.37647059560000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                                        <nil key="highlightedColor"/>
-                                                                    </label>
-                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hYL-9F-4f5">
-                                                                        <rect key="frame" x="0.0" y="38" width="313.5" height="24"/>
-                                                                        <subviews>
-                                                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Type of bridge" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KSo-Hs-67v">
-                                                                                <rect key="frame" x="-0.5" y="-0.5" width="135.5" height="25"/>
-                                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                                <textInputTraits key="textInputTraits"/>
-                                                                            </textField>
-                                                                        </subviews>
-                                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                                    </view>
-                                                                </subviews>
-                                                            </stackView>
-                                                        </subviews>
-                                                    </stackView>
-                                                </subviews>
-                                            </stackView>
+                                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="bqq-3P-nv0">
+                                                    <size key="itemSize" width="128" height="128"/>
+                                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                </collectionViewFlowLayout>
+                                                <cells/>
+                                            </collectionView>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="YXM-Dc-bcH" secondAttribute="trailing" id="BIN-Kp-Et7"/>
+                                        </constraints>
                                     </stackView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="jbx-Vn-3cK" secondAttribute="bottom" constant="8" id="hxs-gj-OCF"/>
+                                    <constraint firstItem="jbx-Vn-3cK" firstAttribute="top" secondItem="gbg-tN-2aW" secondAttribute="top" constant="8" id="j20-FZ-Gjg"/>
+                                    <constraint firstAttribute="trailing" secondItem="jbx-Vn-3cK" secondAttribute="trailing" constant="8" id="jwj-Rr-b57"/>
+                                    <constraint firstItem="jbx-Vn-3cK" firstAttribute="leading" secondItem="gbg-tN-2aW" secondAttribute="leading" constant="8" id="luO-5i-teX"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="HHG-qS-jia"/>
@@ -483,14 +311,8 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="768" height="1024"/>
                     <connections>
-                        <outlet property="bridgeLocationTextField" destination="YtZ-vj-cDu" id="Xtx-y0-OFj"/>
-                        <outlet property="bridgeNameTextField" destination="EFq-b6-hD6" id="biC-cW-Dl6"/>
-                        <outlet property="bridgeTypeTextField" destination="KSo-Hs-67v" id="HuA-fu-vea"/>
+                        <outlet property="collection" destination="YXM-Dc-bcH" id="6zZ-1g-ceZ"/>
                         <outlet property="formTitleLbl" destination="Iii-yb-5dw" id="LwS-dK-qhm"/>
-                        <outlet property="gradeNameTextField" destination="aZj-d4-OOl" id="EJc-Q0-2F5"/>
-                        <outlet property="highwayNameTextField" destination="9IG-50-cO4" id="1Kz-0D-F4y"/>
-                        <outlet property="highwayNoTextField" destination="eaF-JM-MuK" id="1iS-CZ-PkS"/>
-                        <outlet property="mainStackView" destination="UOH-zb-8UX" id="gf9-p3-7o9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QVV-fF-6za" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -14,6 +14,9 @@ class FormElementTableViewCell: UITableViewCell {
     @IBOutlet weak var bottomPaddingConstraint: NSLayoutConstraint!
     @IBOutlet weak var leftPaddingConstraint: NSLayoutConstraint!
     @IBOutlet weak var rightPaddingConstraint: NSLayoutConstraint!
+    class var identifier: String { return String(describing: self) }
+
+    class var nib: UINib { return UINib(nibName: identifier, bundle: nil) }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -27,13 +30,13 @@ class FormElementTableViewCell: UITableViewCell {
     //MARK:- Setup Functions
     func setupView(topPadding: CGFloat = 15.0, bottomPadding: CGFloat = 15.0, leftPadding: CGFloat = 16.0, rightPadding: CGFloat = 16.0) {
         
-        self.topPaddingConstraint.constant = topPadding
-        self.bottomPaddingConstraint.constant = bottomPadding
-        self.leftPaddingConstraint.constant = leftPadding
-        self.rightPaddingConstraint.constant = rightPadding
+//        self.topPaddingConstraint.constant = topPadding
+//        self.bottomPaddingConstraint.constant = bottomPadding
+//        self.leftPaddingConstraint.constant = leftPadding
+//        self.rightPaddingConstraint.constant = rightPadding
         
         self.layoutIfNeeded()
-        
+    
         self.selectionStyle = .none
         
     }

@@ -73,7 +73,7 @@
                                         <rect key="frame" x="14" y="14" width="740" height="956"/>
                                         <subviews>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="zf3-Tu-q5Z">
-                                                <rect key="frame" x="0.0" y="0.0" width="740" height="468"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="740" height="956"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="qv0-zb-V2a">
                                                     <size key="itemSize" width="128" height="128"/>
@@ -83,10 +83,6 @@
                                                 </collectionViewFlowLayout>
                                                 <cells/>
                                             </collectionView>
-                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="ADE-5s-U97">
-                                                <rect key="frame" x="0.0" y="488" width="740" height="468"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                            </tableView>
                                         </subviews>
                                     </stackView>
                                 </subviews>
@@ -167,7 +163,6 @@
         <!--Home View Controller-->
         <scene sceneID="vKr-NH-a0x">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="IS0-7L-0po" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="HomeViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="6wb-Am-i5S" customClass="HomeViewController" customModule="bms" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pKY-go-EFe">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
@@ -176,6 +171,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IS0-7L-0po" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-4957" y="589"/>
         </scene>

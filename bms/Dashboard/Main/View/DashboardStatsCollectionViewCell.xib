@@ -56,6 +56,8 @@
             </constraints>
             <size key="customSize" width="278" height="174"/>
             <connections>
+                <outlet property="countNumber" destination="M0w-VC-gMI" id="6rS-5q-jIV"/>
+                <outlet property="statName" destination="YbS-Nl-aYR" id="pAK-bc-ncg"/>
                 <outlet property="statsCard" destination="jnw-M2-lvZ" id="8Oa-ws-uib"/>
             </connections>
             <point key="canvasLocation" x="-27.69230769230769" y="36.96682464454976"/>

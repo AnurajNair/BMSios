@@ -28,7 +28,7 @@ class SideMenuViewController: UIViewController {
 
     var selectedCellIndexPath: IndexPath?
     
-    var data: [SideMenuModel] = [SideMenuModel(icon: "dashboardIcon", title: "Dashboard",menu: [], route: .homeScreen, transition: .rootSlider),SideMenuModel(icon: "inspectionIcon", title: "Inspection",menu: [SideMenuModel(icon: "dashboardIcon" , title: "Routine Inspection", route: .inspectionListScreen, transition: .changeSlider),SideMenuModel(icon: "dashboardIcon" , title: "Thorough Inspection", route: .inspectionListScreen, transition: .changeSlider),SideMenuModel(icon: "dashboardIcon" , title: "Customize Inspection", route: .inspectionListScreen, transition: .changeSlider),SideMenuModel(icon: "dashboardIcon" , title: "Review Inspection", route: .inspectionListScreen, transition: .changeSlider)], route: .inspectionListScreen, transition: .changeSlider),SideMenuModel(icon: "inspectionIcon", title: "Inventory",menu: [], route: .inventoryListScreen, transition: .rootSlider)]
+    var data: [SideMenuModel] = [SideMenuModel(icon: "dashboardIcon", title: "Dashboard",menu: [], route: .homeScreen, transition: .rootSlider),SideMenuModel(icon: "inspectionIcon", title: "Inspection",menu: [SideMenuModel(icon: "dashboardIcon" , title: "Inspection", route: .inspectionListScreen, transition: .changeSlider),SideMenuModel(icon: "dashboardIcon" , title: "Custom Inspection", route: .inspectionListScreen, transition: .changeSlider),SideMenuModel(icon: "dashboardIcon" , title: "Review Inspection", route: .inspectionListScreen, transition: .changeSlider)], route: .inspectionListScreen, transition: .changeSlider),SideMenuModel(icon: "inspectionIcon", title: "Inventory",menu: [], route: .inventoryListScreen, transition: .rootSlider)]
     
     var delegate: SideMenuViewControllerDelegate?
 
@@ -105,7 +105,7 @@ extension SideMenuViewController: UITableViewDelegate {
       
         if(sectionData.title != "Inspection"){
             if let cell = tableView.cellForRow(at: indexPath) as? SideMenuCell {
-                    cell.contentView.backgroundColor = #colorLiteral(red: 1, green: 0.4932718873, blue: 0.4739984274, alpha: 1)
+                    cell.contentView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
                 cell.menCellView.backgroundColor = UIColor.SORT.theme
                 }
            

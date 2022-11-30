@@ -11,6 +11,8 @@ import MBProgressHUD
 import MessageUI
 import WebKit
 import RealmSwift
+import CryptoSwift
+import ObjectMapper
 
 class Utils{
     
@@ -454,6 +456,48 @@ class Utils{
             print(error.localizedDescription)
         }
         return ""
+    }
+    
+    //MARK: Encryption and Decryption
+    
+    func decryptData(encryptdata:String) -> String{
+        var decryptJSONString:String = ""
+        do {
+            let aes = try AES(key: Array("(y6er1@n$1234567".utf8), blockMode:CBC(iv: Array("0001000100010001".utf8)),padding: .pkcs5) // AES256
+            let decryptText = try aes.decrypt(Array(base64:encryptdata))
+            decryptJSONString =  String(data: Data(decryptText), encoding: .utf8) ?? ""
+        }
+        catch{
+            print(error)
+        }
+        
+        return decryptJSONString
+    }
+    
+    func encryptData(json:Any)-> String{
+        var encryptedString:String = ""
+        do {
+            
+            let aes = try AES(key: Array("(y6er1@n$1234567".utf8), blockMode:CBC(iv: Array("0001000100010001".utf8)),padding: .pkcs5) // AES256
+            let encryptText = try aes.encrypt(String(describing:json).bytes)
+            print(String(data: Data(encryptText), encoding: .utf8) )
+            encryptedString = Array(encryptText).toBase64()
+            
+            
+        }catch{
+            print(error) 
+        }
+        
+        return encryptedString
+    }
+    
+    //MARK: JSON Converter
+    
+    func convertToJSON(obj:Any){
+//        let jsonData = try JSONSerialization.data(withJSONObject: Mapper().toJSON(obj),options: [])
+//        print(jsonData)
+//        let json = String(data: jsonData, encoding: .utf8)
+//        return json!
     }
     
 }

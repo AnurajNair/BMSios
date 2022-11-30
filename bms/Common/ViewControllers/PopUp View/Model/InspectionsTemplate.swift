@@ -11,15 +11,15 @@ import RealmSwift
 import ObjectMapper_Realm
 
 
-class InspectionsTemplate:RequestBody{
+class InspectionsTemplate:Codable{
     var inspections:[RoutineInspection]?
-    enum ResponseKeys :String{
-        case inspections   = "inspections"
-      
-    }
-    override func mapping(map: ObjectMapper.Map) {
-        self.inspections     <- map[ResponseKeys.inspections.rawValue]
-    }
+//    enum ResponseKeys :String{
+//        case inspections   = "inspections"
+//
+//    }
+//    override func mapping(map: ObjectMapper.Map) {
+//        self.inspections     <- map[ResponseKeys.inspections.rawValue]
+//    }
     
   
     

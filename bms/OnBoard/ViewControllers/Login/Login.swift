@@ -7,6 +7,10 @@
 
 import UIKit
 import SwiftValidator
+import CryptoSwift
+import ObjectMapper
+import RealmSwift
+import ObjectMapper_Realm
 
 class LoginViewController: UIViewController{
    
@@ -16,11 +20,13 @@ class LoginViewController: UIViewController{
     
     @IBOutlet weak var userNameFieldView: ReusableFormElementView!
     
+    @IBOutlet weak var bmsLogo: UIImageView!
     @IBOutlet weak var passwordFieldView: ReusableFormElementView!
     @IBOutlet weak var loginCard: UIView!
     @IBOutlet weak var logoImage: LogoView!
     var index: Int?
     
+    @IBOutlet weak var mainStack: UIStackView!
     let window = UIWindow?.self
  
     @IBOutlet weak var fieldStackView: UIStackView!
@@ -133,6 +139,7 @@ class LoginViewController: UIViewController{
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         setupViewStyle()
+        decryptData()
      
     }
     
@@ -145,19 +152,26 @@ class LoginViewController: UIViewController{
       
        
         UIView.style([(view: loginCard, style:(backgroundColor:nil, cornerRadius: 16, borderStyle: nil,shadowStyle : nil))])
+        
+ 
 
-        fieldStackView.addConstraint(fieldStackView.heightAnchor.constraint(equalToConstant: self.loginCard.frame.size.height/2))
-        fieldStackView.addConstraint(fieldStackView.widthAnchor.constraint(equalToConstant: self.loginCard.frame.size.width/1.6))
-        
-        
+//        fieldStackView.addConstraint(fieldStackView.heightAnchor.constraint(equalToConstant: self.loginCard.frame.size.height/2))
+        fieldStackView.addConstraint(fieldStackView.widthAnchor.constraint(equalToConstant: self.loginCard.frame.size.width/1.5))
+    
+        self.bmsLogo.addConstraint(self.bmsLogo.widthAnchor.constraint(equalToConstant: self.loginCard.frame.size.width/3))
+        self.bmsLogo.addConstraint(self.bmsLogo.heightAnchor.constraint(equalToConstant: 80))
+      
         NSLayoutConstraint(item: self.fieldStackView as Any, attribute: NSLayoutConstraint.Attribute.centerX, relatedBy: NSLayoutConstraint.Relation.equal, toItem: loginCard, attribute: NSLayoutConstraint.Attribute.centerX, multiplier: 1, constant: 0).isActive = true
         NSLayoutConstraint(item: self.fieldStackView as Any, attribute: NSLayoutConstraint.Attribute.centerY, relatedBy: NSLayoutConstraint.Relation.equal, toItem: loginCard, attribute: NSLayoutConstraint.Attribute.centerY, multiplier: 1, constant: 0).isActive = true
       
-        userNameFieldView.addConstraint(userNameFieldView.heightAnchor.constraint(equalToConstant: self.fieldStackView.frame.size.height/2.7))
-        passwordFieldView.addConstraint(passwordFieldView.heightAnchor.constraint(equalToConstant: self.fieldStackView.frame.size.height/2.7))
-        
-        buttonsStack.addConstraint(buttonsStack.heightAnchor.constraint(equalToConstant: self.fieldStackView.frame.size.height/3))
-        
+//        userNameFieldView.addConstraint(userNameFieldView.heightAnchor.constraint(equalToConstant: 68))
+//        userNameFieldView.addConstraint(userNameFieldView.widthAnchor.constraint(equalToConstant: self.fieldStackView.frame.size.width))
+//        passwordFieldView.addConstraint(passwordFieldView.heightAnchor.constraint(equalToConstant: 68))
+//        passwordFieldView.addConstraint(passwordFieldView.widthAnchor.constraint(equalToConstant: self.fieldStackView.frame.size.width))
+//
+//        buttonsStack.addConstraint(buttonsStack.heightAnchor.constraint(equalToConstant: 68))
+//        buttonsStack.addConstraint(buttonsStack.widthAnchor.constraint(equalToConstant: self.fieldStackView.frame.size.width))
+//
 
 
 //        userNameTextField.addConstraint(userNameTextField.heightAnchor.constraint(equalToConstant: 48))
@@ -184,6 +198,17 @@ class LoginViewController: UIViewController{
         self.userNameFieldView.setupTextField(id:0,fieldTitle: "User Name",placeholderTitle: "User Name",isEditable: true,fieldSubtype: .email,isRequired: true,textFieldStyling : TTTextFieldStyler.userDetailsStyle,formStyling : TTFormElementViewStyler.userDetailsStyle)
         self.passwordFieldView.setupTextField(id:1,fieldTitle: "Password",placeholderTitle: "Password",isEditable: true,fieldSubtype: .password,isRequired: true,textFieldStyling : TTTextFieldStyler.userDetailsStyle,formStyling : TTFormElementViewStyler.userDetailsStyle)
       
+    }
+    
+    func decryptData(){
+        let obj:Login = Login()
+        obj.username = "anuraj.nair@cyberianconsulting.in"
+        obj.password = "pass,123"
+        let jsonData = try! JSONSerialization.data(withJSONObject: Mapper().toJSON(obj),options: [])
+        let jsonString = String(data: jsonData, encoding: .utf8)
+
+        print("encr",Utils().encryptData(json: jsonString! ))
+        print("DEc",Utils().decryptData(encryptdata:Utils().encryptData(json: jsonString! ) ))
     }
 
     

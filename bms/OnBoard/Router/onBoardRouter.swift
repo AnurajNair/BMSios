@@ -100,6 +100,7 @@ class OnBoardRouterManager{
         RestClient.getAPIResponse(Router.onBoardingRouterHandler(OnBoardRouterProtocol.postLogin(PostLogin(params: params))), successCompletionHandler: { (response) in
             
             if let apiResponse = Mapper<LoginUserResponse>().map(JSONObject: RestClient.getResultValue(response as? DataResponse<Any,Error>)) {
+                
 //                let currentUser = apiResponse.response?.userData
 ////                if apiResponse.response?.isProfileComplete ?? false  && currentUser != nil{
 //                if currentUser != nil{

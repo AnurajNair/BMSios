@@ -5,7 +5,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -18,28 +17,38 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qsB-G3-Hbq" customClass="ReusableFormCheckboxField" customModule="bms" customModuleProvider="target">
-                        <rect key="frame" x="8" y="4" width="304" height="36"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
+                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="I57-nR-jwi">
+                        <rect key="frame" x="2" y="2" width="316" height="40"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="l1x-YR-RWB">
+                                <rect key="frame" x="0.0" y="5" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="4BR-ca-Vr6"/>
+                                    <constraint firstAttribute="width" constant="30" id="YsM-ne-wp8"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eUs-ab-SVv">
+                                <rect key="frame" x="30" y="9.9999999999999982" width="286" height="20.333333333333329"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="qsB-G3-Hbq" secondAttribute="trailing" constant="8" id="4UJ-hX-rzK"/>
-                    <constraint firstItem="qsB-G3-Hbq" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="Bs8-NN-gHD"/>
-                    <constraint firstAttribute="bottom" secondItem="qsB-G3-Hbq" secondAttribute="bottom" constant="4" id="EBG-Ar-EpY"/>
-                    <constraint firstItem="qsB-G3-Hbq" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="4" id="g1i-1Y-pYW"/>
+                    <constraint firstAttribute="bottom" secondItem="I57-nR-jwi" secondAttribute="bottom" constant="2" id="9AY-xz-Xnd"/>
+                    <constraint firstItem="I57-nR-jwi" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="2" id="EI0-8f-qT4"/>
+                    <constraint firstAttribute="trailing" secondItem="I57-nR-jwi" secondAttribute="trailing" constant="2" id="Jc5-Yc-BR8"/>
+                    <constraint firstItem="I57-nR-jwi" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="2" id="bBW-VC-gL6"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="inspectionTypeCheckboxView" destination="qsB-G3-Hbq" id="o9U-B8-tl0"/>
+                <outlet property="checkImage" destination="l1x-YR-RWB" id="yCQ-Uf-dDx"/>
+                <outlet property="checklabel" destination="eUs-ab-SVv" id="u3F-iX-5pC"/>
             </connections>
-            <point key="canvasLocation" x="-3" y="21"/>
+            <point key="canvasLocation" x="-17" y="90"/>
         </tableViewCell>
     </objects>
-    <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-    </resources>
 </document>
