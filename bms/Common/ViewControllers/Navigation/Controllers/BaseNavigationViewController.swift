@@ -36,7 +36,7 @@ class BaseNavigationViewController: UINavigationController, UINavigationControll
                                                                       backgroundImage: nil,
                                                                       shadowImage: nil,
                                                                       titleTextColor: UIColor.SORT.fontBlack,
-                                                                      titleFont: UIFont.SORT.MontserratBold.withSize(16),
+                                                                      titleFont: UIFont.SORT.InterBold.withSize(16),
                                                                       searchBarTextColor: UIColor.SORT.fontBlack)
         
         private static var baseTransparentNavigationStyle: NavigationBarStyle {
@@ -677,7 +677,7 @@ class BaseNavigationViewController: UINavigationController, UINavigationControll
         
         if withBadge {
             if let badgeButtonItem = BBBadgeBarButtonItem(customUIButton: barButton) {
-                badgeButtonItem.badgeFont = UIFont.SORT.MontserratBold.withSize(10)
+                badgeButtonItem.badgeFont = UIFont.SORT.InterBold.withSize(10)
                 badgeButtonItem.badgeBGColor = UIColor.SORT.green
                 badgeButtonItem.badgeValue = "1"
                 badgeButtonItem.badgeMinSize = 10
@@ -723,7 +723,7 @@ class BaseNavigationViewController: UINavigationController, UINavigationControll
         
         if withBadge {
             if let badgeButtonItem = BBBadgeBarButtonItem(customUIButton: barButton) {
-                badgeButtonItem.badgeFont = UIFont.SORT.MontserratBold.withSize(10)
+                badgeButtonItem.badgeFont = UIFont.SORT.InterBold.withSize(10)
                 badgeButtonItem.badgeBGColor = UIColor.SORT.green
                 badgeButtonItem.badgeValue = "1"
                 badgeButtonItem.badgeMinSize = 10
@@ -743,15 +743,15 @@ class BaseNavigationViewController: UINavigationController, UINavigationControll
     
     func createUIBarButtonItem(title: String, action: Selector?) -> UIBarButtonItem {
         let barButtonItem = UIBarButtonItem(title: title, style: .plain, target: self, action: action)
-        barButtonItem.setTitleTextAttributes([NSAttributedString.Key.font : UIFont.SORT.MontserratBold.withSize(12.0)], for: .normal)
-        barButtonItem.setTitleTextAttributes([NSAttributedString.Key.font : UIFont.SORT.MontserratBold.withSize(12.0)], for: .highlighted)
+        barButtonItem.setTitleTextAttributes([NSAttributedString.Key.font : UIFont.SORT.InterBold.withSize(12.0)], for: .normal)
+        barButtonItem.setTitleTextAttributes([NSAttributedString.Key.font : UIFont.SORT.InterBold.withSize(12.0)], for: .highlighted)
         return barButtonItem
     }
     
     func createRightSideNameItem(title: String) -> UIBarButtonItem {
         let barButtonItem = UIBarButtonItem(title: title, style: .plain, target: nil, action: nil)
 
-        barButtonItem.setTitleTextAttributes([NSAttributedString.Key.font : UIFont.SORT.MontserratBold.withSize(36.0),NSAttributedString.Key.foregroundColor: UIColor.SORT.white], for: .normal)
+        barButtonItem.setTitleTextAttributes([NSAttributedString.Key.font : UIFont.SORT.InterBold.withSize(36.0),NSAttributedString.Key.foregroundColor: UIColor.SORT.white], for: .normal)
    
         
         barButtonItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor : UIColor.SORT.white], for: .disabled)

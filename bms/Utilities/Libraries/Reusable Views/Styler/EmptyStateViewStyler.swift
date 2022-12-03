@@ -11,9 +11,9 @@ import UIKit
 class EmptyStateViewStyler {
     
     static var emptyViewCenterConstraint: CGFloat = 0.0
-    static var emptyTitleFont: UIFont { return UIFont.SORT.MontserratBold.withSize(24) }
+    static var emptyTitleFont: UIFont { return UIFont.SORT.InterBold.withSize(24) }
     static var emptyTitleColor: UIColor { return UIColor.SORT.fontBlack }
-    static var emptyDescriptionFont: UIFont { return UIFont.SORT.MontserratBold.withSize(15) }
+    static var emptyDescriptionFont: UIFont { return UIFont.SORT.InterBold.withSize(15) }
     static var emptyDescriptionColor: UIColor { return UIColor.SORT.fontBlack }
     static var emptyFirstButtonStyle: Styler.buttonBackgroundStyle  { return ButtonStyles.emptyStateButton }
     static var emptyDefaultImage: String { return "logo-vertical-black" }

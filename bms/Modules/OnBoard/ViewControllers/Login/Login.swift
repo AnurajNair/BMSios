@@ -140,6 +140,7 @@ class LoginViewController: UIViewController{
         // Do any additional setup after loading the view.
         setupViewStyle()
         decryptData()
+        print(UIDevice.current.model)
      
     }
     
@@ -195,15 +196,28 @@ class LoginViewController: UIViewController{
     func setupTextFields(){
         self.passwordFieldView.delegate = self
         self.userNameFieldView.delegate = self
-        self.userNameFieldView.setupTextField(id:0,fieldTitle: "User Name",placeholderTitle: "User Name",isEditable: true,fieldSubtype: .email,isRequired: true,textFieldStyling : TTTextFieldStyler.userDetailsStyle,formStyling : TTFormElementViewStyler.userDetailsStyle)
-        self.passwordFieldView.setupTextField(id:1,fieldTitle: "Password",placeholderTitle: "Password",isEditable: true,fieldSubtype: .password,isRequired: true,textFieldStyling : TTTextFieldStyler.userDetailsStyle,formStyling : TTFormElementViewStyler.userDetailsStyle)
+        _ =  self.userNameFieldView.setupTextField(id:0,fieldTitle: "User Name",placeholderTitle: "User Name",isEditable: true,fieldSubtype: .email,isRequired: true,textFieldStyling : TTTextFieldStyler.userDetailsStyle,formStyling : TTFormElementViewStyler.userDetailsStyle)
+       _ = self.passwordFieldView.setupTextField(id:1,fieldTitle: "Password",placeholderTitle: "Password",isEditable: true,fieldSubtype: .password,isRequired: true,textFieldStyling : TTTextFieldStyler.userDetailsStyle,formStyling : TTFormElementViewStyler.userDetailsStyle)
       
     }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+           super.viewWillTransition(to: size, with: coordinator)
+           if UIDevice.current.orientation.isLandscape {
+               print("Landscape")
+              
+           } else {
+               print("Portrait")
+              
+           }
+       }
     
     func decryptData(){
         let obj:Login = Login()
         obj.username = "anuraj.nair@cyberianconsulting.in"
         obj.password = "pass,123"
+        obj.device = "Tab"
+        
         let jsonData = try! JSONSerialization.data(withJSONObject: Mapper().toJSON(obj),options: [])
         let jsonString = String(data: jsonData, encoding: .utf8)
 

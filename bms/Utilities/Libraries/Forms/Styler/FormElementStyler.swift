@@ -17,11 +17,11 @@ class FormElementStyler {
     struct FormHelper {
         static var imagePickerControllerBarTintColor: UIColor { return UIColor.SORT.blue.getColorWithTranslucency(true) }
         static var imagePickerControllerTintColor: UIColor { return UIColor.SORT.white }
-        static var imagePickerControllerDoneButtonFont: UIFont { return UIFont.SORT.MontserratBold.withSize(14) }
+        static var imagePickerControllerDoneButtonFont: UIFont { return UIFont.SORT.InterBold.withSize(14) }
         static var imagePickerControllerDoneButtonColor: UIColor { return UIColor.SORT.white }
         static var imagePickerControllerCancelButtonFont: UIFont { return UIFont.SORT.MontserratRegular.withSize(14) }
         static var imagePickerControllerCameraTintColor: UIColor { return UIColor.SORT.green }
-        static var imagePickerControllerCameraLabelFont: UIFont { return UIFont.SORT.MontserratBold.withSize(14)  }
+        static var imagePickerControllerCameraLabelFont: UIFont { return UIFont.SORT.InterBold.withSize(14)  }
         static var imagePickerControllerCameraCheckboxFont: UIFont { return UIFont.SORT.MontserratRegular.withSize(12) }
         static var imagePickerControllerCameraCheckoboxLabelColor: UIColor { return UIColor.SORT.white }
         static var imagePickerControllerCameraCheckboxTintColor: UIColor { return UIColor.SORT.green }
@@ -55,7 +55,7 @@ class FormElementStyler {
         static var fieldBorderSelectedColor: UIColor { return UIColor.SORT.clear }
         static var placeholderColor: UIColor{return UIColor.SORT.fontBlack.withAlphaComponent(0.5)}
         
-        static var leftLabelFont: UIFont { return UIFont.SORT.MontserratBold.withSize(14) }
+        static var leftLabelFont: UIFont { return UIFont.SORT.InterBold.withSize(14) }
         static var leftLabelTextColor: UIColor { return UIColor.SORT.fontBlack }
         static var fieldRadiusCorner:CGFloat{return 0.0}
         static var leftPadding:CGFloat{return 0.0}
@@ -104,10 +104,10 @@ class FormElementStyler {
         static var popupViewBarTintColor: UIColor {return UIColor.SORT.blue.getColorWithTranslucency(true) }
         static var popupViewTintColor: UIColor {return UIColor.SORT.white }
         static var popupViewBarTextColor: UIColor {return UIColor.SORT.fontWhite }
-        static var popupViewBarFont: UIFont {return UIFont.SORT.MontserratBold.withSize(14.0) }
+        static var popupViewBarFont: UIFont {return UIFont.SORT.InterBold.withSize(14.0) }
         
         static var headerViewBackgroundColor: UIColor { return UIColor.SORT.white }
-        static var headerViewFont: UIFont { return UIFont.SORT.MontserratBold.withSize(14.0) }
+        static var headerViewFont: UIFont { return UIFont.SORT.InterBold.withSize(14.0) }
         static var headerViewTextColor: UIColor { return UIColor.SORT.fontBlack.withAlphaComponent(0.4) }
         
         static var rightImageRenderingMode: UIImage.RenderingMode { return .alwaysTemplate }
@@ -156,7 +156,7 @@ class FormElementStyler {
         static var leftImageRadiobuttonDefault: String { return "Form-Radiobutton-Default" }
         static var leftImageRadiobuttonSelected: String { return "Form-Radiobutton-Selected" }
         static var fieldDefaultFont: UIFont { return UIFont.SORT.MontserratRegular.withSize(14) }
-        static var fieldSelectedFont: UIFont { return UIFont.SORT.MontserratBold.withSize(14) }
+        static var fieldSelectedFont: UIFont { return UIFont.SORT.InterBold.withSize(14) }
         static var fieldDefaultTextColor: UIColor { return UIColor.SORT.fontBlack }
         static var fieldSelectedTextColor: UIColor { return UIColor.SORT.fontBlack }
     }
@@ -235,7 +235,7 @@ class TTFileStyler {
     private static var baseButtonStyle: Styler.buttonBackgroundStyle {
         get {
             var button = Styler.baseButtonStyle
-            button.font = UIFont.SORT.MontserratBold.withSize(14)
+            button.font = UIFont.SORT.InterBold.withSize(14)
             button.titleColor = UIColor.SORT.fontWhite
             button.backgroundColor = UIColor.SORT.clear
             button.cornerRadius = 0

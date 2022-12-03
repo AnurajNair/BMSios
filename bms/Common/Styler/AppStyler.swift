@@ -13,12 +13,12 @@ class AppStyler {
 }
 
 struct TextStyles {
-    static let ListItemBlackTitle: Styler.textStyle = (UIFont.SORT.MontserratBold.withSize(14), UIColor.SORT.fontBlack)
+    static let ListItemBlackTitle: Styler.textStyle = (UIFont.SORT.InterBold.withSize(14), UIColor.SORT.fontBlack)
     static let TappableBaseStyle: Styler.textStyle = (UIFont.SORT.MontserratRegular.withSize(12), UIColor.SORT.fontBlack)
-    static let TappableLinkStyle: Styler.textStyle = (UIFont.SORT.MontserratBold.withSize(12), UIColor.SORT.blue)
+    static let TappableLinkStyle: Styler.textStyle = (UIFont.SORT.InterBold.withSize(12), UIColor.SORT.blue)
     static let WhiteHeaderTitle : Styler.textStyle = (UIFont.SORT.MontserratRegular.withSize(14), UIColor.SORT.fontWhite)
     static let WhiteHeaderSubTitle : Styler.textStyle = (UIFont.SORT.MontserratRegular.withSize(12), UIColor.SORT.fontWhite)
-    static let ToastMessageStyle : Styler.textStyle = (UIFont.SORT.MontserratBold.withSize(14), UIColor.SORT.fontWhite)
+    static let ToastMessageStyle : Styler.textStyle = (UIFont.SORT.InterBold.withSize(14), UIColor.SORT.fontWhite)
     
     //MARK
     
@@ -27,33 +27,33 @@ struct TextStyles {
     
     static let TutorialTitleLabelStyle : Styler.textStyle = (UIFont.SORT.MontserratRegular.withSize(19), UIColor.SORT.tutorialTitleFont)
     
-    static let TutorialSubitleLabelStyle : Styler.textStyle = (UIFont.SORT.MontserratLight.withSize(15), UIColor.SORT.titleFont)
+    static let TutorialSubitleLabelStyle : Styler.textStyle = (UIFont.SORT.InterLight.withSize(15), UIColor.SORT.titleFont)
     
-    static let OptionSelectedLabelStyle : Styler.textStyle = (UIFont.SORT.MontserratBold.withSize(9), UIColor.SORT.fontBlack)
+    static let OptionSelectedLabelStyle : Styler.textStyle = (UIFont.SORT.InterBold.withSize(9), UIColor.SORT.fontBlack)
     
     static let OptionUnSelectedLabelStyle : Styler.textStyle = (UIFont.SORT.MontserratRegular.withSize(9), UIColor.SORT.fontBlack)
     
-    static let GenderSelectionTitleLabelStyle : Styler.textStyle = (UIFont.SORT.MontserratBold.withSize(14), UIColor.SORT.fontBlack)
+    static let GenderSelectionTitleLabelStyle : Styler.textStyle = (UIFont.SORT.InterBold.withSize(14), UIColor.SORT.fontBlack)
     
     static let SettingTitleLabelStyle : Styler.textStyle = (UIFont.SORT.MontserratRegular.withSize(10), UIColor.SORT.fontBlack)
     
     static let SettingSubTitleLabelStyle : Styler.textStyle = (UIFont.SORT.MontserratRegular.withSize(14), UIColor.SORT.fontGray)
     
-     static let SearchTextFieldStyle : Styler.textStyle = (UIFont.SORT.MontserratLight.withSize(14), UIColor.SORT.fontBlack)
+     static let SearchTextFieldStyle : Styler.textStyle = (UIFont.SORT.InterLight.withSize(14), UIColor.SORT.fontBlack)
     
-    static let ProfileNameText : Styler.textStyle = (UIFont.SORT.MontserratBold.withSize(12), UIColor.SORT.fontBlack)
+    static let ProfileNameText : Styler.textStyle = (UIFont.SORT.InterBold.withSize(12), UIColor.SORT.fontBlack)
     
     static let ActiveProfileTitleStyle : Styler.textStyle = (UIFont.SORT.MontserratRegular.withSize(10), UIColor.SORT.fontBlack)
     
     static let ProfilePlanTitleStyle : Styler.textStyle = (UIFont.SORT.MontserratRegular.withSize(10), UIColor.SORT.fontBlack.withAlphaComponent(0.4))
     
-    static let ProfilePlanCountStyle : Styler.textStyle = (UIFont.SORT.MontserratBold.withSize(12), UIColor.SORT.fontBlack)
+    static let ProfilePlanCountStyle : Styler.textStyle = (UIFont.SORT.InterBold.withSize(12), UIColor.SORT.fontBlack)
     
-    static let EditProfileHeaderTitleStyle : Styler.textStyle = (UIFont.SORT.MontserratBold.withSize(10), UIColor.SORT.fontBlack.withAlphaComponent(0.5))
+    static let EditProfileHeaderTitleStyle : Styler.textStyle = (UIFont.SORT.InterBold.withSize(10), UIColor.SORT.fontBlack.withAlphaComponent(0.5))
     
-    static let PlaceVisitedTitleStyle : Styler.textStyle = (UIFont.SORT.MontserratBold.withSize(15), UIColor.SORT.fontBlack)
+    static let PlaceVisitedTitleStyle : Styler.textStyle = (UIFont.SORT.InterBold.withSize(15), UIColor.SORT.fontBlack)
     
-    static let PlaceVisitedSubTitleStyle : Styler.textStyle = (UIFont.SORT.MontserratLight.withSize(9), UIColor.SORT.fontBlack)
+    static let PlaceVisitedSubTitleStyle : Styler.textStyle = (UIFont.SORT.InterLight.withSize(9), UIColor.SORT.fontBlack)
     
     static let PlansTabTitleStyle : Styler.textStyle = (UIFont.SORT.MontserratRegular.withSize(12), UIColor.SORT.fontBlack)
     
@@ -70,43 +70,43 @@ struct TextStyles {
     
     static let SelectFriendsSectionTitleStyle : Styler.textStyle = (UIFont.SORT.MontserratRegular.withSize(10), UIColor.SORT.fontBlack)
     
-     static let ContactUsImageTitleStyle : Styler.textStyle = (UIFont.SORT.MontserratBold.withSize(10), UIColor.SORT.fontBlack)
+     static let ContactUsImageTitleStyle : Styler.textStyle = (UIFont.SORT.InterBold.withSize(10), UIColor.SORT.fontBlack)
     
-    static let PlanHistoryTitleStyle : Styler.textStyle = (UIFont.SORT.MontserratBold.withSize(16), UIColor.SORT.fontBlack)
+    static let PlanHistoryTitleStyle : Styler.textStyle = (UIFont.SORT.InterBold.withSize(16), UIColor.SORT.fontBlack)
     
     static let PlanHistorySubTitleStyle : Styler.textStyle = (UIFont.SORT.MontserratRegular.withSize(12), UIColor.SORT.fontBlack)
     
      static let UserCurrentPlanMetaLblStyle : Styler.textStyle = (UIFont.SORT.MontserratRegular.withSize(10), UIColor.SORT.fontBlack.withAlphaComponent(0.65))
     
-    static let UserCurrentViewMapLblStyle : Styler.textStyle = (UIFont.SORT.MontserratBold.withSize(8), UIColor.SORT.fontWhite)
+    static let UserCurrentViewMapLblStyle : Styler.textStyle = (UIFont.SORT.InterBold.withSize(8), UIColor.SORT.fontWhite)
     
-    static let UserCurrentPlaceNameLblStyle : Styler.textStyle = (UIFont.SORT.MontserratBold.withSize(18), UIColor.SORT.fontBlack)
+    static let UserCurrentPlaceNameLblStyle : Styler.textStyle = (UIFont.SORT.InterBold.withSize(18), UIColor.SORT.fontBlack)
     
     static let PlacePeekLblStyle : Styler.textStyle = (UIFont.SORT.MontserratRegular.withSize(10), UIColor.SORT.fontBlack)
     
     static let PlaceDetailsRateTitleLblStyle : Styler.textStyle = (UIFont.SORT.MontserratRegular.withSize(12), UIColor.SORT.fontBlack)
     
-    static let PlaceDetailsRateLblStyle : Styler.textStyle = (UIFont.SORT.MontserratBold.withSize(16), UIColor.SORT.fontBlack)
+    static let PlaceDetailsRateLblStyle : Styler.textStyle = (UIFont.SORT.InterBold.withSize(16), UIColor.SORT.fontBlack)
     
     static let PlaceDetailsRateSubTitleTitleLblStyle : Styler.textStyle = (UIFont.SORT.MontserratRegular.withSize(10), UIColor.SORT.fontBlack)
-    static let HomeButtonTitleStyle : Styler.textStyle = (UIFont.SORT.MontserratBold.withSize(11), UIColor.SORT.fontWhite)
-    static let ActionButtonTitleStyle : Styler.textStyle = (UIFont.SORT.MontserratBold.withSize(11), UIColor.SORT.fontWhite)
-    static let MapMarkerPinTitle : Styler.textStyle = (UIFont.SORT.MontserratBold.withSize(11), UIColor.SORT.fontBlack.withAlphaComponent(0.8))
-    static let DiscoveViewCellSubTitleStyle : Styler.textStyle = (UIFont.SORT.MontserratBold.withSize(12), UIColor.SORT.fontWhite)
+    static let HomeButtonTitleStyle : Styler.textStyle = (UIFont.SORT.InterBold.withSize(11), UIColor.SORT.fontWhite)
+    static let ActionButtonTitleStyle : Styler.textStyle = (UIFont.SORT.InterBold.withSize(11), UIColor.SORT.fontWhite)
+    static let MapMarkerPinTitle : Styler.textStyle = (UIFont.SORT.InterBold.withSize(11), UIColor.SORT.fontBlack.withAlphaComponent(0.8))
+    static let DiscoveViewCellSubTitleStyle : Styler.textStyle = (UIFont.SORT.InterBold.withSize(12), UIColor.SORT.fontWhite)
     
-    static let DiscoveViewCellActionTitleStyle : Styler.textStyle = (UIFont.SORT.MontserratBold.withSize(15), UIColor.SORT.fontWhite)
+    static let DiscoveViewCellActionTitleStyle : Styler.textStyle = (UIFont.SORT.InterBold.withSize(15), UIColor.SORT.fontWhite)
     
-    static let DiscoveViewCellActionTwoTitleStyle : Styler.textStyle = (UIFont.SORT.MontserratBold.withSize(9), UIColor.SORT.fontWhite)
+    static let DiscoveViewCellActionTwoTitleStyle : Styler.textStyle = (UIFont.SORT.InterBold.withSize(9), UIColor.SORT.fontWhite)
     
-    static let DiscoveViewCellActionOpenTimeStatusStyle : Styler.textStyle = (UIFont.SORT.MontserratBold.withSize(12), UIColor.SORT.sorttedGreen)
+    static let DiscoveViewCellActionOpenTimeStatusStyle : Styler.textStyle = (UIFont.SORT.InterBold.withSize(12), UIColor.SORT.sorttedGreen)
     
-    static let DiscoveViewCellActionCloseTimeStatusStyle : Styler.textStyle = (UIFont.SORT.MontserratBold.withSize(12), UIColor.SORT.red)
+    static let DiscoveViewCellActionCloseTimeStatusStyle : Styler.textStyle = (UIFont.SORT.InterBold.withSize(12), UIColor.SORT.red)
     
     static let DiscoverViewCellOfferDiscStyle : Styler.textStyle = (UIFont.SORT.MontserratRegular.withSize(10), UIColor.SORT.red)
     
-    static let RespondedStatusStyle : Styler.textStyle = (UIFont.SORT.MontserratBold.withSize(6), UIColor.SORT.fontWhite)
+    static let RespondedStatusStyle : Styler.textStyle = (UIFont.SORT.InterBold.withSize(6), UIColor.SORT.fontWhite)
     
-    static let DashboardHeaderStyle : Styler.textStyle = (UIFont.SORT.MontserratBold.withSize(24), UIColor.SORT.fontBlack)
+    static let DashboardHeaderStyle : Styler.textStyle = (UIFont.SORT.InterBold.withSize(24), UIColor.SORT.fontBlack)
 }
 
 struct ButtonStyles {
@@ -297,7 +297,7 @@ struct ButtonStyles {
             var button = ButtonStyles.baseButtonStyle
             button.titleColor = UIColor.SORT.fontWhite
             button.backgroundColor = UIColor.SORT.black
-            button.font = UIFont.SORT.MontserratBold.withSize(14)
+            button.font = UIFont.SORT.InterBold.withSize(14)
             button.shadowStyle = nil
             button.cornerRadius = 0
             return button
@@ -308,7 +308,7 @@ struct ButtonStyles {
             var button = ButtonStyles.baseButtonStyle
             button.titleColor = UIColor.SORT.fontWhite
             button.backgroundColor = UIColor.SORT.gradientEndColor
-            button.font = UIFont.SORT.MontserratBold.withSize(14)
+            button.font = UIFont.SORT.InterBold.withSize(14)
             button.shadowStyle = nil
             button.cornerRadius = 0
             return button
@@ -330,7 +330,7 @@ struct ButtonStyles {
             var button = ButtonStyles.baseButtonStyle
             button.titleColor = UIColor.SORT.black
             button.backgroundColor = UIColor.SORT.white
-            button.font = UIFont.SORT.MontserratBold.withSize(10)
+            button.font = UIFont.SORT.InterBold.withSize(10)
             button.shadowStyle = nil
             return button
         }
@@ -591,7 +591,7 @@ struct ButtonStyles {
         get {
             var button = ButtonStyles.baseButtonStyle
             button.tintColor = UIColor.SORT.white
-            button.font = UIFont.SORT.MontserratBold.withSize(12)
+            button.font = UIFont.SORT.InterBold.withSize(12)
             button.cornerRadius = 0
             button.shadowStyle = nil
             return button
@@ -627,7 +627,7 @@ struct ButtonStyles {
     static var inOutActionButton: Styler.buttonBackgroundStyle {
         get {
             var button = ButtonStyles.baseButtonStyle
-            button.font = UIFont.SORT.MontserratBold.withSize(16)
+            button.font = UIFont.SORT.InterBold.withSize(16)
             button.cornerRadius = 27.5
             return button
         }
@@ -831,11 +831,11 @@ extension UIFont {
         case MontserratLightItalic = "Montserrat-LightItalic",
         MontserratMedium = "Montserrat-Medium",
         MontserratBoldItalic = "Montserrat-BoldItalic",
-        MontserratLight = "Montserrat-Light",
+        InterLight = "Inter-Light",
         MontserratThinItalic = "Montserrat-ThinItalic",
-        MontserratExtraLight = "Montserrat-ExtraLight",
+        InterExtraLight = "Inter-ExtraLight",
         MontserratThin = "Inter-Thin",
-        MontserratBold = "Inter-Bold",
+        InterBold = "Inter-Bold",
         MontserratMediumItalic = "Montserrat-MediumItalic",
         MontserratBlackItalic = "Montserrat-BlackItalic",
         MontserratSemiBold = "Montserrat-SemiBold",

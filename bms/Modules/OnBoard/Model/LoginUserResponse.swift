@@ -46,17 +46,22 @@ class Login :APIRequestBody{
 
     var username:String?
     var password:String?
+    var device:String?
     
     enum ResponseKeys :String{
         case username  = "loginid"
       case password    = "userpwd"
+        case device = "device"
         
     }
   
     override func mapping(map: ObjectMapper.Map) {
         self.username              <- map[ResponseKeys.username.rawValue]
         self.password              <- map[ResponseKeys.password.rawValue]
+        self.device              <- map[ResponseKeys.device.rawValue]
     }
     
   
 }
+
+

@@ -14,13 +14,14 @@ class ReusableFormOptionsHeaderView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        fromNib()
+       initFromNib()
         setupView()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        fromNib()
+//        fromNib()
+        initFromNib()
     }
     
     override func awakeFromNib() {

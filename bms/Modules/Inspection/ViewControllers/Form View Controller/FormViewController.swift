@@ -72,13 +72,22 @@ class FormViewController: UIViewController, UICollectionViewDataSource {
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return self.questions?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FormCollectionViewCell", for: indexPath) as? FormCollectionViewCell else{
             return UICollectionViewCell()
         }
+        
+        let section = self.questions![indexPath.row]
+        
+        if(section.type == "text"){
+            _ = cell.collectionFormElement.setupTextField(id: indexPath, fieldTitle: section.question,placeholderTitle: section.question,textFieldStyling : TTTextFieldStyler.userDetailsStyle,formStyling : TTFormElementViewStyler.userDetailsStyle)
+        }else if(section.type == "option"){
+            cell.collectionFormElement.setupOptionsField(id: indexPath, fieldTitle: section.question, showFieldTitleByDefault: true, placeholderTitle: section.question, isEditable: true,isRequired: true, optionValues: ["One","Two"], selectedItems: [0], scrollDirection: .vertical, numberOfItemsPerRow: 1.0, asymmetricPadding: 2.0, isEqualWidth: true, isEqualHeight: true, allowsDeselect: true, showSelectAll: false, showClear: true)
+        }
+        
         
         return cell
     }
@@ -93,10 +102,10 @@ extension FormViewController:UICollectionViewDelegateFlowLayout{
      ) -> CGSize {
        // 2
          let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
-             let availableWidth = view.frame.width - paddingSpace
+         let availableWidth = self.view.frame.width - paddingSpace
              let widthPerItem = availableWidth / itemsPerRow
              
-             return CGSize(width: widthPerItem, height: widthPerItem)
+         return CGSize(width: self.view.frame.size.width/2, height: 70)
      }
     
 }

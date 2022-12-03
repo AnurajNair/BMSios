@@ -7,10 +7,14 @@
 
 import Foundation
 import UIKit
+import SwiftyMenu
 
 class ForgotPasswordViewController:UIViewController{
     
-  
+    @IBOutlet weak var dropDown: ReusableDropDown!
+    
+    let arr = ["item","item322","item23","iteemmmm"]
+    var options:[DropDownModel]? = nil
     @IBOutlet weak var ForgotPassworEmailView: ReusableFormElementView!
     
     var resetPasswordMail:String = ""
@@ -19,7 +23,10 @@ class ForgotPasswordViewController:UIViewController{
         // Do any additional setup after loading the view.
        
         setupViewStyle()
+        setArray()
     }
+    
+    
     
   
 
@@ -32,11 +39,21 @@ func setupViewStyle(){
     ForgotPassworEmailView.addConstraint(ForgotPassworEmailView.heightAnchor.constraint(equalToConstant: self.view.frame.size.height/6.5))
     ForgotPassworEmailView.addConstraint(ForgotPassworEmailView.widthAnchor.constraint(equalToConstant: self.view.frame.size.width/2))
     
-    self.ForgotPassworEmailView.setupTextField(id: 0, fieldTitle: "Email", showFieldTitleByDefault: true, showFieldTitleWhileEditing: true, placeholderTitle: "Enter your email", isEditable: true,fieldSubtype: .email, height: 48.0, isRequired: true,textFieldStyling : TTTextFieldStyler.userDetailsStyle,formStyling : TTFormElementViewStyler.userDetailsStyle)
+    _ = self.ForgotPassworEmailView.setupTextField(id: 0, fieldTitle: "Email", showFieldTitleByDefault: true, showFieldTitleWhileEditing: true, placeholderTitle: "Enter your email", isEditable: true,fieldSubtype: .email, height: 48.0, isRequired: true,textFieldStyling : TTTextFieldStyler.userDetailsStyle,formStyling : TTFormElementViewStyler.userDetailsStyle)
     
 
     
 }
+    
+    func setArray(){
+//        self.arr.map { elem in
+//            var ob :DropDownModel = DropDownModel(id: elem, name: elem)
+//
+//            self.options?.append(ob)
+//        }
+//        print(self.options)
+        
+    }
    
     @IBAction func onSendOTPBtnClick(_ sender: Any) {
         Navigate.routeUserToScreen(screenType: .otpScreen, transitionType: .push)

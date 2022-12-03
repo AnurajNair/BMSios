@@ -17,7 +17,7 @@ class FormsControlllerViewController: UIViewController {
 
 
     @IBOutlet weak var cutentView: UIView!
-    var inspectionSections :[sections]? = [sections(section_name: "General", isSubSectionPresent: "false", subSections: [], questions: [question_ans(question: "Bridge Name", type: "text"),question_ans(question: "Bridge Name", type: "text"),question_ans(question: "Bridge Name", type: "text"),]),sections(section_name: "Approach", isSubSectionPresent: "false", subSections: [], questions: [question_ans(question: "Bridge Name", type: "text"),question_ans(question: "Bridge Name", type: "text"),question_ans(question: "Bridge Name", type: "text"),])]
+    var inspectionSections :[sections]? = [sections(section_name: "General", isSubSectionPresent: "false", subSections: [], questions: [question_ans(question: "Bridge Name", type: "text"),question_ans(question: "River Name", type: "text"),question_ans(question: "Name ofHighway", type: "text"),question_ans(question: "Highway No.", type: "text"),question_ans(question: "Bridge Location", type: "text")]),sections(section_name: "Approach", isSubSectionPresent: "false", subSections: [], questions: [question_ans(question: "Bridge Name", type: "text"),question_ans(question: "Bridge Name", type: "text"),question_ans(question: "Bridge Name", type: "option"),])]
     
     
     

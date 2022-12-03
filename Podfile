@@ -24,6 +24,7 @@ target 'bms' do
   pod 'SDWebImage', '~> 4.0'
   pod 'SwiftValidator', :git => 'https://github.com/jpotts18/SwiftValidator.git', :branch => 'master'
   pod 'CryptoSwift', '~> 1.6.0'
+  pod 'SwiftyMenu', '~> 1.0.1'
 
   target 'bmsTests' do
     inherit! :search_paths

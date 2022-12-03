@@ -20,9 +20,9 @@ class Constants {
     //MARK:- Third Party Helpers
     
 //    static let googlePlacesClientApiKey = Utils.getSchemeKey("GOOGLE_GMS_PLACES_CLIENT_API_KEY")
-    static let googleServicesApiKey = Utils.getSchemeKey("GOOGLE_GMS_SERVICES_API_KEY")
-//    static let googleSignInClientKey = Utils.getSchemeKey("GOOGLE_SIGNIN_CLIENT_KEY")
-    static let googleServiceInfoPlist = Utils.getSchemeKey("GOOGLE_SERVICE_INFO_PLIST")
+//    static let googleServicesApiKey = Utils.getSchemeKey("GOOGLE_GMS_SERVICES_API_KEY")
+////    static let googleSignInClientKey = Utils.getSchemeKey("GOOGLE_SIGNIN_CLIENT_KEY")
+//    static let googleServiceInfoPlist = Utils.getSchemeKey("GOOGLE_SERVICE_INFO_PLIST")
     
 
     //MARK:- General Helpers
@@ -107,8 +107,7 @@ class Constants {
     
     
     struct StaticWebPages {
-        static let privacyPolicy = "https://www.sortted.com/privacy-policy-1"
-        static let termsAndConditions = "https://www.sortted.com/privacy-policy"
+    
     }
     
     struct InvitationAction {
@@ -125,9 +124,9 @@ class Constants {
         static let MINIMUM_DISTANCE_TO_ATTEND : CLLocationDistance = 500
     }
     
-    static let appStoreLocation : String = "itms://itunes.apple.com/us/app/apple-store/sortted/id1462857356?ls=1"
+//    static let appStoreLocation : String = "itms://itunes.apple.com/us/app/apple-store/sortted/id1462857356?ls=1"
     
     
-    static let inviteText : String = "Imagine an app that shows you best places to plan daily hangouts & gives you surprise offer every time you check-in. Stop imagining start downloading😇\nLink👉🏼: https://crm.sortted.app/installapp\n\nWait, is this link for Android or iOS🧐? Forget all that crap. Any phone, any where, just tap the link to get your hands on easy planning. NOW.\n\n😄Also follow us on Instagram to learn more about app: Instagram.com/sortted 🤘🏼"
+ 
     
 }

@@ -22,7 +22,7 @@ class ReusableFormOptionsField: UIView {
     weak var optionsDelegate: ReusableFormOptionsFieldDelegate?
     
     enum CellNames: String {
-        case selectableView = "TTReusableSelectableCollectionViewCell"
+        case selectableView = "ReusableSelectableCollectionViewCell"
     }
     
     let cellIdentifiers:[String] = [CellNames.selectableView.rawValue]
