@@ -11,6 +11,7 @@ import CryptoSwift
 import ObjectMapper
 import RealmSwift
 import ObjectMapper_Realm
+import Device
 
 class LoginViewController: UIViewController{
    
@@ -150,21 +151,38 @@ class LoginViewController: UIViewController{
     func setupViewStyle(){
 //        loginCard.roundCorners(UIRectCorner, radius: 4)
         
-      
+        print(UIDevice.current.model)
        
         UIView.style([(view: loginCard, style:(backgroundColor:nil, cornerRadius: 16, borderStyle: nil,shadowStyle : nil))])
         
- 
-
-//        fieldStackView.addConstraint(fieldStackView.heightAnchor.constraint(equalToConstant: self.loginCard.frame.size.height/2))
-        fieldStackView.addConstraint(fieldStackView.widthAnchor.constraint(equalToConstant: self.loginCard.frame.size.width/1.5))
-    
-        self.bmsLogo.addConstraint(self.bmsLogo.widthAnchor.constraint(equalToConstant: self.loginCard.frame.size.width/3))
-        self.bmsLogo.addConstraint(self.bmsLogo.heightAnchor.constraint(equalToConstant: 80))
+        loginCard.translatesAutoresizingMaskIntoConstraints = false
+        
+        loginButton.addConstraint(loginButton.heightAnchor.constraint(equalToConstant: 48.0))
+        loginButton.addConstraint(loginButton.widthAnchor.constraint(equalToConstant: self.userNameFieldView.frame.width))
+        loginButton.titleLabel?.font = UIFont.BMS.InterSemiBold.withSize(24)
+        forgotPasswordButton.titleLabel?.font = UIFont.BMS.InterRegular.withSize(14)
+//        loginCard.addConstraint(loginCard.heightAnchor.constraint(equalToConstant:  self.view.frame.size.height/2))
+        
+        
+        switch Device.size(){
+        case .screen12_9Inch:
+            print("got")
+            loginCard.addConstraint(loginCard.heightAnchor.constraint(equalToConstant:  self.view.frame.size.height/2.2))
+            setCardInCenter()
+            print(loginCard.frame.size.height)
+            break
+        default:
+            loginCard.addConstraint(loginCard.heightAnchor.constraint(equalToConstant:  self.view.frame.size.height/1.8))
+            setCardInCenter()
+            break
+        }
+//        fieldStackView.addConstraint(fieldStackView.widthAnchor.constraint(equalToConstant: self.loginCard.frame.size.width/1.5))
+//    
+//        self.bmsLogo.addConstraint(self.bmsLogo.widthAnchor.constraint(equalToConstant: self.loginCard.frame.size.width/3))
+//        self.bmsLogo.addConstraint(self.bmsLogo.heightAnchor.constraint(equalToConstant: 80))
       
-        NSLayoutConstraint(item: self.fieldStackView as Any, attribute: NSLayoutConstraint.Attribute.centerX, relatedBy: NSLayoutConstraint.Relation.equal, toItem: loginCard, attribute: NSLayoutConstraint.Attribute.centerX, multiplier: 1, constant: 0).isActive = true
-        NSLayoutConstraint(item: self.fieldStackView as Any, attribute: NSLayoutConstraint.Attribute.centerY, relatedBy: NSLayoutConstraint.Relation.equal, toItem: loginCard, attribute: NSLayoutConstraint.Attribute.centerY, multiplier: 1, constant: 0).isActive = true
-      
+       
+//
 //        userNameFieldView.addConstraint(userNameFieldView.heightAnchor.constraint(equalToConstant: 68))
 //        userNameFieldView.addConstraint(userNameFieldView.widthAnchor.constraint(equalToConstant: self.fieldStackView.frame.size.width))
 //        passwordFieldView.addConstraint(passwordFieldView.heightAnchor.constraint(equalToConstant: 68))
@@ -180,7 +198,7 @@ class LoginViewController: UIViewController{
 //        passwordTextField.addConstraint(passwordTextField.heightAnchor.constraint(equalToConstant: 48))
 
      
-      //  loginButton.frame.size.width = userNameStack.frame.size.width
+    
                
 //        if (screenHeight > 9.7){
 //            userNameTextField.frame.size.height = 180.0
@@ -193,9 +211,24 @@ class LoginViewController: UIViewController{
         
     }
     
+    func setCardInCenter(){
+        NSLayoutConstraint(item: self.loginCard as Any, attribute: NSLayoutConstraint.Attribute.centerX, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.view, attribute: NSLayoutConstraint.Attribute.centerX, multiplier: 1, constant: 0).isActive = true
+        NSLayoutConstraint(item: self.loginCard as Any, attribute: NSLayoutConstraint.Attribute.centerY, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.view, attribute: NSLayoutConstraint.Attribute.centerY, multiplier: 1, constant: 0).isActive = true
+     
+    }
+    
+    func removeCardFromCenter(){
+        NSLayoutConstraint(item: self.loginCard as Any, attribute: NSLayoutConstraint.Attribute.centerX, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.view, attribute: NSLayoutConstraint.Attribute.centerX, multiplier: 1, constant: 0).isActive = false
+//        NSLayoutConstraint(item: self.loginCard as Any, attribute: NSLayoutConstraint.Attribute.right, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.view, attribute: .trailing, multiplier: 0.5, constant: 0).isActive = true
+     
+        NSLayoutConstraint(item: self.loginCard as Any, attribute: NSLayoutConstraint.Attribute.centerY, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.view, attribute: NSLayoutConstraint.Attribute.centerY, multiplier: 1, constant: 0).isActive = false
+//        loginCard.heightAnchor.constraint(equalToConstant:  self.view.frame.size.height/1.8).isActive = false
+        
+    }
+    
     func setupTextFields(){
-        self.passwordFieldView.delegate = self
-        self.userNameFieldView.delegate = self
+  self.passwordFieldView.delegate = self
+      self.userNameFieldView.delegate = self
         _ =  self.userNameFieldView.setupTextField(id:0,fieldTitle: "User Name",placeholderTitle: "User Name",isEditable: true,fieldSubtype: .email,isRequired: true,textFieldStyling : TTTextFieldStyler.userDetailsStyle,formStyling : TTFormElementViewStyler.userDetailsStyle)
        _ = self.passwordFieldView.setupTextField(id:1,fieldTitle: "Password",placeholderTitle: "Password",isEditable: true,fieldSubtype: .password,isRequired: true,textFieldStyling : TTTextFieldStyler.userDetailsStyle,formStyling : TTFormElementViewStyler.userDetailsStyle)
       
@@ -204,10 +237,13 @@ class LoginViewController: UIViewController{
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
            super.viewWillTransition(to: size, with: coordinator)
            if UIDevice.current.orientation.isLandscape {
-               print("Landscape")
+               removeCardFromCenter()
+               print(self.loginCard.constraints)
               
            } else {
                print("Portrait")
+               print(self.loginCard.constraints)
+               setCardInCenter()
               
            }
        }

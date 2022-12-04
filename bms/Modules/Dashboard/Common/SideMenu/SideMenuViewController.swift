@@ -106,7 +106,7 @@ extension SideMenuViewController: UITableViewDelegate {
         if(sectionData.title != "Inspection"){
             if let cell = tableView.cellForRow(at: indexPath) as? SideMenuCell {
                     cell.contentView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-                cell.menCellView.backgroundColor = UIColor.SORT.theme
+                cell.menCellView.backgroundColor = UIColor.BMS.theme
                 }
            
             Navigate.routeUserToScreen(screenType: sectionData.route, transitionType: sectionData.transition)
@@ -115,12 +115,12 @@ extension SideMenuViewController: UITableViewDelegate {
            
             if let cell = tableView.cellForRow(at: indexPath) as? SideMenuCell {
                     cell.contentView.backgroundColor = #colorLiteral(red: 1, green: 0.4932718873, blue: 0.4739984274, alpha: 1)
-                cell.menCellView.backgroundColor = UIColor.SORT.theme
+                cell.menCellView.backgroundColor = UIColor.BMS.theme
                 }
             if(selectedCellIndexPath != indexPath){
                 if  let cell = self.tableView(tableView, cellForRowAt: indexPath) as? SideMenuCell{
                     cell.selectedTitle(title: sectionData.title)
-                    cell.menCellView.backgroundColor = UIColor.SORT.blue
+                    cell.menCellView.backgroundColor = UIColor.BMS.blue
                 }
             }
         }
@@ -156,7 +156,7 @@ extension SideMenuViewController: UITableViewDataSource {
         cell.configureCell(image:sectionData.icon, title: sectionData.title,menu: sectionData.menu )
         
         let backgroundView = UIView()
-        backgroundView.backgroundColor = UIColor.SORT.theme.withAlphaComponent(0.1)
+        backgroundView.backgroundColor = UIColor.BMS.theme.withAlphaComponent(0.1)
         cell.selectedBackgroundView = backgroundView
 //        self.delegate?.selectedCell(<#T##row: Int##Int#>)
         

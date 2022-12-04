@@ -35,7 +35,7 @@ class DashboardViewController: UIViewController {
         if let navigationController = self.navigationController as? BaseNavigationViewController {
             navigationController.setupSorttedNavigationTitleView(self)
 //            navigationController.setUpNavigation(self)
-            navigationController.navigationBar.backgroundColor = UIColor.SORT.theme
+            navigationController.navigationBar.backgroundColor = UIColor.BMS.theme
         }
         
         

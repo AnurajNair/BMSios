@@ -21,7 +21,7 @@ class DashboardStatsCollectionViewCell: UICollectionViewCell {
 //        self.statsCard.addConstraint(self.statsCard.widthAnchor.constraint(equalToConstant: UIScreen().bounds.fr))
 //        self.statsCard.addConstraint(self.statsCard.heightAnchor.constraint(equalToConstant: 200))
 
-        UIView.style([(view: self.statsCard, style:(backgroundColor:UIColor.SORT.fontGray, cornerRadius: 16, borderStyle: nil,shadowStyle : ShadowStyles.CardShadowStyle))])
+        UIView.style([(view: self.statsCard, style:(backgroundColor:UIColor.BMS.fontGray, cornerRadius: 16, borderStyle: nil,shadowStyle : ShadowStyles.CardShadowStyle))])
         
     }
     

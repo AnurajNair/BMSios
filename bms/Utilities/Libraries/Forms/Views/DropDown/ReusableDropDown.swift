@@ -41,10 +41,10 @@ class ReusableDropDown: UIView {
       
         self.dropDown.items = options ?? []
         var codeMenuAttributes = SwiftyMenuAttributes()
-        codeMenuAttributes.placeHolderStyle = .value(text: placeHolder ?? "", textColor: textColor ?? UIColor.SORT.black)
+        codeMenuAttributes.placeHolderStyle = .value(text: placeHolder ?? "", textColor: textColor ?? UIColor.BMS.black)
         codeMenuAttributes.roundCorners = .all(radius: 5)
         codeMenuAttributes.height  = .value(height: 48)
-        codeMenuAttributes.border = .value(color: UIColor.SORT.separatorGray, width: 0.8)
+        codeMenuAttributes.border = .value(color: UIColor.BMS.separatorGray, width: 0.8)
         self.dropDown.configure(with: codeMenuAttributes)
     }
 

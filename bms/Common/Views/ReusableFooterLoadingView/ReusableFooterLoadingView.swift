@@ -28,8 +28,8 @@ class ReusableFooterLoadingView: UIView {
     }
     
     private func setupView() {
-        activityIndicatorView.color = UIColor.SORT.gray
-        self.backgroundColor = UIColor.SORT.clear
+        activityIndicatorView.color = UIColor.BMS.gray
+        self.backgroundColor = UIColor.BMS.clear
         activityIndicatorView.startAnimating()
     }
 

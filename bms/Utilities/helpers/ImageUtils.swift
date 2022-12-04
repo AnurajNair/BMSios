@@ -254,7 +254,7 @@ extension UIImageView {
      - parameter imageBackgroundColor:  Placeholder image background color which will be displayed when image rendering fails.
      - note: Pass 'isRandomPlaceholder' as 'false' if you are passing your custom imageBackgroundColor. And dont even pass placeHolderImage in this case.
      */
-    func cacheImage(url: String, isRounded: Bool = false, placeholderImage: String = "", isRandomPlaceholder: Bool = false, imageBackgroundColor: UIColor = UIColor.SORT.imageBackgroundColor) {
+    func cacheImage(url: String, isRounded: Bool = false, placeholderImage: String = "", isRandomPlaceholder: Bool = false, imageBackgroundColor: UIColor = UIColor.BMS.imageBackgroundColor) {
         
         if isRounded {
             self.setRoundedImage()

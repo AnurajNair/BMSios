@@ -118,7 +118,7 @@ extension SideMenuCell{
     
     func changeBackground (){
        
-        self.menCellView.backgroundColor = UIColor.SORT.theme
+        self.menCellView.backgroundColor = UIColor.BMS.theme
         
     }
     

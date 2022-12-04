@@ -13,100 +13,100 @@ class AppStyler {
 }
 
 struct TextStyles {
-    static let ListItemBlackTitle: Styler.textStyle = (UIFont.SORT.InterBold.withSize(14), UIColor.SORT.fontBlack)
-    static let TappableBaseStyle: Styler.textStyle = (UIFont.SORT.MontserratRegular.withSize(12), UIColor.SORT.fontBlack)
-    static let TappableLinkStyle: Styler.textStyle = (UIFont.SORT.InterBold.withSize(12), UIColor.SORT.blue)
-    static let WhiteHeaderTitle : Styler.textStyle = (UIFont.SORT.MontserratRegular.withSize(14), UIColor.SORT.fontWhite)
-    static let WhiteHeaderSubTitle : Styler.textStyle = (UIFont.SORT.MontserratRegular.withSize(12), UIColor.SORT.fontWhite)
-    static let ToastMessageStyle : Styler.textStyle = (UIFont.SORT.InterBold.withSize(14), UIColor.SORT.fontWhite)
+    static let ListItemBlackTitle: Styler.textStyle = (UIFont.BMS.InterBold.withSize(14), UIColor.BMS.fontBlack)
+    static let TappableBaseStyle: Styler.textStyle = (UIFont.BMS.InterRegular.withSize(12), UIColor.BMS.fontBlack)
+    static let TappableLinkStyle: Styler.textStyle = (UIFont.BMS.InterBold.withSize(12), UIColor.BMS.blue)
+    static let WhiteHeaderTitle : Styler.textStyle = (UIFont.BMS.InterRegular.withSize(14), UIColor.BMS.fontWhite)
+    static let WhiteHeaderSubTitle : Styler.textStyle = (UIFont.BMS.InterRegular.withSize(12), UIColor.BMS.fontWhite)
+    static let ToastMessageStyle : Styler.textStyle = (UIFont.BMS.InterBold.withSize(14), UIColor.BMS.fontWhite)
     
     //MARK
     
-    static let LoginPageLableStyler : Styler.textStyle = (UIFont.SORT.MontserratRegular.withSize(26), UIColor.SORT.black)
-    static let TitleLabelStyle : Styler.textStyle = (UIFont.SORT.MontserratRegular.withSize(13), UIColor.SORT.titleFont)
+    static let LoginPageLableStyler : Styler.textStyle = (UIFont.BMS.InterRegular.withSize(26), UIColor.BMS.black)
+    static let TitleLabelStyle : Styler.textStyle = (UIFont.BMS.InterRegular.withSize(13), UIColor.BMS.titleFont)
     
-    static let TutorialTitleLabelStyle : Styler.textStyle = (UIFont.SORT.MontserratRegular.withSize(19), UIColor.SORT.tutorialTitleFont)
+    static let TutorialTitleLabelStyle : Styler.textStyle = (UIFont.BMS.InterRegular.withSize(19), UIColor.BMS.tutorialTitleFont)
     
-    static let TutorialSubitleLabelStyle : Styler.textStyle = (UIFont.SORT.InterLight.withSize(15), UIColor.SORT.titleFont)
+    static let TutorialSubitleLabelStyle : Styler.textStyle = (UIFont.BMS.InterLight.withSize(15), UIColor.BMS.titleFont)
     
-    static let OptionSelectedLabelStyle : Styler.textStyle = (UIFont.SORT.InterBold.withSize(9), UIColor.SORT.fontBlack)
+    static let OptionSelectedLabelStyle : Styler.textStyle = (UIFont.BMS.InterBold.withSize(9), UIColor.BMS.fontBlack)
     
-    static let OptionUnSelectedLabelStyle : Styler.textStyle = (UIFont.SORT.MontserratRegular.withSize(9), UIColor.SORT.fontBlack)
+    static let OptionUnSelectedLabelStyle : Styler.textStyle = (UIFont.BMS.InterRegular.withSize(9), UIColor.BMS.fontBlack)
     
-    static let GenderSelectionTitleLabelStyle : Styler.textStyle = (UIFont.SORT.InterBold.withSize(14), UIColor.SORT.fontBlack)
+    static let GenderSelectionTitleLabelStyle : Styler.textStyle = (UIFont.BMS.InterBold.withSize(14), UIColor.BMS.fontBlack)
     
-    static let SettingTitleLabelStyle : Styler.textStyle = (UIFont.SORT.MontserratRegular.withSize(10), UIColor.SORT.fontBlack)
+    static let SettingTitleLabelStyle : Styler.textStyle = (UIFont.BMS.InterRegular.withSize(10), UIColor.BMS.fontBlack)
     
-    static let SettingSubTitleLabelStyle : Styler.textStyle = (UIFont.SORT.MontserratRegular.withSize(14), UIColor.SORT.fontGray)
+    static let SettingSubTitleLabelStyle : Styler.textStyle = (UIFont.BMS.InterRegular.withSize(14), UIColor.BMS.fontGray)
     
-     static let SearchTextFieldStyle : Styler.textStyle = (UIFont.SORT.InterLight.withSize(14), UIColor.SORT.fontBlack)
+     static let SearchTextFieldStyle : Styler.textStyle = (UIFont.BMS.InterLight.withSize(14), UIColor.BMS.fontBlack)
     
-    static let ProfileNameText : Styler.textStyle = (UIFont.SORT.InterBold.withSize(12), UIColor.SORT.fontBlack)
+    static let ProfileNameText : Styler.textStyle = (UIFont.BMS.InterBold.withSize(12), UIColor.BMS.fontBlack)
     
-    static let ActiveProfileTitleStyle : Styler.textStyle = (UIFont.SORT.MontserratRegular.withSize(10), UIColor.SORT.fontBlack)
+    static let ActiveProfileTitleStyle : Styler.textStyle = (UIFont.BMS.InterRegular.withSize(10), UIColor.BMS.fontBlack)
     
-    static let ProfilePlanTitleStyle : Styler.textStyle = (UIFont.SORT.MontserratRegular.withSize(10), UIColor.SORT.fontBlack.withAlphaComponent(0.4))
+    static let ProfilePlanTitleStyle : Styler.textStyle = (UIFont.BMS.InterRegular.withSize(10), UIColor.BMS.fontBlack.withAlphaComponent(0.4))
     
-    static let ProfilePlanCountStyle : Styler.textStyle = (UIFont.SORT.InterBold.withSize(12), UIColor.SORT.fontBlack)
+    static let ProfilePlanCountStyle : Styler.textStyle = (UIFont.BMS.InterBold.withSize(12), UIColor.BMS.fontBlack)
     
-    static let EditProfileHeaderTitleStyle : Styler.textStyle = (UIFont.SORT.InterBold.withSize(10), UIColor.SORT.fontBlack.withAlphaComponent(0.5))
+    static let EditProfileHeaderTitleStyle : Styler.textStyle = (UIFont.BMS.InterBold.withSize(10), UIColor.BMS.fontBlack.withAlphaComponent(0.5))
     
-    static let PlaceVisitedTitleStyle : Styler.textStyle = (UIFont.SORT.InterBold.withSize(15), UIColor.SORT.fontBlack)
+    static let PlaceVisitedTitleStyle : Styler.textStyle = (UIFont.BMS.InterBold.withSize(15), UIColor.BMS.fontBlack)
     
-    static let PlaceVisitedSubTitleStyle : Styler.textStyle = (UIFont.SORT.InterLight.withSize(9), UIColor.SORT.fontBlack)
+    static let PlaceVisitedSubTitleStyle : Styler.textStyle = (UIFont.BMS.InterLight.withSize(9), UIColor.BMS.fontBlack)
     
-    static let PlansTabTitleStyle : Styler.textStyle = (UIFont.SORT.MontserratRegular.withSize(12), UIColor.SORT.fontBlack)
+    static let PlansTabTitleStyle : Styler.textStyle = (UIFont.BMS.InterRegular.withSize(12), UIColor.BMS.fontBlack)
     
-    static let PlansTabCountStyle : Styler.textStyle = (UIFont.SORT.MontserratRegular.withSize(12), UIColor.SORT.fontWhite)
+    static let PlansTabCountStyle : Styler.textStyle = (UIFont.BMS.InterRegular.withSize(12), UIColor.BMS.fontWhite)
     
-    static let PlanDetailsMetaItemStyle : Styler.textStyle = (UIFont.SORT.MontserratRegular.withSize(9), UIColor.SORT.fontBlack.withAlphaComponent(0.4))
+    static let PlanDetailsMetaItemStyle : Styler.textStyle = (UIFont.BMS.InterRegular.withSize(9), UIColor.BMS.fontBlack.withAlphaComponent(0.4))
     
-    static let PlanDetailsItemTitleStyle : Styler.textStyle = (UIFont.SORT.MontserratRegular.withSize(10), UIColor.SORT.fontBlack.withAlphaComponent(0.4))
+    static let PlanDetailsItemTitleStyle : Styler.textStyle = (UIFont.BMS.InterRegular.withSize(10), UIColor.BMS.fontBlack.withAlphaComponent(0.4))
     
-    static let PlanDetailsItemSubTitleStyle : Styler.textStyle = (UIFont.SORT.MontserratRegular.withSize(15), UIColor.SORT.fontBlack)
+    static let PlanDetailsItemSubTitleStyle : Styler.textStyle = (UIFont.BMS.InterRegular.withSize(15), UIColor.BMS.fontBlack)
     
-    static let FriendCurrentPlanDetailsSectionTitleStyle : Styler.textStyle = (UIFont.SORT.MontserratRegular.withSize(10), UIColor.SORT.fontBlack.withAlphaComponent(0.4))
-    static let FriendCurrentPlanDetailsSectionTitleTwoStyle : Styler.textStyle = (UIFont.SORT.MontserratRegular.withSize(16), UIColor.SORT.fontBlack)
+    static let FriendCurrentPlanDetailsSectionTitleStyle : Styler.textStyle = (UIFont.BMS.InterRegular.withSize(10), UIColor.BMS.fontBlack.withAlphaComponent(0.4))
+    static let FriendCurrentPlanDetailsSectionTitleTwoStyle : Styler.textStyle = (UIFont.BMS.InterRegular.withSize(16), UIColor.BMS.fontBlack)
     
-    static let SelectFriendsSectionTitleStyle : Styler.textStyle = (UIFont.SORT.MontserratRegular.withSize(10), UIColor.SORT.fontBlack)
+    static let SelectFriendsSectionTitleStyle : Styler.textStyle = (UIFont.BMS.InterRegular.withSize(10), UIColor.BMS.fontBlack)
     
-     static let ContactUsImageTitleStyle : Styler.textStyle = (UIFont.SORT.InterBold.withSize(10), UIColor.SORT.fontBlack)
+     static let ContactUsImageTitleStyle : Styler.textStyle = (UIFont.BMS.InterBold.withSize(10), UIColor.BMS.fontBlack)
     
-    static let PlanHistoryTitleStyle : Styler.textStyle = (UIFont.SORT.InterBold.withSize(16), UIColor.SORT.fontBlack)
+    static let PlanHistoryTitleStyle : Styler.textStyle = (UIFont.BMS.InterBold.withSize(16), UIColor.BMS.fontBlack)
     
-    static let PlanHistorySubTitleStyle : Styler.textStyle = (UIFont.SORT.MontserratRegular.withSize(12), UIColor.SORT.fontBlack)
+    static let PlanHistorySubTitleStyle : Styler.textStyle = (UIFont.BMS.InterRegular.withSize(12), UIColor.BMS.fontBlack)
     
-     static let UserCurrentPlanMetaLblStyle : Styler.textStyle = (UIFont.SORT.MontserratRegular.withSize(10), UIColor.SORT.fontBlack.withAlphaComponent(0.65))
+     static let UserCurrentPlanMetaLblStyle : Styler.textStyle = (UIFont.BMS.InterRegular.withSize(10), UIColor.BMS.fontBlack.withAlphaComponent(0.65))
     
-    static let UserCurrentViewMapLblStyle : Styler.textStyle = (UIFont.SORT.InterBold.withSize(8), UIColor.SORT.fontWhite)
+    static let UserCurrentViewMapLblStyle : Styler.textStyle = (UIFont.BMS.InterBold.withSize(8), UIColor.BMS.fontWhite)
     
-    static let UserCurrentPlaceNameLblStyle : Styler.textStyle = (UIFont.SORT.InterBold.withSize(18), UIColor.SORT.fontBlack)
+    static let UserCurrentPlaceNameLblStyle : Styler.textStyle = (UIFont.BMS.InterBold.withSize(18), UIColor.BMS.fontBlack)
     
-    static let PlacePeekLblStyle : Styler.textStyle = (UIFont.SORT.MontserratRegular.withSize(10), UIColor.SORT.fontBlack)
+    static let PlacePeekLblStyle : Styler.textStyle = (UIFont.BMS.InterRegular.withSize(10), UIColor.BMS.fontBlack)
     
-    static let PlaceDetailsRateTitleLblStyle : Styler.textStyle = (UIFont.SORT.MontserratRegular.withSize(12), UIColor.SORT.fontBlack)
+    static let PlaceDetailsRateTitleLblStyle : Styler.textStyle = (UIFont.BMS.InterRegular.withSize(12), UIColor.BMS.fontBlack)
     
-    static let PlaceDetailsRateLblStyle : Styler.textStyle = (UIFont.SORT.InterBold.withSize(16), UIColor.SORT.fontBlack)
+    static let PlaceDetailsRateLblStyle : Styler.textStyle = (UIFont.BMS.InterBold.withSize(16), UIColor.BMS.fontBlack)
     
-    static let PlaceDetailsRateSubTitleTitleLblStyle : Styler.textStyle = (UIFont.SORT.MontserratRegular.withSize(10), UIColor.SORT.fontBlack)
-    static let HomeButtonTitleStyle : Styler.textStyle = (UIFont.SORT.InterBold.withSize(11), UIColor.SORT.fontWhite)
-    static let ActionButtonTitleStyle : Styler.textStyle = (UIFont.SORT.InterBold.withSize(11), UIColor.SORT.fontWhite)
-    static let MapMarkerPinTitle : Styler.textStyle = (UIFont.SORT.InterBold.withSize(11), UIColor.SORT.fontBlack.withAlphaComponent(0.8))
-    static let DiscoveViewCellSubTitleStyle : Styler.textStyle = (UIFont.SORT.InterBold.withSize(12), UIColor.SORT.fontWhite)
+    static let PlaceDetailsRateSubTitleTitleLblStyle : Styler.textStyle = (UIFont.BMS.InterRegular.withSize(10), UIColor.BMS.fontBlack)
+    static let HomeButtonTitleStyle : Styler.textStyle = (UIFont.BMS.InterBold.withSize(11), UIColor.BMS.fontWhite)
+    static let ActionButtonTitleStyle : Styler.textStyle = (UIFont.BMS.InterBold.withSize(11), UIColor.BMS.fontWhite)
+    static let MapMarkerPinTitle : Styler.textStyle = (UIFont.BMS.InterBold.withSize(11), UIColor.BMS.fontBlack.withAlphaComponent(0.8))
+    static let DiscoveViewCellSubTitleStyle : Styler.textStyle = (UIFont.BMS.InterBold.withSize(12), UIColor.BMS.fontWhite)
     
-    static let DiscoveViewCellActionTitleStyle : Styler.textStyle = (UIFont.SORT.InterBold.withSize(15), UIColor.SORT.fontWhite)
+    static let DiscoveViewCellActionTitleStyle : Styler.textStyle = (UIFont.BMS.InterBold.withSize(15), UIColor.BMS.fontWhite)
     
-    static let DiscoveViewCellActionTwoTitleStyle : Styler.textStyle = (UIFont.SORT.InterBold.withSize(9), UIColor.SORT.fontWhite)
+    static let DiscoveViewCellActionTwoTitleStyle : Styler.textStyle = (UIFont.BMS.InterBold.withSize(9), UIColor.BMS.fontWhite)
     
-    static let DiscoveViewCellActionOpenTimeStatusStyle : Styler.textStyle = (UIFont.SORT.InterBold.withSize(12), UIColor.SORT.sorttedGreen)
+    static let DiscoveViewCellActionOpenTimeStatusStyle : Styler.textStyle = (UIFont.BMS.InterBold.withSize(12), UIColor.BMS.sorttedGreen)
     
-    static let DiscoveViewCellActionCloseTimeStatusStyle : Styler.textStyle = (UIFont.SORT.InterBold.withSize(12), UIColor.SORT.red)
+    static let DiscoveViewCellActionCloseTimeStatusStyle : Styler.textStyle = (UIFont.BMS.InterBold.withSize(12), UIColor.BMS.red)
     
-    static let DiscoverViewCellOfferDiscStyle : Styler.textStyle = (UIFont.SORT.MontserratRegular.withSize(10), UIColor.SORT.red)
+    static let DiscoverViewCellOfferDiscStyle : Styler.textStyle = (UIFont.BMS.InterRegular.withSize(10), UIColor.BMS.red)
     
-    static let RespondedStatusStyle : Styler.textStyle = (UIFont.SORT.InterBold.withSize(6), UIColor.SORT.fontWhite)
+    static let RespondedStatusStyle : Styler.textStyle = (UIFont.BMS.InterBold.withSize(6), UIColor.BMS.fontWhite)
     
-    static let DashboardHeaderStyle : Styler.textStyle = (UIFont.SORT.InterBold.withSize(24), UIColor.SORT.fontBlack)
+    static let DashboardHeaderStyle : Styler.textStyle = (UIFont.BMS.InterBold.withSize(24), UIColor.BMS.fontBlack)
 }
 
 struct ButtonStyles {
@@ -119,9 +119,9 @@ struct ButtonStyles {
     private static var baseButtonStyle: Styler.buttonBackgroundStyle {
         get {
             var button = Styler.baseButtonStyle
-            button.font = UIFont.SORT.MontserratRegular.withSize(14)
-            button.titleColor = UIColor.SORT.fontWhite
-            button.tintColor = UIColor.SORT.white
+            button.font = UIFont.BMS.InterRegular.withSize(14)
+            button.titleColor = UIColor.BMS.fontWhite
+            button.tintColor = UIColor.BMS.white
             button.shadowStyle = ShadowStyles.buttonShadowStyle
             return button
         }
@@ -131,8 +131,8 @@ struct ButtonStyles {
     private static var baseRoundedButton: Styler.buttonBackgroundStyle {
         get {
             var button = ButtonStyles.baseButtonStyle
-            button.backgroundColor = UIColor.SORT.white
-            button.tintColor = UIColor.SORT.black
+            button.backgroundColor = UIColor.BMS.white
+            button.tintColor = UIColor.BMS.black
             return button
         }
     }
@@ -141,7 +141,7 @@ struct ButtonStyles {
         get {
             var button = ButtonStyles.baseButtonStyle
             
-            button.backgroundColor = UIColor.SORT.black
+            button.backgroundColor = UIColor.BMS.black
             
             button.cornerRadius = 27.5
             
@@ -152,8 +152,8 @@ struct ButtonStyles {
     static var whiteButton: Styler.buttonBackgroundStyle {
         get {
             var button = ButtonStyles.baseButtonStyle
-            button.titleColor = UIColor.SORT.white
-            button.tintColor = UIColor.SORT.white
+            button.titleColor = UIColor.BMS.white
+            button.tintColor = UIColor.BMS.white
             return button
         }
     }
@@ -162,7 +162,7 @@ struct ButtonStyles {
         get {
             var button = ButtonStyles.baseButtonStyle
             
-            button.backgroundColor = UIColor.SORT.lightGray
+            button.backgroundColor = UIColor.BMS.lightGray
             
             button.cornerRadius = 25
             
@@ -178,9 +178,9 @@ struct ButtonStyles {
         get {
             var button = ButtonStyles.baseButtonStyle
             
-            button.backgroundColor = UIColor.SORT.black
+            button.backgroundColor = UIColor.BMS.black
             
-            button.tintColor = UIColor.SORT.white
+            button.tintColor = UIColor.BMS.white
             
             button.cornerRadius = 30
             
@@ -197,9 +197,9 @@ struct ButtonStyles {
         get {
             var button = ButtonStyles.baseButtonStyle
             
-            button.backgroundColor = UIColor.SORT.white
+            button.backgroundColor = UIColor.BMS.white
             
-            button.tintColor = UIColor.SORT.black
+            button.tintColor = UIColor.BMS.black
             
             button.cornerRadius = 15
             
@@ -213,9 +213,9 @@ struct ButtonStyles {
         get {
             var button = ButtonStyles.baseButtonStyle
             
-            button.backgroundColor = UIColor.SORT.white
+            button.backgroundColor = UIColor.BMS.white
             
-            button.tintColor = UIColor.SORT.black
+            button.tintColor = UIColor.BMS.black
             
             button.cornerRadius = 22
             
@@ -230,19 +230,19 @@ struct ButtonStyles {
         get {
             var button = ButtonStyles.baseButtonStyle
             
-            button.backgroundColor = UIColor.SORT.clear
+            button.backgroundColor = UIColor.BMS.clear
             
-            button.borderStyle = (edges: .all, color: UIColor.SORT.separatorGray, thickness: 1)
+            button.borderStyle = (edges: .all, color: UIColor.BMS.separatorGray, thickness: 1)
             
-            button.tintColor = UIColor.SORT.black
+            button.tintColor = UIColor.BMS.black
             
-            button.titleColor = UIColor.SORT.black
+            button.titleColor = UIColor.BMS.black
             
             button.overrideDefaultTextCase = true
     
             button.cornerRadius = 8
             
-            button.font = UIFont.SORT.MontserratRegular.withSize(9)
+            button.font = UIFont.BMS.InterRegular.withSize(9)
             
             button.shadowStyle = nil
             
@@ -253,9 +253,9 @@ struct ButtonStyles {
         get {
             var button = ButtonStyles.baseButtonStyle
             
-            button.backgroundColor = UIColor.SORT.white
+            button.backgroundColor = UIColor.BMS.white
             
-            button.tintColor = UIColor.SORT.black
+            button.tintColor = UIColor.BMS.black
             
             button.cornerRadius = 22
             
@@ -269,9 +269,9 @@ struct ButtonStyles {
         get {
             var button = ButtonStyles.baseButtonStyle
             
-            button.backgroundColor = UIColor.SORT.sorttedGreen
+            button.backgroundColor = UIColor.BMS.sorttedGreen
             
-            button.tintColor = UIColor.SORT.white
+            button.tintColor = UIColor.BMS.white
             
             button.cornerRadius = 22
             
@@ -284,9 +284,9 @@ struct ButtonStyles {
     static var blackButton: Styler.buttonBackgroundStyle {
         get {
             var button = ButtonStyles.baseButtonStyle
-            button.titleColor = UIColor.SORT.fontWhite
-            button.backgroundColor = UIColor.SORT.black
-            button.font = UIFont.SORT.MontserratRegular.withSize(8)
+            button.titleColor = UIColor.BMS.fontWhite
+            button.backgroundColor = UIColor.BMS.black
+            button.font = UIFont.BMS.InterRegular.withSize(8)
             button.shadowStyle = nil
             return button
         }
@@ -295,9 +295,9 @@ struct ButtonStyles {
     static var blackBottomButton: Styler.buttonBackgroundStyle {
         get {
             var button = ButtonStyles.baseButtonStyle
-            button.titleColor = UIColor.SORT.fontWhite
-            button.backgroundColor = UIColor.SORT.black
-            button.font = UIFont.SORT.InterBold.withSize(14)
+            button.titleColor = UIColor.BMS.fontWhite
+            button.backgroundColor = UIColor.BMS.black
+            button.font = UIFont.BMS.InterBold.withSize(14)
             button.shadowStyle = nil
             button.cornerRadius = 0
             return button
@@ -306,9 +306,9 @@ struct ButtonStyles {
     static var greenBottomButton: Styler.buttonBackgroundStyle {
         get {
             var button = ButtonStyles.baseButtonStyle
-            button.titleColor = UIColor.SORT.fontWhite
-            button.backgroundColor = UIColor.SORT.gradientEndColor
-            button.font = UIFont.SORT.InterBold.withSize(14)
+            button.titleColor = UIColor.BMS.fontWhite
+            button.backgroundColor = UIColor.BMS.gradientEndColor
+            button.font = UIFont.BMS.InterBold.withSize(14)
             button.shadowStyle = nil
             button.cornerRadius = 0
             return button
@@ -328,9 +328,9 @@ struct ButtonStyles {
     static var inverseBlackButton: Styler.buttonBackgroundStyle {
         get {
             var button = ButtonStyles.baseButtonStyle
-            button.titleColor = UIColor.SORT.black
-            button.backgroundColor = UIColor.SORT.white
-            button.font = UIFont.SORT.InterBold.withSize(10)
+            button.titleColor = UIColor.BMS.black
+            button.backgroundColor = UIColor.BMS.white
+            button.font = UIFont.BMS.InterBold.withSize(10)
             button.shadowStyle = nil
             return button
         }
@@ -377,8 +377,8 @@ struct ButtonStyles {
     static var blueButton: Styler.buttonBackgroundStyle {
         get {
             var button = ButtonStyles.baseButtonStyle
-            button.titleColor = UIColor.SORT.fontWhite
-            button.backgroundColor = UIColor.SORT.blue
+            button.titleColor = UIColor.BMS.fontWhite
+            button.backgroundColor = UIColor.BMS.blue
             return button
         }
     }
@@ -387,8 +387,8 @@ struct ButtonStyles {
     static var inverseBlueButton: Styler.buttonBackgroundStyle {
         get {
             var button = ButtonStyles.baseButtonStyle
-            button.titleColor = UIColor.SORT.blue
-            button.backgroundColor = UIColor.SORT.white
+            button.titleColor = UIColor.BMS.blue
+            button.backgroundColor = UIColor.BMS.white
             return button
         }
     }
@@ -406,8 +406,8 @@ struct ButtonStyles {
     //Table View Footer Button with Shadow - White Background - Blue Text
     static var tableViewFooterButton: Styler.buttonBackgroundStyle {
         var buttonStyle = ButtonStyles.baseButtonStyle
-        buttonStyle.titleColor = UIColor.SORT.blue
-        buttonStyle.backgroundColor = UIColor.SORT.white
+        buttonStyle.titleColor = UIColor.BMS.blue
+        buttonStyle.backgroundColor = UIColor.BMS.white
         buttonStyle.shadowStyle = ShadowStyles.NormalShadowStyle
         buttonStyle.cornerRadius = 0
         return buttonStyle
@@ -417,8 +417,8 @@ struct ButtonStyles {
     static var inverseRedButton: Styler.buttonBackgroundStyle {
         get {
             var button = ButtonStyles.baseButtonStyle
-            button.titleColor = UIColor.SORT.red
-            button.backgroundColor = UIColor.SORT.white
+            button.titleColor = UIColor.BMS.red
+            button.backgroundColor = UIColor.BMS.white
             button.overrideDefaultTextCase = true
             button.shadowStyle = nil
             return button
@@ -429,9 +429,9 @@ struct ButtonStyles {
     static var greenButton: Styler.buttonBackgroundStyle {
         get {
             var button = ButtonStyles.baseButtonStyle
-            button.titleColor = UIColor.SORT.white
-            button.tintColor = UIColor.SORT.white
-            button.backgroundColor = UIColor.SORT.sorttedGreen
+            button.titleColor = UIColor.BMS.white
+            button.tintColor = UIColor.BMS.white
+            button.backgroundColor = UIColor.BMS.sorttedGreen
             button.cornerRadius = 27.5
             
             return button
@@ -441,9 +441,9 @@ struct ButtonStyles {
     static var inverseGreenButtonPlain: Styler.buttonBackgroundStyle {
         get {
             var button = ButtonStyles.baseButtonStyle
-            button.titleColor = UIColor.SORT.sorttedGreen
-            button.tintColor = UIColor.SORT.sorttedGreen
-            button.backgroundColor = UIColor.SORT.white
+            button.titleColor = UIColor.BMS.sorttedGreen
+            button.tintColor = UIColor.BMS.sorttedGreen
+            button.backgroundColor = UIColor.BMS.white
             button.cornerRadius = 27.5
             return button
         }
@@ -453,8 +453,8 @@ struct ButtonStyles {
     static var greenDoneButton: Styler.buttonBackgroundStyle {
         get {
             var button = ButtonStyles.baseButtonStyle
-            button.titleColor = UIColor.SORT.white
-            button.tintColor = UIColor.SORT.white
+            button.titleColor = UIColor.BMS.white
+            button.tintColor = UIColor.BMS.white
             button.buttonImage = "navigation-button-done"
             button.cornerRadius = 27.5
             return button
@@ -464,8 +464,8 @@ struct ButtonStyles {
     static var greenThumbsButton: Styler.buttonBackgroundStyle {
         get {
             var button = ButtonStyles.baseButtonStyle
-            button.titleColor = UIColor.SORT.white
-            button.tintColor = UIColor.SORT.white
+            button.titleColor = UIColor.BMS.white
+            button.tintColor = UIColor.BMS.white
             button.buttonImage = "done_action"
             button.cornerRadius = 27.5
             return button
@@ -476,9 +476,9 @@ struct ButtonStyles {
     static var greenNextButton: Styler.buttonBackgroundStyle {
         get {
             var button = ButtonStyles.baseButtonStyle
-            button.titleColor = UIColor.SORT.white
+            button.titleColor = UIColor.BMS.white
             
-            button.tintColor = UIColor.SORT.white
+            button.tintColor = UIColor.BMS.white
             button.buttonImage = "next"
             button.cornerRadius = 27.5
             return button
@@ -491,9 +491,9 @@ struct ButtonStyles {
     static var callButton: Styler.buttonBackgroundStyle {
            get {
                var button = ButtonStyles.baseButtonStyle
-               button.titleColor = UIColor.SORT.white
+               button.titleColor = UIColor.BMS.white
                
-               button.tintColor = UIColor.SORT.black
+               button.tintColor = UIColor.BMS.black
                button.buttonImage = "capture"
                button.cornerRadius = 27.5
                return button
@@ -504,13 +504,13 @@ struct ButtonStyles {
     static var inverseGreenButton: Styler.buttonBackgroundStyle {
         get {
             var button = ButtonStyles.baseButtonStyle
-            button.titleColor = UIColor.SORT.green
-            button.backgroundColor = UIColor.SORT.white
-            button.tintColor = UIColor.SORT.green
+            button.titleColor = UIColor.BMS.green
+            button.backgroundColor = UIColor.BMS.white
+            button.tintColor = UIColor.BMS.green
             button.overrideDefaultTextCase = true
             button.shadowStyle = nil
             
-            let borderStyle : Styler.borderStyle = (edges: .all, color: UIColor.SORT.green, thickness: 1)
+            let borderStyle : Styler.borderStyle = (edges: .all, color: UIColor.BMS.green, thickness: 1)
             button.borderStyle = borderStyle
             button.buttonImage = "navigation-button-add"
             button.buttonImageRenderingMode = .alwaysTemplate
@@ -524,8 +524,8 @@ struct ButtonStyles {
     static var linkBlueButton: Styler.buttonBackgroundStyle {
         get {
             var button = ButtonStyles.baseButtonStyle
-            button.titleColor = UIColor.SORT.blue
-            button.backgroundColor = UIColor.SORT.clear
+            button.titleColor = UIColor.BMS.blue
+            button.backgroundColor = UIColor.BMS.clear
             button.shadowStyle = nil
             return button
         }
@@ -535,8 +535,8 @@ struct ButtonStyles {
     static var linkBlackButton: Styler.buttonBackgroundStyle {
         get {
             var button = ButtonStyles.baseButtonStyle
-            button.titleColor = UIColor.SORT.black
-            button.backgroundColor = UIColor.SORT.clear
+            button.titleColor = UIColor.BMS.black
+            button.backgroundColor = UIColor.BMS.clear
             button.isUnderlined = false
             button.shadowStyle = nil
             button.overrideDefaultTextCase = true
@@ -549,7 +549,7 @@ struct ButtonStyles {
         get {
             var button = ButtonStyles.baseButtonStyle
             button.cornerRadius = 0.0
-            button.tintColor = UIColor.SORT.black
+            button.tintColor = UIColor.BMS.black
             button.buttonImageRenderingMode = .alwaysTemplate
             button.shadowStyle = nil
             return button
@@ -561,8 +561,8 @@ struct ButtonStyles {
     static var navigatorButton: Styler.buttonBackgroundStyle {
         get {
             var button = ButtonStyles.baseButtonStyle
-            button.titleColor = UIColor.SORT.fontWhite
-            button.backgroundColor = UIColor.SORT.purple
+            button.titleColor = UIColor.BMS.fontWhite
+            button.backgroundColor = UIColor.BMS.purple
             button.isUnderlined = false
             button.shadowStyle = nil
             button.overrideDefaultTextCase = true
@@ -577,8 +577,8 @@ struct ButtonStyles {
     static var baseFeedCardButton: Styler.buttonBackgroundStyle {
         get {
             var button = ButtonStyles.baseButtonStyle
-            button.backgroundColor = UIColor.SORT.clear
-            button.tintColor = UIColor.SORT.white
+            button.backgroundColor = UIColor.BMS.clear
+            button.tintColor = UIColor.BMS.white
             button.cornerRadius = 0
             button.shadowStyle = nil
             return button
@@ -590,8 +590,8 @@ struct ButtonStyles {
     static var planActionButton: Styler.buttonBackgroundStyle {
         get {
             var button = ButtonStyles.baseButtonStyle
-            button.tintColor = UIColor.SORT.white
-            button.font = UIFont.SORT.InterBold.withSize(12)
+            button.tintColor = UIColor.BMS.white
+            button.font = UIFont.BMS.InterBold.withSize(12)
             button.cornerRadius = 0
             button.shadowStyle = nil
             return button
@@ -610,7 +610,7 @@ struct ButtonStyles {
         get {
             var button = ButtonStyles.baseFeedCardButton
             button.buttonImage = "icon-calendar-next"
-            button.backgroundColor = UIColor.SORT.green
+            button.backgroundColor = UIColor.BMS.green
             return button
         }
     }
@@ -619,7 +619,7 @@ struct ButtonStyles {
         get {
             var button = ButtonStyles.baseFeedCardButton
             button.buttonImage = "icon-calendar-next"
-            button.backgroundColor = UIColor.SORT.pink
+            button.backgroundColor = UIColor.BMS.pink
             return button
         }
     }
@@ -627,7 +627,7 @@ struct ButtonStyles {
     static var inOutActionButton: Styler.buttonBackgroundStyle {
         get {
             var button = ButtonStyles.baseButtonStyle
-            button.font = UIFont.SORT.InterBold.withSize(16)
+            button.font = UIFont.BMS.InterBold.withSize(16)
             button.cornerRadius = 27.5
             return button
         }
@@ -666,7 +666,7 @@ struct ShadowStyles {
             return (cornerRadius: 0,
                     shadowRadius: 4,
                     opacity: 0.25,
-                    color: UIColor.SORT.shadowBlack,
+                    color: UIColor.BMS.shadowBlack,
                     shadowOffset: CGSize(width: 0, height: 0),
                     frameOffset: CGSize.zero)
         }
@@ -677,7 +677,7 @@ struct ShadowStyles {
             return (cornerRadius: 0,
                     shadowRadius: 0,
                     opacity: 0,
-                    color: UIColor.SORT.clear,
+                    color: UIColor.BMS.clear,
                     shadowOffset: CGSize(width: 0, height: 0),
                     frameOffset: CGSize.zero)
         }
@@ -751,7 +751,7 @@ struct ShadowStyles {
     static let ClearShadowStyle: Styler.shadowStyle = (cornerRadius: 0,
                                                        shadowRadius: 0,
                                                        opacity: 0,
-                                                       color: UIColor.SORT.clear,
+                                                       color: UIColor.BMS.clear,
                                                        shadowOffset: CGSize(width: 0, height: 0),
                                                        frameOffset: CGSize(width: 0, height: 0))
     
@@ -759,9 +759,11 @@ struct ShadowStyles {
 
 extension UIColor {
     
-    struct SORT {
+    struct BMS {
         
          static var sorttedGreen: UIColor { return UIColor(red: 126/255, green: 211/255, blue: 33/255, alpha: 1) }
+        
+        static var bmsLabelGrey: UIColor { return UIColor(red: 96/255, green: 96/255, blue: 96/255, alpha: 1) }
         
         //Brand Colours
         static var black: UIColor { return UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 1) }
@@ -786,22 +788,22 @@ extension UIColor {
         static var palePink: UIColor { return UIColor(red: 255/255, green: 240/255, blue: 240/255, alpha: 1) }
         
         //Computed Font Colours
-        static var fontBlack: UIColor { return UIColor.SORT.black }
-        static var fontWhite: UIColor { return UIColor.SORT.white }
-        static var fontGray: UIColor { return UIColor.SORT.gray }
+        static var fontBlack: UIColor { return UIColor.BMS.black }
+        static var fontWhite: UIColor { return UIColor.BMS.white }
+        static var fontGray: UIColor { return UIColor.BMS.gray }
         
         //Computed Other Colours
-        static var linkBlue: UIColor { return UIColor.SORT.blue }
-        static var imageBackgroundColor: UIColor { return UIColor.SORT.lightGray }
-        static var separatorGray: UIColor { return UIColor.SORT.lightGray.withAlphaComponent(0.6) }
-        static var toastBackgroundColor: UIColor { return UIColor.SORT.black.withAlphaComponent(0.9) }
+        static var linkBlue: UIColor { return UIColor.BMS.blue }
+        static var imageBackgroundColor: UIColor { return UIColor.BMS.lightGray }
+        static var separatorGray: UIColor { return UIColor.BMS.lightGray.withAlphaComponent(0.6) }
+        static var toastBackgroundColor: UIColor { return UIColor.BMS.black.withAlphaComponent(0.9) }
         
         //Shadow Colours
         static var shadowBlack: UIColor { return UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 1)}
         
         //User Status Colors
-        static var statusBusy: UIColor { return UIColor.SORT.green }
-        static var statusAvailable: UIColor { return UIColor.SORT.gray }
+        static var statusBusy: UIColor { return UIColor.BMS.green }
+        static var statusAvailable: UIColor { return UIColor.BMS.gray }
         
         //Label Font Colors
         static var titleFont: UIColor { return UIColor(red: 112/255, green: 112/255, blue: 112/255, alpha: 1) }
@@ -826,7 +828,7 @@ extension UIColor {
 
 extension UIFont {
     
-    enum SORT : String{
+    enum BMS : String{
         
         case MontserratLightItalic = "Montserrat-LightItalic",
         MontserratMedium = "Montserrat-Medium",
@@ -838,11 +840,11 @@ extension UIFont {
         InterBold = "Inter-Bold",
         MontserratMediumItalic = "Montserrat-MediumItalic",
         MontserratBlackItalic = "Montserrat-BlackItalic",
-        MontserratSemiBold = "Montserrat-SemiBold",
+        InterSemiBold = "Inter-SemiBold",
         MontserratExtraLightItalic = "Montserrat-ExtraLightItalic",
-        MontserratExtraBold = "Montserrat-ExtraBold",
+        InterExtraBold = "Montserrat-ExtraBold",
         MontserratBlack = "Montserrat-Black",
-        MontserratRegular = "Montserrat-Regular",
+        InterRegular = "Inter-Regular",
         MontserratItalic = "Montserrat-Italic",
         MontserratSemiBoldItalic = "Montserrat-SemiBoldItalic",
         MontserratExtraBoldItalic = "Montserrat-ExtraBoldItalic"

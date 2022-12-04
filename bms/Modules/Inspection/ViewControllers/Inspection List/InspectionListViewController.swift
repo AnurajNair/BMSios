@@ -34,7 +34,7 @@ class InspectionListViewController: UIViewController {
 //        UIView.style([(view: loginCard, style:(backgroundColor:nil, cornerRadius: 16, borderStyle: nil,shadowStyle : nil))])
         filterBtn.layer.cornerRadius = 8
         
-        self.navigationController?.navigationBar.backgroundColor = UIColor.SORT.theme
+        self.navigationController?.navigationBar.backgroundColor = UIColor.BMS.theme
         filterBtn.semanticContentAttribute = UIApplication.shared
             .userInterfaceLayoutDirection == .rightToLeft ? .forceLeftToRight : .forceRightToLeft
 

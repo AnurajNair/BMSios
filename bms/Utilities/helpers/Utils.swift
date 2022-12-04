@@ -206,8 +206,8 @@ class Utils{
         
         if !text.isEmpty {
             progressView.label.text = text + "..."
-            progressView.label.textColor = UIColor.SORT.fontBlack
-            progressView.label.font = UIFont.SORT.MontserratRegular.withSize(14.0)
+            progressView.label.textColor = UIColor.BMS.fontBlack
+            progressView.label.font = UIFont.BMS.InterRegular.withSize(14.0)
         }
         
         progressView.isUserInteractionEnabled = false
@@ -419,7 +419,7 @@ class Utils{
     
     class func getRandomColor() -> UIColor {
         
-        let colors = [UIColor.SORT.red, UIColor.SORT.green, UIColor.SORT.blue, UIColor.SORT.orange, UIColor.SORT.pink , UIColor.SORT.purple]
+        let colors = [UIColor.BMS.red, UIColor.BMS.green, UIColor.BMS.blue, UIColor.BMS.orange, UIColor.BMS.pink , UIColor.BMS.purple]
         
         let rand = arc4random_uniform(UInt32(colors.count))
         return colors[Int(rand)]
@@ -694,7 +694,7 @@ extension UITableView {
         }
     }
     
-    func getBlankHeaderFooterView(width: CGFloat, height: CGFloat, backgroundColor: UIColor = UIColor.SORT.clear) -> UIView {
+    func getBlankHeaderFooterView(width: CGFloat, height: CGFloat, backgroundColor: UIColor = UIColor.BMS.clear) -> UIView {
         let footerView = UITableViewHeaderFooterView()
         footerView.frame = CGRect(x: 0, y: 0, width: width, height: height)
         footerView.contentView.backgroundColor = backgroundColor
@@ -903,7 +903,7 @@ else{
         removeAllSubviewsWithTag(1001)
     }
     
-    @discardableResult func addBorders(edges: UIRectEdge, color: UIColor = UIColor.SORT.separatorGray, thickness: CGFloat = 1.0) -> [UIView] {
+    @discardableResult func addBorders(edges: UIRectEdge, color: UIColor = UIColor.BMS.separatorGray, thickness: CGFloat = 1.0) -> [UIView] {
         
         removeAllSubviewsWithTag(1001)
         
@@ -1056,7 +1056,7 @@ else{
     
     //Progress Bar
     
-    func showProgressBar(_ percent: CGFloat, height: CGFloat = 0.0, shadowHeight: CGFloat = 0.0,  backgroundColor: UIColor = UIColor.SORT.white, viewBackgroundColor:UIColor = UIColor.SORT.green) {
+    func showProgressBar(_ percent: CGFloat, height: CGFloat = 0.0, shadowHeight: CGFloat = 0.0,  backgroundColor: UIColor = UIColor.BMS.white, viewBackgroundColor:UIColor = UIColor.BMS.green) {
         
         self.removeAllSubviewsWithTag(1002)
         
@@ -1120,7 +1120,7 @@ else{
         
     }
     
-    func addBadge(title : String , titleStyle : Styler.textStyle  = TextStyles.PlansTabCountStyle, backgroundColor : UIColor = UIColor.SORT.sorttedGreen){
+    func addBadge(title : String , titleStyle : Styler.textStyle  = TextStyles.PlansTabCountStyle, backgroundColor : UIColor = UIColor.BMS.sorttedGreen){
         
         let titleLbl = UILabel()
         titleLbl.textAlignment = .center
@@ -1137,7 +1137,7 @@ else{
         titleLbl.setAsRounded(cornerRadius: 14)
     }
     
-    func addTitle(title : String , titleStyle : Styler.textStyle  = TextStyles.HomeButtonTitleStyle, backgroundColor : UIColor = UIColor.SORT.clear){
+    func addTitle(title : String , titleStyle : Styler.textStyle  = TextStyles.HomeButtonTitleStyle, backgroundColor : UIColor = UIColor.BMS.clear){
         
         let titleLbl = UILabel()
         titleLbl.textAlignment = .center
@@ -1151,7 +1151,7 @@ else{
         titleLbl.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 16).isActive = true
     }
     
-    func addTitleTag(title : String , titleStyle : Styler.textStyle  = TextStyles.HomeButtonTitleStyle, backgroundColor : UIColor = UIColor.SORT.clear){
+    func addTitleTag(title : String , titleStyle : Styler.textStyle  = TextStyles.HomeButtonTitleStyle, backgroundColor : UIColor = UIColor.BMS.clear){
         
         let titleLbl = UILabel()
         titleLbl.textAlignment = .center
