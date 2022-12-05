@@ -8,11 +8,13 @@
 import UIKit
 
 
-class VerifyOTPViewController:UIViewController{
+class CheckEmailViewController:UIViewController{
     
+    @IBOutlet weak var checkMailBtn: UIButton!
     
     @IBOutlet weak var otpTextInputField: UITextField!
     
+    @IBOutlet weak var resendStack: UIStackView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,10 +27,16 @@ class VerifyOTPViewController:UIViewController{
 
 
 func setupViewStyle(){
+    checkMailBtn.backgroundColor = .clear
+    checkMailBtn.layer.cornerRadius = 5
+    checkMailBtn.layer.borderWidth = 1
+    checkMailBtn.layer.borderColor = UIColor.black.cgColor
 //        loginCard.roundCorners(UIRectCorner, radius: 4)
 
 //    otpTextInputField.addConstraint(otpTextInputField.heightAnchor.constraint(equalToConstant: 50))
-//    otpTextInputField.addConstraint(otpTextInputField.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width/1.6))
+    checkMailBtn.addConstraint(checkMailBtn.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width/2))
+    resendStack.addConstraint(resendStack.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width/2))
+
 }
     
     @IBAction func onVerifyBtnClick(_ sender: Any) {

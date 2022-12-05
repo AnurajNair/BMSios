@@ -233,8 +233,8 @@ class NavigationRoute: Navigate {
         return onboardingStoryboard().instantiateViewController(withIdentifier: "ForgotPasswordViewController") as! ForgotPasswordViewController
     }
     
-    class func getVerifyOTPScreen(_ data:[String:Any] = [:]) -> VerifyOTPViewController {
-        return onboardingStoryboard().instantiateViewController(withIdentifier: "VerifyOTPViewController") as! VerifyOTPViewController
+    class func getVerifyOTPScreen(_ data:[String:Any] = [:]) -> CheckEmailViewController {
+        return onboardingStoryboard().instantiateViewController(withIdentifier: "VerifyOTPViewController") as! CheckEmailViewController
     }
     
     class func getResetPasswordScreen(_ data:[String:Any] = [:]) -> ResetPasswordViewController {

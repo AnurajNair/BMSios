@@ -14,4 +14,5 @@ struct SideMenuModel {
     var menu: [Self]?
     var route: NavigationRoute.ScreenType
     var transition: Navigate.TransitionType
+    var isSelected:Bool?
 }

@@ -13,17 +13,22 @@ class SideMenuCell: UITableViewCell {
 
     @IBOutlet weak var menuIcon: UIImageView!
     
+    @IBOutlet weak var arrowIcon: UIImageView!
     @IBOutlet weak var menCellView: UIView!
     @IBOutlet weak var menuLabel: UILabel!
     
     @IBOutlet weak var cellStack: UIStackView!
     @IBOutlet weak var subMenuTable: UITableView!
     
+    @IBOutlet weak var menStackView: UIStackView!
+    
     var subMenu:[SideMenuModel]?
     
      var delegate:SideMenuCellDelegate?
     
     var title:String?
+    
+    var isOpen:Bool?
     
     class var identifier: String { return String(describing: self) }
 
@@ -50,14 +55,31 @@ class SideMenuCell: UITableViewCell {
     }
     
   
-    func configureCell(image:String,title:String,menu:[SideMenuModel]?){
-        let optionClosure = {(action: UIAction) in print("hello")}
+    func configureCell(image:String,title:String,menu:[SideMenuModel]?,isSelected:Bool?){
+        _ = {(action: UIAction) in print("hello")}
         self.menuIcon.image = UIImage(named: image)
         self.menuLabel.text = title
         self.subMenu = menu
 //        self.title = title
 //        print(title , menu)
         setupTableView()
+        
+        if(isSelected!){
+            if(title == "Inspection"){
+                self.cellStack.backgroundColor = UIColor.BMS.theme
+                self.cellStack.setAsRounded(cornerRadius: 5.0)
+                self.menuLabel.textColor = UIColor.BMS.white
+                self.arrowIcon.image = UIImage(named: "chevron-down")
+            }else{
+                self.menStackView.backgroundColor = UIColor.BMS.theme
+                self.menStackView.setAsRounded(cornerRadius: 5.0)
+                self.menuLabel.textColor = UIColor.BMS.white
+//                self.arrowIcon.image = UIImage(named: "chevron-down")
+            }
+            
+        }else{
+            
+        }
         
       
 //        if(title == "Inspection"){
@@ -102,6 +124,8 @@ class SideMenuCell: UITableViewCell {
   self.subMenuTable.reloadData()
     }
     
+  
+    
     
 }
 
@@ -110,7 +134,7 @@ extension SideMenuCell{
         self.title = title
         if title == "Inspection"{
             self.subMenuTable.isHidden = false
-            changeBackground()
+//            changeBackground()
         }else{
             self.subMenuTable.isHidden = true
         }
@@ -153,7 +177,7 @@ extension SideMenuCell: UITableViewDataSource{
         
        
         
-        cell.configureCell(image:sectionData.icon, title: sectionData.title,menu: [])
+        cell.configureCell(image:sectionData.icon, title: sectionData.title,menu: [],isSelected: false)
 
         // Highlighted color
 //        let myCustomSelectionColorView = UIView()

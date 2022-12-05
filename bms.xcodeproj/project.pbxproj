@@ -142,7 +142,7 @@
 		1D5E2E842906DE04005D83C0 /* SideMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5E2E822906DE04005D83C0 /* SideMenuCell.swift */; };
 		1D5E2E852906DE04005D83C0 /* SideMenuCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D5E2E832906DE04005D83C0 /* SideMenuCell.xib */; };
 		1D72C3D129033FBC0099AAB4 /* ForgotPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D72C3D029033FBC0099AAB4 /* ForgotPassword.swift */; };
-		1D72C3D42903E9EB0099AAB4 /* VerifyOTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D72C3D32903E9EB0099AAB4 /* VerifyOTP.swift */; };
+		1D72C3D42903E9EB0099AAB4 /* CheckEmail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D72C3D32903E9EB0099AAB4 /* CheckEmail.swift */; };
 		1D72C3D72903FF260099AAB4 /* ResetPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D72C3D62903FF260099AAB4 /* ResetPassword.swift */; };
 		1D72C3DA290426430099AAB4 /* PasswordResetSuccessful.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D72C3D9290426430099AAB4 /* PasswordResetSuccessful.swift */; };
 		1D98DA652907F8AA007FA48B /* Inspection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D98DA642907F8AA007FA48B /* Inspection.storyboard */; };
@@ -329,7 +329,7 @@
 		1D5E2E822906DE04005D83C0 /* SideMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuCell.swift; sourceTree = "<group>"; };
 		1D5E2E832906DE04005D83C0 /* SideMenuCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SideMenuCell.xib; sourceTree = "<group>"; };
 		1D72C3D029033FBC0099AAB4 /* ForgotPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPassword.swift; sourceTree = "<group>"; };
-		1D72C3D32903E9EB0099AAB4 /* VerifyOTP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyOTP.swift; sourceTree = "<group>"; };
+		1D72C3D32903E9EB0099AAB4 /* CheckEmail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckEmail.swift; sourceTree = "<group>"; };
 		1D72C3D62903FF260099AAB4 /* ResetPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPassword.swift; sourceTree = "<group>"; };
 		1D72C3D9290426430099AAB4 /* PasswordResetSuccessful.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetSuccessful.swift; sourceTree = "<group>"; };
 		1D98DA642907F8AA007FA48B /* Inspection.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Inspection.storyboard; sourceTree = "<group>"; };
@@ -600,7 +600,7 @@
 			children = (
 				1D72C3D8290426180099AAB4 /* Password Reset Successfull */,
 				1D72C3D52903FF120099AAB4 /* Set New Password */,
-				1D72C3D22903E9C70099AAB4 /* Verify OTP */,
+				1D72C3D22903E9C70099AAB4 /* CheckEmail */,
 				1D72C3CF29033FA80099AAB4 /* Forgot Password */,
 				1D72C3CE29033F9D0099AAB4 /* Login */,
 				1DB69ED829361D200005FBAD /* LoginSViewController.swift */,
@@ -1233,12 +1233,12 @@
 			path = "Forgot Password";
 			sourceTree = "<group>";
 		};
-		1D72C3D22903E9C70099AAB4 /* Verify OTP */ = {
+		1D72C3D22903E9C70099AAB4 /* CheckEmail */ = {
 			isa = PBXGroup;
 			children = (
-				1D72C3D32903E9EB0099AAB4 /* VerifyOTP.swift */,
+				1D72C3D32903E9EB0099AAB4 /* CheckEmail.swift */,
 			);
-			path = "Verify OTP";
+			path = CheckEmail;
 			sourceTree = "<group>";
 		};
 		1D72C3D52903FF120099AAB4 /* Set New Password */ = {
@@ -1811,7 +1811,7 @@
 				1D5B746D28F9FEE20053B079 /* AppStyler.swift in Sources */,
 				1D5B74BA28FAE1C10053B079 /* FormElementStyler.swift in Sources */,
 				1D5B748D28FACA8B0053B079 /* ReusableFooterLoadingView.swift in Sources */,
-				1D72C3D42903E9EB0099AAB4 /* VerifyOTP.swift in Sources */,
+				1D72C3D42903E9EB0099AAB4 /* CheckEmail.swift in Sources */,
 				1D3F347529265544002A39C0 /* InspectionsTemplate.swift in Sources */,
 				1D5B746128F9FD020053B079 /* ApiSuccess.swift in Sources */,
 				1DB5E1F7290EBF6800273381 /* ComponentsList.swift in Sources */,

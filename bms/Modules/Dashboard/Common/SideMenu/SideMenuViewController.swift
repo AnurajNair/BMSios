@@ -28,7 +28,7 @@ class SideMenuViewController: UIViewController {
 
     var selectedCellIndexPath: IndexPath?
     
-    var data: [SideMenuModel] = [SideMenuModel(icon: "dashboardIcon", title: "Dashboard",menu: [], route: .homeScreen, transition: .rootSlider),SideMenuModel(icon: "inspectionIcon", title: "Inspection",menu: [SideMenuModel(icon: "dashboardIcon" , title: "Inspection", route: .inspectionListScreen, transition: .changeSlider),SideMenuModel(icon: "dashboardIcon" , title: "Custom Inspection", route: .inspectionListScreen, transition: .changeSlider),SideMenuModel(icon: "dashboardIcon" , title: "Review Inspection", route: .inspectionListScreen, transition: .changeSlider)], route: .inspectionListScreen, transition: .changeSlider),SideMenuModel(icon: "inspectionIcon", title: "Inventory",menu: [], route: .inventoryListScreen, transition: .rootSlider)]
+    var data: [SideMenuModel] = [SideMenuModel(icon: "dashboardIcon", title: "Dashboard",menu: [], route: .homeScreen, transition: .rootSlider,isSelected: true),SideMenuModel(icon: "inspectionIcon", title: "Inspection",menu: [SideMenuModel(icon: "dashboardIcon" , title: "Inspection", route: .inspectionListScreen, transition: .changeSlider),SideMenuModel(icon: "dashboardIcon" , title: "Custom Inspection", route: .inspectionListScreen, transition: .changeSlider),SideMenuModel(icon: "dashboardIcon" , title: "Review Inspection", route: .inspectionListScreen, transition: .changeSlider)], route: .inspectionListScreen, transition: .changeSlider,isSelected:false),SideMenuModel(icon: "inspectionIcon", title: "Inventory",menu: [], route: .inventoryListScreen, transition: .changeSlider,isSelected: false)]
     
     var delegate: SideMenuViewControllerDelegate?
 
@@ -71,6 +71,24 @@ class SideMenuViewController: UIViewController {
         // Update TableView with the data
         self.sideMenuTableView.reloadData()
     }
+    func setSelectedSideMenu(indexPath:IndexPath){
+        let sectionData = data[indexPath.row]
+        let change = self.data.map { e in
+            var c = e
+            if(c.title == sectionData.title){
+                c.isSelected = true
+               
+            }else{
+                c.isSelected = false
+            }
+            
+            return c
+        }
+       
+        self.data = change
+        print("changed Data",data)
+        self.sideMenuTableView.reloadData()
+    }
 }
 
 // MARK: - UITableViewDelegate
@@ -96,43 +114,27 @@ extension SideMenuViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        // ...
         tableView.deselectRow(at: indexPath, animated: true)
         
         let sectionData = data[indexPath.row]
-        
+        setSelectedSideMenu(indexPath: indexPath)
+      
         
       
         if(sectionData.title != "Inspection"){
-            if let cell = tableView.cellForRow(at: indexPath) as? SideMenuCell {
-                    cell.contentView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-                cell.menCellView.backgroundColor = UIColor.BMS.theme
-                }
-           
             Navigate.routeUserToScreen(screenType: sectionData.route, transitionType: sectionData.transition)
         }else{
             self.selectedCellIndexPath = indexPath
-           
-            if let cell = tableView.cellForRow(at: indexPath) as? SideMenuCell {
-                    cell.contentView.backgroundColor = #colorLiteral(red: 1, green: 0.4932718873, blue: 0.4739984274, alpha: 1)
-                cell.menCellView.backgroundColor = UIColor.BMS.theme
-                }
-            if(selectedCellIndexPath != indexPath){
-                if  let cell = self.tableView(tableView, cellForRowAt: indexPath) as? SideMenuCell{
-                    cell.selectedTitle(title: sectionData.title)
-                    cell.menCellView.backgroundColor = UIColor.BMS.blue
-                }
-            }
         }
         
         
         tableView.beginUpdates()
-           tableView.endUpdates()
+        tableView.endUpdates()
       
-//
-//        tableView.reloadRows(at:[indexPath], with:.fade)
        
     }
+    
+    
     
    
   }
@@ -142,24 +144,17 @@ extension SideMenuViewController: UITableViewDelegate {
 
 extension SideMenuViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(data)
-
         return self.data.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: SideMenuCell.identifier, for: indexPath) as? SideMenuCell else { fatalError("xib doesn't exist") }
+        
         let sectionData = self.data[indexPath.row]
         
-        print(sectionData)
     
-        cell.configureCell(image:sectionData.icon, title: sectionData.title,menu: sectionData.menu )
-        
-        let backgroundView = UIView()
-        backgroundView.backgroundColor = UIColor.BMS.theme.withAlphaComponent(0.1)
-        cell.selectedBackgroundView = backgroundView
-//        self.delegate?.selectedCell(<#T##row: Int##Int#>)
-        
+        cell.configureCell(image:sectionData.icon, title: sectionData.title,menu: sectionData.menu,isSelected: sectionData.isSelected )
+        cell.delegate = self
         return cell
     }
 
@@ -167,7 +162,9 @@ extension SideMenuViewController: UITableViewDataSource {
 
 extension SideMenuViewController:SideMenuCellDelegate{
     func onSideSubMenuClick(_ selectedItem: Int) {
-        print(selectedItem)
+        print("ok",selectedItem)
+        
+        
     }
     
    

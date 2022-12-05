@@ -17,7 +17,8 @@ class LoginViewController: UIViewController{
    
     @IBOutlet weak var userNameStack: UIStackView!
     
-    @IBOutlet weak var textField: ReusableFormElementView!
+    @IBOutlet weak var backgrounImg: UIImageView!
+  
     
     @IBOutlet weak var userNameFieldView: ReusableFormElementView!
     
@@ -153,7 +154,7 @@ class LoginViewController: UIViewController{
         
         print(UIDevice.current.model)
        
-        UIView.style([(view: loginCard, style:(backgroundColor:nil, cornerRadius: 16, borderStyle: nil,shadowStyle : nil))])
+        UIView.style([(view: loginCard, style:(backgroundColor:nil, cornerRadius: 18, borderStyle: nil,shadowStyle : nil))])
         
         loginCard.translatesAutoresizingMaskIntoConstraints = false
         
@@ -173,6 +174,8 @@ class LoginViewController: UIViewController{
             break
         default:
             loginCard.addConstraint(loginCard.heightAnchor.constraint(equalToConstant:  self.view.frame.size.height/1.8))
+            //loginCard.addConstraint(loginCard.widthAnchor.constraint(equalToConstant:  self.view.frame.size.width/2))
+
             setCardInCenter()
             break
         }
@@ -211,20 +214,6 @@ class LoginViewController: UIViewController{
         
     }
     
-    func setCardInCenter(){
-        NSLayoutConstraint(item: self.loginCard as Any, attribute: NSLayoutConstraint.Attribute.centerX, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.view, attribute: NSLayoutConstraint.Attribute.centerX, multiplier: 1, constant: 0).isActive = true
-        NSLayoutConstraint(item: self.loginCard as Any, attribute: NSLayoutConstraint.Attribute.centerY, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.view, attribute: NSLayoutConstraint.Attribute.centerY, multiplier: 1, constant: 0).isActive = true
-     
-    }
-    
-    func removeCardFromCenter(){
-        NSLayoutConstraint(item: self.loginCard as Any, attribute: NSLayoutConstraint.Attribute.centerX, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.view, attribute: NSLayoutConstraint.Attribute.centerX, multiplier: 1, constant: 0).isActive = false
-//        NSLayoutConstraint(item: self.loginCard as Any, attribute: NSLayoutConstraint.Attribute.right, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.view, attribute: .trailing, multiplier: 0.5, constant: 0).isActive = true
-     
-        NSLayoutConstraint(item: self.loginCard as Any, attribute: NSLayoutConstraint.Attribute.centerY, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.view, attribute: NSLayoutConstraint.Attribute.centerY, multiplier: 1, constant: 0).isActive = false
-//        loginCard.heightAnchor.constraint(equalToConstant:  self.view.frame.size.height/1.8).isActive = false
-        
-    }
     
     func setupTextFields(){
   self.passwordFieldView.delegate = self
@@ -241,12 +230,44 @@ class LoginViewController: UIViewController{
                print(self.loginCard.constraints)
               
            } else {
+               setCardInCenter()
                print("Portrait")
                print(self.loginCard.constraints)
-               setCardInCenter()
+            
               
            }
        }
+    
+    
+    func setCardInCenter(){
+        loginCard.addConstraint(loginCard.widthAnchor.constraint(equalToConstant:  self.view.frame.size.width/1.5))
+
+        
+        NSLayoutConstraint(item: self.loginCard as Any, attribute: NSLayoutConstraint.Attribute.centerX, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.view, attribute: NSLayoutConstraint.Attribute.centerX, multiplier: 1, constant: 0).isActive = true
+        NSLayoutConstraint(item: self.loginCard as Any, attribute: NSLayoutConstraint.Attribute.centerY, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.view, attribute: NSLayoutConstraint.Attribute.centerY, multiplier: 1, constant: 0).isActive = true
+//        NSLayoutConstraint(item: self.loginCard as Any, attribute: .trailing, relatedBy: .equal, toItem: self.view, attribute: .trailingMargin, multiplier: 1.0, constant: -self.view.frame.size.width/2).isActive = false
+//        NSLayoutConstraint(item: self.backgrounImg as Any, attribute: .leading, relatedBy: .equal, toItem: self.view, attribute: .leading, multiplier: 1.0, constant: 0).isActive = false
+        loginCard.widthAnchor.constraint(equalToConstant:  self.view.frame.size.width/1.5).isActive = true
+
+     
+    }
+    
+    func removeCardFromCenter(){
+//        loginCard.translatesAutoresizingMaskIntoConstraints = false
+//        loginCard.removeConstraint(loginCard.heightAnchor.constraint(equalToConstant:  self.view.frame.size.height/2.2))
+        NSLayoutConstraint(item: self.loginCard as Any, attribute: NSLayoutConstraint.Attribute.centerX, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.view, attribute: NSLayoutConstraint.Attribute.centerX, multiplier: 1, constant: 0).isActive = false
+       
+     
+        NSLayoutConstraint(item: self.loginCard as Any, attribute: NSLayoutConstraint.Attribute.centerY, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.view, attribute: NSLayoutConstraint.Attribute.centerY, multiplier: 1, constant: 0).isActive = false
+        NSLayoutConstraint(item: self.loginCard as Any, attribute: .trailing, relatedBy: .equal, toItem: self.view, attribute: .trailingMargin, multiplier: 1.0, constant: -self.view.frame.size.width/2).isActive = true
+        NSLayoutConstraint(item: self.backgrounImg as Any, attribute: .leading, relatedBy: .equal, toItem: self.view, attribute: .trailing, multiplier: 1.0, constant: 0).isActive = true
+        
+        loginCard.addConstraint(loginCard.widthAnchor.constraint(equalToConstant:  self.view.frame.size.width/2))
+
+      
+        
+    }
+
     
     func decryptData(){
         let obj:Login = Login()
