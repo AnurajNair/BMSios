@@ -781,7 +781,7 @@ extension UIColor {
         static var white: UIColor { return UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1) }
         static var gray: UIColor { return UIColor(red: 193/255, green: 193/255, blue: 193/255, alpha: 1) }
         static var lightGray: UIColor { return UIColor(red: 216/255, green: 216/255, blue: 216/255, alpha: 1) }
-        
+        static var dashboardCard: UIColor { return UIColor(red: 245/255, green: 245/255, blue: 245/255, alpha: 1) }
         static var textBorderGrey:UIColor { return UIColor(red: 220/255, green: 220/255, blue: 220/255, alpha: 1) }
         static var paleGray: UIColor { return UIColor(red: 240/255, green: 240/255, blue: 244/255, alpha: 1) }
         static var backgroundGrey: UIColor { return UIColor(red: 242/255, green: 242/255, blue: 242/255, alpha: 1) }

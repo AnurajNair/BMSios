@@ -145,6 +145,9 @@
 		1D72C3D42903E9EB0099AAB4 /* CheckEmail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D72C3D32903E9EB0099AAB4 /* CheckEmail.swift */; };
 		1D72C3D72903FF260099AAB4 /* ResetPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D72C3D62903FF260099AAB4 /* ResetPassword.swift */; };
 		1D72C3DA290426430099AAB4 /* PasswordResetSuccessful.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D72C3D9290426430099AAB4 /* PasswordResetSuccessful.swift */; };
+		1D7E41992941F02300788254 /* ActivityTableHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7E41982941F02300788254 /* ActivityTableHeader.swift */; };
+		1D7E419B2941F04000788254 /* ActivityTableHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D7E419A2941F04000788254 /* ActivityTableHeader.xib */; };
+		1D7E419F294223ED00788254 /* DynamicHeightCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7E419E294223ED00788254 /* DynamicHeightCollectionView.swift */; };
 		1D98DA652907F8AA007FA48B /* Inspection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D98DA642907F8AA007FA48B /* Inspection.storyboard */; };
 		1D98DA6A2907F8E8007FA48B /* InspectionListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D98DA692907F8E7007FA48B /* InspectionListViewController.swift */; };
 		1D9A247E2906EC2A000D2A39 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D9A247D2906EC2A000D2A39 /* DashboardViewController.swift */; };
@@ -332,6 +335,9 @@
 		1D72C3D32903E9EB0099AAB4 /* CheckEmail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckEmail.swift; sourceTree = "<group>"; };
 		1D72C3D62903FF260099AAB4 /* ResetPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPassword.swift; sourceTree = "<group>"; };
 		1D72C3D9290426430099AAB4 /* PasswordResetSuccessful.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetSuccessful.swift; sourceTree = "<group>"; };
+		1D7E41982941F02300788254 /* ActivityTableHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityTableHeader.swift; sourceTree = "<group>"; };
+		1D7E419A2941F04000788254 /* ActivityTableHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivityTableHeader.xib; sourceTree = "<group>"; };
+		1D7E419E294223ED00788254 /* DynamicHeightCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicHeightCollectionView.swift; sourceTree = "<group>"; };
 		1D98DA642907F8AA007FA48B /* Inspection.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Inspection.storyboard; sourceTree = "<group>"; };
 		1D98DA692907F8E7007FA48B /* InspectionListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectionListViewController.swift; sourceTree = "<group>"; };
 		1D9A247D2906EC2A000D2A39 /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
@@ -541,6 +547,7 @@
 		1D2E17C829157A1E00214593 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				1D7E41972941EFC300788254 /* Activity Table Header */,
 				1D2E17C929157A6F00214593 /* DashboardStatsCollectionViewCell.swift */,
 				1D2E17CA29157A6F00214593 /* DashboardStatsCollectionViewCell.xib */,
 			);
@@ -1025,6 +1032,7 @@
 		1D5B748E28FACB4A0053B079 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				1D7E419D294223BB00788254 /* Dynamic View */,
 				1D5B74BB28FC42880053B079 /* Reusable Views */,
 				1D5B748F28FACB540053B079 /* Forms */,
 			);
@@ -1264,6 +1272,23 @@
 				1D5E2E7B2906DCC7005D83C0 /* SideMenu */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		1D7E41972941EFC300788254 /* Activity Table Header */ = {
+			isa = PBXGroup;
+			children = (
+				1D7E41982941F02300788254 /* ActivityTableHeader.swift */,
+				1D7E419A2941F04000788254 /* ActivityTableHeader.xib */,
+			);
+			path = "Activity Table Header";
+			sourceTree = "<group>";
+		};
+		1D7E419D294223BB00788254 /* Dynamic View */ = {
+			isa = PBXGroup;
+			children = (
+				1D7E419E294223ED00788254 /* DynamicHeightCollectionView.swift */,
+			);
+			path = "Dynamic View";
 			sourceTree = "<group>";
 		};
 		1D98DA662907F8B1007FA48B /* ViewControllers */ = {
@@ -1576,6 +1601,7 @@
 				1D34C69928FF292E00A8BAF3 /* ReusableFormOptionsField.xib in Resources */,
 				1D4CB352290086C700B152CF /* ExampleTableCell.xib in Resources */,
 				1D34C69128FF284B00A8BAF3 /* ReusableFormSwitch.xib in Resources */,
+				1D7E419B2941F04000788254 /* ActivityTableHeader.xib in Resources */,
 				1D5B742F28F9B2F30053B079 /* LaunchScreen.storyboard in Resources */,
 				1D01C28B293B7E3200F9AC9B /* Inter-Black.ttf in Resources */,
 				1D34C6C028FF307C00A8BAF3 /* ReusableImagePickerCollectionViewController.xib in Resources */,
@@ -1769,6 +1795,7 @@
 				1D5B742428F9B2F20053B079 /* Login.swift in Sources */,
 				1D59D22C290897A000C3A00A /* TableHeaderView.swift in Sources */,
 				1D34C68828FF273D00A8BAF3 /* ReusableFormTextField.swift in Sources */,
+				1D7E419F294223ED00788254 /* DynamicHeightCollectionView.swift in Sources */,
 				1DA4082D2901BED100A05913 /* ReusableTextInputField.swift in Sources */,
 				1D5B74D028FC46D90053B079 /* Router.swift in Sources */,
 				1D5B74C328FC43020053B079 /* EmptyStateViewStyler.swift in Sources */,
@@ -1786,6 +1813,7 @@
 				1D5E2E802906DD41005D83C0 /* SideMenuModel.swift in Sources */,
 				1D5B749E28FACCAF0053B079 /* ReusablePopupSelectionView.swift in Sources */,
 				1D5B746328F9FD2A0053B079 /* ApiBaseResponse.swift in Sources */,
+				1D7E41992941F02300788254 /* ActivityTableHeader.swift in Sources */,
 				1D34C6B128FF2B8E00A8BAF3 /* ReusableFormSliderField.swift in Sources */,
 				1D5B747428FA10C90053B079 /* BaseNavigationViewController.swift in Sources */,
 				1D3F347B292656A6002A39C0 /* InspectionTemplateTypeTableViewCell.swift in Sources */,

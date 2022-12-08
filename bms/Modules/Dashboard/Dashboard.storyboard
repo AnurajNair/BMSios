@@ -67,32 +67,34 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EKj-JX-t7S">
-                                <rect key="frame" x="0.0" y="20" width="768" height="984"/>
+                                <rect key="frame" x="14" y="34" width="734" height="976"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="o1W-fQ-iJt">
-                                        <rect key="frame" x="14" y="14" width="740" height="956"/>
-                                        <subviews>
-                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="zf3-Tu-q5Z">
-                                                <rect key="frame" x="0.0" y="0.0" width="740" height="956"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="qv0-zb-V2a">
-                                                    <size key="itemSize" width="128" height="128"/>
-                                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                </collectionViewFlowLayout>
-                                                <cells/>
-                                            </collectionView>
-                                        </subviews>
-                                    </stackView>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="zf3-Tu-q5Z" customClass="DynamicHeightCollectionView" customModule="bms" customModuleProvider="target">
+                                        <rect key="frame" x="14" y="20" width="717" height="180"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="qv0-zb-V2a">
+                                            <size key="itemSize" width="128" height="128"/>
+                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        </collectionViewFlowLayout>
+                                        <cells/>
+                                    </collectionView>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="VMM-7y-XYt">
+                                        <rect key="frame" x="14" y="221" width="717" height="747"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    </tableView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="C4r-S9-Umd" firstAttribute="bottom" secondItem="o1W-fQ-iJt" secondAttribute="bottom" constant="14" id="2i1-99-G12"/>
-                                    <constraint firstAttribute="bottom" secondItem="o1W-fQ-iJt" secondAttribute="bottom" constant="14" id="86w-ta-kIl"/>
-                                    <constraint firstItem="o1W-fQ-iJt" firstAttribute="centerX" secondItem="EKj-JX-t7S" secondAttribute="centerX" id="KXJ-yW-YJs"/>
-                                    <constraint firstItem="o1W-fQ-iJt" firstAttribute="top" secondItem="C4r-S9-Umd" secondAttribute="top" constant="14" id="vIZ-6d-ULx"/>
-                                    <constraint firstAttribute="trailing" secondItem="o1W-fQ-iJt" secondAttribute="trailing" constant="-6" id="yXj-gA-uWX"/>
-                                    <constraint firstItem="o1W-fQ-iJt" firstAttribute="leading" secondItem="C4r-S9-Umd" secondAttribute="leading" constant="14" id="zge-G8-FIm"/>
+                                    <constraint firstItem="C4r-S9-Umd" firstAttribute="bottom" secondItem="VMM-7y-XYt" secondAttribute="bottom" constant="8" id="1CP-j3-9jB"/>
+                                    <constraint firstItem="VMM-7y-XYt" firstAttribute="top" secondItem="zf3-Tu-q5Z" secondAttribute="bottom" constant="21" id="3nj-Pe-sQg"/>
+                                    <constraint firstAttribute="bottom" secondItem="VMM-7y-XYt" secondAttribute="bottom" constant="8" id="7S7-SX-YnX"/>
+                                    <constraint firstItem="zf3-Tu-q5Z" firstAttribute="leading" secondItem="EKj-JX-t7S" secondAttribute="leading" constant="9" id="HXT-Je-1Kh"/>
+                                    <constraint firstAttribute="trailing" secondItem="zf3-Tu-q5Z" secondAttribute="trailing" constant="8" id="dN9-Pz-Zwk"/>
+                                    <constraint firstItem="zf3-Tu-q5Z" firstAttribute="centerX" secondItem="EKj-JX-t7S" secondAttribute="centerX" constant="0.5" id="ePY-0g-KYD"/>
+                                    <constraint firstItem="zf3-Tu-q5Z" firstAttribute="top" secondItem="EKj-JX-t7S" secondAttribute="top" constant="20" id="gwp-B0-pbP"/>
+                                    <constraint firstItem="VMM-7y-XYt" firstAttribute="leading" secondItem="EKj-JX-t7S" secondAttribute="leading" constant="9" id="hfY-OR-NNc"/>
+                                    <constraint firstAttribute="trailing" secondItem="VMM-7y-XYt" secondAttribute="trailing" constant="8" id="ina-28-kkI"/>
                                 </constraints>
                                 <viewLayoutGuide key="contentLayoutGuide" id="MGR-cM-9F3"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="C4r-S9-Umd"/>
@@ -101,13 +103,14 @@
                         <viewLayoutGuide key="safeArea" id="qOa-ZO-TiO"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="EKj-JX-t7S" firstAttribute="top" secondItem="qOa-ZO-TiO" secondAttribute="top" id="7n8-ZG-aFY"/>
-                            <constraint firstItem="EKj-JX-t7S" firstAttribute="leading" secondItem="qOa-ZO-TiO" secondAttribute="leading" id="AFy-ij-GQV"/>
-                            <constraint firstItem="EKj-JX-t7S" firstAttribute="centerY" secondItem="bLA-UJ-ITW" secondAttribute="centerY" id="B75-yB-d7e"/>
-                            <constraint firstItem="qOa-ZO-TiO" firstAttribute="trailing" secondItem="EKj-JX-t7S" secondAttribute="trailing" id="bw1-t4-SU6"/>
+                            <constraint firstItem="EKj-JX-t7S" firstAttribute="top" secondItem="qOa-ZO-TiO" secondAttribute="top" constant="14" id="O5F-9m-zFN"/>
+                            <constraint firstItem="EKj-JX-t7S" firstAttribute="leading" secondItem="qOa-ZO-TiO" secondAttribute="leading" constant="14" id="SlD-kB-mtt"/>
+                            <constraint firstItem="EKj-JX-t7S" firstAttribute="trailing" secondItem="qOa-ZO-TiO" secondAttribute="trailing" constant="-20" id="T8Y-Gi-CWy"/>
+                            <constraint firstItem="qOa-ZO-TiO" firstAttribute="bottom" secondItem="EKj-JX-t7S" secondAttribute="bottom" constant="14" id="u4f-ip-i9c"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activityTable" destination="VMM-7y-XYt" id="us0-bU-Zla"/>
                         <outlet property="statsCollectionView" destination="zf3-Tu-q5Z" id="bol-2X-aXv"/>
                     </connections>
                 </viewController>

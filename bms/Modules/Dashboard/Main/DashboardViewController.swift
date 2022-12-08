@@ -14,19 +14,21 @@ class DashboardViewController: UIViewController {
     
     let itemsPerRow: CGFloat = 3
     
+    @IBOutlet weak var activityTable: UITableView!
     private let sectionInsets = UIEdgeInsets(
       top: 20.0,
       left: 20.0,
       bottom: 20.0,
       right: 20.0)
     
-    var statsList:[StatsModel] = [StatsModel(label: "Total Inspections", statsCount: 24),StatsModel(label: "Routine Inspection", statsCount: 20),StatsModel(label: "Thurough Inspection", statsCount: 10),StatsModel(label: "Special Inspection", statsCount: 10),StatsModel(label: "Completed Inspection", statsCount: 10),]
+    var statsList:[StatsModel] = [StatsModel(label: "Total Inspections", statsCount: 24),StatsModel(label: "Routine Inspection", statsCount: 20),StatsModel(label: "Thurough Inspection", statsCount: 10),]
     
     override func viewDidLoad() {
         super.viewDidLoad()
 //setupNavigationTitleView()
         
         setupCollectionView()
+        setupTableView()
         // Do any additional setup after loading the view.
     }
     
@@ -45,8 +47,24 @@ class DashboardViewController: UIViewController {
         self.statsCollectionView.delegate = self
         self.statsCollectionView.dataSource = self
         self.statsCollectionView.registerNibs(["DashboardStatsCollectionViewCell"])
-       
+        self.statsCollectionView.layoutIfNeeded()
       
+    }
+    
+    func setupTableView(){
+        UIView.style([(view: self.activityTable, style:(backgroundColor:nil, cornerRadius: 10, borderStyle: nil,shadowStyle : nil))])
+
+        self.activityTable.bounces = false
+        self.activityTable.separatorStyle = .none
+        self.activityTable.delegate = self
+        self.activityTable.dataSource = self
+      
+//        self.activityTable.register(InspectionListTableViewCell.nib, forCellReuseIdentifier: "InspectionListTableViewCell")
+        self.activityTable.registerHeaderNibs(["ActivityTableHeader"])
+        self.activityTable.rowHeight = UITableView.automaticDimension
+        self.activityTable.estimatedRowHeight = 100
+        self.activityTable.backgroundColor = .clear
+        
     }
 
 }
@@ -107,9 +125,33 @@ extension DashboardViewController:UICollectionViewDataSource{
         
         return cell
     }
-    
-  
+        
+}
 
+
+extension DashboardViewController:UITableViewDelegate{
     
+}
+
+extension DashboardViewController:UITableViewDataSource{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 3
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return UITableViewCell()
+    }
+    
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = self.activityTable.dequeueReusableHeaderFooterView(withIdentifier: "ActivityTableHeader")  as! ActivityTableHeader
+
+      
+        return headerView
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 48
+    }
     
 }
