@@ -62,7 +62,7 @@ class DashboardViewController: UIViewController {
         self.activityTable.dataSource = self
       
         self.activityTable.register(ActivityTableViewCell.nib, forCellReuseIdentifier: "ActivityTableViewCell")
-        self.activityTable.registerHeaderNibs(["ActivityTableHeader"])
+//        self.activityTable.registerHeaderNibs(["ActivityTableHeader"])
         self.activityTable.rowHeight = UITableView.automaticDimension
         self.activityTable.estimatedRowHeight = 100
         self.activityTable.backgroundColor = .clear
@@ -153,16 +153,16 @@ extension DashboardViewController:UITableViewDataSource{
         
     }
     
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = self.activityTable.dequeueReusableHeaderFooterView(withIdentifier: "ActivityTableHeader")  as! ActivityTableHeader
-
-      
-        return headerView
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 48
-    }
+//    
+//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//        let headerView = self.activityTable.dequeueReusableHeaderFooterView(withIdentifier: "ActivityTableHeader")  as! ActivityTableHeader
+//
+//      
+//        return headerView
+//    }
+//    
+//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+//        return 48
+//    }
     
 }
