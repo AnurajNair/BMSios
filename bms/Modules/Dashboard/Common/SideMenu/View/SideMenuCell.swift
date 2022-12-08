@@ -60,6 +60,7 @@ class SideMenuCell: UITableViewCell {
         self.menuIcon.image = UIImage(named: image)
         self.menuLabel.text = title
         self.subMenu = menu
+//        self.cellStack.addConstraint(self.cellStack.heightAnchor.constraint(equalToConstant: <#T##CGFloat#>))
 //        self.title = title
 //        print(title , menu)
         setupTableView()
@@ -78,7 +79,7 @@ class SideMenuCell: UITableViewCell {
             }
             
         }else{
-            
+            self.arrowIcon.image = UIImage(named: "forwardArrowIcon")
         }
         
       

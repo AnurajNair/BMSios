@@ -98,7 +98,7 @@ extension SideMenuViewController: UITableViewDelegate {
         if selectedCellIndexPath == indexPath {
                return 188
         }else{
-            return 48
+            return 50
         }
            
         
@@ -107,14 +107,15 @@ extension SideMenuViewController: UITableViewDelegate {
         if(self.data[indexPath.row].title == "Inspection"){
             return 168
         }else{
-            return 48
+            return 50
         }
     }
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        tableView.deselectRow(at: indexPath, animated: true)
+       // tableView.deselectRow(at: indexPath, animated: false)
+        
         
         let sectionData = data[indexPath.row]
         setSelectedSideMenu(indexPath: indexPath)

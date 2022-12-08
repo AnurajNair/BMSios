@@ -751,7 +751,7 @@ class ReusableFormElementView: UIView {
         
         var text = title
         if isRequired && !text.isEmpty {
-            text += "*"
+            text += ""
         }
         return text
         

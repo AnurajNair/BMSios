@@ -19,9 +19,17 @@ class LoginViewController: UIViewController{
     
     @IBOutlet weak var backgrounImg: UIImageView!
   
+    @IBOutlet weak var portraitView: UIView!
     
+    @IBOutlet weak var landscapeView: UIView!
     @IBOutlet weak var userNameFieldView: ReusableFormElementView!
     
+    @IBOutlet weak var portraitUserNameFielView: ReusableFormElementView!
+    
+    @IBOutlet weak var portraitPasswordFieldView: ReusableFormElementView!
+    
+    @IBOutlet weak var portraitForgotPasswordBtn: UIButton!
+    @IBOutlet weak var portraitLoginBtn: UIButton!
     @IBOutlet weak var bmsLogo: UIImageView!
     @IBOutlet weak var passwordFieldView: ReusableFormElementView!
     @IBOutlet weak var loginCard: UIView!
@@ -36,113 +44,31 @@ class LoginViewController: UIViewController{
     @IBOutlet weak var buttonsStack: UIStackView!
     @IBOutlet weak var loginButton: UIButton!
     
+    @IBOutlet weak var landScapeSideImage: UIImageView!
     @IBOutlet weak var forgotPasswordButton: UIButton!
     
     var userName = ""
     var password = ""
     var encrypRequest = ""
     
-    enum CellNames: String {
-        case formCell = "ExampleTableCell"
-    }
+    @IBOutlet weak var clientNameStack: UIStackView!
     
-    let cellIdentifiers:[String] = [CellNames.formCell.rawValue]
+    @IBOutlet weak var clientNamestackTopAnchor: NSLayoutConstraint!
     
-    var errors: [IndexPath: String] = [:]
+    @IBOutlet weak var loginView: UIView!
     
-    enum Section {
-        case userName
-        case password
-       
-        
-        func getSectionTitle() -> String {
-            switch self {
-                
-            case .userName:
-                return "User Name"
-            case .password:
-                return "Password"
-           
-            }
-        }
-        
-//        func getSetionIcon() -> String {
-//            switch self {
-//
-//            case .planPlace:
-//                return "location_item"
-//            case .invitedPeople:
-//                return "account"
-//            case .dateAndTime:
-//                return "timeline"
-//            case .deadline:
-//                return "time_item"
-//            case .action:
-//                return ""
-//            case .planName:
-//                return "time_item"
-//            case .planDescription:
-//                return  "time_item"
-//            }
-//        }
-        
-        func getSectionHeaderView() -> UIView{
-            
-            let cell = UITableViewCell()
-            
-            cell.textLabel?.text = self.getSectionTitle()
-//            cell.imageView?.image = UIImage(named: self.getSetionIcon())
-//            cell.imageView?.contentMode = .scaleAspectFill
-            cell.contentView.layoutMargins = .init(top: 0.0, left: 80, bottom: 0.0, right: 0.0)
-
-
-            UILabel.style([(view: cell.textLabel, style: TextStyles.LoginPageLableStyler)])
-            
-            return cell
-        }
-        
-        func getCellTitle() -> String {
-            switch self {
-                
-            case .userName:
-                return "User Name"
-            case .password:
-                return "Password"
-           
-            }
-        }
-        
-        func getPlaceHolderText() -> String{
-            switch self {
-            case .userName:
-                return "User Name"
-            case .password:
-                return "Password"
-           
-            }
-        }
-        func getSectionHeaderHeight() -> CGFloat {
-//            if self == .action {
-//                return .leastNormalMagnitude
-//            }
-            return 56
-        }
-        
-        func getSectionFooterHeight() -> CGFloat {
-            return .leastNormalMagnitude
-        }
-        
-    }
+    @IBOutlet weak var firstHalfClientNameLabel: UILabel!
     
-    var sections : [Section] = [.userName,.password]
+    @IBOutlet weak var seconHalfClientNameLabel: UILabel!
     
+    @IBOutlet weak var logoLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         setupViewStyle()
         decryptData()
-        print(UIDevice.current.model)
+       
      
     }
     
@@ -150,35 +76,58 @@ class LoginViewController: UIViewController{
     
     
     func setupViewStyle(){
-//        loginCard.roundCorners(UIRectCorner, radius: 4)
         
-        print(UIDevice.current.model)
-       
         UIView.style([(view: loginCard, style:(backgroundColor:nil, cornerRadius: 18, borderStyle: nil,shadowStyle : nil))])
+
+  
+       
+       
+        
+        firstHalfClientNameLabel.text = "Cyberian Consulting"
+        seconHalfClientNameLabel.text = "Cyberian Consulting Pvt. Ltd."
+        logoLabel.text = "BMS"
+        logoLabel.font = UIFont.BMS.InterSemiBold.withSize(48.0)
+
+        
+        if UIDevice.current.orientation.isLandscape {
+//               removeCardFromCenter()
+            print(self.loginCard.constraints)
+            UIView.transition(with: self.portraitView, duration: 1,options: .transitionCurlDown) {
+                self.portraitView.isHidden = false
+            }
+            
+
+           
+        } else {
+            setCardInCenter()
+            print("Portrait")
+            UIView.transition(with: self.portraitView, duration: 1,options: .transitionCurlDown) {
+                self.portraitView.isHidden = false
+            }
+
+
+         
+           
+        }
+        
+      
+       
         
         loginCard.translatesAutoresizingMaskIntoConstraints = false
         
-        loginButton.addConstraint(loginButton.heightAnchor.constraint(equalToConstant: 48.0))
-        loginButton.addConstraint(loginButton.widthAnchor.constraint(equalToConstant: self.userNameFieldView.frame.width))
-        loginButton.titleLabel?.font = UIFont.BMS.InterSemiBold.withSize(24)
-        forgotPasswordButton.titleLabel?.font = UIFont.BMS.InterRegular.withSize(14)
-//        loginCard.addConstraint(loginCard.heightAnchor.constraint(equalToConstant:  self.view.frame.size.height/2))
+      
+        portraitLoginBtn.addConstraint(portraitLoginBtn.heightAnchor.constraint(equalToConstant: 48.0))
         
         
-        switch Device.size(){
-        case .screen12_9Inch:
-            print("got")
-            loginCard.addConstraint(loginCard.heightAnchor.constraint(equalToConstant:  self.view.frame.size.height/2.2))
-            setCardInCenter()
-            print(loginCard.frame.size.height)
-            break
-        default:
-            loginCard.addConstraint(loginCard.heightAnchor.constraint(equalToConstant:  self.view.frame.size.height/1.8))
-            //loginCard.addConstraint(loginCard.widthAnchor.constraint(equalToConstant:  self.view.frame.size.width/2))
+       
 
-            setCardInCenter()
-            break
-        }
+        portraitLoginBtn.addConstraint(portraitLoginBtn.widthAnchor.constraint(equalToConstant: self.portraitUserNameFielView.frame.width))
+//        portraitLoginBtn.setTitle("Login", for: .normal)
+//
+//        portraitLoginBtn.titleLabel?.font = UIFont.BMS.InterSemiBold.withSize(34.0)
+       
+        
+      
 //        fieldStackView.addConstraint(fieldStackView.widthAnchor.constraint(equalToConstant: self.loginCard.frame.size.width/1.5))
 //    
 //        self.bmsLogo.addConstraint(self.bmsLogo.widthAnchor.constraint(equalToConstant: self.loginCard.frame.size.width/3))
@@ -208,61 +157,188 @@ class LoginViewController: UIViewController{
 //        }else{
 //            userNameTextField.frame.size.height = 58
 //        }
-        
+        setupViewAsPerScreen()
         setupTextFields()
+        
                 
         
     }
     
+    func setupViewAsPerScreen(){
+        switch Device.size(){
+        case .screen12_9Inch:
+            print("got it")
+            firstHalfClientNameLabel.font = UIFont.BMS.InterSemiBold.withSize(44)
+            seconHalfClientNameLabel.font = UIFont.BMS.InterSemiBold.withSize(28)
+           
+          
+           if( UIDevice.current.orientation.isLandscape){
+                loginCard.addConstraint(loginCard.heightAnchor.constraint(equalToConstant:  self.view.frame.size.width/2.5))
+                loginCard.addConstraint(loginCard.widthAnchor.constraint(equalToConstant:  self.view.frame.size.height/2))
+           }else{
+               loginCard.addConstraint(loginCard.heightAnchor.constraint(equalToConstant:  self.view.frame.size.height/2.5))
+               loginCard.addConstraint(loginCard.widthAnchor.constraint(equalToConstant:  self.view.frame.size.width/1.8))
+           }
+            setCardInCenter()
+            break
+        case .screen10_9Inch:
+            firstHalfClientNameLabel.font = UIFont.BMS.InterSemiBold.withSize(36)
+            seconHalfClientNameLabel.font = UIFont.BMS.InterSemiBold.withSize(22)
+           
+            if( UIDevice.current.orientation.isLandscape){
+                 loginCard.addConstraint(loginCard.heightAnchor.constraint(equalToConstant:  self.view.frame.size.width/2.5))
+                 loginCard.addConstraint(loginCard.widthAnchor.constraint(equalToConstant:  self.view.frame.size.height/2))
+            }else{
+                loginCard.addConstraint(loginCard.heightAnchor.constraint(equalToConstant:  self.view.frame.size.height/2.2))
+                loginCard.addConstraint(loginCard.widthAnchor.constraint(equalToConstant:  self.view.frame.size.width/2))
+            }
+            loginCard.addConstraint(loginCard.heightAnchor.constraint(equalToConstant:  self.view.frame.size.height/2))
+            setCardInCenter()
+            break
+        case .screen10_2Inch:
+            if(UIDevice.current.orientation.isLandscape){
+                loginCard.addConstraint(loginCard.heightAnchor.constraint(equalToConstant:  self.view.frame.size.width/2))
+
+            }else{
+                loginCard.addConstraint(loginCard.heightAnchor.constraint(equalToConstant:  self.view.frame.size.height/2))
+
+            }
+            firstHalfClientNameLabel.font = UIFont.BMS.InterSemiBold.withSize(26)
+            seconHalfClientNameLabel.font = UIFont.BMS.InterSemiBold.withSize(18)
+          setCardInCenter()
+            break
+        case .screen9_7Inch:
+            firstHalfClientNameLabel.font = UIFont.BMS.InterSemiBold.withSize(34)
+            seconHalfClientNameLabel.font = UIFont.BMS.InterSemiBold.withSize(22)
+            
+            forgotPasswordButton.titleLabel?.font = UIFont.BMS.InterRegular.withSize(12)
+            loginCard.addConstraint(loginCard.heightAnchor.constraint(equalToConstant:  self.view.frame.size.height/2))
+            setCardInCenter()
+            break
+        default:
+           
+            loginButton.titleLabel?.font = UIFont.BMS.InterSemiBold.withSize(20)
+            forgotPasswordButton.titleLabel?.font = UIFont.BMS.InterRegular.withSize(12)
+            loginCard.addConstraint(loginCard.heightAnchor.constraint(equalToConstant:  self.view.frame.size.height/2))
+            loginView.addConstraint(loginView.heightAnchor.constraint(equalToConstant: self.view.frame.size.height/2))
+            setCardInCenter()
+            break
+        }
+    }
+    
+   
+    
     
     func setupTextFields(){
-  self.passwordFieldView.delegate = self
-      self.userNameFieldView.delegate = self
-        _ =  self.userNameFieldView.setupTextField(id:0,fieldTitle: "User Name",placeholderTitle: "User Name",isEditable: true,fieldSubtype: .email,isRequired: true,textFieldStyling : TTTextFieldStyler.userDetailsStyle,formStyling : TTFormElementViewStyler.userDetailsStyle)
-       _ = self.passwordFieldView.setupTextField(id:1,fieldTitle: "Password",placeholderTitle: "Password",isEditable: true,fieldSubtype: .password,isRequired: true,textFieldStyling : TTTextFieldStyler.userDetailsStyle,formStyling : TTFormElementViewStyler.userDetailsStyle)
+      
+        self.portraitUserNameFielView.delegate = self
+        self.portraitPasswordFieldView.delegate = self
+//        _ =  self.userNameFieldView.setupTextField(id:0,fieldTitle: "User Name",placeholderTitle: "User Name",fieldValue:self.userName,isEditable: true,fieldSubtype: .email,isRequired: true,textFieldStyling : TTTextFieldStyler.userDetailsStyle,formStyling : TTFormElementViewStyler.userDetailsStyle)
+//
+//        _ = self.passwordFieldView.setupTextField(id:1,fieldTitle: "Password",placeholderTitle: "Password",fieldValue: self.password,isEditable: true,fieldSubtype: .password,isRequired: true,textFieldStyling : TTTextFieldStyler.userDetailsStyle,formStyling : TTFormElementViewStyler.userDetailsStyle)
+        
+        _ =  self.portraitUserNameFielView.setupTextField(id:0,fieldTitle: "User Name",placeholderTitle: "User Name",fieldValue: self.userName,isEditable: true,fieldSubtype: .email,isRequired: true,textFieldStyling : TTTextFieldStyler.userDetailsStyle,formStyling : TTFormElementViewStyler.userDetailsStyle)
+        
+        _ = self.portraitPasswordFieldView.setupTextField(id:1,fieldTitle: "Password",placeholderTitle: "Password",fieldValue: self.password,isEditable: true,fieldSubtype: .password,isRequired: true,textFieldStyling : TTTextFieldStyler.userDetailsStyle,formStyling : TTFormElementViewStyler.userDetailsStyle)
+        
       
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
            super.viewWillTransition(to: size, with: coordinator)
            if UIDevice.current.orientation.isLandscape {
-               removeCardFromCenter()
+//               removeCardFromCenter()
                print(self.loginCard.constraints)
+               UIView.transition(with: self.portraitView, duration: 1,options: .transitionCurlDown) {
+                   self.portraitView.isHidden = false
+               }
+               
+               landscapeConstraints()
+               
               
            } else {
-               setCardInCenter()
-               print("Portrait")
+              
+               UIView.transition(with: self.portraitView, duration: 1,options: .transitionCurlDown) {
+                   self.portraitView.isHidden = false
+               }
+               
+             portraitConstraints()
+              
                print(self.loginCard.constraints)
             
               
            }
        }
     
+    func landscapeConstraints(){
+        
+        switch Device.size(){
+        case .screen12_9Inch:
+           
+            firstHalfClientNameLabel.font = UIFont.BMS.InterSemiBold.withSize(44)
+            seconHalfClientNameLabel.font = UIFont.BMS.InterSemiBold.withSize(28)
+            self.clientNamestackTopAnchor.constant = 86
+            
+            break
+        case .screen9_7Inch:
+            
+            firstHalfClientNameLabel.font = UIFont.BMS.InterSemiBold.withSize(26)
+            seconHalfClientNameLabel.font = UIFont.BMS.InterSemiBold.withSize(18)
+            self.clientNamestackTopAnchor.constant = 46
+            break
+        case .screen10_2Inch:
+           
+            firstHalfClientNameLabel.font = UIFont.BMS.InterSemiBold.withSize(26)
+            seconHalfClientNameLabel.font = UIFont.BMS.InterSemiBold.withSize(18)
+            self.clientNamestackTopAnchor.constant = 50
+            break
+        default:
+            
+            break
+        }
+        
+        
+    }
+    
+    func portraitConstraints(){
+        switch Device.size(){
+        case .screen12_9Inch:
+            self.clientNamestackTopAnchor.constant = 145
+            
+            break
+        case .screen9_7Inch:
+            self.clientNamestackTopAnchor.constant = 120
+            break
+        case .screen10_2Inch:
+            self.clientNamestackTopAnchor.constant = 120
+            break
+        default:
+            self.clientNamestackTopAnchor.constant = 120
+            break
+        }
+    }
+    
     
     func setCardInCenter(){
-        loginCard.addConstraint(loginCard.widthAnchor.constraint(equalToConstant:  self.view.frame.size.width/1.5))
 
-        
+       
         NSLayoutConstraint(item: self.loginCard as Any, attribute: NSLayoutConstraint.Attribute.centerX, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.view, attribute: NSLayoutConstraint.Attribute.centerX, multiplier: 1, constant: 0).isActive = true
         NSLayoutConstraint(item: self.loginCard as Any, attribute: NSLayoutConstraint.Attribute.centerY, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.view, attribute: NSLayoutConstraint.Attribute.centerY, multiplier: 1, constant: 0).isActive = true
-//        NSLayoutConstraint(item: self.loginCard as Any, attribute: .trailing, relatedBy: .equal, toItem: self.view, attribute: .trailingMargin, multiplier: 1.0, constant: -self.view.frame.size.width/2).isActive = false
-//        NSLayoutConstraint(item: self.backgrounImg as Any, attribute: .leading, relatedBy: .equal, toItem: self.view, attribute: .leading, multiplier: 1.0, constant: 0).isActive = false
-        loginCard.widthAnchor.constraint(equalToConstant:  self.view.frame.size.width/1.5).isActive = true
 
-     
     }
     
     func removeCardFromCenter(){
 //        loginCard.translatesAutoresizingMaskIntoConstraints = false
 //        loginCard.removeConstraint(loginCard.heightAnchor.constraint(equalToConstant:  self.view.frame.size.height/2.2))
-        NSLayoutConstraint(item: self.loginCard as Any, attribute: NSLayoutConstraint.Attribute.centerX, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.view, attribute: NSLayoutConstraint.Attribute.centerX, multiplier: 1, constant: 0).isActive = false
-       
-     
-        NSLayoutConstraint(item: self.loginCard as Any, attribute: NSLayoutConstraint.Attribute.centerY, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.view, attribute: NSLayoutConstraint.Attribute.centerY, multiplier: 1, constant: 0).isActive = false
-        NSLayoutConstraint(item: self.loginCard as Any, attribute: .trailing, relatedBy: .equal, toItem: self.view, attribute: .trailingMargin, multiplier: 1.0, constant: -self.view.frame.size.width/2).isActive = true
-        NSLayoutConstraint(item: self.backgrounImg as Any, attribute: .leading, relatedBy: .equal, toItem: self.view, attribute: .trailing, multiplier: 1.0, constant: 0).isActive = true
+//        NSLayoutConstraint(item: self.loginCard as Any, attribute: NSLayoutConstraint.Attribute.centerX, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.view, attribute: NSLayoutConstraint.Attribute.centerX, multiplier: 1, constant: 0).isActive = true
+//
+//
+//        NSLayoutConstraint(item: self.loginCard as Any, attribute: NSLayoutConstraint.Attribute.centerY, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.view, attribute: NSLayoutConstraint.Attribute.centerY, multiplier: 1, constant: 0).isActive = true
+//        NSLayoutConstraint(item: self.loginCard as Any, attribute: .trailing, relatedBy: .equal, toItem: self.view, attribute: .trailingMargin, multiplier: 1.0, constant: -self.view.frame.size.width/2).isActive = true
+        NSLayoutConstraint(item: self.backgrounImg as Any, attribute: .leading, relatedBy: .equal, toItem: self.view, attribute: .trailing, multiplier: 1.0, constant: 0).isActive = false
         
-        loginCard.addConstraint(loginCard.widthAnchor.constraint(equalToConstant:  self.view.frame.size.width/2))
+  //  loginCard.addConstraint(loginCard.heightAnchor.constraint(equalToConstant:  self.view.frame.size.height/2))
+        //loginCard.heightAnchor.constraint(equalToConstant:  self.view.frame.size.width/1.5).isActive = false
 
       
         
@@ -321,11 +397,17 @@ class LoginViewController: UIViewController{
 
 extension LoginViewController:ReusableFormElementViewDelegate{
     func setValues(index: Any, item: Any) {
+      
         if(index as? Int == 0){
             self.userName = item as? String ?? ""
+            print(userName)
         }else{
             self.password = item as? String ?? ""
         }
+    }
+    
+    func setError(index: Any, error: String) {
+        
     }
 }
 

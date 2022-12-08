@@ -26,8 +26,8 @@ class LoginSViewController: UIViewController {
     func setupViews(){
         loginFieslTable.addConstraint(loginFieslTable.heightAnchor.constraint(equalToConstant: self.card.frame.size.height/2))
         loginFieslTable.addConstraint(loginFieslTable.widthAnchor.constraint(equalToConstant: self.card.frame.size.width/1.2))
-        NSLayoutConstraint(item: self.loginFieslTable as Any, attribute: NSLayoutConstraint.Attribute.centerX, relatedBy: NSLayoutConstraint.Relation.equal, toItem: card, attribute: NSLayoutConstraint.Attribute.centerX, multiplier: 1, constant: 0).isActive = true
-        NSLayoutConstraint(item: self.loginFieslTable as Any, attribute: NSLayoutConstraint.Attribute.centerY, relatedBy: NSLayoutConstraint.Relation.equal, toItem: card, attribute: NSLayoutConstraint.Attribute.centerY, multiplier: 1, constant: 0).isActive = true
+//        NSLayoutConstraint(item: self.loginFieslTable as Any, attribute: NSLayoutConstraint.Attribute.centerX, relatedBy: NSLayoutConstraint.Relation.equal, toItem: card, attribute: NSLayoutConstraint.Attribute.centerX, multiplier: 1, constant: 0).isActive = true
+//        NSLayoutConstraint(item: self.loginFieslTable as Any, attribute: NSLayoutConstraint.Attribute.centerY, relatedBy: NSLayoutConstraint.Relation.equal, toItem: card, attribute: NSLayoutConstraint.Attribute.centerY, multiplier: 1, constant: 0).isActive = true
         setupTableView()
     }
 

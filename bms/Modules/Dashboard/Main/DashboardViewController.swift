@@ -69,7 +69,7 @@ extension DashboardViewController:UICollectionViewDelegateFlowLayout{
              let availableWidth = view.frame.width - paddingSpace
              let widthPerItem = availableWidth / itemsPerRow
              
-             return CGSize(width: widthPerItem, height: widthPerItem)
+         return CGSize(width: widthPerItem, height: widthPerItem / 1.8)
      }
     
     
