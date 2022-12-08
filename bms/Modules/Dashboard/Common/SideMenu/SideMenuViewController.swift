@@ -67,7 +67,7 @@ class SideMenuViewController: UIViewController {
 
         // Register TableView Cell
         self.sideMenuTableView.register(SideMenuCell.nib, forCellReuseIdentifier: SideMenuCell.identifier)
-        self.sideMenuTableView.registerHeaderNibs(["SideMenuFooter"])
+       // self.sideMenuTableView.registerHeaderNibs(["SideMenuFooter"])
 
         // Update TableView with the data
         self.sideMenuTableView.reloadData()
@@ -160,12 +160,12 @@ extension SideMenuViewController: UITableViewDataSource {
         return cell
     }
     
-    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        let footerView = self.sideMenuTableView.dequeueReusableHeaderFooterView(withIdentifier: "SideMenuFooter")  as! SideMenuFooter
-
-      
-        return footerView
-    }
+//    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+//        let footerView = self.sideMenuTableView.dequeueReusableHeaderFooterView(withIdentifier: "SideMenuFooter")  as! SideMenuFooter
+//
+//
+//        return footerView
+//    }
 
 }
 
