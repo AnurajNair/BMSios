@@ -67,6 +67,8 @@
 		1D34C6CC28FF39DC00A8BAF3 /* PincodeRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D34C6CB28FF39DC00A8BAF3 /* PincodeRule.swift */; };
 		1D34C6CF28FF406100A8BAF3 /* ReusableDatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D34C6CE28FF406100A8BAF3 /* ReusableDatePickerView.swift */; };
 		1D34C6D128FF40D300A8BAF3 /* AgeRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D34C6D028FF40D300A8BAF3 /* AgeRule.swift */; };
+		1D38BFAF294259BE0030B415 /* ActivityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D38BFAD294259BE0030B415 /* ActivityTableViewCell.swift */; };
+		1D38BFB0294259BE0030B415 /* ActivityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D38BFAE294259BE0030B415 /* ActivityTableViewCell.xib */; };
 		1D3F3463292502C1002A39C0 /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3F3462292502C1002A39C0 /* PopUpViewController.swift */; };
 		1D3F3470292647F7002A39C0 /* RoutineInspection.json in Resources */ = {isa = PBXBuildFile; fileRef = 1D33EA79292177A900B9363D /* RoutineInspection.json */; };
 		1D3F347529265544002A39C0 /* InspectionsTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3F347429265544002A39C0 /* InspectionsTemplate.swift */; };
@@ -141,6 +143,9 @@
 		1D5E2E802906DD41005D83C0 /* SideMenuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5E2E7F2906DD41005D83C0 /* SideMenuModel.swift */; };
 		1D5E2E842906DE04005D83C0 /* SideMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5E2E822906DE04005D83C0 /* SideMenuCell.swift */; };
 		1D5E2E852906DE04005D83C0 /* SideMenuCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D5E2E832906DE04005D83C0 /* SideMenuCell.xib */; };
+		1D6473552942693500EDD9ED /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6473542942693500EDD9ED /* APIConstants.swift */; };
+		1D647358294280BB00EDD9ED /* SideMenuFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D647357294280BB00EDD9ED /* SideMenuFooter.swift */; };
+		1D64735A294280CF00EDD9ED /* SideMenuFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D647359294280CF00EDD9ED /* SideMenuFooter.xib */; };
 		1D72C3D129033FBC0099AAB4 /* ForgotPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D72C3D029033FBC0099AAB4 /* ForgotPassword.swift */; };
 		1D72C3D42903E9EB0099AAB4 /* CheckEmail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D72C3D32903E9EB0099AAB4 /* CheckEmail.swift */; };
 		1D72C3D72903FF260099AAB4 /* ResetPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D72C3D62903FF260099AAB4 /* ResetPassword.swift */; };
@@ -256,6 +261,8 @@
 		1D34C6CB28FF39DC00A8BAF3 /* PincodeRule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PincodeRule.swift; sourceTree = "<group>"; };
 		1D34C6CE28FF406100A8BAF3 /* ReusableDatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableDatePickerView.swift; sourceTree = "<group>"; };
 		1D34C6D028FF40D300A8BAF3 /* AgeRule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgeRule.swift; sourceTree = "<group>"; };
+		1D38BFAD294259BE0030B415 /* ActivityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityTableViewCell.swift; sourceTree = "<group>"; };
+		1D38BFAE294259BE0030B415 /* ActivityTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivityTableViewCell.xib; sourceTree = "<group>"; };
 		1D3F3462292502C1002A39C0 /* PopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpViewController.swift; sourceTree = "<group>"; };
 		1D3F3472292654BB002A39C0 /* InspectionsTemplates.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = InspectionsTemplates.json; sourceTree = "<group>"; };
 		1D3F347429265544002A39C0 /* InspectionsTemplate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectionsTemplate.swift; sourceTree = "<group>"; };
@@ -331,6 +338,9 @@
 		1D5E2E7F2906DD41005D83C0 /* SideMenuModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuModel.swift; sourceTree = "<group>"; };
 		1D5E2E822906DE04005D83C0 /* SideMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuCell.swift; sourceTree = "<group>"; };
 		1D5E2E832906DE04005D83C0 /* SideMenuCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SideMenuCell.xib; sourceTree = "<group>"; };
+		1D6473542942693500EDD9ED /* APIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
+		1D647357294280BB00EDD9ED /* SideMenuFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuFooter.swift; sourceTree = "<group>"; };
+		1D647359294280CF00EDD9ED /* SideMenuFooter.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SideMenuFooter.xib; sourceTree = "<group>"; };
 		1D72C3D029033FBC0099AAB4 /* ForgotPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPassword.swift; sourceTree = "<group>"; };
 		1D72C3D32903E9EB0099AAB4 /* CheckEmail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckEmail.swift; sourceTree = "<group>"; };
 		1D72C3D62903FF260099AAB4 /* ResetPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPassword.swift; sourceTree = "<group>"; };
@@ -547,9 +557,9 @@
 		1D2E17C829157A1E00214593 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				1D38BFAC2942599F0030B415 /* Activity Table Cell */,
+				1D38BFAB294254750030B415 /* Stats Cell */,
 				1D7E41972941EFC300788254 /* Activity Table Header */,
-				1D2E17C929157A6F00214593 /* DashboardStatsCollectionViewCell.swift */,
-				1D2E17CA29157A6F00214593 /* DashboardStatsCollectionViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -762,6 +772,24 @@
 				1D34C6CE28FF406100A8BAF3 /* ReusableDatePickerView.swift */,
 			);
 			path = Datepicker;
+			sourceTree = "<group>";
+		};
+		1D38BFAB294254750030B415 /* Stats Cell */ = {
+			isa = PBXGroup;
+			children = (
+				1D2E17C929157A6F00214593 /* DashboardStatsCollectionViewCell.swift */,
+				1D2E17CA29157A6F00214593 /* DashboardStatsCollectionViewCell.xib */,
+			);
+			path = "Stats Cell";
+			sourceTree = "<group>";
+		};
+		1D38BFAC2942599F0030B415 /* Activity Table Cell */ = {
+			isa = PBXGroup;
+			children = (
+				1D38BFAD294259BE0030B415 /* ActivityTableViewCell.swift */,
+				1D38BFAE294259BE0030B415 /* ActivityTableViewCell.xib */,
+			);
+			path = "Activity Table Cell";
 			sourceTree = "<group>";
 		};
 		1D3F3461292502A5002A39C0 /* PopUp View */ = {
@@ -1158,6 +1186,7 @@
 			children = (
 				1D5B74CD28FC46BF0053B079 /* RestClient.swift */,
 				1D5B74CF28FC46D90053B079 /* Router.swift */,
+				1D6473542942693500EDD9ED /* APIConstants.swift */,
 			);
 			path = "Api Routers";
 			sourceTree = "<group>";
@@ -1208,6 +1237,7 @@
 		1D5E2E812906DDD7005D83C0 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				1D64735629427FC700EDD9ED /* Side menu Footer */,
 				1D5E2E822906DE04005D83C0 /* SideMenuCell.swift */,
 				1D5E2E832906DE04005D83C0 /* SideMenuCell.xib */,
 			);
@@ -1222,6 +1252,15 @@
 				1D9A247D2906EC2A000D2A39 /* DashboardViewController.swift */,
 			);
 			path = Main;
+			sourceTree = "<group>";
+		};
+		1D64735629427FC700EDD9ED /* Side menu Footer */ = {
+			isa = PBXGroup;
+			children = (
+				1D647357294280BB00EDD9ED /* SideMenuFooter.swift */,
+				1D647359294280CF00EDD9ED /* SideMenuFooter.xib */,
+			);
+			name = "Side menu Footer";
 			sourceTree = "<group>";
 		};
 		1D72C3CE29033F9D0099AAB4 /* Login */ = {
@@ -1564,9 +1603,11 @@
 			files = (
 				1DC40CE029335FA000A86025 /* FormCollectionViewCell.xib in Resources */,
 				1D3F347629265608002A39C0 /* InspectionsTemplates.json in Resources */,
+				1D38BFB0294259BE0030B415 /* ActivityTableViewCell.xib in Resources */,
 				1DB69ED72936178B0005FBAD /* LoginTableButtonsCell.xib in Resources */,
 				1D3F3470292647F7002A39C0 /* RoutineInspection.json in Resources */,
 				1D34C6AF28FF2B7600A8BAF3 /* ReusableFormSliderField.xib in Resources */,
+				1D64735A294280CF00EDD9ED /* SideMenuFooter.xib in Resources */,
 				1DB69EE2293659C80005FBAD /* LoginHeaderView.xib in Resources */,
 				1D5B74B328FAE1480053B079 /* ReusableFormTextView.xib in Resources */,
 				1D5B749C28FACC800053B079 /* ReusableSelectableTableViewCell.xib in Resources */,
@@ -1786,6 +1827,8 @@
 				1D5E2E7D2906DCF3005D83C0 /* SideMenuViewController.swift in Sources */,
 				1D4CB3482900811A00B152CF /* FormElementTableViewCell.swift in Sources */,
 				1D5B749428FACB9D0053B079 /* ReusablePopupViewController.swift in Sources */,
+				1D6473552942693500EDD9ED /* APIConstants.swift in Sources */,
+				1D38BFAF294259BE0030B415 /* ActivityTableViewCell.swift in Sources */,
 				1D5B748128FAC86C0053B079 /* NavigationPopMenuTableViewCell.swift in Sources */,
 				1D33EA7829213E6F00B9363D /* RoutineInspection.swift in Sources */,
 				1DF2F6ED293203EB0012A31B /* HomeViewController.swift in Sources */,
@@ -1860,6 +1903,7 @@
 				1D3F3463292502C1002A39C0 /* PopUpViewController.swift in Sources */,
 				1D9A247E2906EC2A000D2A39 /* DashboardViewController.swift in Sources */,
 				1DBE250828FD7A9A00CE9519 /* CommonRouter.swift in Sources */,
+				1D647358294280BB00EDD9ED /* SideMenuFooter.swift in Sources */,
 				1DF2F6EA2930E5C20012A31B /* inspectionModel.swift in Sources */,
 				1D5B74B528FAE15F0053B079 /* ReusableFormTextView.swift in Sources */,
 				1D5B74CE28FC46BF0053B079 /* RestClient.swift in Sources */,

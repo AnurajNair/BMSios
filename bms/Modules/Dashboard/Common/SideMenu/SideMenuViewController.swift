@@ -52,12 +52,13 @@ class SideMenuViewController: UIViewController {
         self.sideMenuTableView.dataSource = self
         self.sideMenuTableView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         self.sideMenuTableView.separatorStyle = .none
+        
 
         // Set Highlighted Cell
-        DispatchQueue.main.async {
-            let defaultRow = IndexPath(row: self.defaultHighlightedCell, section: 0)
-            self.sideMenuTableView.selectRow(at: defaultRow, animated: false, scrollPosition: .none)
-        }
+//        DispatchQueue.main.async {
+//            let defaultRow = IndexPath(row: self.defaultHighlightedCell, section: 0)
+//            self.sideMenuTableView.selectRow(at: defaultRow, animated: false, scrollPosition: .none)
+//        }
 
 //        // Footer
 //        self.footerLabel.textColor = UIColor.white
@@ -66,7 +67,7 @@ class SideMenuViewController: UIViewController {
 
         // Register TableView Cell
         self.sideMenuTableView.register(SideMenuCell.nib, forCellReuseIdentifier: SideMenuCell.identifier)
-        
+        self.sideMenuTableView.registerHeaderNibs(["SideMenuFooter"])
 
         // Update TableView with the data
         self.sideMenuTableView.reloadData()
@@ -98,7 +99,7 @@ extension SideMenuViewController: UITableViewDelegate {
         if selectedCellIndexPath == indexPath {
                return 188
         }else{
-            return 50
+            return 70
         }
            
         
@@ -107,7 +108,7 @@ extension SideMenuViewController: UITableViewDelegate {
         if(self.data[indexPath.row].title == "Inspection"){
             return 168
         }else{
-            return 50
+            return 70
         }
     }
     
@@ -157,6 +158,13 @@ extension SideMenuViewController: UITableViewDataSource {
         cell.configureCell(image:sectionData.icon, title: sectionData.title,menu: sectionData.menu,isSelected: sectionData.isSelected )
         cell.delegate = self
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let footerView = self.sideMenuTableView.dequeueReusableHeaderFooterView(withIdentifier: "SideMenuFooter")  as! SideMenuFooter
+
+      
+        return footerView
     }
 
 }

@@ -154,7 +154,7 @@ enum Router: URLRequestConvertible {
     
     func getBaseUrl() -> String {
         
-        let appUrl =  Constants.apiBaseUrl
+        let appUrl =  APIConstants.apiBaseUrl
         return appUrl
     }
     

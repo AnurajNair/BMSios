@@ -21,6 +21,8 @@ class DashboardViewController: UIViewController {
       bottom: 20.0,
       right: 20.0)
     
+    var activityList :[ActivityModel] = [ActivityModel(id: "A231", author: "Anuraj Nair", activity: "Routine Inspection", date: "05/12/2022", time: "12:05 PM", status: "Pending"),ActivityModel(id: "A231", author: "Zahid Shaikh", activity: "Thurough Inspection", date: "08/12/2022", time: "11:00 AM", status: "Pending"),ActivityModel(id: "A231", author: "Adiba Tirandaz", activity: "Routine Inspection", date: "0/12/2022", time: "12:05 PM", status: "Pending"),ActivityModel(id: "A231", author: "Naveed Lambe", activity: "Routine Inspection", date: "01/12/2022", time: "01:05 PM", status: "Pending"),ActivityModel(id: "A231", author: "Anuraj Nair", activity: "Routine Inspection", date: "0/12/2022", time: "12:05 PM", status: "Pending"),ActivityModel(id: "A231", author: "Anuraj Nair", activity: "Routine Inspection", date: "0/12/2022", time: "12:05 PM", status: "Pending")]
+    
     var statsList:[StatsModel] = [StatsModel(label: "Total Inspections", statsCount: 24),StatsModel(label: "Routine Inspection", statsCount: 20),StatsModel(label: "Thurough Inspection", statsCount: 10),]
     
     override func viewDidLoad() {
@@ -59,7 +61,7 @@ class DashboardViewController: UIViewController {
         self.activityTable.delegate = self
         self.activityTable.dataSource = self
       
-//        self.activityTable.register(InspectionListTableViewCell.nib, forCellReuseIdentifier: "InspectionListTableViewCell")
+        self.activityTable.register(ActivityTableViewCell.nib, forCellReuseIdentifier: "ActivityTableViewCell")
         self.activityTable.registerHeaderNibs(["ActivityTableHeader"])
         self.activityTable.rowHeight = UITableView.automaticDimension
         self.activityTable.estimatedRowHeight = 100
@@ -135,11 +137,20 @@ extension DashboardViewController:UITableViewDelegate{
 
 extension DashboardViewController:UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return self.activityList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: ActivityTableViewCell.identifier, for: indexPath) as? ActivityTableViewCell else {
+            fatalError("xib doesn't exist")
+            
+        }
+        
+        cell.configCell(activity:  self.activityList[indexPath.row])
+ 
+        
+        return cell
+        
     }
     
     

@@ -27,32 +27,21 @@
                                         <rect key="frame" x="183" y="308" width="468" height="476"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R7z-Hm-d8f" customClass="ReusableFormElementView" customModule="bms" customModuleProvider="target">
-                                                <rect key="frame" x="54" y="276" width="350" height="95"/>
+                                                <rect key="frame" x="67" y="276" width="320" height="95"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="95" id="2SD-2P-kR9"/>
                                                 </constraints>
                                             </view>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RGh-lC-qyD">
-                                                <rect key="frame" x="42" y="458" width="160" height="24"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="24" id="Hme-7U-ra8"/>
-                                                </constraints>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="Forgot Password?"/>
-                                                <connections>
-                                                    <action selector="onForgotPasswordBtnClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zHu-8h-Nto"/>
-                                                </connections>
-                                            </button>
                                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cJZ-h8-NHR" customClass="ReusableFormElementView" customModule="bms" customModuleProvider="target">
-                                                <rect key="frame" x="54" y="161" width="350" height="95"/>
+                                                <rect key="frame" x="67" y="161" width="320" height="95"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="95" id="XgX-9X-61w"/>
                                                 </constraints>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g3B-ed-P24">
-                                                <rect key="frame" x="54" y="399" width="350" height="41"/>
+                                                <rect key="frame" x="67" y="399" width="320" height="41"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="filled" title="Login">
                                                     <fontDescription key="titleFontDescription" name="Inter-SemiBold" family="Inter" pointSize="22"/>
@@ -80,24 +69,35 @@
                                                     <constraint firstItem="lWp-Oh-4lh" firstAttribute="centerY" secondItem="wZO-wb-3VC" secondAttribute="centerY" id="gae-bE-uJE"/>
                                                 </constraints>
                                             </view>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RGh-lC-qyD">
+                                                <rect key="frame" x="57" y="461" width="160" height="24"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="24" id="Hme-7U-ra8"/>
+                                                </constraints>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Forgot Password?"/>
+                                                <connections>
+                                                    <action selector="onForgotPasswordBtnClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zHu-8h-Nto"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="cJZ-h8-NHR" secondAttribute="trailing" constant="64" id="4OB-0N-6HA"/>
-                                            <constraint firstItem="cJZ-h8-NHR" firstAttribute="leading" secondItem="xhQ-fP-RYp" secondAttribute="leading" constant="54" id="6pa-w4-2Gb"/>
+                                            <constraint firstAttribute="trailing" secondItem="cJZ-h8-NHR" secondAttribute="trailing" constant="81" id="4OB-0N-6HA"/>
+                                            <constraint firstItem="cJZ-h8-NHR" firstAttribute="leading" secondItem="xhQ-fP-RYp" secondAttribute="leading" constant="67" id="6pa-w4-2Gb"/>
                                             <constraint firstItem="wZO-wb-3VC" firstAttribute="leading" secondItem="xhQ-fP-RYp" secondAttribute="leading" constant="178" id="9H0-VS-dRB"/>
-                                            <constraint firstAttribute="trailing" secondItem="g3B-ed-P24" secondAttribute="trailing" constant="64" id="KAf-vW-BPZ"/>
-                                            <constraint firstAttribute="trailing" secondItem="R7z-Hm-d8f" secondAttribute="trailing" constant="64" id="MPE-lt-8xx"/>
+                                            <constraint firstAttribute="trailing" secondItem="g3B-ed-P24" secondAttribute="trailing" constant="81" id="KAf-vW-BPZ"/>
+                                            <constraint firstAttribute="trailing" secondItem="R7z-Hm-d8f" secondAttribute="trailing" constant="81" id="MPE-lt-8xx"/>
                                             <constraint firstAttribute="trailing" secondItem="wZO-wb-3VC" secondAttribute="trailing" constant="184" id="SbX-RF-Jjo"/>
-                                            <constraint firstItem="g3B-ed-P24" firstAttribute="leading" secondItem="xhQ-fP-RYp" secondAttribute="leading" constant="54" id="V1f-4K-1Yt"/>
-                                            <constraint firstItem="RGh-lC-qyD" firstAttribute="leading" secondItem="xhQ-fP-RYp" secondAttribute="leading" constant="42" id="c2P-GZ-tZd"/>
+                                            <constraint firstItem="g3B-ed-P24" firstAttribute="leading" secondItem="xhQ-fP-RYp" secondAttribute="leading" constant="67" id="V1f-4K-1Yt"/>
+                                            <constraint firstItem="RGh-lC-qyD" firstAttribute="leading" secondItem="xhQ-fP-RYp" secondAttribute="leading" constant="57" id="c2P-GZ-tZd"/>
                                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="RGh-lC-qyD" secondAttribute="trailing" constant="20" symbolic="YES" id="gGq-Ps-gkb"/>
-                                            <constraint firstItem="R7z-Hm-d8f" firstAttribute="leading" secondItem="xhQ-fP-RYp" secondAttribute="leading" constant="54" id="iZf-PF-utx"/>
+                                            <constraint firstItem="R7z-Hm-d8f" firstAttribute="leading" secondItem="xhQ-fP-RYp" secondAttribute="leading" constant="67" id="iZf-PF-utx"/>
                                             <constraint firstItem="wZO-wb-3VC" firstAttribute="top" secondItem="xhQ-fP-RYp" secondAttribute="top" constant="28" id="jf2-o9-87s"/>
                                             <constraint firstItem="g3B-ed-P24" firstAttribute="top" secondItem="R7z-Hm-d8f" secondAttribute="bottom" constant="28" id="kXX-Mw-5hc"/>
                                             <constraint firstItem="R7z-Hm-d8f" firstAttribute="top" secondItem="cJZ-h8-NHR" secondAttribute="bottom" constant="20" id="lfb-dQ-hSJ"/>
                                             <constraint firstItem="cJZ-h8-NHR" firstAttribute="top" secondItem="wZO-wb-3VC" secondAttribute="bottom" constant="33" id="nUh-C9-LmJ"/>
-                                            <constraint firstItem="RGh-lC-qyD" firstAttribute="top" secondItem="g3B-ed-P24" secondAttribute="bottom" constant="18" id="sb6-9C-Ja3"/>
+                                            <constraint firstItem="RGh-lC-qyD" firstAttribute="top" secondItem="g3B-ed-P24" secondAttribute="bottom" constant="21" id="sb6-9C-Ja3"/>
                                         </constraints>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="MC1-hC-Bed">

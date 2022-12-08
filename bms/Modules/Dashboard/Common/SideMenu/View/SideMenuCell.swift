@@ -17,6 +17,7 @@ class SideMenuCell: UITableViewCell {
     @IBOutlet weak var menCellView: UIView!
     @IBOutlet weak var menuLabel: UILabel!
     
+    @IBOutlet weak var menuView: UIView!
     @IBOutlet weak var cellStack: UIStackView!
     @IBOutlet weak var subMenuTable: UITableView!
     
@@ -67,19 +68,30 @@ class SideMenuCell: UITableViewCell {
         
         if(isSelected!){
             if(title == "Inspection"){
-                self.cellStack.backgroundColor = UIColor.BMS.theme
-                self.cellStack.setAsRounded(cornerRadius: 5.0)
+                self.menuView.backgroundColor = UIColor.BMS.theme
+                self.menuView.setAsRounded(cornerRadius: 5.0)
                 self.menuLabel.textColor = UIColor.BMS.white
                 self.arrowIcon.image = UIImage(named: "chevron-down")
+                self.menuIcon.image = UIImage(named: "inspection")
             }else{
-                self.menStackView.backgroundColor = UIColor.BMS.theme
-                self.menStackView.setAsRounded(cornerRadius: 5.0)
+                self.menuView.backgroundColor = UIColor.BMS.theme
+                self.menuView.setAsRounded(cornerRadius: 5.0)
                 self.menuLabel.textColor = UIColor.BMS.white
+                
 //                self.arrowIcon.image = UIImage(named: "chevron-down")
             }
             
         }else{
-            self.arrowIcon.image = UIImage(named: "forwardArrowIcon")
+            if(title == "Inspection"){
+                self.arrowIcon.image = UIImage(named: "forwardArrowIcon")
+                self.menuIcon.image = UIImage(named: "inspectionIcon")
+            }else if(title == "Dashboard"){
+                self.arrowIcon.image = UIImage(named: "forwardArrowIcon")
+                self.menuIcon.image = UIImage(named: "dashboardColorIcon")
+            }else{
+                self.arrowIcon.image = UIImage(named: "forwardArrowIcon")
+                self.menuIcon.image = UIImage(named: "dashboardColorIcon")
+            }
         }
         
       

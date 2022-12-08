@@ -235,11 +235,11 @@ class ImageUtils {
     }
     
     class func getImageUrl(_ endPoint : String) -> String{
-        return "\(Constants.apiBaseUrl)\(endPoint)"
+        return "\(APIConstants.apiBaseUrl)\(endPoint)"
     }
     
     class func getMultipleUrl(_ imageDirectoryUrl : String , _ endPoint : String ) -> String{
-        return "\(Constants.apiBaseUrl)\(imageDirectoryUrl)\(endPoint)"
+        return "\(APIConstants.apiBaseUrl)\(imageDirectoryUrl)\(endPoint)"
     }
 }
 

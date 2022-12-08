@@ -1748,7 +1748,7 @@ extension WKWebView {
     
     private func setAuthorizationHeaderField(_ mutableURLRequest : NSMutableURLRequest) {
         
-        if mutableURLRequest.url?.host == URL(string: Constants.apiBaseUrl)?.host {
+        if mutableURLRequest.url?.host == URL(string: APIConstants.apiBaseUrl)?.host {
             let headers = Router.getAuthorizationHeaders()
             
             for header in headers {
