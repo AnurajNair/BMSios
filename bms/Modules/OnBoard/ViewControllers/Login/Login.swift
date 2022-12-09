@@ -353,7 +353,7 @@ class LoginViewController: UIViewController{
         
         let jsonData = try! JSONSerialization.data(withJSONObject: Mapper().toJSON(obj),options: [])
         let jsonString = String(data: jsonData, encoding: .utf8)
-
+        self.encrypRequest = Utils().encryptData(json: jsonString! )
         print("encr",Utils().encryptData(json: jsonString! ))
         print("DEc",Utils().decryptData(encryptdata:Utils().encryptData(json: jsonString! ) ))
     }
@@ -367,13 +367,15 @@ class LoginViewController: UIViewController{
 
     @IBAction func onLoginButtonClick(_ sender: UIButton) {
         
-        Navigate.routeUserToScreen(screenType: .homeScreen, transitionType: .rootSlider)
+      //  Navigate.routeUserToScreen(screenType: .homeScreen, transitionType: .rootSlider)
 
         
 //        let story = UIStoryboard(name: "Dashboard", bundle:nil)
 //        let vc = story.instantiateViewController(withIdentifier: "HomeViewController") as! UIViewController
 //        UIApplication.shared.windows.first?.rootViewController = vc
 //        UIApplication.shared.windows.first?.makeKeyAndVisible()
+        
+        loginUser()
 
     }
     

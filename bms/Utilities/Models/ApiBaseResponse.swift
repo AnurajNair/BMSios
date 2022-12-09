@@ -13,9 +13,8 @@ class ApiBaseResponse : RequestBody{
     var message: String = ""
     
     enum ResponseKeys : String{
-        case
-        status = "status",
-        message = "message"
+        case status = "ResponseCode"
+       case  message = "ResponseDesc"
     }
     
     override func mapping(map: Map) {

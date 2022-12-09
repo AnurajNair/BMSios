@@ -72,18 +72,36 @@ class RestClient {
                 //To be enabled when you want to send the user token with API Calls
 //                SessionDetails.getUserToken(isTokenRequired: isTokenRequired, successCompletionHandler: {
                 
-                AF.request(router).response { response in
-                    switch response.result {
-                              case .success(let value as Any):
-                        successCompletionHandler(response)
-                              case .failure(let error):
-                                print(error)
-
-                              default:
-                                  fatalError("received non-dictionary JSON response")
-                              }
+//                AF.request(router).response { response in
+//                    switch response.result {
+//                              case .success(let value as Any):
+//                        successCompletionHandler(response)
+//                              case .failure(let error):
+//                                print(error)
+//
+//                              default:
+//                                  fatalError("received non-dictionary JSON response")
+//                              }
+//
+//                }
+                
+                AF.request(router).responseJSON {
+                    (response) in
                     
-                }
+                    print(response.result)
+                    switch response.result {
+                    case .success(let value):
+                        print(value)
+                        successCompletionHandler(value)
+                                                case .failure(let error):
+                                                  print(error)
+                  
+                                                default:
+                                                    fatalError("received non-dictionary JSON response")
+                                                }
+                    // print(String(data: response.data!, encoding: String.Encoding.utf8))
+                  
+            }
                 
             
 //           AF.request(router).validate(statusCode: 200..<300)
@@ -229,11 +247,11 @@ class RestClient {
     
     //MARK: Data Extraction Functions
     
-    class func getResultValue(_ res : DataResponse<Any,Error>?) -> Any {
-        
+    class func getResultValue(_ res : Any) -> Any {
+        print("got it her")
         var data:Any = ""
         
-        if let result = res?.value as? Dictionary<String,Any> {
+        if let result = res as? Dictionary<String,Any> {
             if let value = result["data"] {
                 data = value
             } else {
@@ -241,7 +259,7 @@ class RestClient {
             }
         }
         
-        else if let result = res?.value as? [Any] {
+        else if let result = res as? [Any] {
             data = result
         }
         

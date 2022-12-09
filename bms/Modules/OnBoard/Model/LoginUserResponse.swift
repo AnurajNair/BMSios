@@ -11,10 +11,10 @@ import RealmSwift
 import ObjectMapper_Realm
 
 class LoginUserResponse : ApiBaseResponse {
-    var response : LoginUserReponseKeys?
+    var response : String?
     
     enum ResponseKeys :String{
-        case response  = "Response"
+        case response  = "ResponseData"
     }
     
     override func mapping(map: ObjectMapper.Map) {

@@ -98,9 +98,9 @@ class OnBoardRouterManager{
                  errorCompletionHandler: @escaping (_ error: ApiError?) -> Void) {
         
         RestClient.getAPIResponse(Router.onBoardingRouterHandler(OnBoardRouterProtocol.postLogin(PostLogin(params: params))), successCompletionHandler: { (response) in
-            
-            if let apiResponse = Mapper<LoginUserResponse>().map(JSONObject: RestClient.getResultValue(response as? DataResponse<Any,Error>)) {
-                
+           
+            if let apiResponse = Mapper<LoginUserResponse>().map(JSONObject: RestClient.getResultValue(response)) {
+                print("Response",apiResponse)
 //                let currentUser = apiResponse.response?.userData
 ////                if apiResponse.response?.isProfileComplete ?? false  && currentUser != nil{
 //                if currentUser != nil{
