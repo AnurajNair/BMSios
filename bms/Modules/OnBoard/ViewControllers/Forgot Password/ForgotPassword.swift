@@ -82,7 +82,7 @@ func setupViewStyle(){
     
     func getParams()  -> [String : Any]{
         var params = [String : Any]()
-        params[PostLogin.RequestKeys.requestdata.rawValue] = self.encryptUserMail()
+        params[ForgotPasswordBody.RequestKeys.requestdata.rawValue] = self.encryptUserMail()
         return params
     }
     

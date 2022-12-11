@@ -84,7 +84,7 @@ class LoginViewController: UIViewController{
 
         poweredByLabel.font = UIFont.BMS.InterSemiBold.withSize(18)
        
-       
+        self.portraitLoginBtn.isEnabled = false
         
         firstHalfClientNameLabel.text = "Cyberian Consulting"
         seconHalfClientNameLabel.text = "Cyberian Consulting Pvt. Ltd."
@@ -357,7 +357,7 @@ class LoginViewController: UIViewController{
         
         let jsonData = try! JSONSerialization.data(withJSONObject: Mapper().toJSON(obj),options: [])
         let jsonString = String(data: jsonData, encoding: .utf8)
-        self.encrypRequest = Utils().encryptData(json: jsonString! )
+       self.encrypRequest = Utils().encryptData(json: jsonString! )
         print("encr",Utils().encryptData(json: jsonString! ))
         print("DEc",Utils().decryptData(encryptdata:Utils().encryptData(json: jsonString! ) ))
     }
@@ -411,9 +411,13 @@ class LoginViewController: UIViewController{
         router.verifyUserCredLogin(params: getParams()) { response in
             print(Utils().decryptData(encryptdata: response.response!))
             if(response.status == 0){
-                let userprofile = Mapper<Profile>().map(JSONString: Utils().decryptData(encryptdata: response.response!))
-                print("userData",userprofile)
-             self.afterLogin(userProfile: userprofile!)
+                if(response.response != ""){
+                    let userprofile = Mapper<Profile>().map(JSONString: Utils().decryptData(encryptdata: response.response!))
+                    print("userData",userprofile)
+                 self.afterLogin(userProfile: userprofile!)
+                }else{
+                    Utils.displayAlert(title: "Error", message: response.message ?? "Something went wrong.")
+                }
             }else{
                 Utils.displayAlert(title: "Error", message: response.message ?? "Something went wrong.")
             }
@@ -441,6 +445,12 @@ extension LoginViewController:ReusableFormElementViewDelegate{
             print(userName)
         }else{
             self.password = item as? String ?? ""
+        }
+        
+        if(self.userName != "" && self.password != ""){
+            self.portraitLoginBtn.isEnabled = true
+        }else{
+            self.portraitLoginBtn.isEnabled = false
         }
     }
     

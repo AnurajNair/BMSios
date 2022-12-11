@@ -15,7 +15,7 @@ enum CommonRouterProtocol: RouterProtocol {
     
     case syncContacts(SyncContactsRequestKeys)
     case upsertGroup
-    case getRecentFriends(GetRecentFriendsRequestKeys)
+  
     case getGroups(GetRecentFriendsRequestKeys)
     case upsertToken(SyncToken)
     
@@ -25,8 +25,7 @@ enum CommonRouterProtocol: RouterProtocol {
             return "syncContacts"
         case .upsertGroup:
             return "upsertGroup"
-        case .getRecentFriends(_):
-            return "getRecentFriends"
+      
         case .getGroups(_):
             return "getGroups"
         case .upsertToken(_):
@@ -40,7 +39,7 @@ enum CommonRouterProtocol: RouterProtocol {
         case .syncContacts(_) ,.upsertGroup,.upsertToken(_):
             return .post
             
-        case .getRecentFriends(_), .getGroups(_):
+        case  .getGroups(_):
             return .get
         }
     }
@@ -65,8 +64,6 @@ enum CommonRouterProtocol: RouterProtocol {
     
     var header: Any? {
         switch self{
-        case .getRecentFriends(let headers):
-            return headers
         case .getGroups(let headers):
             return headers
         default :
@@ -219,17 +216,7 @@ class CommonRouterManager {
 //        }
 //    }
     
-    func getRecentFriends(successCompletionHandler: @escaping (_ response: DummyResponse) -> Void,errorCompletionHandler: @escaping (_ response: ApiError?) -> Void) {
-        
-        let params : [String : Any] = [GetRecentFriendsRequestKeys.RequestKeys.userId.rawValue : SessionDetails.getInstance().currentUser?.userId ?? ""]
-        RestClient.getAPIResponse(Router.commonRouterHandler(CommonRouterProtocol.getRecentFriends(GetRecentFriendsRequestKeys(params: params))), successCompletionHandler: { response in
-            if let apiResponse = Mapper<DummyResponse>().map(JSONObject: RestClient.getResultValue((response as! DataResponse<Any, Error>))) {
-                successCompletionHandler(apiResponse)
-            }
-        }) { error in
-            errorCompletionHandler(error)
-        }
-    }
+   
     
 //    func addGroup(image : UIImage , compressionQuality: CGFloat = 0.4 , user : GetAddGroupRequestKeys, fileName : String ,successCompletionHandler: @escaping (_ response: ApiSuccess) -> Void,
 //                  errorCompletionHandler: @escaping (_ error: ApiError?) -> Void) {

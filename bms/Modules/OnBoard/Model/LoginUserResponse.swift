@@ -75,12 +75,12 @@ class Login :APIRequestBody{
 
 class Profile:RequestBody{
     @objc  dynamic var profile: User?
-   @objc dynamic var role : RoleObj?
+    @objc dynamic var role : RoleObj?
     
     
     enum ResponseKeys :String{
         case profile  = "profile"
-    case role = "role"
+        case role = "role"
         
     }
   
@@ -92,7 +92,7 @@ class Profile:RequestBody{
 
 
 class RoleObj:RequestBody{
-var roles = List<Role>()
+  var roles = List<Role>()
 //    @objc dynamic var role :[Role]?
     
     
@@ -113,7 +113,7 @@ var roles = List<Role>()
 class Role:RequestBody{
     @objc  dynamic var roleId:Int = 0
     @objc dynamic var roleName:String?
-   var modules = List<Module>()
+    var modules = List<Module>()
     
     
     enum ResponseKeys :String{
