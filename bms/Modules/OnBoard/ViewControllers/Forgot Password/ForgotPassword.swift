@@ -90,9 +90,13 @@ func setupViewStyle(){
     func forgotPasswordApi(){
         let router = OnBoardRouterManager()
         router.forgotPassword(params: getParams()) { response in
-            print(Utils().decryptData(encryptdata: response.response!))
+            print(response)
             if(response.status == 0){
-                self.afterForgotPasswordLink()
+                if(response.message == "Successfully resetted password .Please login again !!!"){
+                    self.afterForgotPasswordLink()
+                }else{
+                    Utils.displayAlert(title: "Error", message: response.message ?? "Something went wrong.")
+                }
              
             }else{
                 Utils.displayAlert(title: "Error", message: response.message ?? "Something went wrong.")
