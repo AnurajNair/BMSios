@@ -27,7 +27,7 @@ class SessionDetails : APIRequestBody {
     var hasViewedTutorial = false
     var isProfileComplete = false
     
-    var currentUser : User?
+    var currentUser : Profile?
     
     var currentPhoneNumber = ""
     
@@ -113,7 +113,7 @@ class SessionDetails : APIRequestBody {
         SessionDetails.shared.pullData()
     }
     
-    func saveCurrentUser(user : User) {
+    func saveCurrentUser(user : Profile) {
         Utils.setDefaultsForKey(key: UserDefaultKeys.currentUser.rawValue, withValue: user.toJSONString() ?? "")
         SessionDetails.shared.pullData()
     }
@@ -206,7 +206,7 @@ class SessionDetails : APIRequestBody {
         
         if let value = Utils.getDefaultsForKey(key: UserDefaultKeys.currentUser.rawValue) as? String {
             if !value.isEmpty {
-                self.currentUser = User(JSONString: value)
+                self.currentUser = Profile(JSONString: value)
             }
         }
         if let value = Utils.getDefaultsForKey(key: UserDefaultKeys.isContactsSyncAccess.rawValue) as? Bool {

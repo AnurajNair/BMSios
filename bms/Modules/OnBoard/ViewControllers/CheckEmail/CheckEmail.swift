@@ -40,7 +40,7 @@ func setupViewStyle(){
 }
     
     @IBAction func onVerifyBtnClick(_ sender: Any) {
-        Navigate.routeUserToScreen(screenType: .resetPasswordScreen, transitionType: .push)
+        Navigate.routeUserToScreen(screenType: .passwordResetSuccessScreen, transitionType: .push)
 
     }
     

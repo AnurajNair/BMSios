@@ -18,7 +18,7 @@ class PasswordResetSuccessfullViewController:UIViewController{
     
     
     func setupView(){
-        tologinBtn.addConstraint(tologinBtn.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width/1.6))
+        tologinBtn.addConstraint(tologinBtn.widthAnchor.constraint(equalToConstant: self.view.frame.size.width/2.2))
     }
     
     

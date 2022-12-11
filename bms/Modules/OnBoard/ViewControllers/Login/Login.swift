@@ -63,6 +63,9 @@ class LoginViewController: UIViewController{
     
     @IBOutlet weak var logoLabel: UILabel!
     
+    
+    @IBOutlet weak var poweredByLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -79,7 +82,7 @@ class LoginViewController: UIViewController{
         
         UIView.style([(view: loginCard, style:(backgroundColor:nil, cornerRadius: 18, borderStyle: nil,shadowStyle : nil))])
 
-  
+        poweredByLabel.font = UIFont.BMS.InterSemiBold.withSize(18)
        
        
         
@@ -170,6 +173,7 @@ class LoginViewController: UIViewController{
             print("got it")
             firstHalfClientNameLabel.font = UIFont.BMS.InterSemiBold.withSize(44)
             seconHalfClientNameLabel.font = UIFont.BMS.InterSemiBold.withSize(28)
+            
            
           
            if( UIDevice.current.orientation.isLandscape){
@@ -357,6 +361,23 @@ class LoginViewController: UIViewController{
         print("encr",Utils().encryptData(json: jsonString! ))
         print("DEc",Utils().decryptData(encryptdata:Utils().encryptData(json: jsonString! ) ))
     }
+    
+    func encrypUserCred() -> String{
+        let obj:Login = Login()
+        obj.username = self.userName
+        obj.password = self.password
+        if(UIDevice.current.model == "iPad"){
+            obj.device = "Tab"
+        }else{
+            obj.device = "Phone"
+        }
+       
+        
+        let jsonData = try! JSONSerialization.data(withJSONObject: Mapper().toJSON(obj),options: [])
+        let jsonString = String(data: jsonData, encoding: .utf8)
+        self.encrypRequest = Utils().encryptData(json: jsonString! )
+       return encrypRequest
+    }
 
     
     @IBAction func onForgotPasswordBtnClick(_ sender: Any) {
@@ -367,7 +388,7 @@ class LoginViewController: UIViewController{
 
     @IBAction func onLoginButtonClick(_ sender: UIButton) {
         
-      //  Navigate.routeUserToScreen(screenType: .homeScreen, transitionType: .rootSlider)
+     //  Navigate.routeUserToScreen(screenType: .homeScreen, transitionType: .rootSlider)
 
         
 //        let story = UIStoryboard(name: "Dashboard", bundle:nil)
@@ -381,18 +402,33 @@ class LoginViewController: UIViewController{
     
     func getParams() -> [String : Any]{
         var params = [String : Any]()
-        params[PostLogin.RequestKeys.requestdata.rawValue] = encrypRequest
+        params[PostLogin.RequestKeys.requestdata.rawValue] = self.encrypUserCred()
         return params
     }
     
     func loginUser(){
         let router = OnBoardRouterManager()
         router.verifyUserCredLogin(params: getParams()) { response in
-            print(response)
+            print(Utils().decryptData(encryptdata: response.response!))
+            if(response.status == 0){
+                let userprofile = Mapper<Profile>().map(JSONString: Utils().decryptData(encryptdata: response.response!))
+                print("userData",userprofile)
+             self.afterLogin(userProfile: userprofile!)
+            }else{
+                Utils.displayAlert(title: "Error", message: response.message ?? "Something went wrong.")
+            }
+          
+            
         } errorCompletionHandler: { error in
             print(error as Any)
         }
 
+    }
+    
+    func afterLogin(userProfile:Profile){
+        let session = SessionDetails.getInstance()
+        session.saveCurrentUser(user: userProfile)
+        Navigate.routeUserToScreen(screenType: .homeScreen, transitionType: .rootSlider)
     }
 }
 

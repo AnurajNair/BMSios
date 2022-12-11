@@ -8,13 +8,19 @@
 import Foundation
 import UIKit
 import SwiftyMenu
+import CryptoSwift
+import ObjectMapper
+import RealmSwift
+import ObjectMapper_Realm
 
 class ForgotPasswordViewController:UIViewController{
     
     @IBOutlet weak var dropDown: ReusableDropDown!
     
+    @IBOutlet weak var sendEmailBtn: UIButton!
     let arr = ["item","item322","item23","iteemmmm"]
     var options:[DropDownModel]? = nil
+    var encryptedRequest:String = ""
     @IBOutlet weak var ForgotPassworEmailView: ReusableFormElementView!
     
     var resetPasswordMail:String = ""
@@ -34,6 +40,7 @@ class ForgotPasswordViewController:UIViewController{
 
 
 func setupViewStyle(){
+    sendEmailBtn.addConstraint(sendEmailBtn.widthAnchor.constraint(equalToConstant: self.view.frame.size.width/2))
   
 //        loginCard.roundCorners(UIRectCorner, radius: 4)
     
@@ -57,8 +64,48 @@ func setupViewStyle(){
     }
    
     @IBAction func onSendOTPBtnClick(_ sender: Any) {
+       
+        self.forgotPasswordApi()
+    }
+    
+    func encryptUserMail()->String{
+        let obj:ForgotPasswordRequest = ForgotPasswordRequest()
+        obj.email = self.resetPasswordMail
+       
+       
+        
+        let jsonData = try! JSONSerialization.data(withJSONObject: Mapper().toJSON(obj),options: [])
+        let jsonString = String(data: jsonData, encoding: .utf8)
+        self.encryptedRequest = Utils().encryptData(json: jsonString! )
+       return encryptedRequest
+    }
+    
+    func getParams()  -> [String : Any]{
+        var params = [String : Any]()
+        params[PostLogin.RequestKeys.requestdata.rawValue] = self.encryptUserMail()
+        return params
+    }
+    
+    
+    func forgotPasswordApi(){
+        let router = OnBoardRouterManager()
+        router.forgotPassword(params: getParams()) { response in
+            print(Utils().decryptData(encryptdata: response.response!))
+            if(response.status == 0){
+                self.afterForgotPasswordLink()
+             
+            }else{
+                Utils.displayAlert(title: "Error", message: response.message ?? "Something went wrong.")
+            }
+          
+            
+        } errorCompletionHandler: { error in
+            print(error as Any)
+        }
+    }
+    
+    func afterForgotPasswordLink(){
         Navigate.routeUserToScreen(screenType: .otpScreen, transitionType: .push)
-
     }
 }
 

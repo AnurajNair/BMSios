@@ -17,18 +17,23 @@ import ObjectMapper_Realm
 enum OnBoardRouterProtocol : RouterProtocol{
     
     case postLogin(PostLogin)
+    case forgotPassword(ForgotPasswordBody)
    
     
     var path: String{
         switch self {
         case .postLogin(_):
             return "Authenticate/login"
+        case .forgotPassword(_):
+            return "User/ForgotPasswordMail"
         }
     }
     
     var method: HTTPMethod{
         switch self {
         case .postLogin(_):
+            return .post
+        case .forgotPassword(_):
             return .post
         }
     }
@@ -43,6 +48,8 @@ enum OnBoardRouterProtocol : RouterProtocol{
     var body: Any?{
         switch self {
         case .postLogin(let body):
+            return body
+        case .forgotPassword(let body):
             return body
         default:
             return nil
@@ -83,6 +90,30 @@ class PostLogin: APIRequestBody {
       
     }
 }
+    
+    class ForgotPasswordBody: APIRequestBody {
+        var requestdata: String?
+      
+
+        enum RequestKeys : String{
+            case requestdata        = "requestdata"
+        }
+
+        init(params: [String: Any]) {
+            super.init()
+            self.requestdata        = params[RequestKeys.requestdata.rawValue] as? String
+         
+        }
+
+        required init?(map: ObjectMapper.Map) {
+            fatalError("init(map:) has not been implemented")
+        }
+
+        override func mapping(map: ObjectMapper.Map) {
+            self.requestdata        <- map[RequestKeys.requestdata.rawValue]
+          
+        }
+    }
 
 
 
@@ -106,6 +137,22 @@ class OnBoardRouterManager{
 //                if currentUser != nil{
 //                    SessionDetails.getInstance().saveCurrentUser(user: currentUser!)
 //                }
+                successCompletionHandler(apiResponse)
+            }
+            
+        }) { (error) in
+            errorCompletionHandler(error)
+        }
+    }
+    
+    func forgotPassword(params: [String: Any],
+                 successCompletionHandler: @escaping (_ response: ForgotPasswordResponse) -> Void,
+                 errorCompletionHandler: @escaping (_ error: ApiError?) -> Void) {
+        
+        RestClient.getAPIResponse(Router.onBoardingRouterHandler(OnBoardRouterProtocol.forgotPassword(ForgotPasswordBody(params: params))), successCompletionHandler: { (response) in
+           
+            if let apiResponse = Mapper<ForgotPasswordResponse>().map(JSONObject: RestClient.getResultValue(response)) {
+                print("Response",apiResponse)
                 successCompletionHandler(apiResponse)
             }
             
