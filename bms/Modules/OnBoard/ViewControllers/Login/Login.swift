@@ -51,6 +51,7 @@ class LoginViewController: UIViewController{
     var password = ""
     var encrypRequest = ""
     
+    
     @IBOutlet weak var clientNameStack: UIStackView!
     
     @IBOutlet weak var clientNamestackTopAnchor: NSLayoutConstraint!
@@ -70,12 +71,9 @@ class LoginViewController: UIViewController{
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         setupViewStyle()
-        decryptData()
        
      
     }
-    
-    
     
     
     func setupViewStyle(){
@@ -84,7 +82,7 @@ class LoginViewController: UIViewController{
 
         poweredByLabel.font = UIFont.BMS.InterSemiBold.withSize(18)
        
-        self.portraitLoginBtn.isEnabled = false
+        self.portraitLoginBtn.isEnabled = true
         
         firstHalfClientNameLabel.text = "Cyberian Consulting"
         seconHalfClientNameLabel.text = "Cyberian Consulting Pvt. Ltd."
@@ -349,18 +347,7 @@ class LoginViewController: UIViewController{
     }
 
     
-    func decryptData(){
-        let obj:Login = Login()
-        obj.username = "anuraj.nair@cyberianconsulting.in"
-        obj.password = "pass,123"
-        obj.device = "Tab"
-        
-        let jsonData = try! JSONSerialization.data(withJSONObject: Mapper().toJSON(obj),options: [])
-        let jsonString = String(data: jsonData, encoding: .utf8)
-       self.encrypRequest = Utils().encryptData(json: jsonString! )
-        print("encr",Utils().encryptData(json: jsonString! ))
-        print("DEc",Utils().decryptData(encryptdata:Utils().encryptData(json: jsonString! ) ))
-    }
+
     
     func encrypUserCred() -> String{
         let obj:Login = Login()
@@ -388,7 +375,9 @@ class LoginViewController: UIViewController{
 
     @IBAction func onLoginButtonClick(_ sender: UIButton) {
         
-     //  Navigate.routeUserToScreen(screenType: .homeScreen, transitionType: .rootSlider)
+//        self.userNameError = ReusableFormElementView.validateRequiredFormField(isRequired: isRequired, fieldValue: userName, fieldIndexRow: 0, errorsArray: self.errors)
+        
+     // Navigate.routeUserToScreen(screenType: .homeScreen, transitionType: .rootSlider)
 
         
 //        let story = UIStoryboard(name: "Dashboard", bundle:nil)
@@ -396,7 +385,12 @@ class LoginViewController: UIViewController{
 //        UIApplication.shared.windows.first?.rootViewController = vc
 //        UIApplication.shared.windows.first?.makeKeyAndVisible()
         
-        loginUser()
+    
+        if(self.userName != "" && self.password != ""){
+            loginUser()
+        }else{
+            Utils.displayAlert(title: "Error", message: "Please fill the fields.")
+        }
 
     }
     
@@ -413,7 +407,6 @@ class LoginViewController: UIViewController{
             if(response.status == 0){
                 if(response.response != ""){
                     let userprofile = Mapper<Profile>().map(JSONString: Utils().decryptData(encryptdata: response.response!))
-                    print("userData",userprofile)
                  self.afterLogin(userProfile: userprofile!)
                 }else{
                     Utils.displayAlert(title: "Error", message: response.message ?? "Something went wrong.")
@@ -455,7 +448,8 @@ extension LoginViewController:ReusableFormElementViewDelegate{
     }
     
     func setError(index: Any, error: String) {
-        
+        print(error)
+       
     }
 }
 

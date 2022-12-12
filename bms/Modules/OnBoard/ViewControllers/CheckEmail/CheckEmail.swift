@@ -16,9 +16,13 @@ class CheckEmailViewController:UIViewController{
     
     @IBOutlet weak var resendStack: UIStackView!
     
+var resetPassEmailSendTo:String? = "naveed.lambe@cyberian.consulting.in"
+    
+    @IBOutlet weak var resetPassLinkEmail: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViewStyle()
+        print(resetPassEmailSendTo)
     }
     
   
@@ -27,6 +31,7 @@ class CheckEmailViewController:UIViewController{
 
 
 func setupViewStyle(){
+    resetPassLinkEmail.text = resetPassEmailSendTo
     checkMailBtn.backgroundColor = .clear
     checkMailBtn.layer.cornerRadius = 5
     checkMailBtn.layer.borderWidth = 1

@@ -60,7 +60,7 @@ class NavigationRoute: Navigate {
             
             case .loginScreen : return (NavigationRoute.getLoginScreen(), "" )
             case .forgotPasswordScreen : return (NavigationRoute.getForgotPasswordScreen(), "" )
-            case .otpScreen :  return (NavigationRoute.getVerifyOTPScreen(), "" )
+            case .otpScreen :  return (NavigationRoute.getVerifyOTPScreen(data), "" )
             case .resetPasswordScreen: return (NavigationRoute.getResetPasswordScreen(), "" )
             case .passwordResetSuccessScreen: return (NavigationRoute.getPasswordSuccessfullScreen(), "" )
             case .homeScreen :return (NavigationRoute.getHomeViewController(), "" )
@@ -234,7 +234,12 @@ class NavigationRoute: Navigate {
     }
     
     class func getVerifyOTPScreen(_ data:[String:Any] = [:]) -> CheckEmailViewController {
-        return onboardingStoryboard().instantiateViewController(withIdentifier: "VerifyOTPViewController") as! CheckEmailViewController
+        let viewController = onboardingStoryboard().instantiateViewController(withIdentifier: "VerifyOTPViewController") as! CheckEmailViewController
+        if let value = data["resentLinkTo"] {
+         
+            viewController.resetPassEmailSendTo = value as? String
+        }
+        return viewController
     }
     
     class func getResetPasswordScreen(_ data:[String:Any] = [:]) -> ResetPasswordViewController {

@@ -45,6 +45,7 @@ func setupViewStyle(){
 //        loginCard.roundCorners(UIRectCorner, radius: 4)
     
 //    ForgotPassworEmailView.addConstraint(ForgotPassworEmailView.heightAnchor.constraint(equalToConstant: self.view.frame.size.height/8))
+    ForgotPassworEmailView.delegate = self
     ForgotPassworEmailView.addConstraint(ForgotPassworEmailView.widthAnchor.constraint(equalToConstant: self.view.frame.size.width/2))
     
     _ = self.ForgotPassworEmailView.setupTextField(id: 0, fieldTitle: "Email", showFieldTitleByDefault: true, showFieldTitleWhileEditing: true, placeholderTitle: "Enter your email", isEditable: true,fieldSubtype: .email, height: 48.0, isRequired: true,textFieldStyling : TTTextFieldStyler.userDetailsStyle,formStyling : TTFormElementViewStyler.userDetailsStyle)
@@ -65,7 +66,12 @@ func setupViewStyle(){
    
     @IBAction func onSendOTPBtnClick(_ sender: Any) {
        
-        self.forgotPasswordApi()
+       // self.forgotPasswordApi()
+      //  self.afterForgotPasswordLink()
+        print(self.resetPasswordMail)
+        if(self.resetPasswordMail != ""){
+            Navigate.routeUserToScreen(screenType: .otpScreen, transitionType: .push,data: ["resentLinkTo" : self.resetPasswordMail as Any])
+        }
     }
     
     func encryptUserMail()->String{
@@ -96,7 +102,7 @@ func setupViewStyle(){
                     self.afterForgotPasswordLink()
                 }else{
                     Utils.displayAlert(title: "Error", message: response.message ?? "Something went wrong.")
-                }
+                } 
              
             }else{
                 Utils.displayAlert(title: "Error", message: response.message ?? "Something went wrong.")
@@ -109,12 +115,15 @@ func setupViewStyle(){
     }
     
     func afterForgotPasswordLink(){
-        Navigate.routeUserToScreen(screenType: .otpScreen, transitionType: .push)
+        print("called",resetPasswordMail)
+        Navigate.routeUserToScreen(screenType: .otpScreen, transitionType: .push,data: ["resentLinkTo" : self.resetPasswordMail as Any])
     }
 }
 
 extension ForgotPasswordViewController:ReusableFormElementViewDelegate{
     func setValues(index: Any, item: Any) {
+        print(item)
         self.resetPasswordMail = item as! String
+        print(self.resetPasswordMail)
     }
 }
