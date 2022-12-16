@@ -47,11 +47,11 @@
                                         </constraints>
                                     </view>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="jtv-jZ-C42">
-                                        <rect key="frame" x="0.0" y="117" width="280" height="745"/>
+                                        <rect key="frame" x="0.0" y="117" width="280" height="683"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     </tableView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xpv-Qk-tR3">
-                                        <rect key="frame" x="0.0" y="864" width="280" height="80"/>
+                                        <rect key="frame" x="0.0" y="802" width="280" height="80"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BYL-f0-qWm">
                                                 <rect key="frame" x="70" y="13" width="182" height="48"/>
@@ -80,6 +80,39 @@
                                             <constraint firstItem="ebG-Zw-Jia" firstAttribute="top" secondItem="Xpv-Qk-tR3" secondAttribute="top" constant="18" id="k8m-Kj-HoI"/>
                                         </constraints>
                                     </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3AH-vJ-qRF">
+                                        <rect key="frame" x="0.0" y="884" width="280" height="60"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Log Out" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KjP-Zh-8aH">
+                                                <rect key="frame" x="70" y="4" width="182" height="52"/>
+                                                <fontDescription key="fontDescription" name="Inter-SemiBold" family="Inter" pointSize="20"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rectangle.portrait.and.arrow.forward" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="hcm-Lf-q60">
+                                                <rect key="frame" x="20" y="15" width="42" height="30"/>
+                                                <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="42" id="Jo9-vS-QIt"/>
+                                                </constraints>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <accessibility key="accessibilityConfiguration">
+                                            <accessibilityTraits key="traits" button="YES"/>
+                                        </accessibility>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="KjP-Zh-8aH" secondAttribute="bottom" constant="4" id="02u-jx-rSi"/>
+                                            <constraint firstAttribute="trailing" secondItem="KjP-Zh-8aH" secondAttribute="trailing" constant="28" id="4Rf-8l-Ozb"/>
+                                            <constraint firstItem="hcm-Lf-q60" firstAttribute="leading" secondItem="3AH-vJ-qRF" secondAttribute="leading" constant="20" id="7aQ-fO-ILJ"/>
+                                            <constraint firstAttribute="width" constant="280" id="BYv-k1-rbz"/>
+                                            <constraint firstItem="hcm-Lf-q60" firstAttribute="top" secondItem="3AH-vJ-qRF" secondAttribute="top" constant="15" id="Kc9-uc-GVu"/>
+                                            <constraint firstAttribute="height" constant="60" id="Sbk-dG-VGv"/>
+                                            <constraint firstItem="KjP-Zh-8aH" firstAttribute="leading" secondItem="hcm-Lf-q60" secondAttribute="trailing" constant="8" id="Xpe-Bb-KmF"/>
+                                            <constraint firstAttribute="bottom" secondItem="hcm-Lf-q60" secondAttribute="bottom" constant="15" id="ZxY-9n-4ru"/>
+                                            <constraint firstItem="KjP-Zh-8aH" firstAttribute="top" secondItem="3AH-vJ-qRF" secondAttribute="top" constant="4" id="vRY-II-U3W"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="jtv-jZ-C42" secondAttribute="trailing" id="MeJ-qi-MDP"/>
@@ -98,6 +131,7 @@
                     </view>
                     <size key="freeformSize" width="280" height="1024"/>
                     <connections>
+                        <outlet property="onLogOutClick" destination="3AH-vJ-qRF" id="ncQ-mf-Mrt"/>
                         <outlet property="sideMenuTableView" destination="jtv-jZ-C42" id="nH1-qp-DLH"/>
                         <outlet property="viewStack" destination="AGj-zy-dYc" id="Tda-YH-eqC"/>
                     </connections>
@@ -229,6 +263,7 @@
     </scenes>
     <resources>
         <image name="person" catalog="system" width="128" height="121"/>
+        <image name="rectangle.portrait.and.arrow.forward" catalog="system" width="128" height="109"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

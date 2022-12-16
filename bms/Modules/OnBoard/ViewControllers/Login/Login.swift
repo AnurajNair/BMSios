@@ -15,14 +15,12 @@ import Device
 
 class LoginViewController: UIViewController{
    
-    @IBOutlet weak var userNameStack: UIStackView!
     
     @IBOutlet weak var backgrounImg: UIImageView!
   
     @IBOutlet weak var portraitView: UIView!
     
-    @IBOutlet weak var landscapeView: UIView!
-    @IBOutlet weak var userNameFieldView: ReusableFormElementView!
+
     
     @IBOutlet weak var portraitUserNameFielView: ReusableFormElementView!
     
@@ -30,23 +28,9 @@ class LoginViewController: UIViewController{
     
     @IBOutlet weak var portraitForgotPasswordBtn: UIButton!
     @IBOutlet weak var portraitLoginBtn: UIButton!
-    @IBOutlet weak var bmsLogo: UIImageView!
-    @IBOutlet weak var passwordFieldView: ReusableFormElementView!
+    
     @IBOutlet weak var loginCard: UIView!
-    @IBOutlet weak var logoImage: LogoView!
-    var index: Int?
-    
-    @IBOutlet weak var mainStack: UIStackView!
-    let window = UIWindow?.self
- 
-    @IBOutlet weak var fieldStackView: UIStackView!
-    
-    @IBOutlet weak var buttonsStack: UIStackView!
-    @IBOutlet weak var loginButton: UIButton!
-    
-    @IBOutlet weak var landScapeSideImage: UIImageView!
-    @IBOutlet weak var forgotPasswordButton: UIButton!
-    
+   
     var userName = ""
     var password = ""
     var encrypRequest = ""
@@ -56,7 +40,6 @@ class LoginViewController: UIViewController{
     
     @IBOutlet weak var clientNamestackTopAnchor: NSLayoutConstraint!
     
-    @IBOutlet weak var loginView: UIView!
     
     @IBOutlet weak var firstHalfClientNameLabel: UILabel!
     
@@ -67,9 +50,11 @@ class LoginViewController: UIViewController{
     
     @IBOutlet weak var poweredByLabel: UILabel!
     
+    var errors: [IndexPath: String] = [:]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
         setupViewStyle()
        
      
@@ -83,6 +68,7 @@ class LoginViewController: UIViewController{
         poweredByLabel.font = UIFont.BMS.InterSemiBold.withSize(18)
        
         self.portraitLoginBtn.isEnabled = true
+       
         
         firstHalfClientNameLabel.text = "Cyberian Consulting"
         seconHalfClientNameLabel.text = "Cyberian Consulting Pvt. Ltd."
@@ -97,23 +83,15 @@ class LoginViewController: UIViewController{
                 self.portraitView.isHidden = false
             }
             
-
-           
         } else {
             setCardInCenter()
             print("Portrait")
             UIView.transition(with: self.portraitView, duration: 1,options: .transitionCurlDown) {
                 self.portraitView.isHidden = false
             }
-
-
-         
-           
         }
         
       
-       
-        
         loginCard.translatesAutoresizingMaskIntoConstraints = false
         
       
@@ -123,41 +101,6 @@ class LoginViewController: UIViewController{
        
 
         portraitLoginBtn.addConstraint(portraitLoginBtn.widthAnchor.constraint(equalToConstant: self.portraitUserNameFielView.frame.width))
-//        portraitLoginBtn.setTitle("Login", for: .normal)
-//
-//        portraitLoginBtn.titleLabel?.font = UIFont.BMS.InterSemiBold.withSize(34.0)
-       
-        
-      
-//        fieldStackView.addConstraint(fieldStackView.widthAnchor.constraint(equalToConstant: self.loginCard.frame.size.width/1.5))
-//    
-//        self.bmsLogo.addConstraint(self.bmsLogo.widthAnchor.constraint(equalToConstant: self.loginCard.frame.size.width/3))
-//        self.bmsLogo.addConstraint(self.bmsLogo.heightAnchor.constraint(equalToConstant: 80))
-      
-       
-//
-//        userNameFieldView.addConstraint(userNameFieldView.heightAnchor.constraint(equalToConstant: 68))
-//        userNameFieldView.addConstraint(userNameFieldView.widthAnchor.constraint(equalToConstant: self.fieldStackView.frame.size.width))
-//        passwordFieldView.addConstraint(passwordFieldView.heightAnchor.constraint(equalToConstant: 68))
-//        passwordFieldView.addConstraint(passwordFieldView.widthAnchor.constraint(equalToConstant: self.fieldStackView.frame.size.width))
-//
-//        buttonsStack.addConstraint(buttonsStack.heightAnchor.constraint(equalToConstant: 68))
-//        buttonsStack.addConstraint(buttonsStack.widthAnchor.constraint(equalToConstant: self.fieldStackView.frame.size.width))
-//
-
-
-//        userNameTextField.addConstraint(userNameTextField.heightAnchor.constraint(equalToConstant: 48))
-//
-//        passwordTextField.addConstraint(passwordTextField.heightAnchor.constraint(equalToConstant: 48))
-
-     
-    
-               
-//        if (screenHeight > 9.7){
-//            userNameTextField.frame.size.height = 180.0
-//        }else{
-//            userNameTextField.frame.size.height = 58
-//        }
         setupViewAsPerScreen()
         setupTextFields()
         
@@ -213,16 +156,14 @@ class LoginViewController: UIViewController{
             firstHalfClientNameLabel.font = UIFont.BMS.InterSemiBold.withSize(34)
             seconHalfClientNameLabel.font = UIFont.BMS.InterSemiBold.withSize(22)
             
-            forgotPasswordButton.titleLabel?.font = UIFont.BMS.InterRegular.withSize(12)
             loginCard.addConstraint(loginCard.heightAnchor.constraint(equalToConstant:  self.view.frame.size.height/2))
             setCardInCenter()
             break
         default:
            
-            loginButton.titleLabel?.font = UIFont.BMS.InterSemiBold.withSize(20)
-            forgotPasswordButton.titleLabel?.font = UIFont.BMS.InterRegular.withSize(12)
+           
             loginCard.addConstraint(loginCard.heightAnchor.constraint(equalToConstant:  self.view.frame.size.height/2))
-            loginView.addConstraint(loginView.heightAnchor.constraint(equalToConstant: self.view.frame.size.height/2))
+          
             setCardInCenter()
             break
         }
@@ -235,13 +176,10 @@ class LoginViewController: UIViewController{
       
         self.portraitUserNameFielView.delegate = self
         self.portraitPasswordFieldView.delegate = self
-//        _ =  self.userNameFieldView.setupTextField(id:0,fieldTitle: "User Name",placeholderTitle: "User Name",fieldValue:self.userName,isEditable: true,fieldSubtype: .email,isRequired: true,textFieldStyling : TTTextFieldStyler.userDetailsStyle,formStyling : TTFormElementViewStyler.userDetailsStyle)
-//
-//        _ = self.passwordFieldView.setupTextField(id:1,fieldTitle: "Password",placeholderTitle: "Password",fieldValue: self.password,isEditable: true,fieldSubtype: .password,isRequired: true,textFieldStyling : TTTextFieldStyler.userDetailsStyle,formStyling : TTFormElementViewStyler.userDetailsStyle)
         
-        _ =  self.portraitUserNameFielView.setupTextField(id:0,fieldTitle: "User Name",placeholderTitle: "User Name",fieldValue: self.userName,isEditable: true,fieldSubtype: .email,isRequired: true,textFieldStyling : TTTextFieldStyler.userDetailsStyle,formStyling : TTFormElementViewStyler.userDetailsStyle)
+        _ =  self.portraitUserNameFielView.setupTextField(id:0,fieldTitle: "User Name",placeholderTitle: "User Name",fieldValue: self.userName,isEditable: true,fieldSubtype: .email,isRequired: true,isRequiredMessage: "Please enter user name.",textFieldStyling : TTTextFieldStyler.userDetailsStyle,formStyling : TTFormElementViewStyler.userDetailsStyle)
         
-        _ = self.portraitPasswordFieldView.setupTextField(id:1,fieldTitle: "Password",placeholderTitle: "Password",fieldValue: self.password,isEditable: true,fieldSubtype: .password,isRequired: true,textFieldStyling : TTTextFieldStyler.userDetailsStyle,formStyling : TTFormElementViewStyler.userDetailsStyle)
+        _ = self.portraitPasswordFieldView.setupTextField(id:1,fieldTitle: "Password",placeholderTitle: "Password",fieldValue: self.password,isEditable: true,fieldSubtype: .password,isRequired: true,isRequiredMessage: "Please enter password.",textFieldStyling : TTTextFieldStyler.userDetailsStyle,formStyling : TTFormElementViewStyler.userDetailsStyle)
         
       
     }
@@ -330,24 +268,13 @@ class LoginViewController: UIViewController{
     }
     
     func removeCardFromCenter(){
-//        loginCard.translatesAutoresizingMaskIntoConstraints = false
-//        loginCard.removeConstraint(loginCard.heightAnchor.constraint(equalToConstant:  self.view.frame.size.height/2.2))
-//        NSLayoutConstraint(item: self.loginCard as Any, attribute: NSLayoutConstraint.Attribute.centerX, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.view, attribute: NSLayoutConstraint.Attribute.centerX, multiplier: 1, constant: 0).isActive = true
-//
-//
-//        NSLayoutConstraint(item: self.loginCard as Any, attribute: NSLayoutConstraint.Attribute.centerY, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.view, attribute: NSLayoutConstraint.Attribute.centerY, multiplier: 1, constant: 0).isActive = true
-//        NSLayoutConstraint(item: self.loginCard as Any, attribute: .trailing, relatedBy: .equal, toItem: self.view, attribute: .trailingMargin, multiplier: 1.0, constant: -self.view.frame.size.width/2).isActive = true
-        NSLayoutConstraint(item: self.backgrounImg as Any, attribute: .leading, relatedBy: .equal, toItem: self.view, attribute: .trailing, multiplier: 1.0, constant: 0).isActive = false
-        
-  //  loginCard.addConstraint(loginCard.heightAnchor.constraint(equalToConstant:  self.view.frame.size.height/2))
-        //loginCard.heightAnchor.constraint(equalToConstant:  self.view.frame.size.width/1.5).isActive = false
 
-      
-        
+        NSLayoutConstraint(item: self.backgrounImg as Any, attribute: .leading, relatedBy: .equal, toItem: self.view, attribute: .trailing, multiplier: 1.0, constant: 0).isActive = false
+  
     }
 
     
-
+   
     
     func encrypUserCred() -> String{
         let obj:Login = Login()
@@ -372,24 +299,46 @@ class LoginViewController: UIViewController{
         Navigate.routeUserToScreen(screenType: .forgotPasswordScreen, transitionType: .push)
     }
     
+    func validate(){
+        self.errors = ReusableFormElementView.validateRequiredFormField(isRequired: true, fieldValue: self.userName, fieldIndexRow: 0, errorsArray: self.errors)
+        self.errors = ReusableFormElementView.validateRequiredFormField(isRequired: true, fieldValue: self.password, fieldIndexRow: 1, errorsArray: self.errors)
+    }
+    
 
     @IBAction func onLoginButtonClick(_ sender: UIButton) {
         
-//        self.userNameError = ReusableFormElementView.validateRequiredFormField(isRequired: isRequired, fieldValue: userName, fieldIndexRow: 0, errorsArray: self.errors)
-        
-     // Navigate.routeUserToScreen(screenType: .homeScreen, transitionType: .rootSlider)
 
-        
-//        let story = UIStoryboard(name: "Dashboard", bundle:nil)
-//        let vc = story.instantiateViewController(withIdentifier: "HomeViewController") as! UIViewController
-//        UIApplication.shared.windows.first?.rootViewController = vc
-//        UIApplication.shared.windows.first?.makeKeyAndVisible()
-        
-    
-        if(self.userName != "" && self.password != ""){
-            loginUser()
+        if(self.userName == "" && self.password == ""){
+            self.portraitUserNameFielView.formElementErrorStackView.isHidden = false
+            self.portraitPasswordFieldView.formElementErrorStackView.isHidden = false
+            self.portraitUserNameFielView.formElementError.text = "Please enter user name. "
+            self.portraitPasswordFieldView.formElementError.text = "Please enter password."
+            
+        }else if(self.userName != "" && self.password == ""){
+            self.portraitUserNameFielView.formElementErrorStackView.isHidden = true
+            self.portraitPasswordFieldView.formElementErrorStackView.isHidden = false
+            self.portraitUserNameFielView.formElementError.text = "Please enter user name. "
+            self.portraitPasswordFieldView.formElementError.text = "Please enter password."
+            
+          
+            
+          
+            
+        }else if(self.userName == "" && self.password != ""){
+            self.portraitUserNameFielView.formElementErrorStackView.isHidden = false
+            self.portraitPasswordFieldView.formElementErrorStackView.isHidden = true
+            self.portraitUserNameFielView.formElementError.text = "Please enter user name. "
+            self.portraitPasswordFieldView.formElementError.text = "Please enter password."
+            
+          
+            
+          
+            
         }else{
-            Utils.displayAlert(title: "Error", message: "Please fill the fields.")
+            loginUser()
+            //self.portraitUserNameFielView.showError(true)
+            
+           // Utils.displayAlert(title: "Error", message: "Please fill the data.")
         }
 
     }
@@ -427,6 +376,9 @@ class LoginViewController: UIViewController{
         session.saveCurrentUser(user: userProfile)
         Navigate.routeUserToScreen(screenType: .homeScreen, transitionType: .rootSlider)
     }
+    
+    
+    
 }
 
 
@@ -440,15 +392,33 @@ extension LoginViewController:ReusableFormElementViewDelegate{
             self.password = item as? String ?? ""
         }
         
-        if(self.userName != "" && self.password != ""){
-            self.portraitLoginBtn.isEnabled = true
-        }else{
-            self.portraitLoginBtn.isEnabled = false
-        }
+//        if(self.userName != "" && self.password != ""){
+//            self.portraitLoginBtn.isEnabled = true
+//        }else{
+//            self.portraitLoginBtn.isEnabled = false
+//        }
     }
     
     func setError(index: Any, error: String) {
         print(error)
+        if let value = index as? IndexPath {
+            
+            if(value.item == 0){
+                if error.isEmpty {
+                    self.errors.removeValue(forKey: value)
+                } else {
+                    self.errors[value] = error
+                }
+                print(self.errors)
+            }else{
+                if error.isEmpty {
+                    self.errors.removeValue(forKey: value)
+                } else {
+                    self.errors[value] = error
+                }
+            }
+            
+        }
        
     }
 }

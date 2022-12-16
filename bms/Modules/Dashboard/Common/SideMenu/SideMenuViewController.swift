@@ -28,6 +28,8 @@ class SideMenuViewController: UIViewController {
 
     var selectedCellIndexPath: IndexPath?
     
+    @IBOutlet weak var onLogOutClick: UIView!
+    
     var data: [SideMenuModel] = [SideMenuModel(icon: "dashboardIcon", title: "Dashboard",menu: [], route: .homeScreen, transition: .rootSlider,isSelected: true),SideMenuModel(icon: "inspectionIcon", title: "Inspection",menu: [SideMenuModel(icon: "dashboardIcon" , title: "Inspection", route: .inspectionListScreen, transition: .changeSlider),SideMenuModel(icon: "dashboardIcon" , title: "Custom Inspection", route: .inspectionListScreen, transition: .changeSlider),SideMenuModel(icon: "dashboardIcon" , title: "Review Inspection", route: .inspectionListScreen, transition: .changeSlider)], route: .inspectionListScreen, transition: .changeSlider,isSelected:false),SideMenuModel(icon: "inspectionIcon", title: "Inventory",menu: [], route: .inventoryListScreen, transition: .changeSlider,isSelected: false)]
     
     var delegate: SideMenuViewControllerDelegate?
@@ -39,6 +41,9 @@ class SideMenuViewController: UIViewController {
         setupTableView()
         
         self.viewStack.bounds.size.width = UIScreen.main.bounds.size.width/4
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(onLogoutClick))
+        self.onLogOutClick.addGestureRecognizer(tap)
      
     }
     
@@ -90,6 +95,13 @@ class SideMenuViewController: UIViewController {
         print("changed Data",data)
         self.sideMenuTableView.reloadData()
     }
+    
+    @objc func onLogoutClick(){
+      print("click")
+    }
+    
+    
+    
 }
 
 // MARK: - UITableViewDelegate
@@ -135,6 +147,8 @@ extension SideMenuViewController: UITableViewDelegate {
       
        
     }
+    
+    
     
     
     
