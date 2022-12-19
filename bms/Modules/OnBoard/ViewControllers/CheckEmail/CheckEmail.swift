@@ -6,6 +6,10 @@
 //
 
 import UIKit
+import CryptoSwift
+import ObjectMapper
+import RealmSwift
+import ObjectMapper_Realm
 
 
 class CheckEmailViewController:UIViewController{
@@ -15,6 +19,8 @@ class CheckEmailViewController:UIViewController{
     @IBOutlet weak var otpTextInputField: UITextField!
     
     @IBOutlet weak var resendStack: UIStackView!
+    
+    var encryptedRequest:String = ""
     
 var resetPassEmailSendTo:String? = "naveed.lambe@cyberian.consulting.in"
     
@@ -44,9 +50,54 @@ func setupViewStyle(){
 
 }
     
+    
+    func encryptUserMail()->String{
+        let obj:ForgotPasswordRequest = ForgotPasswordRequest()
+        obj.email = self.resetPassEmailSendTo
+       
+       
+        
+        let jsonData = try! JSONSerialization.data(withJSONObject: Mapper().toJSON(obj),options: [])
+        let jsonString = String(data: jsonData, encoding: .utf8)
+        self.encryptedRequest = Utils().encryptData(json: jsonString! )
+       return encryptedRequest
+    }
+    
+    func getParams()  -> [String : Any]{
+        var params = [String : Any]()
+        params[ForgotPasswordBody.RequestKeys.requestdata.rawValue] = self.encryptUserMail()
+        return params
+    }
+    
+    
+    func forgotPasswordApi(){
+        let router = OnBoardRouterManager()
+        router.forgotPassword(params: getParams()) { response in
+            print(response)
+            if(response.status == 0){
+                if(response.message == "Successfully resetted password .Please login again !!!"){
+                    Utils.displayAlert(title: "Success", message: response.message ?? "Reset password email has been successfully sent to you.")
+                }else{
+                    Utils.displayAlert(title: "Error", message: response.message ?? "Something went wrong.")
+                }
+             
+            }else{
+                Utils.displayAlert(title: "Error", message: response.message ?? "Something went wrong.")
+            }
+          
+            
+        } errorCompletionHandler: { error in
+            print(error as Any)
+        }
+    }
+    
     @IBAction func onVerifyBtnClick(_ sender: Any) {
-        Navigate.routeUserToScreen(screenType: .passwordResetSuccessScreen, transitionType: .push)
+       // Navigate.routeUserToScreen(screenType: .passwordResetSuccessScreen, transitionType: .push)
 
+    }
+    
+    @IBAction func onResendLinkBtnClick(_ sender: Any) {
+        forgotPasswordApi()
     }
     
     

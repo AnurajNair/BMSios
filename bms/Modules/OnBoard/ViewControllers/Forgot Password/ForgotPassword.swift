@@ -70,7 +70,11 @@ func setupViewStyle(){
       //  self.afterForgotPasswordLink()
         print(self.resetPasswordMail)
         if(self.resetPasswordMail != ""){
-            Navigate.routeUserToScreen(screenType: .otpScreen, transitionType: .push,data: ["resentLinkTo" : self.resetPasswordMail as Any])
+            self.forgotPasswordApi()
+        }else{
+            self.ForgotPassworEmailView.formElementErrorStackView.isHidden = false
+          
+            self.ForgotPassworEmailView.formElementError.text = "Please enter password."
         }
     }
     

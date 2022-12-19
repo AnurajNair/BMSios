@@ -358,6 +358,9 @@
                                                                 <rect key="frame" x="193" y="12.5" width="81" height="34.5"/>
                                                                 <state key="normal" title="Button"/>
                                                                 <buttonConfiguration key="configuration" style="plain" title="Resend"/>
+                                                                <connections>
+                                                                    <action selector="onResendLinkBtnClick:" destination="uw3-wD-Hyh" eventType="touchUpInside" id="aLV-fz-w8O"/>
+                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                     </stackView>
