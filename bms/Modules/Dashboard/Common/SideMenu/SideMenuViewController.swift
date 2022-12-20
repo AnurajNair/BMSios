@@ -22,6 +22,7 @@ class SideMenuViewController: UIViewController {
     @IBOutlet var footerLabel: UILabel!
     @IBOutlet weak var viewStack: UIStackView!
     
+    @IBOutlet weak var userNameLabel: UILabel!
     var defaultHighlightedCell: Int = 0
     
     var isSubMenuHidden:Bool = true
@@ -30,7 +31,7 @@ class SideMenuViewController: UIViewController {
     
     @IBOutlet weak var onLogOutClick: UIView!
     
-    var data: [SideMenuModel] = [SideMenuModel(icon: "dashboardIcon", title: "Dashboard",menu: [], route: .homeScreen, transition: .rootSlider,isSelected: true),SideMenuModel(icon: "inspectionIcon", title: "Inspection",menu: [SideMenuModel(icon: "dashboardIcon" , title: "Inspection", route: .inspectionListScreen, transition: .changeSlider),SideMenuModel(icon: "dashboardIcon" , title: "Custom Inspection", route: .inspectionListScreen, transition: .changeSlider),SideMenuModel(icon: "dashboardIcon" , title: "Review Inspection", route: .inspectionListScreen, transition: .changeSlider)], route: .inspectionListScreen, transition: .changeSlider,isSelected:false),SideMenuModel(icon: "inspectionIcon", title: "Inventory",menu: [], route: .inventoryListScreen, transition: .changeSlider,isSelected: false)]
+    var data: [SideMenuModel] = [SideMenuModel(icon: "dashboardIcon", title: "Dashboard",menu: [], route: .homeScreen, transition: .rootSlider,isSelected: true),SideMenuModel(icon: "inspectionIcon", title: "Inventory",menu: [], route: .inventoryListScreen, transition: .changeSlider,isSelected: false)]
     
     var delegate: SideMenuViewControllerDelegate?
 
@@ -44,6 +45,16 @@ class SideMenuViewController: UIViewController {
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(onLogoutClick))
         self.onLogOutClick.addGestureRecognizer(tap)
+        
+        self.userNameLabel.text = (SessionDetails.getInstance().currentUser?.profile?.firstName)! + " " + (SessionDetails.getInstance().currentUser?.profile?.lastName)!
+        
+        if((SessionDetails.getInstance().currentUser?.role?.roles.contains(where: { Role in
+            Role.roleName == "Inspector"
+        })) != nil){
+            data.append(SideMenuModel(icon: "inspectionIcon", title: "Inspection",menu: [SideMenuModel(icon: "dashboardIcon" , title: "Inspection", route: .inspectionListScreen, transition: .changeSlider),SideMenuModel(icon: "dashboardIcon" , title: "Custom Inspection", route: .inspectionListScreen, transition: .changeSlider),SideMenuModel(icon: "dashboardIcon" , title: "Review Inspection", route: .inspectionListScreen, transition: .changeSlider)], route: .inspectionListScreen, transition: .changeSlider,isSelected:false))
+        }else{
+            data.append(SideMenuModel(icon: "inspectionIcon", title: "Inspection",menu: [SideMenuModel(icon: "dashboardIcon" , title: "Review Inspection", route: .inspectionListScreen, transition: .changeSlider)], route: .inspectionListScreen, transition: .changeSlider,isSelected:false))
+        }
      
     }
     
@@ -98,6 +109,12 @@ class SideMenuViewController: UIViewController {
     
     @objc func onLogoutClick(){
       print("click")
+        _ = Utils.displayAlertController("Alert", message: "Are you sure to logout?",isSingleBtn: false,cancelButtonTitle: "No",submitButtonTitle: "Yes") {
+            SessionDetails.clearInstance()
+        } cancelclickHandler: {
+            
+        }
+
     }
     
     

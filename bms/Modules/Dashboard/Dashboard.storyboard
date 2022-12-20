@@ -133,6 +133,7 @@
                     <connections>
                         <outlet property="onLogOutClick" destination="3AH-vJ-qRF" id="ncQ-mf-Mrt"/>
                         <outlet property="sideMenuTableView" destination="jtv-jZ-C42" id="nH1-qp-DLH"/>
+                        <outlet property="userNameLabel" destination="BYL-f0-qWm" id="ite-J0-DAp"/>
                         <outlet property="viewStack" destination="AGj-zy-dYc" id="Tda-YH-eqC"/>
                     </connections>
                 </viewController>
