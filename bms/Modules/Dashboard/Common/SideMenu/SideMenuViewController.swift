@@ -111,6 +111,7 @@ class SideMenuViewController: UIViewController {
       print("click")
         _ = Utils.displayAlertController("Alert", message: "Are you sure to logout?",isSingleBtn: false,cancelButtonTitle: "No",submitButtonTitle: "Yes") {
             SessionDetails.clearInstance()
+            Navigate.routeUserToScreen(screenType: .loginScreen, transitionType: .root)
         } cancelclickHandler: {
             
         }
