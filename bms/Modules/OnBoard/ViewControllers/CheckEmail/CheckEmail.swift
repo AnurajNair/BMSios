@@ -71,23 +71,30 @@ func setupViewStyle(){
     
     
     func forgotPasswordApi(){
+        Utils.showLoadingInView(self.view)
         let router = OnBoardRouterManager()
         router.forgotPassword(params: getParams()) { response in
             print(response)
             if(response.status == 0){
-                if(response.message == "Successfully resetted password .Please login again !!!"){
-                    Utils.displayAlert(title: "Success", message: response.message ?? "Reset password email has been successfully sent to you.")
-                }else{
-                    Utils.displayAlert(title: "Error", message: response.message ?? "Something went wrong.")
-                }
+                Utils.hideLoadingInView(self.view)
+//                if(response.message == "Successfully resetted password .Please login again !!!"){
+//
+//                    Utils.displayAlert(title: "Success", message: response.message ?? "Reset password email has been successfully sent to you.")
+//                }else{
+//                    Utils.displayAlert(title: "Error", message: response.message ?? "Something went wrong.")
+//                }
              
+                Utils.displayAlert(title: "Success", message: response.message ?? "Reset password email has been successfully sent to you.")
+
             }else{
+                Utils.hideLoadingInView(self.view)
                 Utils.displayAlert(title: "Error", message: response.message ?? "Something went wrong.")
             }
           
             
         } errorCompletionHandler: { error in
             print(error as Any)
+            Utils.hideLoadingInView(self.view)
         }
     }
     

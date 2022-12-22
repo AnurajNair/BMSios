@@ -9,11 +9,11 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="Inter-Regular.ttf">
-            <string>Inter-Regular</string>
-        </array>
         <array key="Inter-SemiBold.ttf">
             <string>Inter-SemiBold</string>
+        </array>
+        <array key="Inter-VariableFont_slnt,wght.ttf">
+            <string>Inter-Regular</string>
         </array>
     </customFonts>
     <scenes>
@@ -618,96 +618,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dgu-CX-ipf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2981" y="69"/>
-        </scene>
-        <!--LoginS View Controller-->
-        <scene sceneID="qB8-45-ujg">
-            <objects>
-                <viewController storyboardIdentifier="LoginSViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="VU2-gx-LCl" customClass="LoginSViewController" customModule="bms" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="xQl-Gs-9jW">
-                        <rect key="frame" x="0.0" y="0.0" width="744" height="1133"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="LoginBackground" translatesAutoresizingMaskIntoConstraints="NO" id="eQG-9q-hV8">
-                                <rect key="frame" x="0.0" y="0.0" width="768" height="1133"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="744" id="BBH-KP-Z0z"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="611" id="dFi-0g-nLn"/>
-                                </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="BBH-KP-Z0z"/>
-                                    </mask>
-                                </variation>
-                                <variation key="widthClass=regular">
-                                    <nil key="highlightedImage"/>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=regular">
-                                    <mask key="constraints">
-                                        <include reference="BBH-KP-Z0z"/>
-                                    </mask>
-                                </variation>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Powered by @Shivam Concrete" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qqa-lA-jRA">
-                                <rect key="frame" x="485.5" y="1072.5" width="238.5" height="20.5"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Rw6-nV-TKg">
-                                <rect key="frame" x="255" y="61" width="259.5" height="64"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Cyberian Consulting" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="usR-rc-bxi">
-                                        <rect key="frame" x="0.0" y="0.0" width="259.5" height="33.5"/>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="28"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cyberian Consulting Pvt. Ltd." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OWP-0a-5w2">
-                                        <rect key="frame" x="0.0" y="43.5" width="259.5" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                            </stackView>
-                            <view contentMode="center" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pee-NT-h24">
-                                <rect key="frame" x="660" y="0.0" width="538" height="744"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="6ER-Oy-vqy">
-                                        <rect key="frame" x="57" y="36" width="520" height="687"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                    </tableView>
-                                </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <variation key="widthClass=regular">
-                                    <nil key="tintColor"/>
-                                </variation>
-                            </view>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="92D-18-CGQ"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="Pee-NT-h24"/>
-                            </mask>
-                        </variation>
-                        <variation key="heightClass=regular">
-                            <mask key="subviews">
-                                <include reference="Pee-NT-h24"/>
-                            </mask>
-                        </variation>
-                    </view>
-                    <connections>
-                        <outlet property="card" destination="Pee-NT-h24" id="VUz-sM-0xR"/>
-                        <outlet property="loginFieslTable" destination="6ER-Oy-vqy" id="1Tn-am-OVm"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="5XI-b7-IN1" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-886.71875" y="595.8984375"/>
         </scene>
     </scenes>
     <resources>

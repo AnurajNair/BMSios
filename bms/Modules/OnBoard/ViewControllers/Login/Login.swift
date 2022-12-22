@@ -350,10 +350,12 @@ class LoginViewController: UIViewController{
     }
     
     func loginUser(){
+        Utils.showLoadingInView(self.view)
         let router = OnBoardRouterManager()
         router.verifyUserCredLogin(params: getParams()) { response in
             print(Utils().decryptData(encryptdata: response.response!))
             if(response.status == 0){
+                Utils.hideLoadingInView(self.view)
                 if(response.response != ""){
                     let userprofile = Mapper<Profile>().map(JSONString: Utils().decryptData(encryptdata: response.response!))
                  self.afterLogin(userProfile: userprofile!)
@@ -361,12 +363,14 @@ class LoginViewController: UIViewController{
                     Utils.displayAlert(title: "Error", message: response.message ?? "Something went wrong.")
                 }
             }else{
+                Utils.hideLoadingInView(self.view)
                 Utils.displayAlert(title: "Error", message: response.message ?? "Something went wrong.")
             }
           
             
         } errorCompletionHandler: { error in
             print(error as Any)
+            Utils.hideLoadingInView(self.view)
         }
 
     }

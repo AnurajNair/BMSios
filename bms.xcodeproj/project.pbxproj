@@ -164,7 +164,6 @@
 		1DB5E1F7290EBF6800273381 /* ComponentsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB5E1F6290EBF6800273381 /* ComponentsList.swift */; };
 		1DB69ED62936178B0005FBAD /* LoginTableButtonsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB69ED42936178B0005FBAD /* LoginTableButtonsCell.swift */; };
 		1DB69ED72936178B0005FBAD /* LoginTableButtonsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DB69ED52936178B0005FBAD /* LoginTableButtonsCell.xib */; };
-		1DB69ED929361D200005FBAD /* LoginSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB69ED829361D200005FBAD /* LoginSViewController.swift */; };
 		1DB69EE0293659B70005FBAD /* LoginHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB69EDF293659B60005FBAD /* LoginHeaderView.swift */; };
 		1DB69EE2293659C80005FBAD /* LoginHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DB69EE1293659C80005FBAD /* LoginHeaderView.xib */; };
 		1DBE250828FD7A9A00CE9519 /* CommonRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DBE250728FD7A9A00CE9519 /* CommonRouter.swift */; };
@@ -360,7 +359,6 @@
 		1DB5E1F6290EBF6800273381 /* ComponentsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentsList.swift; sourceTree = "<group>"; };
 		1DB69ED42936178B0005FBAD /* LoginTableButtonsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTableButtonsCell.swift; sourceTree = "<group>"; };
 		1DB69ED52936178B0005FBAD /* LoginTableButtonsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginTableButtonsCell.xib; sourceTree = "<group>"; };
-		1DB69ED829361D200005FBAD /* LoginSViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSViewController.swift; sourceTree = "<group>"; };
 		1DB69EDF293659B60005FBAD /* LoginHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginHeaderView.swift; sourceTree = "<group>"; };
 		1DB69EE1293659C80005FBAD /* LoginHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginHeaderView.xib; sourceTree = "<group>"; };
 		1DBE250728FD7A9A00CE9519 /* CommonRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonRouter.swift; sourceTree = "<group>"; };
@@ -622,7 +620,6 @@
 				1D72C3D22903E9C70099AAB4 /* CheckEmail */,
 				1D72C3CF29033FA80099AAB4 /* Forgot Password */,
 				1D72C3CE29033F9D0099AAB4 /* Login */,
-				1DB69ED829361D200005FBAD /* LoginSViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -1917,7 +1914,6 @@
 				1D5B74B728FAE1880053B079 /* GrowingTextView.swift in Sources */,
 				1D5B74A628FADD420053B079 /* LeftMenuViewController.swift in Sources */,
 				1D3279DA28FD9DED00077777 /* UnknownErrorViewController.swift in Sources */,
-				1DB69ED929361D200005FBAD /* LoginSViewController.swift in Sources */,
 				1D34C6A228FF29E100A8BAF3 /* ReusableSelectableCollectionViewCell.swift in Sources */,
 				1D72C3D129033FBC0099AAB4 /* ForgotPassword.swift in Sources */,
 				1DB69EE0293659B70005FBAD /* LoginHeaderView.swift in Sources */,
