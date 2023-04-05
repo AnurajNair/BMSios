@@ -38,6 +38,7 @@ class ReusableFormElementView: UIView {
         case file
         case slider
         case checkbox
+        case dropdown
     }
     
     var index: Any = ""
@@ -728,7 +729,30 @@ class ReusableFormElementView: UIView {
         }
         
     }
-    
+
+    func setupDropdownField(id: Any = "",
+                            fieldTitle: String = "",
+                            options: [DropDownModel] = [],
+                            placeHolder: String = "",
+                            showFieldTitleByDefault: Bool = true,
+                            isEditable: Bool = true,
+                            items: [Any] = [],
+                            selectedIndex: Int = 0,
+                            height:CGFloat = 43.5) {
+        
+        self.index = id
+        self.isEditable = isEditable
+        self.formElement = .segmentedController
+        
+        setupTitleField(fieldTitle, isRequired: true, shouldShowByDefault: showFieldTitleByDefault)
+        
+        let field = ReusableDropDown(frame: CGRect(x: 0, y: 0, width: self.formElementFieldView.frame.size.width, height: height))
+        
+        field.setupDropDown(options: options, placeHolder: placeHolder)
+        
+        setupFieldCompleted(field: field)
+    }
+
     //MARK:- Helper Functions
     
     func setTitleSpacing(spacing:CGFloat? = nil) {
