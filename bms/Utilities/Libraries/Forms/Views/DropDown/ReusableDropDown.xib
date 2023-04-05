@@ -8,10 +8,16 @@
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Inter-Regular.ttf">
+            <string>Inter-Regular</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ReusableDropDown" customModule="bms" customModuleProvider="target">
             <connections>
-                <outlet property="dropDown" destination="Swo-D9-DGu" id="hAA-lr-COE"/>
+                <outlet property="dropDownView" destination="Swo-D9-DGu" id="ecM-As-yEW"/>
+                <outlet property="titleLabel" destination="Pea-ew-Q6o" id="5m3-NN-Jwr"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -19,28 +25,46 @@
             <rect key="frame" x="0.0" y="0.0" width="390" height="50"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" restorationIdentifier="SwiftyMenu" translatesAutoresizingMaskIntoConstraints="NO" id="Swo-D9-DGu" customClass="SwiftyMenu" customModule="SwiftyMenu">
-                    <rect key="frame" x="4" y="2" width="382" height="48"/>
+                <view contentMode="scaleToFill" restorationIdentifier="SwiftyMenu" translatesAutoresizingMaskIntoConstraints="NO" id="Swo-D9-DGu">
+                    <rect key="frame" x="0.0" y="0.0" width="390" height="50"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pea-ew-Q6o">
+                            <rect key="frame" x="8" y="15" width="43.666666666666664" height="20"/>
+                            <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Form-Icon-Expandable-Arrow-Medium" translatesAutoresizingMaskIntoConstraints="NO" id="Wvd-lA-ysn">
+                            <rect key="frame" x="357" y="12.666666666666664" width="25" height="25"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="Wvd-lA-ysn" secondAttribute="height" multiplier="1:1" id="7I0-7v-x8l"/>
+                            </constraints>
+                        </imageView>
+                    </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="48" id="bw6-6C-i0b"/>
+                        <constraint firstItem="Wvd-lA-ysn" firstAttribute="centerY" secondItem="Swo-D9-DGu" secondAttribute="centerY" id="DK6-Z7-V0U"/>
+                        <constraint firstAttribute="trailing" secondItem="Wvd-lA-ysn" secondAttribute="trailing" constant="8" id="Mxg-Rc-ly5"/>
+                        <constraint firstItem="Wvd-lA-ysn" firstAttribute="height" secondItem="Swo-D9-DGu" secondAttribute="height" multiplier="12:24" id="iXT-X0-na5"/>
+                        <constraint firstItem="Pea-ew-Q6o" firstAttribute="centerY" secondItem="Swo-D9-DGu" secondAttribute="centerY" id="pcz-Br-NHu"/>
+                        <constraint firstItem="Pea-ew-Q6o" firstAttribute="leading" secondItem="Swo-D9-DGu" secondAttribute="leading" constant="8" id="qOv-6s-Knf"/>
                     </constraints>
-                    <connections>
-                        <outlet property="heightConstraint" destination="bw6-6C-i0b" id="djF-6n-NRd"/>
-                    </connections>
                 </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <gestureRecognizers/>
             <constraints>
-                <constraint firstItem="Swo-D9-DGu" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="2" id="QTC-qA-6ZL"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Swo-D9-DGu" secondAttribute="trailing" constant="4" id="byW-oz-jCs"/>
-                <constraint firstItem="Swo-D9-DGu" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="4" id="riF-RA-fqv"/>
+                <constraint firstItem="Swo-D9-DGu" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="6Gy-79-9ce"/>
+                <constraint firstItem="Swo-D9-DGu" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="QTC-qA-6ZL"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Swo-D9-DGu" secondAttribute="trailing" id="byW-oz-jCs"/>
+                <constraint firstItem="Swo-D9-DGu" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="riF-RA-fqv"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="21.538461538461537" y="-261.6113744075829"/>
         </view>
     </objects>
     <resources>
+        <image name="Form-Icon-Expandable-Arrow-Medium" width="10" height="5"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

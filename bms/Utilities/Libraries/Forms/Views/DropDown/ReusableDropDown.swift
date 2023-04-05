@@ -6,22 +6,24 @@
 //
 
 import UIKit
-import SwiftyMenu
+import DropDown
 
 class ReusableDropDown: UIView {
+    @IBOutlet weak var dropDownView: UIView!
+    @IBOutlet weak var titleLabel: UILabel!
 
-    @IBOutlet weak var dropDown: SwiftyMenu!
-    
+    private lazy var dropDown = DropDown()
+
+    var placeHolder = ""
+
     override init(frame: CGRect) {
         super.init(frame: frame)
-//        fromNib()
        _ = initFromNib()
         setupView()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-//        fromNib()
         _ = initFromNib()
     }
     
@@ -30,31 +32,32 @@ class ReusableDropDown: UIView {
         self.setupView()
     }
     
-    func setupView(){
-      
-        self.dropDown.delegate = self
-       
-      
-        
-    }
-    func setupDropDown(options:[DropDownModel]?,placeHolder:String?,textColor:UIColor?){
-      
-        self.dropDown.items = options ?? []
-        var codeMenuAttributes = SwiftyMenuAttributes()
-        codeMenuAttributes.placeHolderStyle = .value(text: placeHolder ?? "", textColor: textColor ?? UIColor.BMS.black)
-        codeMenuAttributes.roundCorners = .all(radius: 5)
-        codeMenuAttributes.height  = .value(height: 48)
-        codeMenuAttributes.border = .value(color: UIColor.BMS.separatorGray, width: 0.8)
-        self.dropDown.configure(with: codeMenuAttributes)
+    func setupView() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(DropdownDidTap(_ :)))
+        self.addGestureRecognizer(tapGesture)
+        dropDownView.addBorders(edges: .bottom, color: UIColor.BMS.textBorderGrey)
+        dropDownView.backgroundColor = UIColor.BMS.dashboardCard
     }
 
+    func setupDropDown(options: [DropDownModel], placeHolder: String = "", selectedItemIndex: Int? = nil) {
+        dropDown.dataSource = options.compactMap { $0.name }
+        dropDown.anchorView = dropDownView
+        self.placeHolder = placeHolder
+        if let index = selectedItemIndex {
+            titleLabel.text = options[index].displayableValue
+        } else {
+            titleLabel.text = placeHolder
+        }
+        dropDown.selectionAction = { [weak self] _, displayValue in
+            self?.titleLabel.text = displayValue
+        }
+    }
+
+    @objc func DropdownDidTap(_ sender: UIButton) {
+        if dropDown.isFocused {
+            dropDown.hide()
+        }  else {
+            dropDown.show()
+        }
+    }
 }
-
-extension ReusableDropDown: SwiftyMenuDelegate{
-    func swiftyMenu(_ swiftyMenu: SwiftyMenu, didSelectItem item: SwiftyMenuDisplayable, atIndex index: Int) {
-        
-    }
-    
-    
-}
-
