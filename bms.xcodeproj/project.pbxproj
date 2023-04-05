@@ -663,6 +663,8 @@
 		1D34C67E28FF265000A8BAF3 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				1DC40CDD29335FA000A86025 /* FormCollectionViewCell.swift */,
+				1DC40CDE29335FA000A86025 /* FormCollectionViewCell.xib */,
 				1D4CB345290080F200B152CF /* FormElementTableViewCell.xib */,
 				1D4CB3472900811A00B152CF /* FormElementTableViewCell.swift */,
 				1D4CB3492900816600B152CF /* ReusableFormElementView.xib */,
@@ -1425,8 +1427,6 @@
 		1DC40CDC29335F8300A86025 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				1DC40CDD29335FA000A86025 /* FormCollectionViewCell.swift */,
-				1DC40CDE29335FA000A86025 /* FormCollectionViewCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
