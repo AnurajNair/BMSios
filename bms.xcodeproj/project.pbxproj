@@ -175,6 +175,11 @@
 		1DF2F6E8292F87F00012A31B /* LoginUserResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF2F6E7292F87F00012A31B /* LoginUserResponse.swift */; };
 		1DF2F6EA2930E5C20012A31B /* inspectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF2F6E92930E5C20012A31B /* inspectionModel.swift */; };
 		1DF2F6ED293203EB0012A31B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF2F6EC293203EB0012A31B /* HomeViewController.swift */; };
+		3D8190FC29D9736600C2BF3B /* CreateInventoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8190FB29D9736600C2BF3B /* CreateInventoryViewController.swift */; };
+		3D81910229DA1FF800C2BF3B /* StepperTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D81910129DA1FF800C2BF3B /* StepperTableHeaderView.swift */; };
+		3D81910329DA22FE00C2BF3B /* StepperTableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D8190FF29D9AB2500C2BF3B /* StepperTableHeaderView.xib */; };
+		3D81910629DAD39F00C2BF3B /* Step1Cell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D81910529DAD39F00C2BF3B /* Step1Cell.xib */; };
+		3D81910829DB555300C2BF3B /* Step1Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D81910729DB555300C2BF3B /* Step1Cell.swift */; };
 		90FAFACD1B15FA2F1AEE6BCF /* Pods_bms_bmsUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45283459BD333868B9BEA8C6 /* Pods_bms_bmsUITests.framework */; };
 		ABD457588229FDE252BCE307 /* Pods_bms.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9607B721E77C447FCF9331A /* Pods_bms.framework */; };
 		E844387CD879072573C8521B /* Pods_bmsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCF05091035BF75998347E59 /* Pods_bmsTests.framework */; };
@@ -376,6 +381,11 @@
 		2FE10A8BE0459E6901E7AB78 /* Pods-bms-bmsUITests.dev debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bms-bmsUITests.dev debug.xcconfig"; path = "Target Support Files/Pods-bms-bmsUITests/Pods-bms-bmsUITests.dev debug.xcconfig"; sourceTree = "<group>"; };
 		374F6EEE1FD33DB5A62EE351 /* Pods-bmsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bmsTests.debug.xcconfig"; path = "Target Support Files/Pods-bmsTests/Pods-bmsTests.debug.xcconfig"; sourceTree = "<group>"; };
 		3974CBD6A9C5B150AC563C15 /* Pods-bmsTests.appstore release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bmsTests.appstore release.xcconfig"; path = "Target Support Files/Pods-bmsTests/Pods-bmsTests.appstore release.xcconfig"; sourceTree = "<group>"; };
+		3D8190FB29D9736600C2BF3B /* CreateInventoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateInventoryViewController.swift; sourceTree = "<group>"; };
+		3D8190FF29D9AB2500C2BF3B /* StepperTableHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StepperTableHeaderView.xib; sourceTree = "<group>"; };
+		3D81910129DA1FF800C2BF3B /* StepperTableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepperTableHeaderView.swift; sourceTree = "<group>"; };
+		3D81910529DAD39F00C2BF3B /* Step1Cell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Step1Cell.xib; sourceTree = "<group>"; };
+		3D81910729DB555300C2BF3B /* Step1Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Step1Cell.swift; sourceTree = "<group>"; };
 		45283459BD333868B9BEA8C6 /* Pods_bms_bmsUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_bms_bmsUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BE8C64C5466C4F0D7EFB18A /* Pods-bms-bmsUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bms-bmsUITests.release.xcconfig"; path = "Target Support Files/Pods-bms-bmsUITests/Pods-bms-bmsUITests.release.xcconfig"; sourceTree = "<group>"; };
 		5D3A4D86523A2D7FCB6B51DA /* Pods-bms-bmsUITests.live release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bms-bmsUITests.live release.xcconfig"; path = "Target Support Files/Pods-bms-bmsUITests/Pods-bms-bmsUITests.live release.xcconfig"; sourceTree = "<group>"; };
@@ -516,6 +526,7 @@
 		1D2E17BA2911DFC500214593 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				3D8190FA29D9731700C2BF3B /* CreateInventory */,
 				1D2E17BB2911DFCD00214593 /* InventoryList */,
 			);
 			path = "View Controllers";
@@ -1453,6 +1464,43 @@
 			path = HomeViewController;
 			sourceTree = "<group>";
 		};
+		3D8190FA29D9731700C2BF3B /* CreateInventory */ = {
+			isa = PBXGroup;
+			children = (
+				3D8190FD29D9AAAD00C2BF3B /* Views */,
+				3D8190FB29D9736600C2BF3B /* CreateInventoryViewController.swift */,
+			);
+			path = CreateInventory;
+			sourceTree = "<group>";
+		};
+		3D8190FD29D9AAAD00C2BF3B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3D81910429DAD33A00C2BF3B /* Stepper Table Cells */,
+				3D8190FE29D9AAF500C2BF3B /* Stepper Table Header */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		3D8190FE29D9AAF500C2BF3B /* Stepper Table Header */ = {
+			isa = PBXGroup;
+			children = (
+				3D8190FF29D9AB2500C2BF3B /* StepperTableHeaderView.xib */,
+				3D81910129DA1FF800C2BF3B /* StepperTableHeaderView.swift */,
+			);
+			path = "Stepper Table Header";
+			sourceTree = "<group>";
+		};
+		3D81910429DAD33A00C2BF3B /* Stepper Table Cells */ = {
+			isa = PBXGroup;
+			children = (
+				3D81910529DAD39F00C2BF3B /* Step1Cell.xib */,
+				3D81910729DB555300C2BF3B /* Step1Cell.swift */,
+			);
+			name = "Stepper Table Cells";
+			path = "Stepper Table Header";
+			sourceTree = "<group>";
+		};
 		7655F1C4BFA698C5CB00559C /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -1611,6 +1659,7 @@
 				1DB69EE2293659C80005FBAD /* LoginHeaderView.xib in Resources */,
 				1D5B74B328FAE1480053B079 /* ReusableFormTextView.xib in Resources */,
 				1D5B749C28FACC800053B079 /* ReusableSelectableTableViewCell.xib in Resources */,
+				3D81910629DAD39F00C2BF3B /* Step1Cell.xib in Resources */,
 				1D34C6C228FF30A100A8BAF3 /* ReusableFilerCommonCollectionViewCell.xib in Resources */,
 				1D01C26F293A2D3700F9AC9B /* ReusableDropDown.xib in Resources */,
 				1D5B74A828FADDB30053B079 /* LeftMenuTableViewCell.xib in Resources */,
@@ -1657,6 +1706,7 @@
 				1D01C288293B7E3200F9AC9B /* Inter-Regular.ttf in Resources */,
 				1D5B742C28F9B2F30053B079 /* Assets.xcassets in Resources */,
 				1D5B742728F9B2F20053B079 /* OnBoard.storyboard in Resources */,
+				3D81910329DA22FE00C2BF3B /* StepperTableHeaderView.xib in Resources */,
 				1D34C69C28FF296100A8BAF3 /* ReusableFormOptionsHeaderView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1852,6 +1902,7 @@
 				1D5B749A28FACC5D0053B079 /* ReusableSelectableTableViewCell.swift in Sources */,
 				1DB69ED62936178B0005FBAD /* LoginTableButtonsCell.swift in Sources */,
 				1D34C6C828FF38A500A8BAF3 /* ImageUtils.swift in Sources */,
+				3D8190FC29D9736600C2BF3B /* CreateInventoryViewController.swift in Sources */,
 				1D5B74AC28FADEC40053B079 /* AnalyticsHelper.swift in Sources */,
 				1DD82A59290AF95300D520B9 /* FormViewController.swift in Sources */,
 				1D5E2E802906DD41005D83C0 /* SideMenuModel.swift in Sources */,
@@ -1873,6 +1924,7 @@
 				1D07C72429100DC90088DCAC /* ApproachFormViewController.swift in Sources */,
 				1D0CC942290DD20F00A557ED /* CustomPageViewController.swift in Sources */,
 				1D5B742A28F9B2F20053B079 /* bms.xcdatamodeld in Sources */,
+				3D81910829DB555300C2BF3B /* Step1Cell.swift in Sources */,
 				1D5B748528FAC9270053B079 /* Navigate.swift in Sources */,
 				1DBE250A28FD7DC400CE9519 /* DummyDataResponse.swift in Sources */,
 				1D5B746728F9FE010053B079 /* ApiError.swift in Sources */,
@@ -1926,6 +1978,7 @@
 				1D2E17C62913FE5300214593 /* ProgressCollectionViewCell.swift in Sources */,
 				1D34C6CF28FF406100A8BAF3 /* ReusableDatePickerView.swift in Sources */,
 				1D01C272293A951500F9AC9B /* DropDownModel.swift in Sources */,
+				3D81910229DA1FF800C2BF3B /* StepperTableHeaderView.swift in Sources */,
 				1D5B747628FA1F3F0053B079 /* NavigationRoute.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
