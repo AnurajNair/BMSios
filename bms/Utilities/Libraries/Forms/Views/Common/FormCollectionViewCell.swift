@@ -8,6 +8,7 @@
 import UIKit
 
 class FormCollectionViewCell: UICollectionViewCell {
+    class var identifier: String { return String(describing: self) }
 
     @IBOutlet weak var collectionFormElement: ReusableFormElementView!
    
