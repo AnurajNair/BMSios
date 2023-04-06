@@ -22,6 +22,7 @@ class CreateInventoryViewController: UIViewController {
     func setupTableView() {
         stepperTableView.registerNib(Step1Cell.identifier)
         stepperTableView.registerHeaderNibs([StepperTableHeaderView.identifier])
+        stepperTableView.layoutIfNeeded()
 
         self.stepperTableView.rowHeight = UITableView.automaticDimension
         self.stepperTableView.estimatedRowHeight = 100
@@ -63,7 +64,7 @@ extension CreateInventoryViewController:UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        300
+        UITableView.automaticDimension
     }
 }
 
@@ -85,9 +86,6 @@ extension CreateInventoryViewController:UITableViewDataSource {
         }
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "Step1Cell") as? Step1Cell else {
             fatalError("no cell found")
-        }
-        if let headerView = tableView.headerView(forSection: indexPath.section) as? StepperTableHeaderView {
-            cell.timelineViewLeadingConstant.constant = headerView.timelineView.frame.origin.x
         }
         return cell
     }

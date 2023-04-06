@@ -24,7 +24,7 @@
                             <constraint firstAttribute="width" constant="1" id="TRL-1C-Cme"/>
                         </constraints>
                     </view>
-                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="5P1-UA-z7k">
+                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="5P1-UA-z7k" customClass="DynamicHeightCollectionView" customModule="bms" customModuleProvider="target">
                         <rect key="frame" x="36" y="8" width="345" height="263"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="0.0" id="5jS-n8-U5s">
