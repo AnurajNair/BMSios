@@ -78,12 +78,6 @@ extension CreateInventoryViewController:UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard indexPath.section == 0 else {
-            // Temporarily adding UITableViewCell for remaining sections untill developed
-            let cell = UITableViewCell(frame: CGRect(x: 0, y: 0, width: 200, height: 200))
-           cell.backgroundColor = .yellow
-                   return cell
-        }
         guard let cell = tableView.dequeueReusableCell(withIdentifier: StepperTableViewCell.identifier) as? StepperTableViewCell else {
             fatalError("no cell found")
         }

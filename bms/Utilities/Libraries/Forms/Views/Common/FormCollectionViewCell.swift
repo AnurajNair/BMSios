@@ -18,5 +18,7 @@ class FormCollectionViewCell: UICollectionViewCell {
         // Initialization code
     }
     
-
+    override func prepareForReuse() {
+        collectionFormElement.prepareForReuse()
+    }
 }
