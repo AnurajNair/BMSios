@@ -1,42 +1,23 @@
 //
-//  Step1Cell.swift
+//  Step1Form.swift
 //  bms
 //
-//  Created by Sahil Ratnani on 04/04/23.
+//  Created by Sahil Ratnani on 07/04/23.
 //
 
 import Foundation
 import UIKit
-import SwiftyMenu
-import DropDown
 
-class Step1Cell: UITableViewCell {
-    class var identifier: String { return String(describing: self) }
+class Step1Form: NSObject, StepperTableViewCellFormProtocol {
     private let itemsPerRow: CGFloat = 3
 
-    @IBOutlet weak var timelineViewLeadingConstant: NSLayoutConstraint!
-    
-    @IBOutlet weak var formCollectionView: UICollectionView!
-
-    class var nib: UINib { return UINib(nibName: identifier, bundle: nil) }
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        setup()
-    }
-
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-    }
-
-    func setup() {
-        formCollectionView.delegate = self
-        formCollectionView.dataSource = self
-        formCollectionView.registerNib(FormCollectionViewCell.identifier)
+    func populate(collectionView: UICollectionView) {
+        collectionView.delegate = self
+        collectionView.dataSource = self
     }
 }
 
-extension Step1Cell: UICollectionViewDataSource {
+extension Step1Form: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         16
     }
@@ -123,10 +104,10 @@ extension Step1Cell: UICollectionViewDataSource {
     
 }
 
-extension Step1Cell: UICollectionViewDelegate {
+extension Step1Form: UICollectionViewDelegate {
 }
 
-extension Step1Cell: UICollectionViewDelegateFlowLayout {
+extension Step1Form: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         // 2
         let paddingSpace: CGFloat = 5*(itemsPerRow+1)
@@ -136,3 +117,4 @@ extension Step1Cell: UICollectionViewDelegateFlowLayout {
         return CGSize(width: widthPerItem.rounded(.down), height: 70)
     }
 }
+

@@ -20,7 +20,7 @@ class CreateInventoryViewController: UIViewController {
     }
 
     func setupTableView() {
-        stepperTableView.registerNib(Step1Cell.identifier)
+        stepperTableView.registerNib(StepperTableViewCell.identifier)
         stepperTableView.registerHeaderNibs([StepperTableHeaderView.identifier])
         stepperTableView.layoutIfNeeded()
 
@@ -84,9 +84,10 @@ extension CreateInventoryViewController:UITableViewDataSource {
            cell.backgroundColor = .yellow
                    return cell
         }
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "Step1Cell") as? Step1Cell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: StepperTableViewCell.identifier) as? StepperTableViewCell else {
             fatalError("no cell found")
         }
+        cell.configureForStep(indexPath.section+1)
         return cell
     }
 }
