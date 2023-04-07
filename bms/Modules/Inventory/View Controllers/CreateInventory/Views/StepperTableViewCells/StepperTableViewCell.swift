@@ -23,6 +23,7 @@ class StepperTableViewCell: UITableViewCell {
 
     private var form: StepperTableViewCellFormProtocol?
 
+    private lazy var formObjectDict = [Int: StepperTableViewCellFormProtocol]()
     class var nib: UINib { return UINib(nibName: identifier, bundle: nil) }
 
     override func awakeFromNib() {
@@ -44,11 +45,9 @@ class StepperTableViewCell: UITableViewCell {
     }
 
     func configureForStep(_ step: Int) {
-        guard let form = form else {
-            form = getFormForStep(step)
-            form?.populate(collectionView: formCollectionView)
+        guard let form = getFormForStep(step) else {
+            EmptyForm.shared.populate(collectionView: formCollectionView)
             formCollectionView.layoutIfNeeded()
-
             return
         }
         form.populate(collectionView: formCollectionView)
@@ -56,29 +55,35 @@ class StepperTableViewCell: UITableViewCell {
     }
 
     private func getFormForStep( _ step: Int) -> StepperTableViewCellFormProtocol? {
+        if let form = formObjectDict[step] {
+            return form
+        }
+    
+        let form: StepperTableViewCellFormProtocol
         switch step {
         case 1:
-            return Step1Form()
-
+            form = Step1Form()
+            
         case 2:
-            return Step2Form()
-
+            form = Step2Form()
+            
         case 3:
-            return Step3Form()
-
+            form = Step3Form()
+            
         case 4:
-            return Step4Form()
-
+            form = Step4Form()
+            
         case 5:
-            return Step5Form()
-
+            form = Step5Form()
+            
         case 7:
-            return Step7Form()
-
-
+            form = Step7Form()
+            
         default:
             return nil
         }
+        formObjectDict[step] = form
+        return form
     }
 }
 
