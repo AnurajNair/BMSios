@@ -186,6 +186,8 @@
 		3DD7292329E02E4500AFADE8 /* Step4Form.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD7292229E02E4500AFADE8 /* Step4Form.swift */; };
 		3DD7292529E02E7300AFADE8 /* Step5Form.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD7292429E02E7300AFADE8 /* Step5Form.swift */; };
 		3DD7292729E0306300AFADE8 /* Step7Form.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD7292629E0306300AFADE8 /* Step7Form.swift */; };
+		3DD7292929E0549C00AFADE8 /* ReusableCollectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DD7292829E0549C00AFADE8 /* ReusableCollectionHeaderView.xib */; };
+		3DD7292B29E0553100AFADE8 /* ReusableCollectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD7292A29E0553100AFADE8 /* ReusableCollectionHeaderView.swift */; };
 		90FAFACD1B15FA2F1AEE6BCF /* Pods_bms_bmsUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45283459BD333868B9BEA8C6 /* Pods_bms_bmsUITests.framework */; };
 		ABD457588229FDE252BCE307 /* Pods_bms.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9607B721E77C447FCF9331A /* Pods_bms.framework */; };
 		E844387CD879072573C8521B /* Pods_bmsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCF05091035BF75998347E59 /* Pods_bmsTests.framework */; };
@@ -398,6 +400,8 @@
 		3DD7292229E02E4500AFADE8 /* Step4Form.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Step4Form.swift; sourceTree = "<group>"; };
 		3DD7292429E02E7300AFADE8 /* Step5Form.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Step5Form.swift; sourceTree = "<group>"; };
 		3DD7292629E0306300AFADE8 /* Step7Form.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Step7Form.swift; sourceTree = "<group>"; };
+		3DD7292829E0549C00AFADE8 /* ReusableCollectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReusableCollectionHeaderView.xib; sourceTree = "<group>"; };
+		3DD7292A29E0553100AFADE8 /* ReusableCollectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableCollectionHeaderView.swift; sourceTree = "<group>"; };
 		45283459BD333868B9BEA8C6 /* Pods_bms_bmsUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_bms_bmsUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BE8C64C5466C4F0D7EFB18A /* Pods-bms-bmsUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bms-bmsUITests.release.xcconfig"; path = "Target Support Files/Pods-bms-bmsUITests/Pods-bms-bmsUITests.release.xcconfig"; sourceTree = "<group>"; };
 		5D3A4D86523A2D7FCB6B51DA /* Pods-bms-bmsUITests.live release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bms-bmsUITests.live release.xcconfig"; path = "Target Support Files/Pods-bms-bmsUITests/Pods-bms-bmsUITests.live release.xcconfig"; sourceTree = "<group>"; };
@@ -1503,6 +1507,8 @@
 			children = (
 				3D81910429DAD33A00C2BF3B /* Stepper Table Cells */,
 				3D8190FE29D9AAF500C2BF3B /* Stepper Table Header */,
+				3DD7292829E0549C00AFADE8 /* ReusableCollectionHeaderView.xib */,
+				3DD7292A29E0553100AFADE8 /* ReusableCollectionHeaderView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1725,6 +1731,7 @@
 				1D5B746F28FA10880053B079 /* Common.storyboard in Resources */,
 				1D59D22E2908986C00C3A00A /* TableHeaderView.xib in Resources */,
 				1D01C28A293B7E3200F9AC9B /* Inter-ExtraLight.ttf in Resources */,
+				3DD7292929E0549C00AFADE8 /* ReusableCollectionHeaderView.xib in Resources */,
 				1D5B748328FAC89E0053B079 /* NavigationPopMenuTableViewCell.xib in Resources */,
 				1D5B747C28FAC8010053B079 /* NavigationPopMenu.xib in Resources */,
 				1D01C286293B7E3200F9AC9B /* Inter-Thin.ttf in Resources */,
@@ -1987,6 +1994,7 @@
 				1D3F3463292502C1002A39C0 /* PopUpViewController.swift in Sources */,
 				1D9A247E2906EC2A000D2A39 /* DashboardViewController.swift in Sources */,
 				1DBE250828FD7A9A00CE9519 /* CommonRouter.swift in Sources */,
+				3DD7292B29E0553100AFADE8 /* ReusableCollectionHeaderView.swift in Sources */,
 				1D647358294280BB00EDD9ED /* SideMenuFooter.swift in Sources */,
 				1DF2F6EA2930E5C20012A31B /* inspectionModel.swift in Sources */,
 				1D5B74B528FAE15F0053B079 /* ReusableFormTextView.swift in Sources */,

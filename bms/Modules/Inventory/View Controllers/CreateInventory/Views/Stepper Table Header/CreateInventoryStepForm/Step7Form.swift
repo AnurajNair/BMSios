@@ -33,9 +33,20 @@ class Step7Form: NSObject, StepperTableViewCellFormProtocol {
 }
 
 extension Step7Form: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        guard kind == UICollectionView.elementKindSectionHeader,
+                let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: ReusableCollectionHeaderView.identifier, for: indexPath) as? ReusableCollectionHeaderView else {
+            return UICollectionReusableView(frame: .zero)
+        }
+        
+        headerView.titleLbl.text = fields[indexPath.section].key
+        return headerView
+    }
+
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         fields.count
     }
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         fields[section].value.count
     }

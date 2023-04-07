@@ -36,6 +36,7 @@ class StepperTableViewCell: UITableViewCell {
 
     func setup() {
         formCollectionView.registerNib(FormCollectionViewCell.identifier)
+        formCollectionView.registerReusableHeaderNibs([ReusableCollectionHeaderView.identifier])
     }
 
     override func prepareForReuse() {
