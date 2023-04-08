@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view userInteractionEnabled="NO" contentMode="scaleToFill" id="ugQ-VY-i62" customClass="InventoryListHeaderView" customModule="bms" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="1180" height="77"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y4O-Mu-dRj">
+                    <rect key="frame" x="0.0" y="0.0" width="1180" height="77"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="qBi-wQ-Av9">
+                            <rect key="frame" x="8" y="8" width="1049.6666666666667" height="61"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sr No" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IKr-do-ZXc">
+                                    <rect key="frame" x="0.0" y="0.0" width="127" height="61"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                    <color key="textColor" red="0.37254902719999999" green="0.37647059560000001" blue="0.37647059560000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Project Name" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Of-hC-Cxd">
+                                    <rect key="frame" x="132" y="0.0" width="126.66666666666669" height="61"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                    <color key="textColor" red="0.37254902719999999" green="0.37647059560000001" blue="0.37647059560000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Project ID" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R1H-jr-0JY">
+                                    <rect key="frame" x="263.66666666666669" y="0.0" width="127" height="61"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                    <color key="textColor" red="0.37254902719999999" green="0.37647059560000001" blue="0.37647059560000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BUID" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Lw-ET-5RW">
+                                    <rect key="frame" x="395.66666666666669" y="0.0" width="126.66666666666669" height="61"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                    <color key="textColor" red="0.37254902719999999" green="0.37647059560000001" blue="0.37647059560000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Save Status" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KHa-RU-Cdy">
+                                    <rect key="frame" x="527.33333333333337" y="0.0" width="127" height="61"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                    <color key="textColor" red="0.37254902719999999" green="0.37647059560000001" blue="0.37647059560000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jvz-eF-2yB">
+                                    <rect key="frame" x="659.33333333333337" y="0.0" width="126.66666666666663" height="61"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                    <color key="textColor" red="0.37254902719999999" green="0.37647059560000001" blue="0.37647059560000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bridge ID" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GIc-BN-XjT">
+                                    <rect key="frame" x="791" y="0.0" width="127" height="61"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                    <color key="textColor" red="0.37254902719999999" green="0.37647059560000001" blue="0.37647059560000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bridge Name" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eTb-GI-IYq">
+                                    <rect key="frame" x="923" y="0.0" width="126.66666666666674" height="61"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                    <color key="textColor" red="0.37254902719999999" green="0.37647059560000001" blue="0.37647059560000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                        </stackView>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="S0G-fM-vnh">
+                            <rect key="frame" x="1062.6666666666667" y="8" width="109.33333333333326" height="61"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edit" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rVY-aA-0uB">
+                                    <rect key="frame" x="0.0" y="0.0" width="33.666666666666664" height="61"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                    <color key="textColor" red="0.37254902719999999" green="0.37647059560000001" blue="0.37647059560000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remove" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Am-Om-34I">
+                                    <rect key="frame" x="38.666666666666522" y="0.0" width="70.666666666666686" height="61"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                    <color key="textColor" red="0.37254902719999999" green="0.37647059560000001" blue="0.37647059560000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                    <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <constraints>
+                        <constraint firstItem="S0G-fM-vnh" firstAttribute="leading" secondItem="qBi-wQ-Av9" secondAttribute="trailing" constant="5" id="3We-WU-NmO"/>
+                        <constraint firstAttribute="bottom" secondItem="S0G-fM-vnh" secondAttribute="bottom" constant="8" id="7Ty-gq-WyC"/>
+                        <constraint firstItem="qBi-wQ-Av9" firstAttribute="leading" secondItem="y4O-Mu-dRj" secondAttribute="leading" constant="8" id="SNP-4C-kez"/>
+                        <constraint firstAttribute="trailing" secondItem="S0G-fM-vnh" secondAttribute="trailing" constant="8" id="e9F-Pn-uqd"/>
+                        <constraint firstItem="qBi-wQ-Av9" firstAttribute="top" secondItem="y4O-Mu-dRj" secondAttribute="top" constant="8" id="fXP-r7-sDH"/>
+                        <constraint firstAttribute="bottom" secondItem="qBi-wQ-Av9" secondAttribute="bottom" constant="8" id="rIR-88-h2x"/>
+                        <constraint firstItem="S0G-fM-vnh" firstAttribute="top" secondItem="y4O-Mu-dRj" secondAttribute="top" constant="8" id="xTn-au-PoY"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="bUF-PC-VGf"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="y4O-Mu-dRj" firstAttribute="top" secondItem="ugQ-VY-i62" secondAttribute="top" id="WPS-wc-UQS"/>
+                <constraint firstAttribute="bottom" secondItem="y4O-Mu-dRj" secondAttribute="bottom" id="ZMS-OH-VMS"/>
+                <constraint firstAttribute="trailing" secondItem="y4O-Mu-dRj" secondAttribute="trailing" id="jMb-Lb-mvy"/>
+                <constraint firstItem="y4O-Mu-dRj" firstAttribute="leading" secondItem="ugQ-VY-i62" secondAttribute="leading" id="miW-zC-fnH"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="bridgeIdLabel" destination="GIc-BN-XjT" id="zM7-Vv-1ti"/>
+                <outlet property="bridgeNameLabel" destination="eTb-GI-IYq" id="ufy-gC-7DK"/>
+                <outlet property="buidLabel" destination="9Lw-ET-5RW" id="cvS-tT-mCI"/>
+                <outlet property="editLabel" destination="rVY-aA-0uB" id="kS4-PU-S3m"/>
+                <outlet property="projectIdLabel" destination="R1H-jr-0JY" id="Rhp-sD-eR9"/>
+                <outlet property="projectNameLabel" destination="9Of-hC-Cxd" id="tZC-C5-kHy"/>
+                <outlet property="removeLabel" destination="1Am-Om-34I" id="5NQ-A6-RWU"/>
+                <outlet property="saveStatusLabel" destination="KHa-RU-Cdy" id="m9U-VE-7kH"/>
+                <outlet property="srNoLabel" destination="IKr-do-ZXc" id="NfP-06-Q38"/>
+                <outlet property="statusLabel" destination="Jvz-eF-2yB" id="FUO-Fe-gng"/>
+            </connections>
+            <point key="canvasLocation" x="670.2290076335878" y="619.36619718309862"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

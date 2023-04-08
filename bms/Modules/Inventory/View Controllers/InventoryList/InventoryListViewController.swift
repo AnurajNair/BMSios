@@ -9,21 +9,51 @@ import UIKit
 
 class InventoryListViewController: UIViewController {
 
+    @IBOutlet weak var tableView: UITableView!
+
+    private lazy var inventoryList = InventoryListModel.dummyList
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        setupTableView()
     }
     
+    func setupTableView() {
+        self.tableView.bounces = false
+        self.tableView.separatorStyle = .none
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+        self.tableView.tableFooterView = UIView()
+        self.tableView.registerNib(InventoryListTableViewCell.identifier)
+        self.tableView.registerHeaderNibs([InventoryListHeaderView.identifier])
+        self.tableView.rowHeight = UITableView.automaticDimension
+        self.tableView.estimatedRowHeight = 100
+        self.tableView.backgroundColor = .clear
+        self.tableView.allowsSelection = false
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        var frame = CGRect.zero
+        frame.size.height = .leastNormalMagnitude
+        tableView.tableHeaderView = UIView(frame: frame)
     }
-    */
-
+}
+extension InventoryListViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        inventoryList.count
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: InventoryListTableViewCell.identifier) as? InventoryListTableViewCell else {
+            return UITableViewCell()
+        }
+        cell.configure(srNo: indexPath.row+1, data: inventoryList[indexPath.row])
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: InventoryListHeaderView.identifier)
+        return header
+    }
+}
+extension InventoryListViewController: UITableViewDelegate {
+    
 }

@@ -841,6 +841,7 @@ extension UIFont {
         MontserratMediumItalic = "Montserrat-MediumItalic",
         MontserratBlackItalic = "Montserrat-BlackItalic",
         InterSemiBold = "Inter-SemiBold",
+        InterMedium = "Inter-Medium",
         MontserratExtraLightItalic = "Montserrat-ExtraLightItalic",
         InterExtraBold = "Montserrat-ExtraBold",
         MontserratBlack = "Montserrat-Black",
