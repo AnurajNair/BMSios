@@ -18,14 +18,14 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aYy-nl-m0m">
-                        <rect key="frame" x="10" y="0.0" width="1" height="279"/>
+                        <rect key="frame" x="39" y="0.0" width="1" height="279"/>
                         <color key="backgroundColor" systemColor="systemGray4Color"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="1" id="TRL-1C-Cme"/>
                         </constraints>
                     </view>
                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="5P1-UA-z7k" customClass="DynamicHeightCollectionView" customModule="bms" customModuleProvider="target">
-                        <rect key="frame" x="36" y="8" width="345" height="263"/>
+                        <rect key="frame" x="65" y="8" width="316" height="263"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="0.0" id="5jS-n8-U5s">
                             <size key="itemSize" width="128" height="128"/>
@@ -39,7 +39,7 @@
                     <constraint firstItem="5P1-UA-z7k" firstAttribute="top" secondItem="Mf1-6a-oBq" secondAttribute="top" constant="8" id="Ocv-BO-6Sv"/>
                     <constraint firstAttribute="bottom" secondItem="5P1-UA-z7k" secondAttribute="bottom" constant="8" id="RSU-dQ-rby"/>
                     <constraint firstItem="5P1-UA-z7k" firstAttribute="trailing" secondItem="Mf1-6a-oBq" secondAttribute="trailingMargin" constant="8" id="TlQ-9t-hme"/>
-                    <constraint firstItem="aYy-nl-m0m" firstAttribute="leading" secondItem="Mf1-6a-oBq" secondAttribute="leading" constant="10" id="u2u-dH-vod"/>
+                    <constraint firstItem="aYy-nl-m0m" firstAttribute="leading" secondItem="Mf1-6a-oBq" secondAttribute="leading" constant="39" id="u2u-dH-vod"/>
                     <constraint firstAttribute="bottom" secondItem="aYy-nl-m0m" secondAttribute="bottom" id="vSc-lP-dIQ"/>
                     <constraint firstItem="aYy-nl-m0m" firstAttribute="top" secondItem="Mf1-6a-oBq" secondAttribute="top" id="w7u-e9-Kq2"/>
                     <constraint firstItem="5P1-UA-z7k" firstAttribute="leading" secondItem="aYy-nl-m0m" secondAttribute="trailing" constant="25" id="xYO-3F-uNK"/>
