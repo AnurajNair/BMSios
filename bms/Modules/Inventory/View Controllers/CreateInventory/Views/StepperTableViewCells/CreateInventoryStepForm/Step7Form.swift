@@ -57,7 +57,7 @@ extension Step7Form: UICollectionViewDataSource {
         }
         let fieldNo = indexPath.row
         let fieldTitle = fields[indexPath.section].value[fieldNo]
-        _ = cell.collectionFormElement.setupTextField(id: fieldNo , placeholderTitle: fieldTitle)
+        _ = cell.collectionFormElement.setupTextField(id: fieldNo, fieldTitle: fieldTitle, showFieldTitleByDefault: false, placeholderTitle: fieldTitle, textFieldStyling: TTTextFieldStyler.blueStyle)
 
         return cell
     }

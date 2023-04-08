@@ -34,65 +34,65 @@ extension Step1Form: UICollectionViewDataSource {
         case 1:
             let options = [DropDownModel(id: 1, name: "NIBM"),
                            DropDownModel(id: 2, name: "Wakad")]
-            cell.collectionFormElement.setupDropdownField(id: fieldNo, options: options , placeHolder: "Project Id")
+            cell.collectionFormElement.setupDropdownField(id: fieldNo, fieldTitle: "Project Id", options: options , placeHolder: "Project Id")
 
         case 2:
             let options = [DropDownModel(id: 1, name: "NIBM"),
                            DropDownModel(id: 2, name: "Wakad")]
-            cell.collectionFormElement.setupDropdownField(id: fieldNo, options: options , placeHolder: "BUID")
+            cell.collectionFormElement.setupDropdownField(id: fieldNo, fieldTitle: "BUID", options: options , placeHolder: "BUID")
 
         case 3:
             let options = [DropDownModel(id: 1, name: "NIBM"),
                            DropDownModel(id: 2, name: "Wakad")]
-            cell.collectionFormElement.setupDropdownField(id: fieldNo, options: options , placeHolder: "Type of Foundation")
+            cell.collectionFormElement.setupDropdownField(id: fieldNo, fieldTitle: "Type of Foundation", options: options , placeHolder: "Type of Foundation")
 
         case 4:
             let options = [DropDownModel(id: 1, name: "NIBM"),
                            DropDownModel(id: 2, name: "Wakad")]
-            cell.collectionFormElement.setupDropdownField(id: fieldNo, options: options , placeHolder: "Type of Sub-Structure")
+            cell.collectionFormElement.setupDropdownField(id: fieldNo, fieldTitle: "Type of Sub-Structure", options: options , placeHolder: "Type of Sub-Structure")
         
         case 5:
             let options = [DropDownModel(id: 1, name: "NIBM"),
                            DropDownModel(id: 2, name: "Wakad")]
-            cell.collectionFormElement.setupDropdownField(id: fieldNo, options: options , placeHolder: "Type of Super-Structure")
+            cell.collectionFormElement.setupDropdownField(id: fieldNo, fieldTitle: "Type of Super-Structure", options: options , placeHolder: "Type of Super-Structure")
 
         case 6:
             let options = [DropDownModel(id: 1, name: "NIBM"),
                            DropDownModel(id: 2, name: "Wakad")]
-            cell.collectionFormElement.setupDropdownField(id: fieldNo, options: options , placeHolder: "Type of Bearing")
+            cell.collectionFormElement.setupDropdownField(id: fieldNo, fieldTitle: "Type of Bearing", options: options , placeHolder: "Type of Bearing")
         
         case 7:
             let options = [DropDownModel(id: 1, name: "NIBM"),
                            DropDownModel(id: 2, name: "Wakad")]
-            cell.collectionFormElement.setupDropdownField(id: fieldNo, options: options , placeHolder: "Type of Expansion Joint")
+            cell.collectionFormElement.setupDropdownField(id: fieldNo, fieldTitle: "Type of Expansion Joint", options: options , placeHolder: "Type of Expansion Joint")
         
         case 8:
             let options = [DropDownModel(id: 1, name: "NIBM"),
                            DropDownModel(id: 2, name: "Wakad")]
-            cell.collectionFormElement.setupDropdownField(id: fieldNo, options: options , placeHolder: "Type of Wearing Coars")
+            cell.collectionFormElement.setupDropdownField(id: fieldNo, fieldTitle: "Type of Wearing Coars", options: options, placeHolder: "Type of Wearing Coars")
         
         case 9:
             let options = [DropDownModel(id: 1, name: "NIBM"),
                            DropDownModel(id: 2, name: "Wakad")]
-            cell.collectionFormElement.setupDropdownField(id: fieldNo, options: options , placeHolder: "Type of Railing")
+            cell.collectionFormElement.setupDropdownField(id: fieldNo, fieldTitle: "Type of Railing", options: options , placeHolder: "Type of Railing")
         
         case 10:
-            _ = cell.collectionFormElement.setupTextField(id: fieldNo, placeholderTitle: "Length of Span")
+            _ = cell.collectionFormElement.setupTextField(id: fieldNo, fieldTitle: "Length of Span", showFieldTitleByDefault: false, placeholderTitle: "Length of Span", textFieldStyling: TTTextFieldStyler.blueStyle)
 
         case 11:
-            _ = cell.collectionFormElement.setupTextField(id: fieldNo , placeholderTitle: "Width of Span")
-        
+            _ = cell.collectionFormElement.setupTextField(id: fieldNo, fieldTitle: "Width of Span", showFieldTitleByDefault: false, placeholderTitle: "Width of Span", textFieldStyling: TTTextFieldStyler.blueStyle)
+
         case 12:
-            _ = cell.collectionFormElement.setupTextField(id: fieldNo, placeholderTitle: "no of main grider in a Span")
+            _ = cell.collectionFormElement.setupTextField(id: fieldNo, fieldTitle: "no of main grider in a Span", showFieldTitleByDefault: false, placeholderTitle: "no of main grider in a Span", textFieldStyling: TTTextFieldStyler.blueStyle)
         
         case 13:
-            _ = cell.collectionFormElement.setupTextField(id: fieldNo, placeholderTitle: "no of bearing in span")
+            _ = cell.collectionFormElement.setupTextField(id: fieldNo, fieldTitle: "no of bearing in span", showFieldTitleByDefault: false, placeholderTitle: "no of bearing in span", textFieldStyling: TTTextFieldStyler.blueStyle)
 
         case 14:
-            _ = cell.collectionFormElement.setupTextField(id: fieldNo , placeholderTitle: "no of pile")
+            _ = cell.collectionFormElement.setupTextField(id: fieldNo, fieldTitle: "no of pile", showFieldTitleByDefault: false, placeholderTitle: "no of pile", textFieldStyling: TTTextFieldStyler.blueStyle)
         
         case 15:
-           _ = cell.collectionFormElement.setupTextField(id: fieldNo , placeholderTitle: "dia of pile")
+            _ = cell.collectionFormElement.setupTextField(id: fieldNo, fieldTitle: "dia of pile", showFieldTitleByDefault: false, placeholderTitle: "dia of pile", textFieldStyling: TTTextFieldStyler.blueStyle)
         
         
         default:

@@ -11,6 +11,8 @@ import UIKit
 class Step2Form: NSObject, StepperTableViewCellFormProtocol {
     private let itemsPerRow: CGFloat = 3
 
+    private let fields = ["Depth", "Width", "Area Bottom", "Area Side", "Volume"]
+
     func populate(collectionView: UICollectionView) {
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -27,25 +29,9 @@ extension Step2Form: UICollectionViewDataSource {
             fatalError("Could not load cell")
         }
         let fieldNo = indexPath.row
-        switch fieldNo {
-        case 0:
-            _ = cell.collectionFormElement.setupTextField(id: fieldNo , placeholderTitle: "Depth")
+        let fieldTitle = fields[indexPath.row]
 
-        case 1:
-            _ = cell.collectionFormElement.setupTextField(id: fieldNo , placeholderTitle: "Width")
-
-        case 2:
-            _ = cell.collectionFormElement.setupTextField(id: fieldNo , placeholderTitle: "Area Bottom")
-
-        case 3:
-            _ = cell.collectionFormElement.setupTextField(id: fieldNo , placeholderTitle: "Area Side")
-
-        case 4:
-            _ = cell.collectionFormElement.setupTextField(id: fieldNo , placeholderTitle: "Volume")
-        
-        default:
-            break
-        }
+        _ = cell.collectionFormElement.setupTextField(id: fieldNo, fieldTitle: fieldTitle, showFieldTitleByDefault: false, placeholderTitle: fieldTitle, textFieldStyling: TTTextFieldStyler.blueStyle)
         return cell
     }
 

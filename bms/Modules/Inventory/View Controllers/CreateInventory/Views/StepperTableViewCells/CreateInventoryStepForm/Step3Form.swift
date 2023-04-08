@@ -10,6 +10,7 @@ import UIKit
 
 class Step3Form: NSObject, StepperTableViewCellFormProtocol {
     private let itemsPerRow: CGFloat = 1
+    private let fields = [ "Width", "No. of Portion", "Thickness", "Area", "Volume"]
 
     func populate(collectionView: UICollectionView) {
         collectionView.delegate = self
@@ -27,25 +28,10 @@ extension Step3Form: UICollectionViewDataSource {
             fatalError("Could not load cell")
         }
         let fieldNo = indexPath.row
-        switch fieldNo {
-        case 0:
-            _ = cell.collectionFormElement.setupTextField(id: fieldNo , placeholderTitle: "Width")
+        let fieldTitle = fields[indexPath.row]
 
-        case 1:
-            _ = cell.collectionFormElement.setupTextField(id: fieldNo , placeholderTitle: "No. of Portion")
+        _ = cell.collectionFormElement.setupTextField(id: fieldNo, fieldTitle: fieldTitle, showFieldTitleByDefault: false, placeholderTitle: fieldTitle, textFieldStyling: TTTextFieldStyler.blueStyle)
 
-        case 2:
-            _ = cell.collectionFormElement.setupTextField(id: fieldNo , placeholderTitle: "Thickness")
-
-        case 3:
-            _ = cell.collectionFormElement.setupTextField(id: fieldNo , placeholderTitle: "Area")
-
-        case 4:
-            _ = cell.collectionFormElement.setupTextField(id: fieldNo , placeholderTitle: "Volume")
-        
-        default:
-            break
-        }
         return cell
     }
 
