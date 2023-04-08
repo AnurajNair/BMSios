@@ -19,6 +19,10 @@ class Step4Form: NSObject, StepperTableViewCellFormProtocol {
 }
 
 extension Step4Form: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        .zero
+    }
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         5
     }
