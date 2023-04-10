@@ -12,6 +12,7 @@ class ReusableDropDown: UIView {
     @IBOutlet weak var dropDownView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
 
+    @IBOutlet weak var iconImageView: UIImageView!
     private lazy var dropDown = DropDown()
 
     var placeHolder = ""
@@ -35,11 +36,10 @@ class ReusableDropDown: UIView {
     func setupView() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(DropdownDidTap(_ :)))
         self.addGestureRecognizer(tapGesture)
-        dropDownView.addBorders(edges: .bottom, color: UIColor.BMS.textBorderGrey)
-        dropDownView.backgroundColor = UIColor.BMS.dashboardCard
+        applyStyle(style: TTDropDownStyle.defaultStyle)
     }
 
-    func setupDropDown(options: [DropDownModel], placeHolder: String = "", selectedItemIndex: Int? = nil) {
+    func setupDropDown(options: [DropDownModel], placeHolder: String = "", selectedItemIndex: Int? = nil, style: FormElementStyler.formDropDownStyle = TTDropDownStyle.defaultStyle) {
         dropDown.dataSource = options.compactMap { $0.name }
         dropDown.anchorView = dropDownView
         self.placeHolder = placeHolder
@@ -50,6 +50,16 @@ class ReusableDropDown: UIView {
         }
         dropDown.selectionAction = { [weak self] _, displayValue in
             self?.titleLabel.text = displayValue
+        }
+    }
+
+    private func applyStyle(style: FormElementStyler.formDropDownStyle) {
+        titleLabel.font = style.titleFont
+        titleLabel.textColor = style.titleTextColor
+        dropDownView.backgroundColor = style.backgroundColor
+        dropDownView.addBorders(edges: .bottom, color: UIColor.BMS.textBorderGrey)
+        if let icon = style.icon {
+            iconImageView.image = UIImage(named: icon)
         }
     }
 

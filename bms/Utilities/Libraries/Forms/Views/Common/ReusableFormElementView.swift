@@ -132,7 +132,7 @@ class ReusableFormElementView: UIView {
         self.formElementErrorStackView.isHidden = true
         
         self.frameWidth = self.frame.size.width
-        //self.backgroundColor = style.formBackgroundColor
+        self.backgroundColor = style.formBackgroundColor
         
     }
     
@@ -738,7 +738,8 @@ class ReusableFormElementView: UIView {
                             isEditable: Bool = true,
                             items: [Any] = [],
                             selectedIndex: Int = 0,
-                            height:CGFloat = 43.5) {
+                            height:CGFloat = 43.5,
+                            style: FormElementStyler.formDropDownStyle = TTDropDownStyle.defaultStyle) {
         
         self.index = id
         self.isEditable = isEditable
@@ -748,7 +749,7 @@ class ReusableFormElementView: UIView {
         
         let field = ReusableDropDown(frame: CGRect(x: 0, y: 0, width: self.formElementFieldView.frame.size.width, height: height))
         
-        field.setupDropDown(options: options, placeHolder: placeHolder)
+        field.setupDropDown(options: options, placeHolder: placeHolder, style: style)
         
         setupFieldCompleted(field: field)
     }

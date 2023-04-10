@@ -17,6 +17,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ReusableDropDown" customModule="bms" customModuleProvider="target">
             <connections>
                 <outlet property="dropDownView" destination="Swo-D9-DGu" id="ecM-As-yEW"/>
+                <outlet property="iconImageView" destination="Wvd-lA-ysn" id="qpN-F5-eqA"/>
                 <outlet property="titleLabel" destination="Pea-ew-Q6o" id="5m3-NN-Jwr"/>
             </connections>
         </placeholder>
@@ -29,7 +30,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="390" height="50"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pea-ew-Q6o">
-                            <rect key="frame" x="8" y="15" width="43.666666666666664" height="20"/>
+                            <rect key="frame" x="0.0" y="15" width="43.666666666666664" height="20"/>
                             <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -47,7 +48,7 @@
                         <constraint firstAttribute="trailing" secondItem="Wvd-lA-ysn" secondAttribute="trailing" constant="8" id="Mxg-Rc-ly5"/>
                         <constraint firstItem="Wvd-lA-ysn" firstAttribute="height" secondItem="Swo-D9-DGu" secondAttribute="height" multiplier="12:24" id="iXT-X0-na5"/>
                         <constraint firstItem="Pea-ew-Q6o" firstAttribute="centerY" secondItem="Swo-D9-DGu" secondAttribute="centerY" id="pcz-Br-NHu"/>
-                        <constraint firstItem="Pea-ew-Q6o" firstAttribute="leading" secondItem="Swo-D9-DGu" secondAttribute="leading" constant="8" id="qOv-6s-Knf"/>
+                        <constraint firstItem="Pea-ew-Q6o" firstAttribute="leading" secondItem="Swo-D9-DGu" secondAttribute="leading" id="qOv-6s-Knf"/>
                     </constraints>
                 </view>
             </subviews>

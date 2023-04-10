@@ -14,6 +14,8 @@ class FormElementStyler {
     
     typealias formElementViewStyle = (titleFontDefault: UIFont , titleFontSelected: UIFont , titleTextColorDefault: UIColor , titleTextColorSelected: UIColor , errorFont: UIFont , errorTextColor: UIColor , errorImage: String? , errorImageRenderingMode: UIImage.RenderingMode , errorImageTintColor: UIColor ,formBackgroundColor : UIColor, nonEditableFieldAlpha:CGFloat)
     
+    typealias formDropDownStyle = (titleFont: UIFont, titleTextColor: UIColor, backgroundColor : UIColor, icon: String?, iconRenderingMode: UIImage.RenderingMode, iconTintColor: UIColor )
+
     struct FormHelper {
         static var imagePickerControllerBarTintColor: UIColor { return UIColor.BMS.blue.getColorWithTranslucency(true) }
         static var imagePickerControllerTintColor: UIColor { return UIColor.BMS.white }
@@ -226,7 +228,14 @@ class FormElementStyler {
         static var sliderColor: UIColor { return UIColor.BMS.green }
         static var sliderTrackBackgroundColor: UIColor { return UIColor.BMS.separatorGray }
     }
-    
+
+    struct DropDown {
+        static var titleFont: UIFont { return UIFont.BMS.InterRegular.withSize(14) }
+        static var titleColor: UIColor { return UIColor.BMS.fontBlack }
+        static var backgroundColor: UIColor { return UIColor.BMS.clear }
+        static var icon = "Form-Icon-Expandable-Arrow-Medium"
+        static var iconRenderingMode = UIImage.RenderingMode.alwaysTemplate
+    }
 }
 
 class TTFileStyler {
@@ -296,3 +305,11 @@ class TTTextFieldStyler{
     static let blueStyle : FormElementStyler.formTextFieldStyle = (font: FormElementStyler.TextField.font,fontSize:14.0 , textColor: UIColor.BMS.fontBlack , tintColor: UIColor.BMS.blue ,  backgroundColor:  FormElementStyler.TextField.backgroundColor, placeholderColor : UIColor.BMS.fontBlack.withAlphaComponent(0.5),fieldBorderThickness: FormElementStyler.TextField.fieldBorderThickness , fieldBorderEdges: FormElementStyler.TextField.fieldBorderEdges , fieldBorderNormalColor: UIColor.BMS.fontBlack.withAlphaComponent(0.8) , fieldBorderSelectedColor:UIColor.BMS.blue, leftLabelFont: FormElementStyler.TextField.leftLabelFont , leftLabelTextColor: UIColor.BMS.blue, accessoryBackgroundColor: UIColor.BMS.fontBlack.withAlphaComponent(0.5), accessoryBorderColor: UIColor.BMS.fontBlack.withAlphaComponent(0.5), saveButtonStyle: FormElementStyler.TextField.saveButtonStyle  , cancelButtonStyle: FormElementStyler.TextField.cancelButtonStyle,isCurvedBorder:false,fieldRadius:FormElementStyler.TextField.fieldRadiusCorner,leftPadding:FormElementStyler.TextField.leftPadding,rightPadding: FormElementStyler.TextField.rightPadding, topPadding: FormElementStyler.TextField.topPadding, bottomPadding: FormElementStyler.TextField.bottomPadding,textFieldHeight: nil)
 }
 
+class TTDropDownStyle {
+    static let defaultStyle = FormElementStyler.formDropDownStyle(titleFont: FormElementStyler.DropDown.titleFont,
+                                                                  titleTextColor: FormElementStyler.DropDown.titleColor,
+                                                                  backgroundColor : FormElementStyler.DropDown.backgroundColor,
+                                                                  icon: FormElementStyler.DropDown.icon,
+                                                                  iconRenderingMode: .alwaysTemplate,
+                                                                  iconTintColor: UIColor.BMS.black )
+}
