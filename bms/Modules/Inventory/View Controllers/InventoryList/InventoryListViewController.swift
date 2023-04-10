@@ -36,6 +36,10 @@ class InventoryListViewController: UIViewController {
         frame.size.height = .leastNormalMagnitude
         tableView.tableHeaderView = UIView(frame: frame)
     }
+
+    @IBAction func createInventoryDidTap(_ sender: UIButton) {
+        Navigate.routeUserToScreen(screenType: .createInventoryScreen, transitionType: .push)
+    }
 }
 extension InventoryListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

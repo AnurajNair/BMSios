@@ -210,7 +210,7 @@ class BaseNavigationViewController: UINavigationController, UINavigationControll
     
     func setRightButtons() {
         switch screenType {
-        case .homeScreen,.inspectionListScreen,.inventoryListScreen,.routineInspbridgeDetailScreen:
+        case .homeScreen,.inspectionListScreen,.inventoryListScreen,.routineInspbridgeDetailScreen, .createInventoryScreen:
             rightBarButtonItems = [.skip,.clientName]
 //        case .friendsScreen:
 //            rightBarButtonItems = [.add]
@@ -224,7 +224,7 @@ class BaseNavigationViewController: UINavigationController, UINavigationControll
     func getNavigationStyle() -> BaseNavigationViewController.NavigationStyle {
         switch screenType {
             
-        case .dashboardScreen,.inspectionListScreen,.routineInspbridgeDetailScreen:
+        case .dashboardScreen,.inspectionListScreen,.routineInspbridgeDetailScreen, .inventoryListScreen, .createInventoryScreen:
             return .baseThemeTint
         case .homeScreen:
             return .baseThemeTint
@@ -294,7 +294,7 @@ class BaseNavigationViewController: UINavigationController, UINavigationControll
             
         }
         
-        if(screenType == .homeScreen || screenType == .inspectionListScreen  || screenType == .routineInspbridgeDetailScreen  || screenType == .inventoryListScreen){
+        if(screenType == .homeScreen || screenType == .inspectionListScreen  || screenType == .routineInspbridgeDetailScreen  || screenType == .inventoryListScreen || screenType == .createInventoryScreen){
             self.navigationBar.frame.size.height = 58
             self.navigationBar.backgroundColor = UIColor.BMS.theme
         }else{

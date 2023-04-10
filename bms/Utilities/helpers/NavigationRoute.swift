@@ -50,9 +50,10 @@ class NavigationRoute: Navigate {
         
        
         // Routine Inspection
-        routineInspbridgeDetailScreen
+        routineInspbridgeDetailScreen,
         
-        
+        //Create Inventory
+        createInventoryScreen
         
         func viewControllerDetails(_ data:[String:Any] = [:], transitionType: Navigate.TransitionType = .undecided) -> (viewController: UIViewController, title: String) {
             switch self {
@@ -69,6 +70,7 @@ class NavigationRoute: Navigate {
             case .routineInspbridgeDetailScreen :return (NavigationRoute.getRoutineInspBridgeDetail(data), "")
 
             case.inventoryListScreen:return (NavigationRoute.getInventoryList(), "" )
+            case.createInventoryScreen:return (NavigationRoute.getCreateInvenotry(), "" )
             case.popUpView:return (NavigationRoute.getPopUpView(), "" )
 //            case .webView: return (NavigationRoute.getBaseWebViewController(data), "")
 //            case .appFeedbackWebView: return (NavigationRoute.getBaseWebViewController(data), "App Feedback".localized())
@@ -266,7 +268,13 @@ class NavigationRoute: Navigate {
         
     }
     
-    
+    class func getCreateInvenotry() -> CreateInventoryViewController {
+        let viewController =  inventoryStoryboard().instantiateViewController(withIdentifier: "CreateInventoryViewController") as! CreateInventoryViewController
+      
+        
+        return viewController
+    }
+
     class func getInspectionList(_ data:[String:Any] = [:]) -> InspectionListViewController {
         
         let viewController =  inspectionsStoryboard().instantiateViewController(withIdentifier: "InspectionListViewController") as! InspectionListViewController
