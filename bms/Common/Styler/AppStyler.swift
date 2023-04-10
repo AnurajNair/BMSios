@@ -330,7 +330,7 @@ struct ButtonStyles {
             var button = ButtonStyles.baseButtonStyle
             button.titleColor = UIColor.BMS.black
             button.backgroundColor = UIColor.BMS.white
-            button.font = UIFont.BMS.InterBold.withSize(10)
+            button.font = UIFont.BMS.InterBold.withSize(20)
             button.shadowStyle = nil
             return button
         }

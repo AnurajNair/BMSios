@@ -81,7 +81,22 @@ extension CreateInventoryViewController:UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: StepperTableViewCell.identifier) as? StepperTableViewCell else {
             fatalError("no cell found")
         }
-        cell.configureForStep(indexPath.section+1)
+        let isFirst = indexPath.section == 0
+        let isLast = tableView.numberOfSections == indexPath.section+1
+
+        cell.configureForStep(indexPath.section+1, isFirst: isFirst, isLast: isLast)
+
+        cell.onTapBack = { [weak self] in
+            if !isFirst {
+                self?.expandSection(indexPath.section-1)
+            }
+        }
+
+        cell.onTapSaveAndNext = { [weak self] in
+            if  !isLast  {
+                self?.expandSection(indexPath.section+1)
+            }
+        }
         return cell
     }
 }

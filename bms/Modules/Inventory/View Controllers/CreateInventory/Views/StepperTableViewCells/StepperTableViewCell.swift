@@ -22,12 +22,17 @@ class StepperTableViewCell: UITableViewCell {
 
     @IBOutlet weak var timelineViewLeadingConstant: NSLayoutConstraint!
     
+    @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var saveAndNextButton: UIButton!
     @IBOutlet weak var formCollectionView: UICollectionView!
 
     private var form: StepperTableViewCellFormProtocol?
 
     private lazy var formObjectDict = [Int: StepperTableViewCellFormProtocol]()
     class var nib: UINib { return UINib(nibName: identifier, bundle: nil) }
+
+    var onTapBack: (()->())?
+    var onTapSaveAndNext: (()->())?
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -39,6 +44,12 @@ class StepperTableViewCell: UITableViewCell {
     }
 
     func setup() {
+        UIButton.style([(view: saveAndNextButton,
+                         title: "Save & Next",
+                         style: ButtonStyles.inverseBlackButton),
+                        (view: backButton,
+                         title: "Back",
+                         style: ButtonStyles.inverseBlackButton)])
         formCollectionView.registerNib(FormCollectionViewCell.identifier)
         formCollectionView.registerReusableHeaderNibs([ReusableCollectionHeaderView.identifier])
     }
@@ -47,7 +58,7 @@ class StepperTableViewCell: UITableViewCell {
         form = nil
     }
 
-    func configureForStep(_ step: Int) {
+    func configureForStep(_ step: Int, isFirst: Bool, isLast: Bool) {
         guard let form = getFormForStep(step) else {
             EmptyForm.shared.populate(collectionView: formCollectionView)
             formCollectionView.layoutIfNeeded()
@@ -55,6 +66,8 @@ class StepperTableViewCell: UITableViewCell {
         }
         form.populate(collectionView: formCollectionView)
         formCollectionView.layoutIfNeeded()
+        saveAndNextButton.setTitle(isLast ? "Save" : "Save & Next", for: .normal)
+        backButton.isHidden = isFirst
     }
 
     private func getFormForStep( _ step: Int) -> StepperTableViewCellFormProtocol? {
@@ -121,6 +134,12 @@ class StepperTableViewCell: UITableViewCell {
         }
         formObjectDict[step] = form
         return form
+    }
+    @IBAction func backDidTap(_ sender: UIButton) {
+        onTapBack?()
+    }
+    @IBAction func saveAndNextDidTap(_ sender: UIButton) {
+        onTapSaveAndNext?()
     }
 }
 
