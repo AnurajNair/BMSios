@@ -181,6 +181,17 @@
 		3D45AA1129E1674500A83397 /* InventoryListHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D45AA1029E1674500A83397 /* InventoryListHeaderView.swift */; };
 		3D45AA1329E1676600A83397 /* InventoryListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D45AA1229E1676600A83397 /* InventoryListTableViewCell.xib */; };
 		3D45AA1529E1686900A83397 /* InventoryListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D45AA1429E1686900A83397 /* InventoryListTableViewCell.swift */; };
+		3D45AA1729E302E900A83397 /* Step6Form.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D45AA1629E302E800A83397 /* Step6Form.swift */; };
+		3D45AA1929E3060500A83397 /* Step8Form.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D45AA1829E3060500A83397 /* Step8Form.swift */; };
+		3D45AA1B29E306FB00A83397 /* Step9Form.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D45AA1A29E306FB00A83397 /* Step9Form.swift */; };
+		3D45AA1D29E3092700A83397 /* Step10Form.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D45AA1C29E3092700A83397 /* Step10Form.swift */; };
+		3D45AA1F29E309C400A83397 /* Step11Form.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D45AA1E29E309C400A83397 /* Step11Form.swift */; };
+		3D45AA2129E30A2400A83397 /* Step12Form.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D45AA2029E30A2400A83397 /* Step12Form.swift */; };
+		3D45AA2329E30A8400A83397 /* Step13Form.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D45AA2229E30A8300A83397 /* Step13Form.swift */; };
+		3D45AA2529E30AE400A83397 /* Step14Form.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D45AA2429E30AE400A83397 /* Step14Form.swift */; };
+		3D45AA2729E30B7300A83397 /* Step15Form.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D45AA2629E30B7300A83397 /* Step15Form.swift */; };
+		3D45AA2929E30BE400A83397 /* Step16Form.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D45AA2829E30BE300A83397 /* Step16Form.swift */; };
+		3D45AA2B29E30DC900A83397 /* Step17Form.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D45AA2A29E30DC900A83397 /* Step17Form.swift */; };
 		3D8190FC29D9736600C2BF3B /* CreateInventoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8190FB29D9736600C2BF3B /* CreateInventoryViewController.swift */; };
 		3D81910229DA1FF800C2BF3B /* StepperTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D81910129DA1FF800C2BF3B /* StepperTableHeaderView.swift */; };
 		3D81910329DA22FE00C2BF3B /* StepperTableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D8190FF29D9AB2500C2BF3B /* StepperTableHeaderView.xib */; };
@@ -401,6 +412,17 @@
 		3D45AA1029E1674500A83397 /* InventoryListHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryListHeaderView.swift; sourceTree = "<group>"; };
 		3D45AA1229E1676600A83397 /* InventoryListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InventoryListTableViewCell.xib; sourceTree = "<group>"; };
 		3D45AA1429E1686900A83397 /* InventoryListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryListTableViewCell.swift; sourceTree = "<group>"; };
+		3D45AA1629E302E800A83397 /* Step6Form.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Step6Form.swift; sourceTree = "<group>"; };
+		3D45AA1829E3060500A83397 /* Step8Form.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Step8Form.swift; sourceTree = "<group>"; };
+		3D45AA1A29E306FB00A83397 /* Step9Form.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Step9Form.swift; sourceTree = "<group>"; };
+		3D45AA1C29E3092700A83397 /* Step10Form.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Step10Form.swift; sourceTree = "<group>"; };
+		3D45AA1E29E309C400A83397 /* Step11Form.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Step11Form.swift; sourceTree = "<group>"; };
+		3D45AA2029E30A2400A83397 /* Step12Form.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Step12Form.swift; sourceTree = "<group>"; };
+		3D45AA2229E30A8300A83397 /* Step13Form.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Step13Form.swift; sourceTree = "<group>"; };
+		3D45AA2429E30AE400A83397 /* Step14Form.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Step14Form.swift; sourceTree = "<group>"; };
+		3D45AA2629E30B7300A83397 /* Step15Form.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Step15Form.swift; sourceTree = "<group>"; };
+		3D45AA2829E30BE300A83397 /* Step16Form.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Step16Form.swift; sourceTree = "<group>"; };
+		3D45AA2A29E30DC900A83397 /* Step17Form.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Step17Form.swift; sourceTree = "<group>"; };
 		3D8190FB29D9736600C2BF3B /* CreateInventoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateInventoryViewController.swift; sourceTree = "<group>"; };
 		3D8190FF29D9AB2500C2BF3B /* StepperTableHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StepperTableHeaderView.xib; sourceTree = "<group>"; };
 		3D81910129DA1FF800C2BF3B /* StepperTableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepperTableHeaderView.swift; sourceTree = "<group>"; };
@@ -1503,7 +1525,18 @@
 				3DD7292029E02DD200AFADE8 /* Step3Form.swift */,
 				3DD7292229E02E4500AFADE8 /* Step4Form.swift */,
 				3DD7292429E02E7300AFADE8 /* Step5Form.swift */,
+				3D45AA1829E3060500A83397 /* Step8Form.swift */,
+				3D45AA1629E302E800A83397 /* Step6Form.swift */,
+				3D45AA2429E30AE400A83397 /* Step14Form.swift */,
+				3D45AA2629E30B7300A83397 /* Step15Form.swift */,
+				3D45AA1C29E3092700A83397 /* Step10Form.swift */,
+				3D45AA1E29E309C400A83397 /* Step11Form.swift */,
+				3D45AA2229E30A8300A83397 /* Step13Form.swift */,
+				3D45AA2029E30A2400A83397 /* Step12Form.swift */,
 				3DD7292629E0306300AFADE8 /* Step7Form.swift */,
+				3D45AA2829E30BE300A83397 /* Step16Form.swift */,
+				3D45AA2A29E30DC900A83397 /* Step17Form.swift */,
+				3D45AA1A29E306FB00A83397 /* Step9Form.swift */,
 				3DD7291C29DFF19600AFADE8 /* Step1Form.swift */,
 			);
 			path = CreateInventoryStepForm;
@@ -1959,6 +1992,7 @@
 				1D5B745A28F9FC8A0053B079 /* RouterProtocol.swift in Sources */,
 				1D34C6D128FF40D300A8BAF3 /* AgeRule.swift in Sources */,
 				3D45A9EF29E0BDB200A83397 /* EmptyForm.swift in Sources */,
+				3D45AA1D29E3092700A83397 /* Step10Form.swift in Sources */,
 				1D5E2E7D2906DCF3005D83C0 /* SideMenuViewController.swift in Sources */,
 				1D4CB3482900811A00B152CF /* FormElementTableViewCell.swift in Sources */,
 				1D5B749428FACB9D0053B079 /* ReusablePopupViewController.swift in Sources */,
@@ -1981,10 +2015,13 @@
 				1DA4082D2901BED100A05913 /* ReusableTextInputField.swift in Sources */,
 				1D5B74D028FC46D90053B079 /* Router.swift in Sources */,
 				3DD7291D29DFF19600AFADE8 /* Step1Form.swift in Sources */,
+				3D45AA2929E30BE400A83397 /* Step16Form.swift in Sources */,
 				1D5B74C328FC43020053B079 /* EmptyStateViewStyler.swift in Sources */,
 				1D34C6C628FF30E700A8BAF3 /* ReusableImagePickerCollectionViewController.swift in Sources */,
 				1D34C6A528FF2A4B00A8BAF3 /* ReusableFormFileField.swift in Sources */,
 				1D5B74C028FC42CB0053B079 /* ReusableEmptyStateView.swift in Sources */,
+				3D45AA2B29E30DC900A83397 /* Step17Form.swift in Sources */,
+				3D45AA2329E30A8400A83397 /* Step13Form.swift in Sources */,
 				1D34C6AA28FF2B1D00A8BAF3 /* ReusableFormCheckboxField.swift in Sources */,
 				1D34C67B28FEB4DF00A8BAF3 /* LogoView.swift in Sources */,
 				1DF2F6E5292F81880012A31B /* onBoardRouter.swift in Sources */,
@@ -2002,6 +2039,7 @@
 				1D34C6B128FF2B8E00A8BAF3 /* ReusableFormSliderField.swift in Sources */,
 				1D5B747428FA10C90053B079 /* BaseNavigationViewController.swift in Sources */,
 				1D3F347B292656A6002A39C0 /* InspectionTemplateTypeTableViewCell.swift in Sources */,
+				3D45AA1729E302E900A83397 /* Step6Form.swift in Sources */,
 				1D5B74D328FC87230053B079 /* SessionDetails.swift in Sources */,
 				1D34C6B628FF2E7D00A8BAF3 /* ReusableFormHelper.swift in Sources */,
 				1D01C26D293A2D2300F9AC9B /* ReusableDropDown.swift in Sources */,
@@ -2027,6 +2065,8 @@
 				1D5B748D28FACA8B0053B079 /* ReusableFooterLoadingView.swift in Sources */,
 				1D72C3D42903E9EB0099AAB4 /* CheckEmail.swift in Sources */,
 				1D3F347529265544002A39C0 /* InspectionsTemplate.swift in Sources */,
+				3D45AA2729E30B7300A83397 /* Step15Form.swift in Sources */,
+				3D45AA1929E3060500A83397 /* Step8Form.swift in Sources */,
 				1D5B746128F9FD020053B079 /* ApiSuccess.swift in Sources */,
 				1DB5E1F7290EBF6800273381 /* ComponentsList.swift in Sources */,
 				1D34C6CA28FF399600A8BAF3 /* WebUrlRule.swift in Sources */,
@@ -2037,11 +2077,13 @@
 				1D34C68F28FF27ED00A8BAF3 /* ReusableFormSwitch.swift in Sources */,
 				1D2E17CF29157E2300214593 /* statsModel.swift in Sources */,
 				3DD7292329E02E4500AFADE8 /* Step4Form.swift in Sources */,
+				3D45AA1B29E306FB00A83397 /* Step9Form.swift in Sources */,
 				1D33EA7C2922E69300B9363D /* InspectionRouter.swift in Sources */,
 				1D5B747928FAC7C30053B079 /* CustomNavigationTitleView.swift in Sources */,
 				1D4CB3502900868B00B152CF /* ExampleTableCell.swift in Sources */,
 				1DF2F6E8292F87F00012A31B /* LoginUserResponse.swift in Sources */,
 				1D72C3DA290426430099AAB4 /* PasswordResetSuccessful.swift in Sources */,
+				3D45AA2129E30A2400A83397 /* Step12Form.swift in Sources */,
 				1D0CC93F290DC10C00A557ED /* FormsControlllerViewController.swift in Sources */,
 				1D5B742228F9B2F20053B079 /* SceneDelegate.swift in Sources */,
 				1D3F3463292502C1002A39C0 /* PopUpViewController.swift in Sources */,
@@ -2051,6 +2093,7 @@
 				3DD7292B29E0553100AFADE8 /* ReusableCollectionHeaderView.swift in Sources */,
 				1D647358294280BB00EDD9ED /* SideMenuFooter.swift in Sources */,
 				1DF2F6EA2930E5C20012A31B /* inspectionModel.swift in Sources */,
+				3D45AA2529E30AE400A83397 /* Step14Form.swift in Sources */,
 				1D5B74B528FAE15F0053B079 /* ReusableFormTextView.swift in Sources */,
 				1D5B74CE28FC46BF0053B079 /* RestClient.swift in Sources */,
 				1D5B74A428FAD0A80053B079 /* PassDataProtocol.swift in Sources */,
@@ -2058,6 +2101,7 @@
 				1D2E17C02911E1ED00214593 /* InspectionBridgeListModel.swift in Sources */,
 				1D5B74B728FAE1880053B079 /* GrowingTextView.swift in Sources */,
 				3D45AA0C29E141A900A83397 /* InventoryListModel.swift in Sources */,
+				3D45AA1F29E309C400A83397 /* Step11Form.swift in Sources */,
 				1D5B74A628FADD420053B079 /* LeftMenuViewController.swift in Sources */,
 				3DD7292129E02DD200AFADE8 /* Step3Form.swift in Sources */,
 				1D3279DA28FD9DED00077777 /* UnknownErrorViewController.swift in Sources */,
