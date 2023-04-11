@@ -42,7 +42,7 @@ class InventoryListTableViewCell: UITableViewCell {
                        (view: bridgeNameLabel, style: labelStyle)])
     }
 
-    func configure(srNo: Int, data: InventoryModel) {
+    func configure(srNo: Int, data: InventoryListObj) {
         srNoLabel.text = srNo.description
         projectIdLabel.text = data.projectId.description
         projectNameLabel.text = data.projectName

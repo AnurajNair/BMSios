@@ -12,7 +12,7 @@ class InventoryListViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    private var inventoryList: [InventoryModel] = []
+    private var inventoryList: [InventoryListObj] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,7 +43,7 @@ class InventoryListViewController: UIViewController {
             if(response.status == 0){
                 if(response.response != ""){
                     if let inventoryList = Mapper<InventoryList>().map(JSONString: Utils().decryptData(encryptdata: response.response!)) {
-                        self.inventoryList = inventoryList.inventoryList.map { $0 } as [InventoryModel]
+                        self.inventoryList = inventoryList.inventoryList.map { $0 } as [InventoryListObj]
                         self.setupTableView()
                     }
                 }else{

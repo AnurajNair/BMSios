@@ -176,7 +176,7 @@
 		1DF2F6EA2930E5C20012A31B /* inspectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF2F6E92930E5C20012A31B /* inspectionModel.swift */; };
 		1DF2F6ED293203EB0012A31B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF2F6EC293203EB0012A31B /* HomeViewController.swift */; };
 		3D45A9EF29E0BDB200A83397 /* EmptyForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D45A9EE29E0BDB200A83397 /* EmptyForm.swift */; };
-		3D45AA0C29E141A900A83397 /* InventoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D45AA0B29E141A900A83397 /* InventoryModel.swift */; };
+		3D45AA0C29E141A900A83397 /* InventoryListObj.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D45AA0B29E141A900A83397 /* InventoryListObj.swift */; };
 		3D45AA0F29E1665400A83397 /* InventoryListHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D45AA0E29E1665400A83397 /* InventoryListHeaderView.xib */; };
 		3D45AA1129E1674500A83397 /* InventoryListHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D45AA1029E1674500A83397 /* InventoryListHeaderView.swift */; };
 		3D45AA1329E1676600A83397 /* InventoryListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D45AA1229E1676600A83397 /* InventoryListTableViewCell.xib */; };
@@ -195,6 +195,7 @@
 		3D45AA2E29E450CD00A83397 /* InventoryRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D45AA2D29E450CD00A83397 /* InventoryRouter.swift */; };
 		3D45AA3129E4711200A83397 /* InventoryListApiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D45AA3029E4711200A83397 /* InventoryListApiModel.swift */; };
 		3D45AA3329E5918E00A83397 /* InventoryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D45AA3229E5918E00A83397 /* InventoryList.swift */; };
+		3D45AA3529E5B00000A83397 /* Inventory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D45AA3429E5B00000A83397 /* Inventory.swift */; };
 		3D8190FC29D9736600C2BF3B /* CreateInventoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8190FB29D9736600C2BF3B /* CreateInventoryViewController.swift */; };
 		3D81910229DA1FF800C2BF3B /* StepperTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D81910129DA1FF800C2BF3B /* StepperTableHeaderView.swift */; };
 		3D81910329DA22FE00C2BF3B /* StepperTableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D8190FF29D9AB2500C2BF3B /* StepperTableHeaderView.xib */; };
@@ -410,7 +411,7 @@
 		374F6EEE1FD33DB5A62EE351 /* Pods-bmsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bmsTests.debug.xcconfig"; path = "Target Support Files/Pods-bmsTests/Pods-bmsTests.debug.xcconfig"; sourceTree = "<group>"; };
 		3974CBD6A9C5B150AC563C15 /* Pods-bmsTests.appstore release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bmsTests.appstore release.xcconfig"; path = "Target Support Files/Pods-bmsTests/Pods-bmsTests.appstore release.xcconfig"; sourceTree = "<group>"; };
 		3D45A9EE29E0BDB200A83397 /* EmptyForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyForm.swift; sourceTree = "<group>"; };
-		3D45AA0B29E141A900A83397 /* InventoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InventoryModel.swift; path = bms/Modules/Inventory/Model/InventoryModel.swift; sourceTree = SOURCE_ROOT; };
+		3D45AA0B29E141A900A83397 /* InventoryListObj.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InventoryListObj.swift; path = bms/Modules/Inventory/Model/InventoryListObj.swift; sourceTree = SOURCE_ROOT; };
 		3D45AA0E29E1665400A83397 /* InventoryListHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InventoryListHeaderView.xib; sourceTree = "<group>"; };
 		3D45AA1029E1674500A83397 /* InventoryListHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryListHeaderView.swift; sourceTree = "<group>"; };
 		3D45AA1229E1676600A83397 /* InventoryListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InventoryListTableViewCell.xib; sourceTree = "<group>"; };
@@ -429,6 +430,7 @@
 		3D45AA2D29E450CD00A83397 /* InventoryRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryRouter.swift; sourceTree = "<group>"; };
 		3D45AA3029E4711200A83397 /* InventoryListApiModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryListApiModel.swift; sourceTree = "<group>"; };
 		3D45AA3229E5918E00A83397 /* InventoryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryList.swift; sourceTree = "<group>"; };
+		3D45AA3429E5B00000A83397 /* Inventory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inventory.swift; sourceTree = "<group>"; };
 		3D8190FB29D9736600C2BF3B /* CreateInventoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateInventoryViewController.swift; sourceTree = "<group>"; };
 		3D8190FF29D9AB2500C2BF3B /* StepperTableHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StepperTableHeaderView.xib; sourceTree = "<group>"; };
 		3D81910129DA1FF800C2BF3B /* StepperTableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepperTableHeaderView.swift; sourceTree = "<group>"; };
@@ -1608,7 +1610,8 @@
 			children = (
 				3D45AA3029E4711200A83397 /* InventoryListApiModel.swift */,
 				3D45AA3229E5918E00A83397 /* InventoryList.swift */,
-				3D45AA0B29E141A900A83397 /* InventoryModel.swift */,
+				3D45AA0B29E141A900A83397 /* InventoryListObj.swift */,
+				3D45AA3429E5B00000A83397 /* Inventory.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2060,6 +2063,7 @@
 				1DD82A59290AF95300D520B9 /* FormViewController.swift in Sources */,
 				1D5E2E802906DD41005D83C0 /* SideMenuModel.swift in Sources */,
 				1D5B749E28FACCAF0053B079 /* ReusablePopupSelectionView.swift in Sources */,
+				3D45AA3529E5B00000A83397 /* Inventory.swift in Sources */,
 				1D5B746328F9FD2A0053B079 /* ApiBaseResponse.swift in Sources */,
 				1D7E41992941F02300788254 /* ActivityTableHeader.swift in Sources */,
 				1D34C6B128FF2B8E00A8BAF3 /* ReusableFormSliderField.swift in Sources */,
@@ -2127,7 +2131,7 @@
 				1D34C69728FF290700A8BAF3 /* ReusableFormOptionsField.swift in Sources */,
 				1D2E17C02911E1ED00214593 /* InspectionBridgeListModel.swift in Sources */,
 				1D5B74B728FAE1880053B079 /* GrowingTextView.swift in Sources */,
-				3D45AA0C29E141A900A83397 /* InventoryModel.swift in Sources */,
+				3D45AA0C29E141A900A83397 /* InventoryListObj.swift in Sources */,
 				3D45AA1F29E309C400A83397 /* Step11Form.swift in Sources */,
 				1D5B74A628FADD420053B079 /* LeftMenuViewController.swift in Sources */,
 				3DD7292129E02DD200AFADE8 /* Step3Form.swift in Sources */,

@@ -1,5 +1,5 @@
 //
-//  InventoryModel.swift
+//  InventoryListObj.swift
 //  bms
 //
 //  Created by Sahil Ratnani on 08/04/23.
@@ -9,7 +9,7 @@ import Foundation
 import ObjectMapper
 import RealmSwift
 
-class InventoryModel: RequestBody {
+class InventoryListObj: RequestBody {
     @objc dynamic var id: Int = 0
     @objc dynamic var projectId:Int = 0
     @objc dynamic var projectName:String?

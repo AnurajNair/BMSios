@@ -10,7 +10,7 @@ import ObjectMapper_Realm
 
 import Foundation
 class InventoryList: RequestBody {
-    var inventoryList = List<InventoryModel>()
+    var inventoryList = List<InventoryListObj>()
     
     enum ResponseKeys :String{
         case inventoryList  = "inventorylist"
@@ -18,6 +18,6 @@ class InventoryList: RequestBody {
     }
   
     override func mapping(map: ObjectMapper.Map) {
-        self.inventoryList              <- (map[ResponseKeys.inventoryList.rawValue], ListTransform<InventoryModel>())
+        self.inventoryList              <- (map[ResponseKeys.inventoryList.rawValue], ListTransform<InventoryListObj>())
     }
 }
