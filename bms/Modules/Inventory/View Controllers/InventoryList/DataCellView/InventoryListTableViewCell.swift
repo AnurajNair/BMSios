@@ -42,13 +42,13 @@ class InventoryListTableViewCell: UITableViewCell {
                        (view: bridgeNameLabel, style: labelStyle)])
     }
 
-    func configure(srNo: Int, data: InventoryListModel) {
+    func configure(srNo: Int, data: InventoryModel) {
         srNoLabel.text = srNo.description
         projectIdLabel.text = data.projectId.description
         projectNameLabel.text = data.projectName
-        buidLabel.text = data.buid.description.description
+        buidLabel.text = data.buid
         saveStatusLabel.text = data.saveStatus
-        statusSwitch.isOn = data.status == 1
+        statusSwitch.isOn = data.status == "1"
         bridgeIdLabel.text = data.bridgeId.description
         bridgeNameLabel.text = data.bridgeName
     }

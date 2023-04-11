@@ -25,7 +25,7 @@ enum Router: URLRequestConvertible {
 //    case trackingRouterHandler(TrackingRouterProtocol , Bool)
 //    case settingsRouterHandler(SettingsRouterProtocol , Bool)
 //    case dashboardRouterHandler(DashboardRouterProtocol , Bool)
-    
+    case inventoryRouterHandler(InventoryRouterProtocol)
     
     func asURLRequest() throws -> URLRequest {
         switch self {
@@ -59,6 +59,9 @@ enum Router: URLRequestConvertible {
 //        case .dashboardRouterHandler(let request , let isVersioned):
 //            let urlRequest = configureRequest(request , isVersioned : isVersioned)
 //            return urlRequest
+        case .inventoryRouterHandler(let request):
+            let urlRequest = configureRequest(request)
+            return urlRequest
         }
     }
     
