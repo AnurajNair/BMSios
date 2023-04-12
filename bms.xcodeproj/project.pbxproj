@@ -1654,6 +1654,7 @@
 		3D45AA3829E5C01300A83397 /* InventoryData */ = {
 			isa = PBXGroup;
 			children = (
+				3D45AA5929E6899800A83397 /* Common */,
 				3D45AA3629E5BA9100A83397 /* InventoryData.swift */,
 				3D45AA4529E5FD0300A83397 /* LowViscosityGrout.swift */,
 				3D45AA4729E6067900A83397 /* PolymerModifiedCementGrout.swift */,
@@ -1668,11 +1669,18 @@
 				3D45AA3F29E5F62C00A83397 /* TopSlabInterior.swift */,
 				3D45AA4129E5F99E00A83397 /* TopSlabCantilever.swift */,
 				3D45AA3929E5C04C00A83397 /* PileCapDimension.swift */,
-				3D45AA4D29E67FF800A83397 /* GirderCommon.swift */,
 				3D45AA5529E6839100A83397 /* DismantlingOfRccAndBituminiousWearingCoat.swift */,
-				3D45AA4929E6733F00A83397 /* GroutingCommon.swift */,
 			);
 			path = InventoryData;
+			sourceTree = "<group>";
+		};
+		3D45AA5929E6899800A83397 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				3D45AA4D29E67FF800A83397 /* GirderCommon.swift */,
+				3D45AA4929E6733F00A83397 /* GroutingCommon.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 		3D8190FA29D9731700C2BF3B /* CreateInventory */ = {
