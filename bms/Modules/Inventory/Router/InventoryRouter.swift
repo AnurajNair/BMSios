@@ -11,17 +11,22 @@ import ObjectMapper
 
 enum InventoryRouterProtocol: RouterProtocol {
     case invantoryList(PostInventoryListModel)
+    case inventoryCRUD(APIRequestModel)
 
     var path: String {
         switch self {
         case .invantoryList(_):
             return "Inventory/InventorySummary"
+        case .inventoryCRUD:
+            return "Inventory/CRUDInventory"
         }
     }
     
     var method: HTTPMethod {
         switch self {
         case .invantoryList(_):
+            return .post
+        case .inventoryCRUD(_):
             return .post
         }
     }
@@ -43,6 +48,8 @@ enum InventoryRouterProtocol: RouterProtocol {
     var body: Any?{
         switch self {
         case .invantoryList(let body):
+            return body
+        case .inventoryCRUD(let body):
             return body
         }
     }
@@ -77,15 +84,27 @@ class InventoryRouterManager {
     func getInventory( params: [String: Any],
                        successCompletionHandler: @escaping (_ response: InventoryListResponseModel) -> Void,
                        errorCompletionHandler: @escaping (_ error: ApiError?) -> Void){
+        RestClient.getAPIResponse(Router.inventoryRouterHandler( InventoryRouterProtocol.invantoryList(PostInventoryListModel(params: params))), successCompletionHandler: { (response) in
             
-            RestClient.getAPIResponse(Router.inventoryRouterHandler( InventoryRouterProtocol.invantoryList(PostInventoryListModel(params: params))), successCompletionHandler: { (response) in
-                
-                if let apiResponse = Mapper<InventoryListResponseModel>().map(JSONObject: RestClient.getResultValue(response))  {
-                    successCompletionHandler(apiResponse)
-                }
-                
-            }) { (error) in
-                errorCompletionHandler(error)
+            if let apiResponse = Mapper<InventoryListResponseModel>().map(JSONObject: RestClient.getResultValue(response))  {
+                successCompletionHandler(apiResponse)
             }
+            
+        }) { (error) in
+            errorCompletionHandler(error)
         }
+    }
+
+    func getInventoryData( params: [String: Any],
+                           successCompletionHandler: @escaping (_ response: APIResponseModel) -> Void,
+                           errorCompletionHandler: @escaping (_ error: ApiError?) -> Void) {
+        RestClient.getAPIResponse(Router.inventoryRouterHandler( InventoryRouterProtocol.inventoryCRUD(APIRequestModel(params: params))), successCompletionHandler: { (response) in
+            
+            if let apiResponse = Mapper<APIResponseModel>().map(JSONObject: RestClient.getResultValue(response))  {
+                successCompletionHandler(apiResponse)
+            }
+        }) { (error) in
+            errorCompletionHandler(error)
+        }
+    }
 }

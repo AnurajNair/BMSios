@@ -21,6 +21,25 @@ class InventoryListRequestModel: APIRequestBody {
     }
 }
 
+class InventoryDataRequestModel: APIRequestBody {
+    var authId:String?
+    var mode: String?
+    var id: Int?
+
+    enum ResponseKeys :String{
+        case authId  = "authid"
+        case mode = "mode"
+        case id = "id"
+    }
+  
+    override func mapping(map: ObjectMapper.Map) {
+        self.authId              <- map[ResponseKeys.authId.rawValue]
+        self.mode              <- map[ResponseKeys.mode.rawValue]
+        self.id              <- map[ResponseKeys.id.rawValue]
+
+    }
+}
+
 class InventoryListResponseModel : ApiBaseResponse {
   @objc dynamic var response : String?
     

@@ -20,6 +20,8 @@ class InventoryListTableViewCell: UITableViewCell {
     @IBOutlet weak var bridgeNameLabel: UILabel!
     @IBOutlet weak var removeButton: UIButton!
 
+    var onTapEdit: (()->())?
+
     override func awakeFromNib() {
         super.awakeFromNib()
         setup()
@@ -54,6 +56,7 @@ class InventoryListTableViewCell: UITableViewCell {
     }
 
     @IBAction func editButtonDidTap(_ sender: UIButton) {
+        onTapEdit?()
     }
     @IBAction func removeButtonDidTap(_ sender: UIButton) {
     }

@@ -91,13 +91,64 @@ extension InventoryListViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: InventoryListTableViewCell.identifier) as? InventoryListTableViewCell else {
             return UITableViewCell()
         }
-        cell.configure(srNo: indexPath.row+1, data: inventoryList[indexPath.row])
+        let inventoryObj = inventoryList[indexPath.row]
+        cell.configure(srNo: indexPath.row+1, data: inventoryObj)
+        cell.onTapEdit = { [weak self] in
+            self?.performEditAction(on: inventoryObj)
+        }
         return cell
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: InventoryListHeaderView.identifier)
         return header
+    }
+
+    func performEditAction(on inventoryObj: InventoryListObj) {
+        getInventoryData(inventoryObj: inventoryObj)
+    }
+
+    func getInventoryData(inventoryObj: InventoryListObj) {
+        Utils.showLoadingInView(self.view)
+        InventoryRouterManager().getInventoryData(params: getInventoryDataParams(inventoryObj: inventoryObj)) { response in
+            if(response.status == 0){
+                if(response.response != ""){
+                    if let inventory = Mapper<Inventory>().map(JSONString: Utils().decryptData(encryptdata: response.response!)) {
+                        print("inventory - \(inventory)")
+                    }
+                }else{
+                    Utils.displayAlert(title: "Error", message: response.message ?? "Something went wrong.")
+                }
+                Utils.hideLoadingInView(self.view)
+            } else {
+                Utils.hideLoadingInView(self.view)
+                
+                Utils.displayAlert(title: "Error", message: response.message ?? "Something went wrong.")
+            }
+        } errorCompletionHandler: { error in
+            Utils.showLoadingInView(self.view)
+            print("error - \(String(describing: error))")
+            Utils.displayAlert(title: "Error", message: "Something went wrong.")
+        }
+
+    }
+
+    func getInventoryDataParams(inventoryObj: InventoryListObj) -> [String : Any] {
+        var params = [String : Any]()
+        params[APIRequestModel.RequestKeys.requestdata.rawValue] = encrypInventoryDataReq(inventoryObj: inventoryObj)
+        return params
+
+    }
+
+    func encrypInventoryDataReq(inventoryObj: InventoryListObj) -> String {
+        let obj = InventoryDataRequestModel()
+        obj.authId = SessionDetails.getInstance().currentUser?.profile?.authId
+        obj.mode = "S"
+        obj.id = inventoryObj.id
+        let jsonData = try! JSONSerialization.data(withJSONObject: Mapper().toJSON(obj),options: [])
+        let jsonString = String(data: jsonData, encoding: .utf8)
+        let encrypRequest = Utils().encryptData(json: jsonString! )
+       return encrypRequest
     }
 }
 

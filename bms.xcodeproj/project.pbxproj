@@ -213,6 +213,8 @@
 		3D45AA5429E682E500A83397 /* ExpansionJoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D45AA5329E682E500A83397 /* ExpansionJoint.swift */; };
 		3D45AA5629E6839100A83397 /* DismantlingOfRccAndBituminiousWearingCoat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D45AA5529E6839100A83397 /* DismantlingOfRccAndBituminiousWearingCoat.swift */; };
 		3D45AA5829E6840400A83397 /* Wrapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D45AA5729E6840400A83397 /* Wrapping.swift */; };
+		3D45AA5B29E6A2EC00A83397 /* APIRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D45AA5A29E6A2EC00A83397 /* APIRequestModel.swift */; };
+		3D45AA5D29E6A43B00A83397 /* APIResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D45AA5C29E6A43B00A83397 /* APIResponseModel.swift */; };
 		3D8190FC29D9736600C2BF3B /* CreateInventoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8190FB29D9736600C2BF3B /* CreateInventoryViewController.swift */; };
 		3D81910229DA1FF800C2BF3B /* StepperTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D81910129DA1FF800C2BF3B /* StepperTableHeaderView.swift */; };
 		3D81910329DA22FE00C2BF3B /* StepperTableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D8190FF29D9AB2500C2BF3B /* StepperTableHeaderView.xib */; };
@@ -465,6 +467,8 @@
 		3D45AA5329E682E500A83397 /* ExpansionJoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpansionJoint.swift; sourceTree = "<group>"; };
 		3D45AA5529E6839100A83397 /* DismantlingOfRccAndBituminiousWearingCoat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismantlingOfRccAndBituminiousWearingCoat.swift; sourceTree = "<group>"; };
 		3D45AA5729E6840400A83397 /* Wrapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wrapping.swift; sourceTree = "<group>"; };
+		3D45AA5A29E6A2EC00A83397 /* APIRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequestModel.swift; sourceTree = "<group>"; };
+		3D45AA5C29E6A43B00A83397 /* APIResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIResponseModel.swift; sourceTree = "<group>"; };
 		3D8190FB29D9736600C2BF3B /* CreateInventoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateInventoryViewController.swift; sourceTree = "<group>"; };
 		3D8190FF29D9AB2500C2BF3B /* StepperTableHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StepperTableHeaderView.xib; sourceTree = "<group>"; };
 		3D81910129DA1FF800C2BF3B /* StepperTableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepperTableHeaderView.swift; sourceTree = "<group>"; };
@@ -629,9 +633,9 @@
 		1D2E17BB2911DFCD00214593 /* InventoryList */ = {
 			isa = PBXGroup;
 			children = (
+				3D45AA0929E1417500A83397 /* Modal */,
 				3D45AA0D29E1660200A83397 /* DataCellView */,
 				3D45AA0A29E1417500A83397 /* HeaderCell */,
-				3D45AA0929E1417500A83397 /* Modal */,
 				1D2E17BC2911DFEC00214593 /* InventoryListViewController.swift */,
 			);
 			path = InventoryList;
@@ -1069,6 +1073,8 @@
 				1D5B746228F9FD2A0053B079 /* ApiBaseResponse.swift */,
 				1D5B746428F9FD600053B079 /* ApiBaseRequestKeys.swift */,
 				1D5B746628F9FE010053B079 /* ApiError.swift */,
+				3D45AA5A29E6A2EC00A83397 /* APIRequestModel.swift */,
+				3D45AA5C29E6A43B00A83397 /* APIResponseModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -2170,7 +2176,9 @@
 				3D45AA4229E5F99E00A83397 /* TopSlabCantilever.swift in Sources */,
 				1D4CB34C2900818700B152CF /* ReusableFormElementView.swift in Sources */,
 				1D5B74A228FACD0B0053B079 /* ReusbaleFormPopupField.swift in Sources */,
+				3D45AA5B29E6A2EC00A83397 /* APIRequestModel.swift in Sources */,
 				1D5B746D28F9FEE20053B079 /* AppStyler.swift in Sources */,
+				3D45AA5D29E6A43B00A83397 /* APIResponseModel.swift in Sources */,
 				1D5B74BA28FAE1C10053B079 /* FormElementStyler.swift in Sources */,
 				1D5B748D28FACA8B0053B079 /* ReusableFooterLoadingView.swift in Sources */,
 				1D72C3D42903E9EB0099AAB4 /* CheckEmail.swift in Sources */,
