@@ -135,16 +135,16 @@ extension InventoryListViewController: UITableViewDataSource {
 
     func getInventoryDataParams(inventoryObj: InventoryListObj) -> [String : Any] {
         var params = [String : Any]()
-        params[APIRequestModel.RequestKeys.requestdata.rawValue] = encrypInventoryDataReq(inventoryObj: inventoryObj)
+        params[APIRequestModel.RequestKeys.requestdata.rawValue] = encrypInventoryDataReq(inventoryListObj: inventoryObj)
         return params
 
     }
 
-    func encrypInventoryDataReq(inventoryObj: InventoryListObj) -> String {
+    func encrypInventoryDataReq(inventoryListObj: InventoryListObj) -> String {
         let obj = InventoryDataRequestModel()
         obj.authId = SessionDetails.getInstance().currentUser?.profile?.authId
         obj.mode = "S"
-        obj.id = inventoryObj.id
+        obj.id = inventoryListObj.id
         let jsonData = try! JSONSerialization.data(withJSONObject: Mapper().toJSON(obj),options: [])
         let jsonString = String(data: jsonData, encoding: .utf8)
         let encrypRequest = Utils().encryptData(json: jsonString! )
