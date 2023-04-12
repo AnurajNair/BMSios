@@ -23,6 +23,20 @@ class RequestBody: Object,Mappable{
    
 }
 
+///A non realm class for Api request body. Cannot be Persisted.
+class NonPersistableRequestBody: Mappable{
+    
+    required convenience init?(map: ObjectMapper.Map) {
+           self.init()
+       }
+
+    func mapping(map: ObjectMapper.Map) {
+          
+       }
+    
+   
+}
+
 class APIRequestBody: NSObject, Mappable {
     required init?(map: ObjectMapper.Map) {
         

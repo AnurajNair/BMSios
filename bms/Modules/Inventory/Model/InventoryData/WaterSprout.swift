@@ -7,9 +7,9 @@
 
 import ObjectMapper
 
-class WaterSprout: RequestBody {
-    @objc dynamic var inSpan: Float = 0
-    @objc dynamic var totalNo: Float = 0
+class WaterSprout: NonPersistableRequestBody {
+    var inSpan: Float = 0
+    var totalNo: Float = 0
     
     enum ResponseKeys: String {
         case inSpan = "inspan"

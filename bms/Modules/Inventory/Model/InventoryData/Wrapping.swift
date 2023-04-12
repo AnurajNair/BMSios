@@ -7,8 +7,8 @@
 
 import ObjectMapper
 
-class Wrapping: RequestBody {
-    @objc dynamic var mainGirder: MainGirder?
+class Wrapping: NonPersistableRequestBody {
+    var mainGirder: MainGirder?
 
 
     enum ResponseKeys: String {
@@ -21,11 +21,11 @@ class Wrapping: RequestBody {
 }
 
 extension Wrapping {
-    class MainGirder: RequestBody {
-        @objc dynamic var noOfGirders: Float = 0
-        @objc dynamic var bottomArea: Float = 0
-        @objc dynamic var sideArea: Float = 0
-        @objc dynamic var totalArea: Float = 0
+    class MainGirder: NonPersistableRequestBody {
+        var noOfGirders: Float = 0
+        var bottomArea: Float = 0
+        var sideArea: Float = 0
+        var totalArea: Float = 0
 
         enum ResponseKeys: String {
             case noOfGirders = "noofgriders"

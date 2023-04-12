@@ -7,13 +7,13 @@
 
 import ObjectMapper
 
-class PmcMortarTreatment: RequestBody {
-    @objc dynamic var totalAreaForPmcMortarTreatment: Float = 0
-    @objc dynamic var bottomOfMainGirder: BottomOfMainGirder?
-    @objc dynamic var sideOfMainGirder: SideOfMainGirder?
-    @objc dynamic var crossGirder: CrossGirder?
-    @objc dynamic var topSlabInterior: TopSlabInterior?
-    @objc dynamic var topSlabCantilever: TopSlabCantilever?
+class PmcMortarTreatment: NonPersistableRequestBody {
+    var totalAreaForPmcMortarTreatment: Float = 0
+    var bottomOfMainGirder: BottomOfMainGirder?
+    var sideOfMainGirder: SideOfMainGirder?
+    var crossGirder: CrossGirder?
+    var topSlabInterior: TopSlabInterior?
+    var topSlabCantilever: TopSlabCantilever?
 
 
     enum ResponseKeys: String {
@@ -36,9 +36,9 @@ class PmcMortarTreatment: RequestBody {
 }
 
 extension PmcMortarTreatment {
-    class BottomOfMainGirder: RequestBody {
-        @objc dynamic var areaOfBottom: Float = 0
-        @objc dynamic var totalArea: Float = 0
+    class BottomOfMainGirder: NonPersistableRequestBody {
+        var areaOfBottom: Float = 0
+        var totalArea: Float = 0
 
         enum ResponseKeys: String {
             case areaOfBottom = "areaofbottom"

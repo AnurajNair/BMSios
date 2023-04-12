@@ -8,13 +8,13 @@
 import Foundation
 import ObjectMapper
 
-class GroutingCommon: RequestBody {
-    @objc dynamic var porosity: Float = 0
-    @objc dynamic var porousVolume: Float = 0
-    @objc dynamic var pcOfPorousVolFilled: Float = 0
-    @objc dynamic var netVolumeToBeFilled: Float = 0
-    @objc dynamic var groutingToBeDonePc: Float = 0
-    @objc dynamic var totalVolToBeFilled: Float = 0
+class GroutingCommon: NonPersistableRequestBody {
+    var porosity: Float = 0
+    var porousVolume: Float = 0
+    var pcOfPorousVolFilled: Float = 0
+    var netVolumeToBeFilled: Float = 0
+    var groutingToBeDonePc: Float = 0
+    var totalVolToBeFilled: Float = 0
     
     enum ResponseKeys: String {
         case porosity = "porosity"

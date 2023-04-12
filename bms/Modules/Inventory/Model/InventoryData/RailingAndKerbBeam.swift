@@ -7,10 +7,10 @@
 
 import ObjectMapper
 
-class RailingAndKerbBeam: RequestBody {
-    @objc dynamic var length: Float = 0
-    @objc dynamic var noOfSpan: Float = 0
-    @objc dynamic var totalLength: Float = 0
+class RailingAndKerbBeam: NonPersistableRequestBody {
+    var length: Float = 0
+    var noOfSpan: Float = 0
+    var totalLength: Float = 0
 
     enum ResponseKeys: String {
         case length = "length"

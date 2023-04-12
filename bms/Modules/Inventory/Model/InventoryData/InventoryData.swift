@@ -7,34 +7,34 @@
 
 import ObjectMapper
 
-class InventoryData: RequestBody {
-    @objc dynamic var typeOfFoundation: Int = 0
-    @objc dynamic var typeOfSubstructure: Int = 0
-    @objc dynamic var typeOfSuperstructure: String?
-    @objc dynamic var typeOfBearing: Int = 0
-    @objc dynamic var typeOfExpansionJoint = 0
-    @objc dynamic var typeOfWearingCoars = 0
-    @objc dynamic var typeOfRailing = 0
-    @objc dynamic var lengthOfSpan = 0
-    @objc dynamic var widthOfSpan = 0
-    @objc dynamic var noOfMainGirderInASpan = 0
-    @objc dynamic var noOfBearingInSpan = 0
-    @objc dynamic var noOfPile = 0
-    @objc dynamic var diaOfPile = 0
-    @objc dynamic var pileCapDimension: PileCapDimension?
-    @objc dynamic var pierDimension: PierDimension?
-    @objc dynamic var mainGirder: MainGirder?
-    @objc dynamic var topSlabInterior: TopSlabInterior?
-    @objc dynamic var topSlabCantilever: TopSlabCantilever?
-    @objc dynamic var crossGirder: CrossGirder?
-    @objc dynamic var lowViscosityGrout: LowViscosityGrout?
-    @objc dynamic var polymerModifiedCementGrout: PolymerModifiedCementGrout?
-    @objc dynamic var pmcMortarTreatment: PmcMortarTreatment?
-    @objc dynamic var waterSprout: WaterSprout?
-    @objc dynamic var railingAndKerbBeam: RailingAndKerbBeam?
-    @objc dynamic var expansionJoint: ExpansionJoint?
-    @objc dynamic var dismantlingOfRccAndBituminiousWearingCoat: DismantlingOfRccAndBituminiousWearingCoat?
-    @objc dynamic var wrapping: Wrapping?
+class InventoryData: NonPersistableRequestBody {
+    var typeOfFoundation: Int = 0
+    var typeOfSubstructure: Int = 0
+    var typeOfSuperstructure: String?
+    var typeOfBearing: Int = 0
+    var typeOfExpansionJoint = 0
+    var typeOfWearingCoars = 0
+    var typeOfRailing = 0
+    var lengthOfSpan = 0
+    var widthOfSpan = 0
+    var noOfMainGirderInASpan = 0
+    var noOfBearingInSpan = 0
+    var noOfPile = 0
+    var diaOfPile = 0
+    var pileCapDimension: PileCapDimension?
+    var pierDimension: PierDimension?
+    var mainGirder: MainGirder?
+    var topSlabInterior: TopSlabInterior?
+    var topSlabCantilever: TopSlabCantilever?
+    var crossGirder: CrossGirder?
+    var lowViscosityGrout: LowViscosityGrout?
+    var polymerModifiedCementGrout: PolymerModifiedCementGrout?
+    var pmcMortarTreatment: PmcMortarTreatment?
+    var waterSprout: WaterSprout?
+    var railingAndKerbBeam: RailingAndKerbBeam?
+    var expansionJoint: ExpansionJoint?
+    var dismantlingOfRccAndBituminiousWearingCoat: DismantlingOfRccAndBituminiousWearingCoat?
+    var wrapping: Wrapping?
 
 
     

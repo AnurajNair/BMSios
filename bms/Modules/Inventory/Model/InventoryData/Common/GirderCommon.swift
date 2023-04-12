@@ -8,10 +8,10 @@
 import Foundation
 import ObjectMapper
 
-class GirderCommon: RequestBody {
-    @objc dynamic var totalArea: Float = 0
-    @objc dynamic var estimatedPcOfDamagedArea: Float = 0
-    @objc dynamic var damagedArea: Float = 0
+class GirderCommon: NonPersistableRequestBody {
+    var totalArea: Float = 0
+    var estimatedPcOfDamagedArea: Float = 0
+    var damagedArea: Float = 0
 
     enum ResponseKeys: String {
         case totalArea = "totalarea"

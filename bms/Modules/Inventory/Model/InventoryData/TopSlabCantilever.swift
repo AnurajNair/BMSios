@@ -7,12 +7,12 @@
 
 import ObjectMapper
 
-class TopSlabCantilever: RequestBody {
-    @objc dynamic var width: Float = 0
-    @objc dynamic var noOfPortions: Float = 0
-    @objc dynamic var thickness: Float = 0
-    @objc dynamic var area: Float = 0
-    @objc dynamic var volume: Float = 0
+class TopSlabCantilever: NonPersistableRequestBody {
+    var width: Float = 0
+    var noOfPortions: Float = 0
+    var thickness: Float = 0
+    var area: Float = 0
+    var volume: Float = 0
 
     enum ResponseKeys: String {
         case width = "width"

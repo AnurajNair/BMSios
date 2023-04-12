@@ -7,10 +7,10 @@
 
 import ObjectMapper
 
-class PierDimension: RequestBody {
-    @objc dynamic var height: Float = 0
-    @objc dynamic var width: Float = 0
-    @objc dynamic var thickness: Float = 0
+class PierDimension: NonPersistableRequestBody {
+    var height: Float = 0
+    var width: Float = 0
+    var thickness: Float = 0
     
     enum ResponseKeys: String {
         case height = "height"

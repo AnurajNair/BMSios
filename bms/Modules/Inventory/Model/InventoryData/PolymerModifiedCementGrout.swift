@@ -7,14 +7,14 @@
 
 import ObjectMapper
 
-class PolymerModifiedCementGrout: RequestBody {
-    @objc dynamic var totalVolumeOfGrout: Float = 0
-    @objc dynamic var volumeOf1CementBag: Float = 0
-    @objc dynamic var totalPmcGroutByWeight: Float = 0
-    @objc dynamic var crossGirders: CrossGirder?
-    @objc dynamic var topSlabInterior: TopSlabInterior?
-    @objc dynamic var topSlabCantilever: TopSlabCantilever?
-    @objc dynamic var pierCap: PierCap?
+class PolymerModifiedCementGrout: NonPersistableRequestBody {
+    var totalVolumeOfGrout: Float = 0
+    var volumeOf1CementBag: Float = 0
+    var totalPmcGroutByWeight: Float = 0
+     var crossGirders: CrossGirder?
+    var topSlabInterior: TopSlabInterior?
+    var topSlabCantilever: TopSlabCantilever?
+    var pierCap: PierCap?
 
 
     enum ResponseKeys: String {
@@ -41,7 +41,7 @@ class PolymerModifiedCementGrout: RequestBody {
 
 extension PolymerModifiedCementGrout {
     class CrossGirder: GroutingCommon {
-        @objc dynamic var volumeOfACrossGirder: Float = 0
+        var volumeOfACrossGirder: Float = 0
         
         enum ResponseKeys: String {
             case volumeOfACrossGirder = "volumeofacrossgirder"
@@ -54,7 +54,7 @@ extension PolymerModifiedCementGrout {
     }
 
     class TopSlabInterior: GroutingCommon {
-        @objc dynamic var volumeOfTopSlab: Float = 0
+        var volumeOfTopSlab: Float = 0
         
         enum ResponseKeys: String {
             case volumeOfTopSlab = "volumeoftopslab"
@@ -67,7 +67,7 @@ extension PolymerModifiedCementGrout {
     }
 
     class TopSlabCantilever: GroutingCommon {
-        @objc dynamic var volumeOfTopSlab: Float = 0
+        var volumeOfTopSlab: Float = 0
         
         enum ResponseKeys: String {
             case volumeOfTopSlab = "volumeoftopslab"
@@ -80,10 +80,10 @@ extension PolymerModifiedCementGrout {
     }
 
     class PierCap: GroutingCommon {
-        @objc dynamic var volumeOfPierCap: Float = 0
-        @objc dynamic var noOfPierCap: Int = 0
-        @objc dynamic var noOfPierCapToBeGrouted: Int = 0
-        @objc dynamic var totalVolOfPierCap: Int = 0
+        var volumeOfPierCap: Float = 0
+        var noOfPierCap: Int = 0
+        var noOfPierCapToBeGrouted: Int = 0
+        var totalVolOfPierCap: Int = 0
 
         enum ResponseKeys: String {
             case volumeOfPierCap = "volumeofpiercap"

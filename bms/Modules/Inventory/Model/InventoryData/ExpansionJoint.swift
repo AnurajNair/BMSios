@@ -7,10 +7,10 @@
 
 import ObjectMapper
 
-class ExpansionJoint: RequestBody {
-    @objc dynamic var noOfJoints: Float = 0
-    @objc dynamic var length: Float = 0
-    @objc dynamic var totalLength: Float = 0
+class ExpansionJoint: NonPersistableRequestBody {
+    var noOfJoints: Float = 0
+    var length: Float = 0
+    var totalLength: Float = 0
 
     enum ResponseKeys: String {
         case noOfJoints = "noofjoints"

@@ -8,9 +8,9 @@
 import Foundation
 import ObjectMapper
 
-class DismantlingOfRccAndBituminiousWearingCoat: RequestBody {
-    @objc dynamic var area: Float = 0
-    @objc dynamic var totalArea: Float = 0
+class DismantlingOfRccAndBituminiousWearingCoat: NonPersistableRequestBody {
+    var area: Float = 0
+    var totalArea: Float = 0
 
     enum ResponseKeys: String {
         case area = "area"

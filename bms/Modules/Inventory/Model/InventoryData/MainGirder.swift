@@ -7,12 +7,12 @@
 
 import ObjectMapper
 
-class MainGirder: RequestBody {
-    @objc dynamic var width: Float = 0
-    @objc dynamic var depth: Float = 0
-    @objc dynamic var areaBottom: Float = 0
-    @objc dynamic var areaSide: Float = 0
-    @objc dynamic var volume: Float = 0
+class MainGirder: NonPersistableRequestBody {
+    var width: Float = 0
+    var depth: Float = 0
+    var areaBottom: Float = 0
+    var areaSide: Float = 0
+    var volume: Float = 0
 
     enum ResponseKeys: String {
         case width = "width"

@@ -7,8 +7,8 @@
 
 import ObjectMapper
 
-class LowViscosityGrout: RequestBody {
-    @objc dynamic var mainGirder: MainGirder?
+class LowViscosityGrout: NonPersistableRequestBody {
+    var mainGirder: MainGirder?
     
     enum ResponseKeys: String {
         case mainGirder = "maingrinders"
@@ -20,10 +20,10 @@ class LowViscosityGrout: RequestBody {
 }
 
 extension LowViscosityGrout {
-    class MainGirders: GroutingCommon {
-        @objc dynamic var volume: Float = 0
-        @objc dynamic var specificGravity: Float = 0
-        @objc dynamic var totalVolumeInLtr: Float = 0
+    class MainGirders: NonPersistableRequestBody {
+        var volume: Float = 0
+        var specificGravity: Float = 0
+        var totalVolumeInLtr: Float = 0
 
         enum ResponseKeys: String {
             case volume = "volume"

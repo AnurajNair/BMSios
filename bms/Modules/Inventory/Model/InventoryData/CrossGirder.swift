@@ -7,14 +7,14 @@
 
 import ObjectMapper
 
-class CrossGirder: RequestBody {
-    @objc dynamic var width: Float = 0
-    @objc dynamic var depth: Float = 0
-    @objc dynamic var length: Float = 0
-    @objc dynamic var areaOfBottom: Float = 0
-    @objc dynamic var areaOfSide: Float = 0
-    @objc dynamic var volume: Float = 0
-    @objc dynamic var noOfCrossGirders: Int = 0
+class CrossGirder: NonPersistableRequestBody {
+    var width: Float = 0
+    var depth: Float = 0
+    var length: Float = 0
+    var areaOfBottom: Float = 0
+    var areaOfSide: Float = 0
+    var volume: Float = 0
+    var noOfCrossGirders: Int = 0
 
     enum ResponseKeys: String {
         case width = "width"

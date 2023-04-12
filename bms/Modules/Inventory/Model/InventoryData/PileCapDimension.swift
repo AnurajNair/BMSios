@@ -7,10 +7,10 @@
 
 import ObjectMapper
 
-class PileCapDimension: RequestBody {
-    @objc dynamic var length: Float = 0
-    @objc dynamic var width: Float = 0
-    @objc dynamic var depth: Float = 0
+class PileCapDimension: NonPersistableRequestBody {
+    var length: Float = 0
+    var width: Float = 0
+    var depth: Float = 0
     
     enum ResponseKeys: String {
         case length = "length"
