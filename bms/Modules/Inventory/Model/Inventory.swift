@@ -12,9 +12,13 @@ class Inventory: RequestBody {
     @objc dynamic var buid: Int = 0
     @objc dynamic var saveStatus: String?
     @objc dynamic var status: String?
+    var statusIsActive: Bool {
+        status == "1"
+    }
+
     private var dataDict: [String: Any] = [:] {
         didSet {
-            data = InventoryData(JSON: dataDict)
+                data = InventoryData(JSON: dataDict)
         }
     }
     var data: InventoryData?

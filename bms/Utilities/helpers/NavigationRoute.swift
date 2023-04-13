@@ -70,7 +70,7 @@ class NavigationRoute: Navigate {
             case .routineInspbridgeDetailScreen :return (NavigationRoute.getRoutineInspBridgeDetail(data), "")
 
             case.inventoryListScreen:return (NavigationRoute.getInventoryList(), "" )
-            case.createInventoryScreen:return (NavigationRoute.getCreateInvenotry(), "" )
+            case.createInventoryScreen:return (NavigationRoute.getCreateInvenotry(data), "" )
             case.popUpView:return (NavigationRoute.getPopUpView(), "" )
 //            case .webView: return (NavigationRoute.getBaseWebViewController(data), "")
 //            case .appFeedbackWebView: return (NavigationRoute.getBaseWebViewController(data), "App Feedback".localized())
@@ -268,10 +268,11 @@ class NavigationRoute: Navigate {
         
     }
     
-    class func getCreateInvenotry() -> CreateInventoryViewController {
+    class func getCreateInvenotry(_ data:[String:Any] = [:]) -> CreateInventoryViewController {
         let viewController =  inventoryStoryboard().instantiateViewController(withIdentifier: "CreateInventoryViewController") as! CreateInventoryViewController
-      
-        
+        if let inventory = data["inventory"] as? Inventory {
+            viewController.inventory = inventory
+        }
         return viewController
     }
 

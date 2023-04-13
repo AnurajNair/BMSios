@@ -10,6 +10,7 @@ import UIKit
 class CreateInventoryViewController: UIViewController {
 
     @IBOutlet weak var stepperTableView: UITableView!
+    var inventory: Inventory?
 
     private var expandedSection: Int = 0
     let steps = ["Bridge Info", "Main Grider", "Total Slab (Interior)", "Total Slab (Cantilever Portion", "Cross Grider", "Low Viscosity Grout", "Polymer Modified Cement Grout", "Pier Cap", "PMC Mortar Treatment", "Water Sprout", "Ralling and Kreb Beam", "Expansion Joint", "Dismantling of RCC and Bituminous Wearing Coat", "Wrapping", "Microcncrete for repairing patch where large quantity of concrete is spalled out and loosening of remaining concrete at expansion joint", "Nipples for low viscosity polymer grout", "Nipples for Polymer modified cement grout"]
@@ -84,7 +85,7 @@ extension CreateInventoryViewController:UITableViewDataSource {
         let isFirst = indexPath.section == 0
         let isLast = tableView.numberOfSections == indexPath.section+1
 
-        cell.configureForStep(indexPath.section+1, isFirst: isFirst, isLast: isLast)
+        cell.configureForStep(indexPath.section+1, inventory: inventory ?? Inventory(), isFirst: isFirst, isLast: isLast)
 
         cell.onTapBack = { [weak self] in
             if !isFirst {

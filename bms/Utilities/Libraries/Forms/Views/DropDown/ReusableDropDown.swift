@@ -45,6 +45,7 @@ class ReusableDropDown: UIView {
         self.placeHolder = placeHolder
         if let index = selectedItemIndex {
             titleLabel.text = options[index].displayableValue
+            dropDown.selectRow(at: index)
         } else {
             titleLabel.text = placeHolder
         }

@@ -10,8 +10,15 @@ import UIKit
 
 class Step1Form: NSObject, StepperTableViewCellFormProtocol {
     private let itemsPerRow: CGFloat = 3
+    var formData: Inventory
+    private var collectionView: UICollectionView?
+
+    init(formData: Inventory) {
+        self.formData = formData
+    }
 
     func populate(collectionView: UICollectionView) {
+        self.collectionView = collectionView
         collectionView.delegate = self
         collectionView.dataSource = self
     }
@@ -33,7 +40,7 @@ extension Step1Form: UICollectionViewDataSource {
         let fieldNo = indexPath.row
         switch fieldNo {
         case 0:
-            cell.collectionFormElement.setupSwitcher(id: fieldNo, onValue: "Status", offValue: "Status")
+            cell.collectionFormElement.setupSwitcher(id: fieldNo, isOn: formData.statusIsActive, onValue: "Status", offValue: "Status")
 
         case 1:
             let options = [DropDownModel(id: 1, name: "NIBM"),
@@ -49,13 +56,16 @@ extension Step1Form: UICollectionViewDataSource {
             let options = [DropDownModel(id: 1, name: "Open"),
                            DropDownModel(id: 2, name: "Pile"),
                            DropDownModel(id: 3, name: "Well")]
-            cell.collectionFormElement.setupDropdownField(id: fieldNo, fieldTitle: "Type of Foundation", options: options , placeHolder: "Type of Foundation")
+            let selectedIndex = options.firstIndex { $0.id as? Int ?? -1 == formData.data?.typeOfFoundation ?? 0 } ?? 0
+            cell.collectionFormElement.setupDropdownField(id: fieldNo, fieldTitle: "Type of Foundation", options: options , placeHolder: "Type of Foundation", selectedIndex: selectedIndex)
 
         case 4:
             let options = [DropDownModel(id: 1, name: "Solid RCC Pier"),
                            DropDownModel(id: 2, name: "Hollow Box"),
                            DropDownModel(id: 3, name: "RCC Pier with Prestress Pier Cap")]
-            cell.collectionFormElement.setupDropdownField(id: fieldNo, fieldTitle: "Type of Sub-Structure", options: options , placeHolder: "Type of Sub-Structure")
+            let selectedIndex = options.firstIndex { $0.id as? Int ?? -1 == formData.data?.typeOfSubstructure ?? 0 } ?? 0
+
+            cell.collectionFormElement.setupDropdownField(id: fieldNo, fieldTitle: "Type of Sub-Structure", options: options , placeHolder: "Type of Sub-Structure", selectedIndex: selectedIndex)
         
         case 5:
             let options = [DropDownModel(id: 1, name: "RCC Solid Slab"),
@@ -67,7 +77,8 @@ extension Step1Form: UICollectionViewDataSource {
                            DropDownModel(id: 7, name: "PSC twin celll box girder"),
                            DropDownModel(id: 8, name: "Steel Box Girder"),
                            DropDownModel(id: 9, name: "Steel T Girder")]
-            cell.collectionFormElement.setupDropdownField(id: fieldNo, fieldTitle: "Type of Super-Structure", options: options , placeHolder: "Type of Super-Structure")
+            let selectedIndex = options.firstIndex { $0.id as? Int ?? -1 == formData.data?.typeOfSuperstructure ?? 0 } ?? 0
+            cell.collectionFormElement.setupDropdownField(id: fieldNo, fieldTitle: "Type of Super-Structure", options: options , placeHolder: "Type of Super-Structure", selectedIndex: selectedIndex)
 
         case 6:
             let options = [DropDownModel(id: 1, name: "Steel"),
@@ -75,7 +86,9 @@ extension Step1Form: UICollectionViewDataSource {
                            DropDownModel(id: 3, name: "POT PTFE"),
                            DropDownModel(id: 4, name: "Spherical"),
                            DropDownModel(id: 5, name: "Special")]
-            cell.collectionFormElement.setupDropdownField(id: fieldNo, fieldTitle: "Type of Bearing", options: options , placeHolder: "Type of Bearing")
+            let selectedIndex = options.firstIndex { $0.id as? Int ?? -1 == formData.data?.typeOfBearing ?? 0 } ?? 0
+
+            cell.collectionFormElement.setupDropdownField(id: fieldNo, fieldTitle: "Type of Bearing", options: options , placeHolder: "Type of Bearing", selectedIndex: selectedIndex)
         
         case 7:
             let options = [DropDownModel(id: 1, name: "Burried Joint"),
@@ -83,13 +96,16 @@ extension Step1Form: UICollectionViewDataSource {
                            DropDownModel(id: 1, name: "Strip seal"),
                            DropDownModel(id: 1, name: "modular"),
                            DropDownModel(id: 1, name: "Special")]
-            cell.collectionFormElement.setupDropdownField(id: fieldNo, fieldTitle: "Type of Expansion Joint", options: options , placeHolder: "Type of Expansion Joint")
+            let selectedIndex = options.firstIndex { $0.id as? Int ?? -1 == formData.data?.typeOfExpansionJoint ?? 0 } ?? 0
+
+            cell.collectionFormElement.setupDropdownField(id: fieldNo, fieldTitle: "Type of Expansion Joint", options: options , placeHolder: "Type of Expansion Joint", selectedIndex: selectedIndex)
         
         case 8:
             let options = [DropDownModel(id: 1, name: "RCC wearing"),
                            DropDownModel(id: 2, name: "BC"),
                            DropDownModel(id: 2, name: "BC with mastic")]
-            cell.collectionFormElement.setupDropdownField(id: fieldNo, fieldTitle: "Type of Wearing Coars", options: options, placeHolder: "Type of Wearing Coars")
+            let selectedIndex = options.firstIndex { $0.id as? Int ?? -1 == formData.data?.typeOfWearingCoars ?? 0 } ?? 0
+            cell.collectionFormElement.setupDropdownField(id: fieldNo, fieldTitle: "Type of Wearing Coars", options: options, placeHolder: "Type of Wearing Coars", selectedIndex: selectedIndex)
         
         case 9:
             let options = [DropDownModel(id: 1, name: "Steel"),
@@ -97,25 +113,26 @@ extension Step1Form: UICollectionViewDataSource {
                            DropDownModel(id: 2, name: "RCC railing with 2 tier"),
                            DropDownModel(id: 2, name: "RCC Railing with 3 tier"),
                            DropDownModel(id: 2, name: "RCC Crash barrier")]
-            cell.collectionFormElement.setupDropdownField(id: fieldNo, fieldTitle: "Type of Railing", options: options , placeHolder: "Type of Railing")
+            let selectedIndex = options.firstIndex { $0.id as? Int ?? -1 == formData.data?.typeOfRailing ?? 0 } ?? 0
+            cell.collectionFormElement.setupDropdownField(id: fieldNo, fieldTitle: "Type of Railing", options: options , placeHolder: "Type of Railing", selectedIndex: selectedIndex)
         
         case 10:
-            _ = cell.collectionFormElement.setupTextField(id: fieldNo, fieldTitle: "Length of Span", showFieldTitleByDefault: false, placeholderTitle: "Length of Span", textFieldStyling: TTTextFieldStyler.blueStyle)
+            _ = cell.collectionFormElement.setupTextField(id: fieldNo, fieldTitle: "Length of Span", showFieldTitleByDefault: false, placeholderTitle: "Length of Span", fieldValue: formData.data?.lengthOfSpan.description ?? "", textFieldStyling: TTTextFieldStyler.blueStyle)
 
         case 11:
-            _ = cell.collectionFormElement.setupTextField(id: fieldNo, fieldTitle: "Width of Span", showFieldTitleByDefault: false, placeholderTitle: "Width of Span", textFieldStyling: TTTextFieldStyler.blueStyle)
+            _ = cell.collectionFormElement.setupTextField(id: fieldNo, fieldTitle: "Width of Span", showFieldTitleByDefault: false, placeholderTitle: "Width of Span", fieldValue: formData.data?.widthOfSpan.description ?? "", textFieldStyling: TTTextFieldStyler.blueStyle)
 
         case 12:
-            _ = cell.collectionFormElement.setupTextField(id: fieldNo, fieldTitle: "no of main grider in a Span", showFieldTitleByDefault: false, placeholderTitle: "no of main grider in a Span", textFieldStyling: TTTextFieldStyler.blueStyle)
+            _ = cell.collectionFormElement.setupTextField(id: fieldNo, fieldTitle: "no of main grider in a Span", showFieldTitleByDefault: false, placeholderTitle: "no of main grider in a Span", fieldValue: formData.data?.noOfMainGirderInASpan.description ?? "", textFieldStyling: TTTextFieldStyler.blueStyle)
         
         case 13:
-            _ = cell.collectionFormElement.setupTextField(id: fieldNo, fieldTitle: "no of bearing in span", showFieldTitleByDefault: false, placeholderTitle: "no of bearing in span", textFieldStyling: TTTextFieldStyler.blueStyle)
+            _ = cell.collectionFormElement.setupTextField(id: fieldNo, fieldTitle: "no of bearing in span", showFieldTitleByDefault: false, placeholderTitle: "no of bearing in span", fieldValue: formData.data?.noOfBearingInSpan.description ?? "", textFieldStyling: TTTextFieldStyler.blueStyle)
 
         case 14:
-            _ = cell.collectionFormElement.setupTextField(id: fieldNo, fieldTitle: "no of pile", showFieldTitleByDefault: false, placeholderTitle: "no of pile", textFieldStyling: TTTextFieldStyler.blueStyle)
+            _ = cell.collectionFormElement.setupTextField(id: fieldNo, fieldTitle: "no of pile", showFieldTitleByDefault: false, placeholderTitle: "no of pile", fieldValue: formData.data?.noOfPile.description ?? "", textFieldStyling: TTTextFieldStyler.blueStyle)
         
         case 15:
-            _ = cell.collectionFormElement.setupTextField(id: fieldNo, fieldTitle: "dia of pile", showFieldTitleByDefault: false, placeholderTitle: "dia of pile", textFieldStyling: TTTextFieldStyler.blueStyle)
+            _ = cell.collectionFormElement.setupTextField(id: fieldNo, fieldTitle: "dia of pile", showFieldTitleByDefault: false, placeholderTitle: "dia of pile", fieldValue: formData.data?.diaOfPile.description ?? "", textFieldStyling: TTTextFieldStyler.blueStyle)
         
         
         default:
@@ -141,3 +158,16 @@ extension Step1Form: UICollectionViewDelegateFlowLayout {
     }
 }
 
+extension Step1Form: ReusableFormElementViewDelegate {
+    func refreshView(index: Any) {
+        
+    }
+
+    func setValues(index: Any, item: Any) {
+        
+    }
+
+    func setError(index: Any, error: String) {
+        print("Error occured in \(self.description) - \(error)")
+    }
+}

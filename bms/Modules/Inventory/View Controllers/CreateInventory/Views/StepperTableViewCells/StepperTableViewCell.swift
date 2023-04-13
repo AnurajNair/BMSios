@@ -58,8 +58,8 @@ class StepperTableViewCell: UITableViewCell {
         form = nil
     }
 
-    func configureForStep(_ step: Int, isFirst: Bool, isLast: Bool) {
-        guard let form = getFormForStep(step) else {
+    func configureForStep(_ step: Int, inventory: Inventory, isFirst: Bool, isLast: Bool) {
+        guard let form = getFormForStep(step, inventory: inventory) else {
             EmptyForm.shared.populate(collectionView: formCollectionView)
             formCollectionView.layoutIfNeeded()
             return
@@ -70,7 +70,7 @@ class StepperTableViewCell: UITableViewCell {
         backButton.isHidden = isFirst
     }
 
-    private func getFormForStep( _ step: Int) -> StepperTableViewCellFormProtocol? {
+    private func getFormForStep( _ step: Int, inventory: Inventory) -> StepperTableViewCellFormProtocol? {
         if let form = formObjectDict[step] {
             return form
         }
@@ -78,7 +78,7 @@ class StepperTableViewCell: UITableViewCell {
         let form: StepperTableViewCellFormProtocol
         switch step {
         case 1:
-            form = Step1Form()
+            form = Step1Form(formData: inventory)
             
         case 2:
             form = Step2Form()

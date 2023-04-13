@@ -10,7 +10,7 @@ import ObjectMapper
 class InventoryData: NonPersistableRequestBody {
     var typeOfFoundation: Int = 0
     var typeOfSubstructure: Int = 0
-    var typeOfSuperstructure: String?
+    var typeOfSuperstructure: Int = 0
     var typeOfBearing: Int = 0
     var typeOfExpansionJoint = 0
     var typeOfWearingCoars = 0

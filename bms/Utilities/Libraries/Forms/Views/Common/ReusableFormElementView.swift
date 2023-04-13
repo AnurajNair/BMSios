@@ -749,7 +749,7 @@ class ReusableFormElementView: UIView {
         
         let field = ReusableDropDown(frame: CGRect(x: 0, y: 0, width: self.formElementFieldView.frame.size.width, height: height))
         
-        field.setupDropDown(options: options, placeHolder: placeHolder, style: style)
+        field.setupDropDown(options: options, placeHolder: placeHolder, selectedItemIndex: selectedIndex, style: style)
         
         setupFieldCompleted(field: field)
     }

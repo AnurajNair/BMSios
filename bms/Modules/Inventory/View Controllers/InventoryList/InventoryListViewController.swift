@@ -114,7 +114,7 @@ extension InventoryListViewController: UITableViewDataSource {
             if(response.status == 0){
                 if(response.response != ""){
                     if let inventory = Mapper<Inventory>().map(JSONString: Utils().decryptData(encryptdata: response.response!)) {
-                        print("inventory - \(inventory)")
+                        Navigate.routeUserToScreen(screenType: .createInventoryScreen, transitionType: .push, data: ["inventory": inventory])
                     }
                 }else{
                     Utils.displayAlert(title: "Error", message: response.message ?? "Something went wrong.")
