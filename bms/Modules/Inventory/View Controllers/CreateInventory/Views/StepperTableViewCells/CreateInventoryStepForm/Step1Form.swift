@@ -138,6 +138,7 @@ extension Step1Form: UICollectionViewDataSource {
         default:
             break
         }
+        cell.collectionFormElement.delegate = self
         return cell
     }
 
@@ -159,12 +160,107 @@ extension Step1Form: UICollectionViewDelegateFlowLayout {
 }
 
 extension Step1Form: ReusableFormElementViewDelegate {
-    func refreshView(index: Any) {
-        
-    }
-
     func setValues(index: Any, item: Any) {
+        switch index as? Int {
+        case 0:
+            guard let item = item as? Bool else {
+                return
+            }
+            formData.status = (item == true) ? Status.active.rawValue : Status.inActive.rawValue
+
+        case 1:
+            guard let option = (item as? DropDownModel), let id = option.id as? Int else {
+                return
+            }
+            formData.projectId = id
+
+        case 2:
+            guard let option = (item as? DropDownModel), let id = option.id as? Int else {
+                return
+            }
+            formData.buid = id
+
+        case 3:
+            guard let option = (item as? DropDownModel), let id = option.id as? Int else {
+                return
+            }
+            formData.data?.typeOfFoundation = id
+
+        case 4:
+            guard let option = (item as? DropDownModel), let id = option.id as? Int else {
+                return
+            }
+            formData.data?.typeOfSubstructure = id
+
+        case 5:
+            guard let option = (item as? DropDownModel), let id = option.id as? Int else {
+                return
+            }
+            formData.data?.typeOfSuperstructure = id
+
+        case 6:
+            guard let option = (item as? DropDownModel), let id = option.id as? Int else {
+                return
+            }
+            formData.data?.typeOfBearing = id
         
+        case 7:
+            guard let option = (item as? DropDownModel), let id = option.id as? Int else {
+                return
+            }
+            formData.data?.typeOfExpansionJoint = id
+        
+        case 8:
+            guard let option = (item as? DropDownModel), let id = option.id as? Int else {
+                return
+            }
+            formData.data?.typeOfWearingCoars = id
+        
+        case 9:
+            guard let option = (item as? DropDownModel), let id = option.id as? Int else {
+                return
+            }
+            formData.data?.typeOfRailing = id
+        
+        case 10:
+            guard let value = (item as? String), let intValue = Int(value) else {
+                return
+            }
+            formData.data?.lengthOfSpan = intValue
+
+        case 11:
+            guard let value = (item as? String), let intValue = Int(value) else {
+                return
+            }
+            formData.data?.widthOfSpan = intValue
+
+        case 12:
+            guard let value = (item as? String), let intValue = Int(value) else {
+                return
+            }
+            formData.data?.noOfMainGirderInASpan = intValue
+
+        case 13:
+            guard let value = (item as? String), let intValue = Int(value) else {
+                return
+            }
+            formData.data?.noOfBearingInSpan = intValue
+
+        case 14:
+            guard let value = (item as? String), let intValue = Int(value) else {
+                return
+            }
+            formData.data?.noOfPile = intValue
+
+        case 15:
+            guard let value = (item as? String), let intValue = Int(value) else {
+                return
+            }
+            formData.data?.diaOfPile = intValue
+
+        default:
+            break
+        }
     }
 
     func setError(index: Any, error: String) {

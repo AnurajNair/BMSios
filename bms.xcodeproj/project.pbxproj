@@ -215,6 +215,7 @@
 		3D45AA5829E6840400A83397 /* Wrapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D45AA5729E6840400A83397 /* Wrapping.swift */; };
 		3D45AA5B29E6A2EC00A83397 /* APIRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D45AA5A29E6A2EC00A83397 /* APIRequestModel.swift */; };
 		3D45AA5D29E6A43B00A83397 /* APIResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D45AA5C29E6A43B00A83397 /* APIResponseModel.swift */; };
+		3D45AA5F29E92DCD00A83397 /* GlobalEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D45AA5E29E92DCD00A83397 /* GlobalEnums.swift */; };
 		3D8190FC29D9736600C2BF3B /* CreateInventoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8190FB29D9736600C2BF3B /* CreateInventoryViewController.swift */; };
 		3D81910229DA1FF800C2BF3B /* StepperTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D81910129DA1FF800C2BF3B /* StepperTableHeaderView.swift */; };
 		3D81910329DA22FE00C2BF3B /* StepperTableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D8190FF29D9AB2500C2BF3B /* StepperTableHeaderView.xib */; };
@@ -469,6 +470,7 @@
 		3D45AA5729E6840400A83397 /* Wrapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wrapping.swift; sourceTree = "<group>"; };
 		3D45AA5A29E6A2EC00A83397 /* APIRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequestModel.swift; sourceTree = "<group>"; };
 		3D45AA5C29E6A43B00A83397 /* APIResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIResponseModel.swift; sourceTree = "<group>"; };
+		3D45AA5E29E92DCD00A83397 /* GlobalEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalEnums.swift; sourceTree = "<group>"; };
 		3D8190FB29D9736600C2BF3B /* CreateInventoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateInventoryViewController.swift; sourceTree = "<group>"; };
 		3D8190FF29D9AB2500C2BF3B /* StepperTableHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StepperTableHeaderView.xib; sourceTree = "<group>"; };
 		3D81910129DA1FF800C2BF3B /* StepperTableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepperTableHeaderView.swift; sourceTree = "<group>"; };
@@ -1311,6 +1313,7 @@
 			children = (
 				1D5B74D228FC87230053B079 /* SessionDetails.swift */,
 				1D5B74D428FC91E50053B079 /* User.swift */,
+				3D45AA5E29E92DCD00A83397 /* GlobalEnums.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2199,6 +2202,7 @@
 				3D45AA1B29E306FB00A83397 /* Step9Form.swift in Sources */,
 				1D33EA7C2922E69300B9363D /* InspectionRouter.swift in Sources */,
 				1D5B747928FAC7C30053B079 /* CustomNavigationTitleView.swift in Sources */,
+				3D45AA5F29E92DCD00A83397 /* GlobalEnums.swift in Sources */,
 				1D4CB3502900868B00B152CF /* ExampleTableCell.swift in Sources */,
 				1DF2F6E8292F87F00012A31B /* LoginUserResponse.swift in Sources */,
 				3D45AA3C29E5DCF900A83397 /* PierDimension.swift in Sources */,

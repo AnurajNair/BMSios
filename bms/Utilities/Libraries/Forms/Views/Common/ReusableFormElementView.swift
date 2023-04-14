@@ -748,7 +748,7 @@ class ReusableFormElementView: UIView {
         setupTitleField(fieldTitle, isRequired: true, shouldShowByDefault: showFieldTitleByDefault)
         
         let field = ReusableDropDown(frame: CGRect(x: 0, y: 0, width: self.formElementFieldView.frame.size.width, height: height))
-        
+        field.delegate = self
         field.setupDropDown(options: options, placeHolder: placeHolder, selectedItemIndex: selectedIndex, style: style)
         
         setupFieldCompleted(field: field)
@@ -1115,3 +1115,8 @@ extension ReusableFormElementView: TTReusableFormCheckboxFieldDelegate {
     
 }
 
+extension ReusableFormElementView: ReusableDropDownDelegate {
+    func didSelectOption(option: DropDownModel) {
+        delegate?.setValues?(index: index, item: option)
+    }
+}

@@ -8,6 +8,10 @@
 import UIKit
 import DropDown
 
+protocol ReusableDropDownDelegate {
+    func didSelectOption(option: DropDownModel)
+}
+
 class ReusableDropDown: UIView {
     @IBOutlet weak var dropDownView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
@@ -15,6 +19,7 @@ class ReusableDropDown: UIView {
     @IBOutlet weak var iconImageView: UIImageView!
     private lazy var dropDown = DropDown()
 
+    var delegate: ReusableDropDownDelegate?
     var placeHolder = ""
 
     override init(frame: CGRect) {
@@ -49,9 +54,14 @@ class ReusableDropDown: UIView {
         } else {
             titleLabel.text = placeHolder
         }
-        dropDown.selectionAction = { [weak self] _, displayValue in
-            self?.titleLabel.text = displayValue
+        dropDown.selectionAction = { [weak self] index, displayValue in
+            self?.makeSelection(option: options[index])
         }
+    }
+
+    func makeSelection(option: DropDownModel) {
+        titleLabel.text = option.displayableValue
+        delegate?.didSelectOption(option: option)
     }
 
     private func applyStyle(style: FormElementStyler.formDropDownStyle) {
