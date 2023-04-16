@@ -15,3 +15,8 @@ enum Mode: String {
     case insert = "I"
     case update = "U"
 }
+
+enum SaveStatus: String {
+    case draft = "D"
+    case submitted = "S"
+}

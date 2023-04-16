@@ -141,7 +141,7 @@ extension CreateInventoryViewController:UITableViewDataSource {
     }
 
     func encryptReq(inventory: Inventory) -> String {
-        inventory.saveStatus = "D"
+        inventory.saveStatus = SaveStatus.draft.rawValue
         let json = InventoryCRUDRequestModel(inventory: inventory, mode: inventory.id == 0 ? .insert : .update).getJson()
         print("inventory json \(json)")
         let jsonData = try! JSONSerialization.data(withJSONObject: json,options: [])
