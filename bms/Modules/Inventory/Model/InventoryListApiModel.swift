@@ -40,6 +40,30 @@ class InventoryDataRequestModel: APIRequestBody {
     }
 }
 
+class InventoryCRUDRequestModel {
+    lazy var authId = SessionDetails.getInstance().currentUser?.profile?.authId
+    var mode: String?
+    let inventory: Inventory
+
+    enum ResponseKeys :String{
+        case authId  = "authid"
+        case mode = "mode"
+    }
+
+    init(inventory: Inventory, mode: Mode) {
+        self.inventory = inventory
+        self.mode = mode.rawValue
+    }
+
+    func getJson() -> [String: Any] {
+        var inventoryJson = Mapper().toJSON(inventory)
+        inventoryJson[ResponseKeys.authId.rawValue] = authId
+        inventoryJson[ResponseKeys.mode.rawValue] = mode
+        return inventoryJson
+    }
+
+}
+
 class InventoryListResponseModel : ApiBaseResponse {
   @objc dynamic var response : String?
     

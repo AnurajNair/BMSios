@@ -95,9 +95,9 @@ class InventoryRouterManager {
         }
     }
 
-    func getInventoryData( params: [String: Any],
-                           successCompletionHandler: @escaping (_ response: APIResponseModel) -> Void,
-                           errorCompletionHandler: @escaping (_ error: ApiError?) -> Void) {
+    func performInventoryCRUD( params: [String: Any],
+                               successCompletionHandler: @escaping (_ response: APIResponseModel) -> Void,
+                               errorCompletionHandler: @escaping (_ error: ApiError?) -> Void) {
         RestClient.getAPIResponse(Router.inventoryRouterHandler( InventoryRouterProtocol.inventoryCRUD(APIRequestModel(params: params))), successCompletionHandler: { (response) in
             
             if let apiResponse = Mapper<APIResponseModel>().map(JSONObject: RestClient.getResultValue(response))  {
@@ -106,5 +106,11 @@ class InventoryRouterManager {
         }) { (error) in
             errorCompletionHandler(error)
         }
+    }
+
+    func getInventoryData( params: [String: Any],
+                           successCompletionHandler: @escaping (_ response: APIResponseModel) -> Void,
+                           errorCompletionHandler: @escaping (_ error: ApiError?) -> Void) {
+        performInventoryCRUD(params: params, successCompletionHandler: successCompletionHandler, errorCompletionHandler: errorCompletionHandler)
     }
 }

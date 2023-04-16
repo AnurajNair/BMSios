@@ -8,6 +8,7 @@
 import ObjectMapper
 
 class Inventory: RequestBody {
+    @objc dynamic var id: Int = 0
     @objc dynamic var projectId: Int = 0
     @objc dynamic var buid: Int = 0
     @objc dynamic var saveStatus: String?
@@ -16,14 +17,16 @@ class Inventory: RequestBody {
         status == "1"
     }
 
-    private var dataDict: [String: Any] = [:] {
-        didSet {
-                data = InventoryData(JSON: dataDict)
+    private var dataDict: [String: Any] = [:]
+
+    var data: InventoryData?  {
+        didSet{
+            dataDict = data?.toJSON() ?? [:]
         }
     }
-    var data: InventoryData?
 
     enum ResponseKeys: String {
+        case id = "id"
         case projectId = "projectid"
         case buid = "buid"
         case saveStatus  = "savestatus"
@@ -32,10 +35,12 @@ class Inventory: RequestBody {
     }
 
     override func mapping(map: Map) {
+        id <- map[ResponseKeys.id.rawValue]
         projectId <- map[ResponseKeys.projectId.rawValue]
         buid <- map[ResponseKeys.buid.rawValue]
         saveStatus <- map[ResponseKeys.saveStatus.rawValue]
         status <- map[ResponseKeys.status.rawValue]
         dataDict <- map[ResponseKeys.data.rawValue]
+        data = InventoryData(JSON: dataDict)
     }
 }

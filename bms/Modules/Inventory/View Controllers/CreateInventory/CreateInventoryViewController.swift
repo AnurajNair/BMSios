@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import ObjectMapper
 
 class CreateInventoryViewController: UIViewController {
 
@@ -97,7 +98,55 @@ extension CreateInventoryViewController:UITableViewDataSource {
             if  !isLast  {
                 self?.expandSection(indexPath.section+1)
             }
+            self?.saveInventory()
         }
         return cell
+    }
+
+    func saveInventory() {
+        guard let inventory = inventory else {
+            return
+        }
+        Utils.showLoadingInView(self.view)
+        InventoryRouterManager().performInventoryCRUD(params: getParams(inventory: inventory)) { response in
+            if(response.status == 0){
+                if(response.response != ""){
+                    if let inventory = Mapper<Inventory>().map(JSONString: Utils().decryptData(encryptdata: response.response!)) {
+                        self.inventory = inventory
+                        Utils.displayAlert(title: "Inventory Saved", message: "") {
+                            print("save completed")
+                        }
+                    }
+                }else{
+                    Utils.displayAlert(title: "Error", message: response.message ?? "Something went wrong.")
+                }
+                Utils.hideLoadingInView(self.view)
+            } else {
+                Utils.hideLoadingInView(self.view)
+
+                Utils.displayAlert(title: "Error", message: response.message ?? "Something went wrong.")
+            }
+        } errorCompletionHandler: { error in
+            Utils.showLoadingInView(self.view)
+            print("error - \(String(describing: error))")
+            Utils.displayAlert(title: "Error", message: "Something went wrong.")
+        }
+    }
+
+    func getParams(inventory: Inventory) -> [String : Any] {
+        var params = [String : Any]()
+        params[APIRequestModel.RequestKeys.requestdata.rawValue] = encryptReq(inventory: inventory)
+        return params
+
+    }
+
+    func encryptReq(inventory: Inventory) -> String {
+        inventory.saveStatus = "D"
+        let json = InventoryCRUDRequestModel(inventory: inventory, mode: inventory.id == 0 ? .insert : .update).getJson()
+        print("inventory json \(json)")
+        let jsonData = try! JSONSerialization.data(withJSONObject: json,options: [])
+        let jsonString = String(data: jsonData, encoding: .utf8)
+        let encrypRequest = Utils().encryptData(json: jsonString! )
+       return encrypRequest
     }
 }
