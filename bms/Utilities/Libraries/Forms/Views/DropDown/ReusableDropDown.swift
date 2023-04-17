@@ -48,7 +48,7 @@ class ReusableDropDown: UIView {
         dropDown.dataSource = options.compactMap { $0.name }
         dropDown.anchorView = dropDownView
         self.placeHolder = placeHolder
-        if let index = selectedItemIndex {
+        if let index = selectedItemIndex, index < options.count {
             titleLabel.text = options[index].displayableValue
             dropDown.selectRow(at: index)
         } else {

@@ -7,20 +7,73 @@
 
 import Foundation
 import UIKit
+import ObjectMapper
+import RealmSwift
 
 class Step1Form: NSObject, StepperTableViewCellFormProtocol {
     private let itemsPerRow: CGFloat = 3
     var formData: Inventory
     private var collectionView: UICollectionView?
+    private var projects: [Project] = [] {
+        didSet {
+            collectionView?.reloadItems(at: [IndexPath(item: 1, section: 0)])
+        }
+    }
+    private var bridges: [Bridge] = [] {
+        didSet {
+            collectionView?.reloadItems(at: [IndexPath(item: 2, section: 0)])
+        }
+    }
 
     init(formData: Inventory) {
         self.formData = formData
+        super.init()
+        getProjects()
     }
 
     func populate(collectionView: UICollectionView) {
         self.collectionView = collectionView
         collectionView.delegate = self
         collectionView.dataSource = self
+    }
+}
+
+extension Step1Form {
+    func getProjects() {
+        CommonRouterManager().getProjectMaster(params: getParams()) { response in
+            if(response.status == 0){
+                if(response.response != ""){
+                    if let projects = Mapper<ProjectList>().map(JSONString: Utils().decryptData(encryptdata: response.response!)) {
+                        self.projects = projects.projectList.map { $0 } as [Project]
+                    }
+                }else{
+                    Utils.displayAlert(title: "Error", message: response.message ?? "Something went wrong.")
+                }
+            } else {
+                Utils.displayAlert(title: "Error", message: response.message ?? "Something went wrong.")
+            }
+        } errorCompletionHandler: { error in
+            print("error - \(String(describing: error))")
+            Utils.displayAlert(title: "Error", message: "Something went wrong.")
+        }
+
+    }
+
+    func getParams() -> [String : Any] {
+        var params = [String : Any]()
+        params[APIRequestModel.RequestKeys.requestdata.rawValue] = encryptReq()
+        return params
+
+    }
+
+    func encryptReq() -> String {
+        let obj = GetProjectMasterRequestKeys()
+        obj.authId = SessionDetails.getInstance().currentUser?.profile?.authId
+        
+        let jsonData = try! JSONSerialization.data(withJSONObject: Mapper().toJSON(obj),options: [])
+        let jsonString = String(data: jsonData, encoding: .utf8)
+        let encrypRequest = Utils().encryptData(json: jsonString! )
+       return encrypRequest
     }
 }
 
@@ -43,14 +96,38 @@ extension Step1Form: UICollectionViewDataSource {
             cell.collectionFormElement.setupSwitcher(id: fieldNo, isOn: formData.statusIsActive, onValue: "Status", offValue: "Status")
 
         case 1:
-            let options = [DropDownModel(id: 1, name: "NIBM"),
-                           DropDownModel(id: 2, name: "Wakad")]
-            cell.collectionFormElement.setupDropdownField(id: fieldNo, fieldTitle: "Project Id", options: options , placeHolder: "Project Id")
+            var options: [DropDownModel] = []
+            projects.forEach { project in
+                guard project.status == Status.active.rawValue else {
+                    return
+                }
+                let option = DropDownModel(id: project.id, name: project.name ?? "")
+                options.append(option)
+            }
+            let selectedIndex = options.firstIndex {
+                guard let id = $0.id as? Int else {
+                    return false
+                }
+                return id == formData.projectId
+            }
+            if selectedIndex != nil {
+                getBridgesForProject(id: formData.projectId)
+            }
+            cell.collectionFormElement.setupDropdownField(id: fieldNo, fieldTitle: "Project Id", options: options, placeHolder: "Project Id", selectedIndex: selectedIndex)
 
         case 2:
-            let options = [DropDownModel(id: 1, name: "NIBM"),
-                           DropDownModel(id: 2, name: "Wakad")]
-            cell.collectionFormElement.setupDropdownField(id: fieldNo, fieldTitle: "BUID", options: options , placeHolder: "BUID")
+            var options: [DropDownModel] = []
+            bridges.forEach { bridge in
+                let option = DropDownModel(id: bridge.id, name: bridge.name ?? "")
+                options.append(option)
+            }
+            let selectedIndex = options.firstIndex {
+                guard let id = $0.id as? Int else {
+                    return false
+                }
+                return id == formData.bridgeId
+            }
+            cell.collectionFormElement.setupDropdownField(id: fieldNo, fieldTitle: "BUID", options: options , placeHolder: "BUID", selectedIndex: selectedIndex)
 
         case 3:
             let options = [DropDownModel(id: 1, name: "Open"),
@@ -173,12 +250,12 @@ extension Step1Form: ReusableFormElementViewDelegate {
                 return
             }
             formData.projectId = id
-
+            getBridgesForProject(id: id)
         case 2:
             guard let option = (item as? DropDownModel), let id = option.id as? Int else {
                 return
             }
-            formData.buid = id
+            formData.bridgeId = id
 
         case 3:
             guard let option = (item as? DropDownModel), let id = option.id as? Int else {
@@ -265,5 +342,45 @@ extension Step1Form: ReusableFormElementViewDelegate {
 
     func setError(index: Any, error: String) {
         print("Error occured in \(self.description) - \(error)")
+    }
+}
+
+
+extension Step1Form {
+    func getBridgesForProject(id: Int) {
+        CommonRouterManager().getBridgeFromProjectId(params: getParamsForBridges(projectId: id)) { response in
+            if(response.status == 0){
+                if(response.response != ""){
+                    if let bridges = Mapper<BridgeList>().map(JSONString: Utils().decryptData(encryptdata: response.response!)) {
+                        self.bridges = bridges.bridgeList.map { $0 } as [Bridge]
+                    }
+                }else{
+                    Utils.displayAlert(title: "Error", message: response.message ?? "Something went wrong.")
+                }
+            } else {
+                Utils.displayAlert(title: "Error", message: response.message ?? "Something went wrong.")
+            }
+        } errorCompletionHandler: { error in
+            print("error - \(String(describing: error))")
+            Utils.displayAlert(title: "Error", message: "Something went wrong.")
+        }
+
+    }
+
+    func getParamsForBridges(projectId: Int) -> [String : Any] {
+        var params = [String : Any]()
+        params[APIRequestModel.RequestKeys.requestdata.rawValue] = encryptReq(projectId: projectId)
+        return params
+
+    }
+
+    func encryptReq(projectId: Int) -> String {
+        let obj = BridgeFromProjectIDRequestKeys()
+        obj.authId = SessionDetails.getInstance().currentUser?.profile?.authId
+        obj.projectId = projectId
+        let jsonData = try! JSONSerialization.data(withJSONObject: Mapper().toJSON(obj),options: [])
+        let jsonString = String(data: jsonData, encoding: .utf8)
+        let encrypRequest = Utils().encryptData(json: jsonString! )
+       return encrypRequest
     }
 }

@@ -107,6 +107,7 @@ extension CreateInventoryViewController:UITableViewDataSource {
         guard let inventory = inventory else {
             return
         }
+        inventory.updateDataDict()
         Utils.showLoadingInView(self.view)
         InventoryRouterManager().performInventoryCRUD(params: getParams(inventory: inventory)) { response in
             if(response.status == 0){

@@ -216,6 +216,10 @@
 		3D45AA5B29E6A2EC00A83397 /* APIRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D45AA5A29E6A2EC00A83397 /* APIRequestModel.swift */; };
 		3D45AA5D29E6A43B00A83397 /* APIResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D45AA5C29E6A43B00A83397 /* APIResponseModel.swift */; };
 		3D45AA5F29E92DCD00A83397 /* GlobalEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D45AA5E29E92DCD00A83397 /* GlobalEnums.swift */; };
+		3D45AA6129EC324200A83397 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D45AA6029EC324200A83397 /* Project.swift */; };
+		3D45AA6329EC366A00A83397 /* ProjectList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D45AA6229EC366A00A83397 /* ProjectList.swift */; };
+		3D7FD3EB29ED1C4000C6AC4C /* Bridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7FD3E929ED1C3F00C6AC4C /* Bridge.swift */; };
+		3D7FD3EC29ED1C4000C6AC4C /* BridgeList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7FD3EA29ED1C4000C6AC4C /* BridgeList.swift */; };
 		3D8190FC29D9736600C2BF3B /* CreateInventoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8190FB29D9736600C2BF3B /* CreateInventoryViewController.swift */; };
 		3D81910229DA1FF800C2BF3B /* StepperTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D81910129DA1FF800C2BF3B /* StepperTableHeaderView.swift */; };
 		3D81910329DA22FE00C2BF3B /* StepperTableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D8190FF29D9AB2500C2BF3B /* StepperTableHeaderView.xib */; };
@@ -471,6 +475,10 @@
 		3D45AA5A29E6A2EC00A83397 /* APIRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequestModel.swift; sourceTree = "<group>"; };
 		3D45AA5C29E6A43B00A83397 /* APIResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIResponseModel.swift; sourceTree = "<group>"; };
 		3D45AA5E29E92DCD00A83397 /* GlobalEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalEnums.swift; sourceTree = "<group>"; };
+		3D45AA6029EC324200A83397 /* Project.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
+		3D45AA6229EC366A00A83397 /* ProjectList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectList.swift; sourceTree = "<group>"; };
+		3D7FD3E929ED1C3F00C6AC4C /* Bridge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bridge.swift; sourceTree = "<group>"; };
+		3D7FD3EA29ED1C4000C6AC4C /* BridgeList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BridgeList.swift; sourceTree = "<group>"; };
 		3D8190FB29D9736600C2BF3B /* CreateInventoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateInventoryViewController.swift; sourceTree = "<group>"; };
 		3D8190FF29D9AB2500C2BF3B /* StepperTableHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StepperTableHeaderView.xib; sourceTree = "<group>"; };
 		3D81910129DA1FF800C2BF3B /* StepperTableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepperTableHeaderView.swift; sourceTree = "<group>"; };
@@ -1313,7 +1321,11 @@
 			children = (
 				1D5B74D228FC87230053B079 /* SessionDetails.swift */,
 				1D5B74D428FC91E50053B079 /* User.swift */,
+				3D7FD3E929ED1C3F00C6AC4C /* Bridge.swift */,
+				3D7FD3EA29ED1C4000C6AC4C /* BridgeList.swift */,
+				3D45AA6029EC324200A83397 /* Project.swift */,
 				3D45AA5E29E92DCD00A83397 /* GlobalEnums.swift */,
+				3D45AA6229EC366A00A83397 /* ProjectList.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2110,6 +2122,7 @@
 				1D64735C2945CF7B00EDD9ED /* ForgotPasswordModel.swift in Sources */,
 				3D45AA1129E1674500A83397 /* InventoryListHeaderView.swift in Sources */,
 				1D5B74D828FC950E0053B079 /* ServerDownViewController.swift in Sources */,
+				3D7FD3EB29ED1C4000C6AC4C /* Bridge.swift in Sources */,
 				3D45AA4029E5F62C00A83397 /* TopSlabInterior.swift in Sources */,
 				3DD7291F29E02CD400AFADE8 /* Step2Form.swift in Sources */,
 				3D45AA5629E6839100A83397 /* DismantlingOfRccAndBituminiousWearingCoat.swift in Sources */,
@@ -2117,6 +2130,7 @@
 				1D5B742428F9B2F20053B079 /* Login.swift in Sources */,
 				1D59D22C290897A000C3A00A /* TableHeaderView.swift in Sources */,
 				1D34C68828FF273D00A8BAF3 /* ReusableFormTextField.swift in Sources */,
+				3D45AA6129EC324200A83397 /* Project.swift in Sources */,
 				1D7E419F294223ED00788254 /* DynamicHeightCollectionView.swift in Sources */,
 				3DD7292529E02E7300AFADE8 /* Step5Form.swift in Sources */,
 				1DA4082D2901BED100A05913 /* ReusableTextInputField.swift in Sources */,
@@ -2130,6 +2144,7 @@
 				3D45AA2B29E30DC900A83397 /* Step17Form.swift in Sources */,
 				3D45AA2329E30A8400A83397 /* Step13Form.swift in Sources */,
 				1D34C6AA28FF2B1D00A8BAF3 /* ReusableFormCheckboxField.swift in Sources */,
+				3D45AA6329EC366A00A83397 /* ProjectList.swift in Sources */,
 				1D34C67B28FEB4DF00A8BAF3 /* LogoView.swift in Sources */,
 				1DF2F6E5292F81880012A31B /* onBoardRouter.swift in Sources */,
 				1D5B749A28FACC5D0053B079 /* ReusableSelectableTableViewCell.swift in Sources */,
@@ -2223,6 +2238,7 @@
 				1D5B74CE28FC46BF0053B079 /* RestClient.swift in Sources */,
 				1D5B74A428FAD0A80053B079 /* PassDataProtocol.swift in Sources */,
 				1D34C69728FF290700A8BAF3 /* ReusableFormOptionsField.swift in Sources */,
+				3D7FD3EC29ED1C4000C6AC4C /* BridgeList.swift in Sources */,
 				1D2E17C02911E1ED00214593 /* InspectionBridgeListModel.swift in Sources */,
 				1D5B74B728FAE1880053B079 /* GrowingTextView.swift in Sources */,
 				3D45AA0C29E141A900A83397 /* InventoryListObj.swift in Sources */,

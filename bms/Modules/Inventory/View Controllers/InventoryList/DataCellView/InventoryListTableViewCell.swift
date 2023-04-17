@@ -50,7 +50,7 @@ class InventoryListTableViewCell: UITableViewCell {
         projectNameLabel.text = data.projectName
         buidLabel.text = data.buid
         saveStatusLabel.text = data.saveStatus
-        statusSwitch.isOn = data.status == "1"
+        statusSwitch.isOn = data.status == Status.active.rawValue
         bridgeIdLabel.text = data.bridgeId.description
         bridgeNameLabel.text = data.bridgeName
     }

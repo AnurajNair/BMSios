@@ -737,7 +737,7 @@ class ReusableFormElementView: UIView {
                             showFieldTitleByDefault: Bool = true,
                             isEditable: Bool = true,
                             items: [Any] = [],
-                            selectedIndex: Int = 0,
+                            selectedIndex: Int? = nil,
                             height:CGFloat = 43.5,
                             style: FormElementStyler.formDropDownStyle = TTDropDownStyle.defaultStyle) {
         

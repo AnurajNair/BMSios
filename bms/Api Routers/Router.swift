@@ -26,7 +26,7 @@ enum Router: URLRequestConvertible {
 //    case settingsRouterHandler(SettingsRouterProtocol , Bool)
 //    case dashboardRouterHandler(DashboardRouterProtocol , Bool)
     case inventoryRouterHandler(InventoryRouterProtocol)
-    
+
     func asURLRequest() throws -> URLRequest {
         switch self {
         case .commonRouterHandler(let request):

@@ -81,7 +81,7 @@ class InventoryData: NonPersistableRequestBody {
         widthOfSpan <- map[ResponseKeys.widthOfSpan.rawValue]
         noOfMainGirderInASpan <- map[ResponseKeys.noOfMainGirderInASpan.rawValue]
         noOfBearingInSpan <- map[ResponseKeys.noOfBearingInSpan.rawValue]
-        noOfBearingInSpan <- map[ResponseKeys.noOfBearingInSpan.rawValue]
+        diaOfPile <- map[ResponseKeys.diaOfPile.rawValue]
         noOfPile <- map[ResponseKeys.noOfPile.rawValue]
         pileCapDimension <- map[ResponseKeys.pileCapDimension.rawValue]
         pierDimension <- map[ResponseKeys.pierDimension.rawValue]
