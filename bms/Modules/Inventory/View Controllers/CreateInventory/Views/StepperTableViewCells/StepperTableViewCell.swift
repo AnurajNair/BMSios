@@ -87,7 +87,7 @@ class StepperTableViewCell: UITableViewCell {
             form = Step3Form(inventory: inventory)
             
         case 4:
-            form = Step4Form()
+            form = Step4Form(inventory: inventory)
             
         case 5:
             form = Step5Form()
