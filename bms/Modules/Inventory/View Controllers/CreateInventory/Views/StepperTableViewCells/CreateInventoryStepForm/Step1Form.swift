@@ -83,7 +83,7 @@ extension Step1Form: UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        16
+        17
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -192,23 +192,25 @@ extension Step1Form: UICollectionViewDataSource {
                            DropDownModel(id: 2, name: "RCC Crash barrier")]
             let selectedIndex = options.firstIndex { $0.id as? Int ?? -1 == formData.data?.typeOfRailing ?? 0 } ?? 0
             cell.collectionFormElement.setupDropdownField(id: fieldNo, fieldTitle: "Type of Railing", options: options , placeHolder: "Type of Railing", selectedIndex: selectedIndex)
-        
         case 10:
-            _ = cell.collectionFormElement.setupTextField(id: fieldNo, fieldTitle: "Length of Span", showFieldTitleByDefault: false, placeholderTitle: "Length of Span", fieldValue: formData.data?.lengthOfSpan.description ?? "", textFieldStyling: TTTextFieldStyler.blueStyle)
+            _ = cell.collectionFormElement.setupTextField(id: fieldNo, fieldTitle: "No. of Span", showFieldTitleByDefault: false, placeholderTitle: "No. of Span", fieldValue: formData.data?.noOfSpan.description ?? "", textFieldStyling: TTTextFieldStyler.blueStyle)
 
         case 11:
-            _ = cell.collectionFormElement.setupTextField(id: fieldNo, fieldTitle: "Width of Span", showFieldTitleByDefault: false, placeholderTitle: "Width of Span", fieldValue: formData.data?.widthOfSpan.description ?? "", textFieldStyling: TTTextFieldStyler.blueStyle)
+            _ = cell.collectionFormElement.setupTextField(id: fieldNo, fieldTitle: "Length of Span", showFieldTitleByDefault: false, placeholderTitle: "Length of Span", fieldValue: formData.data?.lengthOfSpan.description ?? "", textFieldStyling: TTTextFieldStyler.blueStyle)
 
         case 12:
+            _ = cell.collectionFormElement.setupTextField(id: fieldNo, fieldTitle: "Width of Span", showFieldTitleByDefault: false, placeholderTitle: "Width of Span", fieldValue: formData.data?.widthOfSpan.description ?? "", textFieldStyling: TTTextFieldStyler.blueStyle)
+
+        case 13:
             _ = cell.collectionFormElement.setupTextField(id: fieldNo, fieldTitle: "no of main grider in a Span", showFieldTitleByDefault: false, placeholderTitle: "no of main grider in a Span", fieldValue: formData.data?.noOfMainGirderInASpan.description ?? "", textFieldStyling: TTTextFieldStyler.blueStyle)
         
-        case 13:
+        case 14:
             _ = cell.collectionFormElement.setupTextField(id: fieldNo, fieldTitle: "no of bearing in span", showFieldTitleByDefault: false, placeholderTitle: "no of bearing in span", fieldValue: formData.data?.noOfBearingInSpan.description ?? "", textFieldStyling: TTTextFieldStyler.blueStyle)
 
-        case 14:
+        case 15:
             _ = cell.collectionFormElement.setupTextField(id: fieldNo, fieldTitle: "no of pile", showFieldTitleByDefault: false, placeholderTitle: "no of pile", fieldValue: formData.data?.noOfPile.description ?? "", textFieldStyling: TTTextFieldStyler.blueStyle)
         
-        case 15:
+        case 16:
             _ = cell.collectionFormElement.setupTextField(id: fieldNo, fieldTitle: "dia of pile", showFieldTitleByDefault: false, placeholderTitle: "dia of pile", fieldValue: formData.data?.diaOfPile.description ?? "", textFieldStyling: TTTextFieldStyler.blueStyle)
         
         
@@ -303,33 +305,39 @@ extension Step1Form: ReusableFormElementViewDelegate {
             guard let value = (item as? String), let intValue = Int(value) else {
                 return
             }
-            formData.data?.lengthOfSpan = intValue
+            formData.data?.noOfSpan = intValue
 
         case 11:
             guard let value = (item as? String), let intValue = Int(value) else {
                 return
             }
-            formData.data?.widthOfSpan = intValue
+            formData.data?.lengthOfSpan = intValue
 
         case 12:
             guard let value = (item as? String), let intValue = Int(value) else {
                 return
             }
-            formData.data?.noOfMainGirderInASpan = intValue
+            formData.data?.widthOfSpan = intValue
 
         case 13:
             guard let value = (item as? String), let intValue = Int(value) else {
                 return
             }
-            formData.data?.noOfBearingInSpan = intValue
+            formData.data?.noOfMainGirderInASpan = intValue
 
         case 14:
             guard let value = (item as? String), let intValue = Int(value) else {
                 return
             }
-            formData.data?.noOfPile = intValue
+            formData.data?.noOfBearingInSpan = intValue
 
         case 15:
+            guard let value = (item as? String), let intValue = Int(value) else {
+                return
+            }
+            formData.data?.noOfPile = intValue
+
+        case 16:
             guard let value = (item as? String), let intValue = Int(value) else {
                 return
             }
