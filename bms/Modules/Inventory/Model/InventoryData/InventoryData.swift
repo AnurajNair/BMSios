@@ -15,6 +15,7 @@ class InventoryData: NonPersistableRequestBody {
     var typeOfExpansionJoint = 0
     var typeOfWearingCoars = 0
     var typeOfRailing = 0
+    var noOfSpan = 0
     var lengthOfSpan = 0
     var widthOfSpan = 0
     var noOfMainGirderInASpan = 0
@@ -46,6 +47,7 @@ class InventoryData: NonPersistableRequestBody {
         case typeOfExpansionJoint = "typeofexpansionjoint"
         case typeOfWearingCoars = "typeofwearingcoars"
         case typeOfRailing = "typeofrailing"
+        case noOfSpan = "noofspan"
         case lengthOfSpan = "lengthofspan"
         case widthOfSpan = "widthofspan"
         case noOfMainGirderInASpan = "noofmaingirderinaspan"
@@ -77,6 +79,7 @@ class InventoryData: NonPersistableRequestBody {
         typeOfExpansionJoint <- map[ResponseKeys.typeOfExpansionJoint.rawValue]
         typeOfWearingCoars <- map[ResponseKeys.typeOfWearingCoars.rawValue]
         typeOfRailing <- map[ResponseKeys.typeOfRailing.rawValue]
+        noOfSpan <- map[ResponseKeys.noOfSpan.rawValue]
         lengthOfSpan <- map[ResponseKeys.lengthOfSpan.rawValue]
         widthOfSpan <- map[ResponseKeys.widthOfSpan.rawValue]
         noOfMainGirderInASpan <- map[ResponseKeys.noOfMainGirderInASpan.rawValue]
