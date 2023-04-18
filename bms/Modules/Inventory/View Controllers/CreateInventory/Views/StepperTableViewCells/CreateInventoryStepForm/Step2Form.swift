@@ -118,7 +118,7 @@ extension Step2Form: ReusableFormElementViewDelegate {
                 return
             }
             mainGirder?.volume = floatValue
-
+            inventory.data?.lowViscosityGrout?.mainGirder?.volume = floatValue
         default:
             break
         }
@@ -150,8 +150,9 @@ extension Step2Form: ReusableFormElementViewDelegate {
         guard let length = inventory.data?.lengthOfSpan, let width = mainGirder?.width, let depth = mainGirder?.depth else {
              return
         }
-        let area = Float(length)*Float(width)*depth
-        mainGirder?.volume = area
+        let volume = Float(length)*Float(width)*depth
+        mainGirder?.volume = volume
+        inventory.data?.lowViscosityGrout?.mainGirder?.volume = volume
         collectionView?.reloadItems(at: [IndexPath(item: 4, section: 0)])
     }
 }

@@ -20,7 +20,7 @@ class LowViscosityGrout: NonPersistableRequestBody {
 }
 
 extension LowViscosityGrout {
-    class MainGirders: NonPersistableRequestBody {
+    class MainGirder: GroutingCommon {
         var volume: Float = 0
         var specificGravity: Float = 0
         var totalVolumeInLtr: Float = 0
