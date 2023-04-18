@@ -64,7 +64,6 @@ extension Step4Form: UICollectionViewDataSource {
         _ = cell.collectionFormElement.setupTextField(id: fieldNo, fieldTitle: fieldTitle, showFieldTitleByDefault: false, placeholderTitle: fieldTitle, fieldValue: fieldValue ?? "", isEditable: isFieldEditable, textFieldStyling: TTTextFieldStyler.blueStyle)
         cell.collectionFormElement.delegate = self
         return cell
-        return cell
     }
 
     

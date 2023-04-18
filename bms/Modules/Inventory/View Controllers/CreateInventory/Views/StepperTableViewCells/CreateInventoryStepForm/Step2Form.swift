@@ -150,7 +150,7 @@ extension Step2Form: ReusableFormElementViewDelegate {
         guard let length = inventory.data?.lengthOfSpan, let width = mainGirder?.width, let depth = mainGirder?.depth else {
              return
         }
-        let area = Float(length)*Float(width)*depth*depth
+        let area = Float(length)*Float(width)*depth
         mainGirder?.volume = area
         collectionView?.reloadItems(at: [IndexPath(item: 4, section: 0)])
     }
