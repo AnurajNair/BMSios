@@ -1585,24 +1585,24 @@
 		3D14623629DF43AC008D3F73 /* CreateInventoryStepForm */ = {
 			isa = PBXGroup;
 			children = (
-				3DD7291E29E02CD300AFADE8 /* Step2Form.swift */,
 				3D45A9EE29E0BDB200A83397 /* EmptyForm.swift */,
+				3DD7291C29DFF19600AFADE8 /* Step1Form.swift */,
+				3DD7291E29E02CD300AFADE8 /* Step2Form.swift */,
 				3DD7292029E02DD200AFADE8 /* Step3Form.swift */,
 				3DD7292229E02E4500AFADE8 /* Step4Form.swift */,
 				3DD7292429E02E7300AFADE8 /* Step5Form.swift */,
-				3D45AA1829E3060500A83397 /* Step8Form.swift */,
 				3D45AA1629E302E800A83397 /* Step6Form.swift */,
-				3D45AA2429E30AE400A83397 /* Step14Form.swift */,
-				3D45AA2629E30B7300A83397 /* Step15Form.swift */,
+				3DD7292629E0306300AFADE8 /* Step7Form.swift */,
+				3D45AA1829E3060500A83397 /* Step8Form.swift */,
+				3D45AA1A29E306FB00A83397 /* Step9Form.swift */,
 				3D45AA1C29E3092700A83397 /* Step10Form.swift */,
 				3D45AA1E29E309C400A83397 /* Step11Form.swift */,
-				3D45AA2229E30A8300A83397 /* Step13Form.swift */,
 				3D45AA2029E30A2400A83397 /* Step12Form.swift */,
-				3DD7292629E0306300AFADE8 /* Step7Form.swift */,
+				3D45AA2229E30A8300A83397 /* Step13Form.swift */,
+				3D45AA2429E30AE400A83397 /* Step14Form.swift */,
+				3D45AA2629E30B7300A83397 /* Step15Form.swift */,
 				3D45AA2829E30BE300A83397 /* Step16Form.swift */,
 				3D45AA2A29E30DC900A83397 /* Step17Form.swift */,
-				3D45AA1A29E306FB00A83397 /* Step9Form.swift */,
-				3DD7291C29DFF19600AFADE8 /* Step1Form.swift */,
 			);
 			path = CreateInventoryStepForm;
 			sourceTree = "<group>";
