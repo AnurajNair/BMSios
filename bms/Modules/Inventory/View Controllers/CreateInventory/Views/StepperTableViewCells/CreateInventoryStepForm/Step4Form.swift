@@ -141,6 +141,7 @@ extension Step4Form: ReusableFormElementViewDelegate {
         }
         let volume = Float(length)*Float(width)*thickness*noOfPortion
         topSlabCantilever?.volume = volume
+        inventory.data?.polymerModifiedCementGrout?.topSlabCantilever?.volumeOfTopSlab = volume
         collectionView?.reloadItems(at: [IndexPath(item: 4, section: 0)])
     }
 }

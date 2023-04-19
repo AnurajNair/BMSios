@@ -166,8 +166,10 @@ extension Step5Form: ReusableFormElementViewDelegate {
         guard let length = crossGirder?.length, let width = crossGirder?.width, let depth = crossGirder?.depth else {
              return
         }
-        let area = Float(length)*Float(width)*depth
-        crossGirder?.volume = area
+        let volume = Float(length)*Float(width)*depth
+        crossGirder?.volume = volume
+        inventory.data?.polymerModifiedCementGrout?.crossGirders?.volumeOfACrossGirder = volume
         collectionView?.reloadItems(at: [IndexPath(item: 5, section: 0)])
+        
     }
 }
