@@ -324,12 +324,13 @@ extension Step1Form: ReusableFormElementViewDelegate {
             formData.data?.setTopSlabCantileverArea()
             formData.data?.railingAndKerbBeam?.length = floatValue
             formData.data?.expansionJoint?.length = floatValue+1
-
+            formData.data?.setAreaOfDismantlingOfRcc()
         case 12:
             guard let value = (item as? String), let intValue = Float(value) else {
                 return
             }
             formData.data?.widthOfSpan = intValue
+            formData.data?.setAreaOfDismantlingOfRcc()
 
         case 13:
             guard let value = (item as? String), let intValue = Int(value) else {

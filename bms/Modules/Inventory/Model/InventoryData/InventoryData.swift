@@ -202,3 +202,15 @@ extension InventoryData {
         waterSprout?.setTotalNoOfWaterSprout(noOfSpan: noOfSpan)
     }
 }
+
+//MARK: Dismantling of RCC and Bituminous Wearing Coat Functions
+extension InventoryData {
+    func setAreaOfDismantlingOfRcc() {
+        dismantlingOfRccAndBituminiousWearingCoat?.setArea(lengthOfSpan: lengthOfSpan, widthOfSpan: widthOfSpan)
+        setTotalAreaOfDismantlingOfRCC()
+    }
+
+    func setTotalAreaOfDismantlingOfRCC() {
+        dismantlingOfRccAndBituminiousWearingCoat?.setTotalArea(lengthOfSpan: lengthOfSpan)
+    }
+}

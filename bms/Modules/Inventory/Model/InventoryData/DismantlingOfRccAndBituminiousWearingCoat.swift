@@ -22,3 +22,13 @@ class DismantlingOfRccAndBituminiousWearingCoat: NonPersistableRequestBody {
         totalArea <- map[ResponseKeys.totalArea.rawValue]
     }
 }
+
+extension DismantlingOfRccAndBituminiousWearingCoat {
+    func setArea(lengthOfSpan: Float, widthOfSpan: Float) {
+        area = lengthOfSpan*widthOfSpan
+    }
+
+    func setTotalArea(lengthOfSpan: Float) {
+        totalArea = area*lengthOfSpan
+    }
+}
