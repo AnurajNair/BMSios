@@ -311,6 +311,7 @@ extension Step1Form: ReusableFormElementViewDelegate {
             formData.data?.setPMCMortarTotalAreaOfTopSlabInterior()
             formData.data?.setPMCMortarTotalAreaOfTopSlabCantilever()
             formData.data?.setTotalNoOfWaterSprout()
+            formData.data?.railingAndKerbBeam?.noOfSpan = intValue
         case 11:
             guard let value = (item as? String), let intValue = Float(value) else {
                 return
@@ -319,6 +320,7 @@ extension Step1Form: ReusableFormElementViewDelegate {
             formData.data?.setMainGirderAreaOfBottom()
             formData.data?.setTopSlabInteriorArea()
             formData.data?.setTopSlabCantileverArea()
+            formData.data?.railingAndKerbBeam?.length = intValue
 
         case 12:
             guard let value = (item as? String), let intValue = Float(value) else {

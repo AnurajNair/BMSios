@@ -11,8 +11,20 @@ import UIKit
 class Step11Form: NSObject, StepperTableViewCellFormProtocol {
     private let itemsPerRow: CGFloat = 1
     let fields = ["Length of a span", "No. of span", "Total length of railing and kerb beam"]
+  
+    var collectionView: UICollectionView?
+    let inventory: Inventory
+
+    private var railingAndKerbBeam: RailingAndKerbBeam? {
+        inventory.data?.railingAndKerbBeam
+    }
+
+    init(inventory: Inventory) {
+        self.inventory = inventory
+    }
 
     func populate(collectionView: UICollectionView) {
+        self.collectionView = collectionView
         collectionView.delegate = self
         collectionView.dataSource = self
     }
@@ -33,8 +45,20 @@ extension Step11Form: UICollectionViewDataSource {
         }
         let fieldNo = indexPath.row
         let fieldTitle = fields[indexPath.row]
+        let fieldValue: String?
+        switch fieldNo {
+        case 0:
+            fieldValue = railingAndKerbBeam?.length.description
+        case 1:
+            fieldValue = railingAndKerbBeam?.noOfSpan.description
+        case 2:
+            fieldValue = railingAndKerbBeam?.totalLength.description
 
-        _ = cell.collectionFormElement.setupTextField(id: fieldNo, fieldTitle: fieldTitle, showFieldTitleByDefault: false, placeholderTitle: fieldTitle, textFieldStyling: TTTextFieldStyler.blueStyle)
+        default:
+            fieldValue = nil
+        }
+
+        _ = cell.collectionFormElement.setupTextField(id: fieldNo, fieldTitle: fieldTitle, showFieldTitleByDefault: false, placeholderTitle: fieldTitle, fieldValue: fieldValue ?? "", isEditable: false, textFieldStyling: TTTextFieldStyler.blueStyle)
 
         return cell
     }

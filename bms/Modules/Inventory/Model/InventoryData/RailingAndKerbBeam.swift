@@ -8,8 +8,16 @@
 import ObjectMapper
 
 class RailingAndKerbBeam: NonPersistableRequestBody {
-    var length: Float = 0
-    var noOfSpan: Float = 0
+    var length: Float = 0 {
+        didSet {
+            setTotalLength()
+        }
+    }
+    var noOfSpan: Int = 0 {
+        didSet {
+            setTotalLength()
+        }
+    }
     var totalLength: Float = 0
 
     enum ResponseKeys: String {
@@ -22,5 +30,10 @@ class RailingAndKerbBeam: NonPersistableRequestBody {
         length <- map[ResponseKeys.length.rawValue]
         noOfSpan <- map[ResponseKeys.noOfSpan.rawValue]
         totalLength <- map[ResponseKeys.totalLength.rawValue]
+    }
+}
+extension RailingAndKerbBeam {
+    func setTotalLength() {
+        totalLength = length*Float(noOfSpan)*2
     }
 }
