@@ -310,6 +310,7 @@ extension Step1Form: ReusableFormElementViewDelegate {
             formData.data?.setPMCMortarTotalAreaOfSideOfMainGirder()
             formData.data?.setPMCMortarTotalAreaOfTopSlabInterior()
             formData.data?.setPMCMortarTotalAreaOfTopSlabCantilever()
+            formData.data?.setTotalNoOfWaterSprout()
         case 11:
             guard let value = (item as? String), let intValue = Float(value) else {
                 return

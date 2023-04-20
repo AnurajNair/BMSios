@@ -195,3 +195,10 @@ extension InventoryData {
         pmcMortarTreatment?.setTotalAreaForPmcMortarTreatment()
     }
 }
+
+//MARK: Water Sprout Functions
+extension InventoryData {
+    func setTotalNoOfWaterSprout() {
+        waterSprout?.setTotalNoOfWaterSprout(noOfSpan: noOfSpan)
+    }
+}
