@@ -108,6 +108,12 @@ extension InventoryData {
     func setMainGirderAreaOfBottom() {
         mainGirder?.setAreaOfBottom(lengthOfSpan: lengthOfSpan)
         setPMCMortarAreaOfBottomOfMainGirder()
+        setWrappingBottomAreaOfMainGirder()
+    }
+
+    func setMainGirderAreaOfSide() {
+        mainGirder?.setAreaOfSide(lengthOfSpan: lengthOfSpan)
+        setWrappingSideAreaOfMainGirder()
     }
 }
 
@@ -212,5 +218,17 @@ extension InventoryData {
 
     func setTotalAreaOfDismantlingOfRCC() {
         dismantlingOfRccAndBituminiousWearingCoat?.setTotalArea(lengthOfSpan: lengthOfSpan)
+    }
+}
+
+extension InventoryData {
+    func setWrappingBottomAreaOfMainGirder() {
+        guard let areaOfBottom = mainGirder?.areaBottom else { return }
+        wrapping?.mainGirder?.setBottomArea(area: areaOfBottom)
+    }
+
+    func setWrappingSideAreaOfMainGirder() {
+        guard let sideArea = mainGirder?.areaSide else { return }
+        wrapping?.mainGirder?.setSideArea(mainGirderSideArea: sideArea)
     }
 }

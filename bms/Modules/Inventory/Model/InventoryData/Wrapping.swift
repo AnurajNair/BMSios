@@ -22,9 +22,21 @@ class Wrapping: NonPersistableRequestBody {
 
 extension Wrapping {
     class MainGirder: NonPersistableRequestBody {
-        var noOfGirders: Float = 0
-        var bottomArea: Float = 0
-        var sideArea: Float = 0
+        var noOfGirders: Int = 0 {
+            didSet {
+                setTotalArea()
+            }
+        }
+        var bottomArea: Float = 0 {
+            didSet {
+                setTotalArea()
+            }
+        }
+        var sideArea: Float = 0 {
+            didSet {
+                setTotalArea()
+            }
+        }
         var totalArea: Float = 0
 
         enum ResponseKeys: String {
@@ -39,6 +51,18 @@ extension Wrapping {
             bottomArea <- map[ResponseKeys.bottomArea.rawValue]
             sideArea <- map[ResponseKeys.sideArea.rawValue]
             totalArea <- map[ResponseKeys.totalArea.rawValue]
+        }
+
+        func setBottomArea(area: Float) {
+            self.bottomArea = area
+        }
+
+        func setSideArea(mainGirderSideArea: Float) {
+            self.sideArea = mainGirderSideArea*2
+        }
+
+        func setTotalArea() {
+            totalArea = (sideArea+bottomArea)*Float(noOfGirders)
         }
     }
 }

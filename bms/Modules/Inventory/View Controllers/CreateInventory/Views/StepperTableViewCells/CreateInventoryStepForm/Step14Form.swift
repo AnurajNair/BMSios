@@ -14,7 +14,19 @@ class Step14Form: NSObject, StepperTableViewCellFormProtocol {
                                          "Bottom area of main girder in a span", "side area of main girder in a span",
                                         "Total area of main girder in the bridge ( only upstreama and downstream girders and 30%)"]])
 
+    let inventory: Inventory
+    var collectionView: UICollectionView?
+
+    private var mainGirder: Wrapping.MainGirder? {
+        inventory.data?.wrapping?.mainGirder
+    }
+
+    init(inventory: Inventory) {
+        self.inventory = inventory
+    }
+
     func populate(collectionView: UICollectionView) {
+        self.collectionView = collectionView
         collectionView.delegate = self
         collectionView.dataSource = self
     }
@@ -41,10 +53,26 @@ extension Step14Form: UICollectionViewDataSource {
         }
         let fieldNo = indexPath.row
         let fieldTitle = fields[indexPath.section].value[fieldNo]
+        let fieldValue: String?
+        let isFieldEditable = fieldNo == 0
+        switch fieldNo {
+        case 0:
+            fieldValue = mainGirder?.noOfGirders.description
+        case 1:
+            fieldValue = mainGirder?.bottomArea.description
+        case 2:
+            fieldValue = mainGirder?.sideArea.description
+        case 3:
+            fieldValue = mainGirder?.totalArea.description
+        default:
+            fieldValue = nil
+        }
 
-        _ = cell.collectionFormElement.setupTextField(id: fieldNo, fieldTitle: fieldTitle, showFieldTitleByDefault: false, placeholderTitle: fieldTitle, textFieldStyling: TTTextFieldStyler.blueStyle)
+        _ = cell.collectionFormElement.setupTextField(id: fieldNo, fieldTitle: fieldTitle, showFieldTitleByDefault: false, placeholderTitle: fieldTitle, fieldValue: fieldValue ?? "", isEditable: isFieldEditable, textFieldStyling: TTTextFieldStyler.blueStyle)
 
+        cell.collectionFormElement.delegate = self
         return cell
+
     }
 
     
@@ -64,3 +92,22 @@ extension Step14Form: UICollectionViewDelegateFlowLayout {
     }
 }
 
+extension Step14Form: ReusableFormElementViewDelegate {
+    func setValues(index: Any, item: Any) {
+        switch index as? Int {
+        case 0:
+            guard let value = (item as? String), let intValue = Int(value) else {
+                return
+            }
+            mainGirder?.noOfGirders = intValue
+            collectionView?.reloadItems(at: [IndexPath(item: 3, section: 0)])
+
+        default:
+            break
+        }
+    }
+
+    func setError(index: Any, error: String) {
+        print("Error occured in \(self.description) - \(error)")
+    }
+}

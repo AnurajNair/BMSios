@@ -130,11 +130,7 @@ extension Step2Form: ReusableFormElementViewDelegate {
     }
 
     func setAreaOfSide() {
-        guard let length = inventory.data?.lengthOfSpan, let depth = mainGirder?.depth else {
-             return
-        }
-        let area = Float(length)*depth
-        mainGirder?.areaSide = area
+        inventory.data?.setMainGirderAreaOfSide()
         collectionView?.reloadItems(at: [IndexPath(item: 3, section: 0)])
     }
 

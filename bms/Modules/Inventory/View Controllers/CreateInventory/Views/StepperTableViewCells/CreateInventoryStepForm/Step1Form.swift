@@ -320,6 +320,7 @@ extension Step1Form: ReusableFormElementViewDelegate {
             }
             formData.data?.lengthOfSpan = floatValue
             formData.data?.setMainGirderAreaOfBottom()
+            formData.data?.setMainGirderAreaOfSide()
             formData.data?.setTopSlabInteriorArea()
             formData.data?.setTopSlabCantileverArea()
             formData.data?.railingAndKerbBeam?.length = floatValue

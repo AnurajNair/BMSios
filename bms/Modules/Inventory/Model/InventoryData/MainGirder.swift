@@ -38,4 +38,9 @@ extension MainGirder {
         let area = lengthOfSpan*width
         areaBottom = area
     }
+
+    func setAreaOfSide(lengthOfSpan: Float) {
+        let area = lengthOfSpan*depth
+        areaSide = area
+    }
 }
