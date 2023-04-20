@@ -9,8 +9,16 @@ import Foundation
 import ObjectMapper
 
 class GirderCommon: NonPersistableRequestBody {
-    var totalArea: Float = 0
-    var estimatedPcOfDamagedArea: Float = 0
+    var totalArea: Float = 0 {
+        didSet {
+            setDamagedArea()
+        }
+    }
+    var estimatedPcOfDamagedArea: Float = 0 {
+        didSet {
+            setDamagedArea()
+        }
+    }
     var damagedArea: Float = 0
 
     enum ResponseKeys: String {
@@ -23,5 +31,11 @@ class GirderCommon: NonPersistableRequestBody {
         totalArea <- map[ResponseKeys.totalArea.rawValue]
         estimatedPcOfDamagedArea <- map[ResponseKeys.estimatedPcOfDamagedArea.rawValue]
         damagedArea <- map[ResponseKeys.damagedArea.rawValue]
+    }
+}
+
+extension GirderCommon {
+    func setDamagedArea() {
+       damagedArea = totalArea*estimatedPcOfDamagedArea
     }
 }

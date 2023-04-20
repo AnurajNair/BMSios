@@ -9,7 +9,7 @@ import ObjectMapper
 
 class TopSlabCantilever: NonPersistableRequestBody {
     var width: Float = 0
-    var noOfPortions: Float = 0
+    var noOfPortions: Int = 0
     var thickness: Float = 0
     var area: Float = 0
     var volume: Float = 0
@@ -30,5 +30,11 @@ class TopSlabCantilever: NonPersistableRequestBody {
         area <- map[ResponseKeys.area.rawValue]
         volume <- map[ResponseKeys.volume.rawValue]
 
+    }
+}
+
+extension TopSlabCantilever {
+    func setArea(lengthOfSpan: Float) {
+        area = width*Float(noOfPortions)*lengthOfSpan
     }
 }

@@ -94,10 +94,11 @@ extension Step4Form: ReusableFormElementViewDelegate {
             setArea()
             setVolume()
         case 1:
-            guard let value = (item as? String), let floatValue = Float(value) else {
+            guard let value = (item as? String), let intValue = Int(value) else {
                 return
             }
-            topSlabCantilever?.noOfPortions = floatValue
+            topSlabCantilever?.noOfPortions = intValue
+            setArea()
             setVolume()
         case 2:
             guard let value = (item as? String), let floatValue = Float(value) else {
@@ -110,6 +111,7 @@ extension Step4Form: ReusableFormElementViewDelegate {
                 return
             }
             topSlabCantilever?.area = floatValue
+            inventory.data?.setPMCMortarTotalAreaOfTopSlabCantilever()
 
         case 4:
             guard let value = (item as? String), let floatValue = Float(value) else {
@@ -127,11 +129,7 @@ extension Step4Form: ReusableFormElementViewDelegate {
     }
 
     func setArea() {
-        guard let length = inventory.data?.lengthOfSpan, let width = topSlabCantilever?.width else {
-             return
-        }
-        let area = Float(length)*width
-        topSlabCantilever?.area = area
+        inventory.data?.setTopSlabCantileverArea()
         collectionView?.reloadItems(at: [IndexPath(item: 3, section: 0)])
     }
 
@@ -139,7 +137,7 @@ extension Step4Form: ReusableFormElementViewDelegate {
         guard let length = inventory.data?.lengthOfSpan, let width = topSlabCantilever?.width, let thickness = topSlabCantilever?.thickness, let noOfPortion = topSlabCantilever?.noOfPortions else {
              return
         }
-        let volume = Float(length)*Float(width)*thickness*noOfPortion
+        let volume = Float(length)*Float(width)*thickness*Float(noOfPortion)
         topSlabCantilever?.volume = volume
         inventory.data?.polymerModifiedCementGrout?.topSlabCantilever?.volumeOfTopSlab = volume
         collectionView?.reloadItems(at: [IndexPath(item: 4, section: 0)])

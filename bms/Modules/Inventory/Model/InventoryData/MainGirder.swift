@@ -32,3 +32,10 @@ class MainGirder: NonPersistableRequestBody {
 
     }
 }
+
+extension MainGirder {
+    func setAreaOfBottom(lengthOfSpan: Float) {
+        let area = lengthOfSpan*width
+        areaBottom = area
+    }
+}

@@ -9,7 +9,7 @@ import ObjectMapper
 
 class TopSlabInterior: NonPersistableRequestBody {
     var width: Float = 0
-    var noOfPortions: Float = 0
+    var noOfPortions: Int = 0
     var thickness: Float = 0
     var area: Float = 0
     var volume: Float = 0
@@ -28,5 +28,11 @@ class TopSlabInterior: NonPersistableRequestBody {
         thickness <- map[ResponseKeys.thickness.rawValue]
         area <- map[ResponseKeys.area.rawValue]
         volume <- map[ResponseKeys.volume.rawValue]
+    }
+}
+
+extension TopSlabInterior {
+    func setArea(lengthOfSpan: Float) {
+        area = width*lengthOfSpan
     }
 }

@@ -102,7 +102,7 @@ class StepperTableViewCell: UITableViewCell {
             form = Step8Form()
 
         case 9:
-            form = Step9Form()
+            form = Step9Form(inventory: inventory)
 
         case 10:
             form = Step10Form()

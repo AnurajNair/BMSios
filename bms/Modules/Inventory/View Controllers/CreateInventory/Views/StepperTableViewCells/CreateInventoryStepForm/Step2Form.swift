@@ -99,20 +99,21 @@ extension Step2Form: ReusableFormElementViewDelegate {
                 return
             }
             mainGirder?.width = floatValue
-            setAreaOfBottom()
+            inventory.data?.setMainGirderAreaOfBottom()
+            collectionView?.reloadItems(at: [IndexPath(item: 2, section: 0)])
             setVolume()
         case 2:
             guard let value = (item as? String), let floatValue = Float(value) else {
                 return
             }
             mainGirder?.areaBottom = floatValue
-
+            inventory.data?.setPMCMortarAreaOfBottomOfMainGirder()
         case 3:
             guard let value = (item as? String), let floatValue = Float(value) else {
                 return
             }
             mainGirder?.areaSide = floatValue
-
+            inventory.data?.setPMCMortarTotalAreaOfSideOfMainGirder()
         case 4:
             guard let value = (item as? String), let floatValue = Float(value) else {
                 return
@@ -126,15 +127,6 @@ extension Step2Form: ReusableFormElementViewDelegate {
 
     func setError(index: Any, error: String) {
         print("Error occured in \(self.description) - \(error)")
-    }
-
-    func setAreaOfBottom() {
-        guard let length = inventory.data?.lengthOfSpan, let width = mainGirder?.width else {
-             return
-        }
-        let area = Float(length)*width
-        mainGirder?.areaBottom = area
-        collectionView?.reloadItems(at: [IndexPath(item: 2, section: 0)])
     }
 
     func setAreaOfSide() {

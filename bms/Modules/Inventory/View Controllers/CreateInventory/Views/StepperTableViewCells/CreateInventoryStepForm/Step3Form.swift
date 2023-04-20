@@ -93,12 +93,16 @@ extension Step3Form: ReusableFormElementViewDelegate {
             topSlabInterior?.width = floatValue
             setArea()
             setVolume()
+            inventory.data?.setPMCMortarTotalAreaOfTopSlabInterior()
+
         case 1:
-            guard let value = (item as? String), let floatValue = Float(value) else {
+            guard let value = (item as? String), let intValue = Int(value) else {
                 return
             }
-            topSlabInterior?.noOfPortions = floatValue
+            topSlabInterior?.noOfPortions = intValue
             setVolume()
+            inventory.data?.setPMCMortarTotalAreaOfTopSlabInterior()
+
         case 2:
             guard let value = (item as? String), let floatValue = Float(value) else {
                 return
@@ -139,7 +143,7 @@ extension Step3Form: ReusableFormElementViewDelegate {
         guard let length = inventory.data?.lengthOfSpan, let width = topSlabInterior?.width, let thickness = topSlabInterior?.thickness, let noOfPortion = topSlabInterior?.noOfPortions else {
              return
         }
-        let volume = Float(length)*Float(width)*thickness*noOfPortion
+        let volume = length*width*thickness*Float(noOfPortion)
         topSlabInterior?.volume = volume
         inventory.data?.polymerModifiedCementGrout?.topSlabInterior?.volumeOfTopSlab = volume
         collectionView?.reloadItems(at: [IndexPath(item: 4, section: 0)])

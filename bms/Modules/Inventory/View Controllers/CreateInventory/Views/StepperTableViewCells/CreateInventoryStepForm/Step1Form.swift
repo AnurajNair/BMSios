@@ -306,15 +306,21 @@ extension Step1Form: ReusableFormElementViewDelegate {
                 return
             }
             formData.data?.noOfSpan = intValue
-
+            formData.data?.setPMCMortarTotalAreaOfBottomOfMainGirder()
+            formData.data?.setPMCMortarTotalAreaOfSideOfMainGirder()
+            formData.data?.setPMCMortarTotalAreaOfTopSlabInterior()
+            formData.data?.setPMCMortarTotalAreaOfTopSlabCantilever()
         case 11:
-            guard let value = (item as? String), let intValue = Int(value) else {
+            guard let value = (item as? String), let intValue = Float(value) else {
                 return
             }
             formData.data?.lengthOfSpan = intValue
+            formData.data?.setMainGirderAreaOfBottom()
+            formData.data?.setTopSlabInteriorArea()
+            formData.data?.setTopSlabCantileverArea()
 
         case 12:
-            guard let value = (item as? String), let intValue = Int(value) else {
+            guard let value = (item as? String), let intValue = Float(value) else {
                 return
             }
             formData.data?.widthOfSpan = intValue
@@ -324,6 +330,9 @@ extension Step1Form: ReusableFormElementViewDelegate {
                 return
             }
             formData.data?.noOfMainGirderInASpan = intValue
+            formData.data?.setPMCMortarTotalAreaOfBottomOfMainGirder()
+            formData.data?.setPMCMortarTotalAreaOfSideOfMainGirder()
+            formData.data?.setPMCMortarTotalAreaOfTopSlabInterior()
 
         case 14:
             guard let value = (item as? String), let intValue = Int(value) else {

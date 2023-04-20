@@ -124,6 +124,8 @@ extension Step5Form: ReusableFormElementViewDelegate {
                 return
             }
             crossGirder?.areaOfSide = floatValue
+            inventory.data?.setPMCMortarTotalAreaOfCrossGirder()
+
         case 5:
             guard let value = (item as? String), let floatValue = Float(value) else {
                 return
@@ -134,6 +136,7 @@ extension Step5Form: ReusableFormElementViewDelegate {
                 return
             }
             crossGirder?.noOfCrossGirders = intValue
+            inventory.data?.setPMCMortarTotalAreaOfCrossGirder()
 
         default:
             break
@@ -159,6 +162,7 @@ extension Step5Form: ReusableFormElementViewDelegate {
         }
         let area = Float(length)*depth
         crossGirder?.areaOfSide = area
+        inventory.data?.setPMCMortarTotalAreaOfCrossGirder()
         collectionView?.reloadItems(at: [IndexPath(item: 4, section: 0)])
     }
 

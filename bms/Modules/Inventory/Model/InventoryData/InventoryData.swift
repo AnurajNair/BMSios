@@ -16,8 +16,8 @@ class InventoryData: NonPersistableRequestBody {
     var typeOfWearingCoars = 0
     var typeOfRailing = 0
     var noOfSpan = 0
-    var lengthOfSpan = 0
-    var widthOfSpan = 0
+    var lengthOfSpan: Float = 0
+    var widthOfSpan: Float = 0
     var noOfMainGirderInASpan = 0
     var noOfBearingInSpan = 0
     var noOfPile = 0
@@ -100,5 +100,98 @@ class InventoryData: NonPersistableRequestBody {
         expansionJoint <- map[ResponseKeys.expansionJoint.rawValue]
         dismantlingOfRccAndBituminiousWearingCoat <- map[ResponseKeys.dismantlingOfRccAndBituminiousWearingCoat.rawValue]
         wrapping <- map[ResponseKeys.wrapping.rawValue]
+    }
+}
+
+//MARK: Main Girder Functions
+extension InventoryData {
+    func setMainGirderAreaOfBottom() {
+        mainGirder?.setAreaOfBottom(lengthOfSpan: lengthOfSpan)
+        setPMCMortarAreaOfBottomOfMainGirder()
+    }
+}
+
+//MARK: Top Slab (Interiror) Functions
+extension InventoryData {
+    func setTopSlabInteriorArea() {
+        topSlabInterior?.setArea(lengthOfSpan: lengthOfSpan)
+        setPMCMortarTotalAreaOfTopSlabInterior()
+    }
+}
+
+//MARK: Top Slab (Cantilever) Functions
+extension InventoryData {
+    func setTopSlabCantileverArea() {
+        topSlabCantilever?.setArea(lengthOfSpan: lengthOfSpan)
+        setPMCMortarTotalAreaOfTopSlabCantilever()
+    }
+}
+
+//MARK: PMC MORTAR Functions
+extension InventoryData {
+    func setPMCMortarAreaOfBottomOfMainGirder() {
+        guard let area = mainGirder?.areaBottom else { return }
+        pmcMortarTreatment?.bottomOfMainGirder?.setAreaOfBottom(area: area)
+        setPMCMortarTotalAreaOfBottomOfMainGirder()
+    }
+
+    func setPMCMortarTotalAreaOfBottomOfMainGirder() {
+        pmcMortarTreatment?.bottomOfMainGirder?.setTotalArea(noOfSpan: noOfSpan,
+                                                             noOfMainGirderInSpan: noOfMainGirderInASpan)
+        setTotalAreaForPmcMortarTreatment()
+    }
+
+    func setPMCMortarTotalAreaOfSideOfMainGirder() {
+        guard let areaOfSideOfMainGirder = mainGirder?.areaSide else { return }
+        pmcMortarTreatment?.sideOfMainGirder?.setTotalArea(areaOfSideGrider: areaOfSideOfMainGirder,
+                                                           noOfSpan: noOfSpan,
+                                                           noOfMainGirderInSpan: noOfMainGirderInASpan)
+        setPMCMortarSideDamagedArea()
+    }
+
+    func setPMCMortarTotalAreaOfCrossGirder() {
+        guard let areaOfSideOfCrossGirder = crossGirder?.areaOfSide,
+              let noOfCrossGirder = crossGirder?.noOfCrossGirders else { return }
+        pmcMortarTreatment?.crossGirder?.setTotalArea(crossGirderAreaOfSide: areaOfSideOfCrossGirder,
+                                                      noOfCrossGirderInBridge: noOfCrossGirder)
+        setPMCMortarCrossDamagedArea()
+    }
+
+    func setPMCMortarTotalAreaOfTopSlabInterior() {
+        guard let width = topSlabInterior?.width,let noOfPortions = topSlabInterior?.noOfPortions else { return }
+        pmcMortarTreatment?.topSlabInterior?.setTotalArea(width: width,
+                                                          lengthOfSpan: lengthOfSpan,
+                                                          noOfPortions: noOfPortions,
+                                                          noOfSpan: noOfSpan)
+        setPMCMortarTopSlabIDamagedArea()
+    }
+
+    func setPMCMortarTotalAreaOfTopSlabCantilever() {
+        guard let area = topSlabCantilever?.area else { return }
+        pmcMortarTreatment?.topSlabCantilever?.setTotalArea(areaOfTopSlabCantilever: area,
+                                                            lengthOfSpan: lengthOfSpan,
+                                                            noOfSpan: noOfSpan)
+       setPMCMortarTopSlabCDamagedArea()
+    }
+
+    func setPMCMortarSideDamagedArea() {
+        pmcMortarTreatment?.sideOfMainGirder?.setDamagedArea()
+        setTotalAreaForPmcMortarTreatment()
+    }
+
+    func setPMCMortarCrossDamagedArea() {
+        pmcMortarTreatment?.crossGirder?.setDamagedArea()
+        setTotalAreaForPmcMortarTreatment()
+    }
+    func setPMCMortarTopSlabIDamagedArea() {
+        pmcMortarTreatment?.topSlabInterior?.setDamagedArea()
+        setTotalAreaForPmcMortarTreatment()
+    }
+    func setPMCMortarTopSlabCDamagedArea() {
+        pmcMortarTreatment?.topSlabCantilever?.setDamagedArea()
+        setTotalAreaForPmcMortarTreatment()
+    }
+    func setTotalAreaForPmcMortarTreatment() {
+        pmcMortarTreatment?.setTotalAreaForPmcMortarTreatment()
     }
 }

@@ -78,7 +78,7 @@ extension Step7Form: UICollectionViewDataSource {
         let fieldNo = indexPath.row
         let fieldTitle = sections[indexPath.section].fields[fieldNo]
         let fieldValue: String?
-        let isFieldEditable = fieldNo == 0 || fieldNo == 1 ||  fieldNo == 3 || fieldNo == 4 || fieldNo == 6
+        let isFieldEditable = fieldNo == 0 || fieldNo == 1 ||  fieldNo == 3
         switch indexPath.section {
         case 0:
             fieldValue = fieldValueForSection0(row: fieldNo)
