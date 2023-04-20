@@ -312,15 +312,18 @@ extension Step1Form: ReusableFormElementViewDelegate {
             formData.data?.setPMCMortarTotalAreaOfTopSlabCantilever()
             formData.data?.setTotalNoOfWaterSprout()
             formData.data?.railingAndKerbBeam?.noOfSpan = intValue
+            formData.data?.expansionJoint?.noOfJoints = intValue+1
+
         case 11:
-            guard let value = (item as? String), let intValue = Float(value) else {
+            guard let value = (item as? String), let floatValue = Float(value) else {
                 return
             }
-            formData.data?.lengthOfSpan = intValue
+            formData.data?.lengthOfSpan = floatValue
             formData.data?.setMainGirderAreaOfBottom()
             formData.data?.setTopSlabInteriorArea()
             formData.data?.setTopSlabCantileverArea()
-            formData.data?.railingAndKerbBeam?.length = intValue
+            formData.data?.railingAndKerbBeam?.length = floatValue
+            formData.data?.expansionJoint?.length = floatValue+1
 
         case 12:
             guard let value = (item as? String), let intValue = Float(value) else {

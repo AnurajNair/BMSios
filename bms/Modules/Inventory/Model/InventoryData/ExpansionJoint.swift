@@ -8,8 +8,16 @@
 import ObjectMapper
 
 class ExpansionJoint: NonPersistableRequestBody {
-    var noOfJoints: Float = 0
-    var length: Float = 0
+    var noOfJoints: Int = 0 {
+        didSet {
+            setTotalLength()
+        }
+    }
+    var length: Float = 0 {
+        didSet {
+            setTotalLength()
+        }
+    }
     var totalLength: Float = 0
 
     enum ResponseKeys: String {
@@ -22,5 +30,11 @@ class ExpansionJoint: NonPersistableRequestBody {
         noOfJoints <- map[ResponseKeys.noOfJoints.rawValue]
         length <- map[ResponseKeys.length.rawValue]
         totalLength <- map[ResponseKeys.totalLength.rawValue]
+    }
+}
+
+extension ExpansionJoint {
+    func setTotalLength() {
+        totalLength = Float(noOfJoints)*length
     }
 }

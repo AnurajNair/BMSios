@@ -12,7 +12,19 @@ class Step12Form: NSObject, StepperTableViewCellFormProtocol {
     private let itemsPerRow: CGFloat = 1
     let fields = ["No of expansion joints", "Length of a expansion joint", "Total length of expansion joint"]
 
+      var collectionView: UICollectionView?
+      let inventory: Inventory
+
+      private var expansionJoint: ExpansionJoint? {
+          inventory.data?.expansionJoint
+      }
+
+      init(inventory: Inventory) {
+          self.inventory = inventory
+      }
+
     func populate(collectionView: UICollectionView) {
+        self.collectionView = collectionView
         collectionView.delegate = self
         collectionView.dataSource = self
     }
@@ -33,8 +45,20 @@ extension Step12Form: UICollectionViewDataSource {
         }
         let fieldNo = indexPath.row
         let fieldTitle = fields[indexPath.row]
+        let fieldValue: String?
+        switch fieldNo {
+        case 0:
+            fieldValue = expansionJoint?.noOfJoints.description
+        case 1:
+            fieldValue = expansionJoint?.length.description
+        case 2:
+            fieldValue = expansionJoint?.totalLength.description
 
-        _ = cell.collectionFormElement.setupTextField(id: fieldNo, fieldTitle: fieldTitle, showFieldTitleByDefault: false, placeholderTitle: fieldTitle, textFieldStyling: TTTextFieldStyler.blueStyle)
+        default:
+            fieldValue = nil
+        }
+
+        _ = cell.collectionFormElement.setupTextField(id: fieldNo, fieldTitle: fieldTitle, showFieldTitleByDefault: false, placeholderTitle: fieldTitle, fieldValue: fieldValue ?? "", isEditable: false, textFieldStyling: TTTextFieldStyler.blueStyle)
 
         return cell
     }
