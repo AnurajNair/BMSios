@@ -8,7 +8,7 @@
 import ObjectMapper
 
 class Wrapping: NonPersistableRequestBody {
-    var mainGirder: MainGirder?
+    var mainGirder: MainGirder? = MainGirder()
 
 
     enum ResponseKeys: String {

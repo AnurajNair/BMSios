@@ -8,34 +8,34 @@
 import ObjectMapper
 
 class InventoryData: NonPersistableRequestBody {
-    var typeOfFoundation: Int = 0
-    var typeOfSubstructure: Int = 0
-    var typeOfSuperstructure: Int = 0
-    var typeOfBearing: Int = 0
-    var typeOfExpansionJoint = 0
-    var typeOfWearingCoars = 0
-    var typeOfRailing = 0
-    var noOfSpan = 0
-    var lengthOfSpan: Float = 0
-    var widthOfSpan: Float = 0
-    var noOfMainGirderInASpan = 0
-    var noOfBearingInSpan = 0
-    var noOfPile = 0
-    var diaOfPile = 0
-    var pileCapDimension: PileCapDimension?
-    var pierDimension: PierDimension?
-    var mainGirder: MainGirder?
-    var topSlabInterior: TopSlabInterior?
-    var topSlabCantilever: TopSlabCantilever?
-    var crossGirder: CrossGirder?
-    var lowViscosityGrout: LowViscosityGrout?
-    var polymerModifiedCementGrout: PolymerModifiedCementGrout?
-    var pmcMortarTreatment: PmcMortarTreatment?
-    var waterSprout: WaterSprout?
-    var railingAndKerbBeam: RailingAndKerbBeam?
-    var expansionJoint: ExpansionJoint?
-    var dismantlingOfRccAndBituminiousWearingCoat: DismantlingOfRccAndBituminiousWearingCoat?
-    var wrapping: Wrapping?
+    var typeOfFoundation: Int?
+    var typeOfSubstructure: Int?
+    var typeOfSuperstructure: Int?
+    var typeOfBearing: Int?
+    var typeOfExpansionJoint: Int?
+    var typeOfWearingCoars: Int?
+    var typeOfRailing: Int?
+    var noOfSpan: Int?
+    var lengthOfSpan: Float?
+    var widthOfSpan: Float?
+    var noOfMainGirderInASpan: Int?
+    var noOfBearingInSpan: Int?
+    var noOfPile: Int?
+    var diaOfPile: Int?
+    var pileCapDimension: PileCapDimension? = PileCapDimension()
+    var pierDimension: PierDimension? = PierDimension()
+    var mainGirder: MainGirder? = MainGirder()
+    var topSlabInterior: TopSlabInterior? = TopSlabInterior()
+    var topSlabCantilever: TopSlabCantilever? = TopSlabCantilever()
+    var crossGirder: CrossGirder? = CrossGirder()
+    var lowViscosityGrout: LowViscosityGrout? = LowViscosityGrout()
+    var polymerModifiedCementGrout: PolymerModifiedCementGrout? = PolymerModifiedCementGrout()
+    var pmcMortarTreatment: PmcMortarTreatment? = PmcMortarTreatment()
+    var waterSprout: WaterSprout? = WaterSprout()
+    var railingAndKerbBeam: RailingAndKerbBeam? = RailingAndKerbBeam()
+    var expansionJoint: ExpansionJoint? = ExpansionJoint()
+    var dismantlingOfRccAndBituminiousWearingCoat: DismantlingOfRccAndBituminiousWearingCoat? = DismantlingOfRccAndBituminiousWearingCoat()
+    var wrapping: Wrapping? = Wrapping()
 
 
     
@@ -106,12 +106,14 @@ class InventoryData: NonPersistableRequestBody {
 //MARK: Main Girder Functions
 extension InventoryData {
     func setMainGirderAreaOfBottom() {
+        guard let lengthOfSpan = lengthOfSpan else { return }
         mainGirder?.setAreaOfBottom(lengthOfSpan: lengthOfSpan)
         setPMCMortarAreaOfBottomOfMainGirder()
         setWrappingBottomAreaOfMainGirder()
     }
 
     func setMainGirderAreaOfSide() {
+        guard let lengthOfSpan = lengthOfSpan else { return }
         mainGirder?.setAreaOfSide(lengthOfSpan: lengthOfSpan)
         setWrappingSideAreaOfMainGirder()
     }
@@ -120,6 +122,7 @@ extension InventoryData {
 //MARK: Top Slab (Interiror) Functions
 extension InventoryData {
     func setTopSlabInteriorArea() {
+        guard let lengthOfSpan = lengthOfSpan else { return }
         topSlabInterior?.setArea(lengthOfSpan: lengthOfSpan)
         setPMCMortarTotalAreaOfTopSlabInterior()
     }
@@ -128,6 +131,7 @@ extension InventoryData {
 //MARK: Top Slab (Cantilever) Functions
 extension InventoryData {
     func setTopSlabCantileverArea() {
+        guard let lengthOfSpan = lengthOfSpan else { return }
         topSlabCantilever?.setArea(lengthOfSpan: lengthOfSpan)
         setPMCMortarTotalAreaOfTopSlabCantilever()
     }
@@ -142,13 +146,16 @@ extension InventoryData {
     }
 
     func setPMCMortarTotalAreaOfBottomOfMainGirder() {
+        guard let noOfSpan = noOfSpan, let noOfMainGirderInASpan = noOfMainGirderInASpan  else { return }
         pmcMortarTreatment?.bottomOfMainGirder?.setTotalArea(noOfSpan: noOfSpan,
                                                              noOfMainGirderInSpan: noOfMainGirderInASpan)
         setTotalAreaForPmcMortarTreatment()
     }
 
     func setPMCMortarTotalAreaOfSideOfMainGirder() {
-        guard let areaOfSideOfMainGirder = mainGirder?.areaSide else { return }
+        guard let noOfSpan = noOfSpan,
+              let noOfMainGirderInASpan = noOfMainGirderInASpan,
+              let areaOfSideOfMainGirder = mainGirder?.areaSide else { return }
         pmcMortarTreatment?.sideOfMainGirder?.setTotalArea(areaOfSideGrider: areaOfSideOfMainGirder,
                                                            noOfSpan: noOfSpan,
                                                            noOfMainGirderInSpan: noOfMainGirderInASpan)
@@ -164,7 +171,10 @@ extension InventoryData {
     }
 
     func setPMCMortarTotalAreaOfTopSlabInterior() {
-        guard let width = topSlabInterior?.width,let noOfPortions = topSlabInterior?.noOfPortions else { return }
+        guard let width = topSlabInterior?.width,
+              let lengthOfSpan = lengthOfSpan,
+              let noOfPortions = topSlabInterior?.noOfPortions,
+              let noOfSpan = noOfSpan else { return }
         pmcMortarTreatment?.topSlabInterior?.setTotalArea(width: width,
                                                           lengthOfSpan: lengthOfSpan,
                                                           noOfPortions: noOfPortions,
@@ -173,11 +183,13 @@ extension InventoryData {
     }
 
     func setPMCMortarTotalAreaOfTopSlabCantilever() {
-        guard let area = topSlabCantilever?.area else { return }
+        guard let area = topSlabCantilever?.area,
+              let lengthOfSpan = lengthOfSpan,
+              let noOfSpan = noOfSpan else { return }
         pmcMortarTreatment?.topSlabCantilever?.setTotalArea(areaOfTopSlabCantilever: area,
                                                             lengthOfSpan: lengthOfSpan,
                                                             noOfSpan: noOfSpan)
-       setPMCMortarTopSlabCDamagedArea()
+        setPMCMortarTopSlabCDamagedArea()
     }
 
     func setPMCMortarSideDamagedArea() {
@@ -205,6 +217,7 @@ extension InventoryData {
 //MARK: Water Sprout Functions
 extension InventoryData {
     func setTotalNoOfWaterSprout() {
+        guard let noOfSpan = noOfSpan else { return }
         waterSprout?.setTotalNoOfWaterSprout(noOfSpan: noOfSpan)
     }
 }
@@ -212,11 +225,14 @@ extension InventoryData {
 //MARK: Dismantling of RCC and Bituminous Wearing Coat Functions
 extension InventoryData {
     func setAreaOfDismantlingOfRcc() {
+        guard let lengthOfSpan = lengthOfSpan,
+              let widthOfSpan = widthOfSpan else { return }
         dismantlingOfRccAndBituminiousWearingCoat?.setArea(lengthOfSpan: lengthOfSpan, widthOfSpan: widthOfSpan)
         setTotalAreaOfDismantlingOfRCC()
     }
 
     func setTotalAreaOfDismantlingOfRCC() {
+        guard let lengthOfSpan = lengthOfSpan else { return }
         dismantlingOfRccAndBituminiousWearingCoat?.setTotalArea(lengthOfSpan: lengthOfSpan)
     }
 }

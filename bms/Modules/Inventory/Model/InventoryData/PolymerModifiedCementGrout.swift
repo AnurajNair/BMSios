@@ -11,10 +11,10 @@ class PolymerModifiedCementGrout: NonPersistableRequestBody {
     var totalVolumeOfGrout: Float = 0
     var volumeOf1CementBag: Float = 0
     var totalPmcGroutByWeight: Float = 0
-     var crossGirders: CrossGirder?
-    var topSlabInterior: TopSlabInterior?
-    var topSlabCantilever: TopSlabCantilever?
-    var pierCap: PierCap?
+     var crossGirders: CrossGirder? = CrossGirder()
+    var topSlabInterior: TopSlabInterior? = TopSlabInterior()
+    var topSlabCantilever: TopSlabCantilever?  = TopSlabCantilever()
+    var pierCap: PierCap? = PierCap()
 
 
     enum ResponseKeys: String {

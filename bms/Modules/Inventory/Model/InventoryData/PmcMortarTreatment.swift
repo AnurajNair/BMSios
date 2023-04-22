@@ -9,11 +9,11 @@ import ObjectMapper
 
 class PmcMortarTreatment: NonPersistableRequestBody {
     var totalAreaForPmcMortarTreatment: Float = 0
-    var bottomOfMainGirder: BottomOfMainGirder?
-    var sideOfMainGirder: SideOfMainGirder?
-    var crossGirder: CrossGirder?
-    var topSlabInterior: TopSlabInterior?
-    var topSlabCantilever: TopSlabCantilever?
+    var bottomOfMainGirder: BottomOfMainGirder? = BottomOfMainGirder()
+    var sideOfMainGirder: SideOfMainGirder? = SideOfMainGirder()
+    var crossGirder: CrossGirder? = CrossGirder()
+    var topSlabInterior: TopSlabInterior? = TopSlabInterior()
+    var topSlabCantilever: TopSlabCantilever? = TopSlabCantilever()
 
 
     enum ResponseKeys: String {

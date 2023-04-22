@@ -12,7 +12,7 @@ class Inventory: RequestBody {
     @objc dynamic var projectId: Int = 0
     @objc dynamic var bridgeId: Int = 0
     @objc dynamic var saveStatus: String?
-    @objc dynamic var status: String?
+    @objc dynamic var status: String = Status.inActive.rawValue
     var statusIsActive: Bool {
         status == Status.active.rawValue
     }
@@ -25,6 +25,12 @@ class Inventory: RequestBody {
     }
 
     var data: InventoryData?
+
+    convenience init(inventoryData: InventoryData) {
+        self.init()
+        self.data = inventoryData
+        updateDataDict()
+    }
 
     enum ResponseKeys: String {
         case id = "id"
