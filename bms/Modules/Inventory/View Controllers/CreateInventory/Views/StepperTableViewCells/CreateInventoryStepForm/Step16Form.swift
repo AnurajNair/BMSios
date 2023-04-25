@@ -11,16 +11,41 @@ import UIKit
 class Step16Form: NSObject, StepperTableViewCellFormProtocol {
     private let itemsPerRow: CGFloat = 1
 
-    let fields = Array(["Main Girder": ["Place at 50 mm distance"],
-                        "Side of Main girder": ["No. of nipple along legth of the girder",
-                                                "No. of nipple along depth of the girder", "Porous Volume",
-                                                "Total no. of nipples in side of the girder"],
-                        "Bottom of Main girder": ["No. of nipple",
-                                                  "Total no. of nipples in a  girder",
-                                                  "Grouting to be done to % of all girders/area of girder",
-                                                  "Total no. of nipples in the bridge"]])
+    let fields = [(sectionName: "Main Girder", fields: ["Place at 50 mm distance"]),
+                  (sectionName: "Side of Main girder", fields: ["No. of nipple along legth of the girder",
+                                                                "No. of nipple along depth of the girder", "Porous Volume",
+                                                                "Total no. of nipples in side of the girder"]),
+                  (sectionName: "Bottom of Main girder", fields: ["No. of nipple",
+                                                                  "Total no. of nipples in a  girder",
+                                                                  "Grouting to be done to % of all girders/area of girder",
+                                                                  "Total no. of nipples in the bridge"])]
+
+    var collectionView: UICollectionView?
+    let inventory: Inventory
+
+    private var bottomOfMainGirder: PmcMortarTreatment.BottomOfMainGirder? {
+        inventory.data?.pmcMortarTreatment?.bottomOfMainGirder
+    }
+    private var sideOfMainGirder: PmcMortarTreatment.SideOfMainGirder? {
+        inventory.data?.pmcMortarTreatment?.sideOfMainGirder
+    }
+    private var crossGirder: PmcMortarTreatment.CrossGirder? {
+        inventory.data?.pmcMortarTreatment?.crossGirder
+    }
+    private var topSlabInterior: PmcMortarTreatment.TopSlabInterior? {
+        inventory.data?.pmcMortarTreatment?.topSlabInterior
+    }
+    private var topSlabCantilever: PmcMortarTreatment.TopSlabCantilever? {
+        inventory.data?.pmcMortarTreatment?.topSlabCantilever
+    }
+
+    init(inventory: Inventory) {
+        self.inventory = inventory
+        
+    }
 
     func populate(collectionView: UICollectionView) {
+        self.collectionView = collectionView
         collectionView.delegate = self
         collectionView.dataSource = self
     }
@@ -33,7 +58,7 @@ extension Step16Form: UICollectionViewDataSource {
             return UICollectionReusableView(frame: .zero)
         }
         
-        headerView.titleLbl.text = fields[indexPath.section].key
+        headerView.titleLbl.text = fields[indexPath.section].sectionName
         return headerView
     }
 
@@ -42,7 +67,7 @@ extension Step16Form: UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        fields[section].value.count
+        fields[section].fields.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -50,7 +75,7 @@ extension Step16Form: UICollectionViewDataSource {
             fatalError("Could not load cell")
         }
         let fieldNo = indexPath.row
-        let fieldTitle = fields[indexPath.section].value[fieldNo]
+        let fieldTitle = fields[indexPath.section].fields[fieldNo]
         _ = cell.collectionFormElement.setupTextField(id: fieldNo, fieldTitle: fieldTitle, showFieldTitleByDefault: false, placeholderTitle: fieldTitle, textFieldStyling: TTTextFieldStyler.blueStyle)
 
         return cell
