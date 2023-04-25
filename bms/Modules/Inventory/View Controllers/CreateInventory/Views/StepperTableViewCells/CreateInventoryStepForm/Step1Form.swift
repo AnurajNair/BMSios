@@ -133,14 +133,14 @@ extension Step1Form: UICollectionViewDataSource {
             let options = [DropDownModel(id: 1, name: "Open"),
                            DropDownModel(id: 2, name: "Pile"),
                            DropDownModel(id: 3, name: "Well")]
-            let selectedIndex = options.firstIndex { $0.id as? Int ?? -1 == formData.data?.typeOfFoundation ?? 0 } ?? 0
+            let selectedIndex = options.firstIndex { $0.id as? Int == formData.data?.typeOfFoundation }
             cell.collectionFormElement.setupDropdownField(id: fieldNo, fieldTitle: "Type of Foundation", options: options , placeHolder: "Type of Foundation", selectedIndex: selectedIndex)
 
         case 4:
             let options = [DropDownModel(id: 1, name: "Solid RCC Pier"),
                            DropDownModel(id: 2, name: "Hollow Box"),
                            DropDownModel(id: 3, name: "RCC Pier with Prestress Pier Cap")]
-            let selectedIndex = options.firstIndex { $0.id as? Int ?? -1 == formData.data?.typeOfSubstructure ?? 0 } ?? 0
+            let selectedIndex = options.firstIndex { $0.id as? Int == formData.data?.typeOfSubstructure }
 
             cell.collectionFormElement.setupDropdownField(id: fieldNo, fieldTitle: "Type of Sub-Structure", options: options , placeHolder: "Type of Sub-Structure", selectedIndex: selectedIndex)
         
@@ -154,7 +154,7 @@ extension Step1Form: UICollectionViewDataSource {
                            DropDownModel(id: 7, name: "PSC twin celll box girder"),
                            DropDownModel(id: 8, name: "Steel Box Girder"),
                            DropDownModel(id: 9, name: "Steel T Girder")]
-            let selectedIndex = options.firstIndex { $0.id as? Int ?? -1 == formData.data?.typeOfSuperstructure ?? 0 } ?? 0
+            let selectedIndex = options.firstIndex { $0.id as? Int == formData.data?.typeOfSuperstructure }
             cell.collectionFormElement.setupDropdownField(id: fieldNo, fieldTitle: "Type of Super-Structure", options: options , placeHolder: "Type of Super-Structure", selectedIndex: selectedIndex)
 
         case 6:
@@ -163,7 +163,7 @@ extension Step1Form: UICollectionViewDataSource {
                            DropDownModel(id: 3, name: "POT PTFE"),
                            DropDownModel(id: 4, name: "Spherical"),
                            DropDownModel(id: 5, name: "Special")]
-            let selectedIndex = options.firstIndex { $0.id as? Int ?? -1 == formData.data?.typeOfBearing ?? 0 } ?? 0
+            let selectedIndex = options.firstIndex { $0.id as? Int == formData.data?.typeOfBearing }
 
             cell.collectionFormElement.setupDropdownField(id: fieldNo, fieldTitle: "Type of Bearing", options: options , placeHolder: "Type of Bearing", selectedIndex: selectedIndex)
         
@@ -173,7 +173,7 @@ extension Step1Form: UICollectionViewDataSource {
                            DropDownModel(id: 1, name: "Strip seal"),
                            DropDownModel(id: 1, name: "modular"),
                            DropDownModel(id: 1, name: "Special")]
-            let selectedIndex = options.firstIndex { $0.id as? Int ?? -1 == formData.data?.typeOfExpansionJoint ?? 0 } ?? 0
+            let selectedIndex = options.firstIndex { $0.id as? Int == formData.data?.typeOfExpansionJoint}
 
             cell.collectionFormElement.setupDropdownField(id: fieldNo, fieldTitle: "Type of Expansion Joint", options: options , placeHolder: "Type of Expansion Joint", selectedIndex: selectedIndex)
         
@@ -181,7 +181,7 @@ extension Step1Form: UICollectionViewDataSource {
             let options = [DropDownModel(id: 1, name: "RCC wearing"),
                            DropDownModel(id: 2, name: "BC"),
                            DropDownModel(id: 2, name: "BC with mastic")]
-            let selectedIndex = options.firstIndex { $0.id as? Int ?? -1 == formData.data?.typeOfWearingCoars ?? 0 } ?? 0
+            let selectedIndex = options.firstIndex { $0.id as? Int == formData.data?.typeOfWearingCoars}
             cell.collectionFormElement.setupDropdownField(id: fieldNo, fieldTitle: "Type of Wearing Coars", options: options, placeHolder: "Type of Wearing Coars", selectedIndex: selectedIndex)
         
         case 9:
@@ -190,28 +190,28 @@ extension Step1Form: UICollectionViewDataSource {
                            DropDownModel(id: 2, name: "RCC railing with 2 tier"),
                            DropDownModel(id: 2, name: "RCC Railing with 3 tier"),
                            DropDownModel(id: 2, name: "RCC Crash barrier")]
-            let selectedIndex = options.firstIndex { $0.id as? Int ?? -1 == formData.data?.typeOfRailing ?? 0 } ?? 0
+            let selectedIndex = options.firstIndex { $0.id as? Int == formData.data?.typeOfRailing}
             cell.collectionFormElement.setupDropdownField(id: fieldNo, fieldTitle: "Type of Railing", options: options , placeHolder: "Type of Railing", selectedIndex: selectedIndex)
         case 10:
-            _ = cell.collectionFormElement.setupTextField(id: fieldNo, fieldTitle: "No. of Span", showFieldTitleByDefault: false, placeholderTitle: "No. of Span", fieldValue: formData.data?.noOfSpan.description ?? "", textFieldStyling: TTTextFieldStyler.blueStyle)
+            _ = cell.collectionFormElement.setupTextField(id: fieldNo, fieldTitle: "No. of Span", showFieldTitleByDefault: false, placeholderTitle: "No. of Span", fieldValue: formData.data?.noOfSpan?.description ?? "", textFieldStyling: TTTextFieldStyler.blueStyle)
 
         case 11:
-            _ = cell.collectionFormElement.setupTextField(id: fieldNo, fieldTitle: "Length of Span", showFieldTitleByDefault: false, placeholderTitle: "Length of Span", fieldValue: formData.data?.lengthOfSpan.description ?? "", textFieldStyling: TTTextFieldStyler.blueStyle)
+            _ = cell.collectionFormElement.setupTextField(id: fieldNo, fieldTitle: "Length of Span", showFieldTitleByDefault: false, placeholderTitle: "Length of Span", fieldValue: formData.data?.lengthOfSpan?.description ?? "", textFieldStyling: TTTextFieldStyler.blueStyle)
 
         case 12:
-            _ = cell.collectionFormElement.setupTextField(id: fieldNo, fieldTitle: "Width of Span", showFieldTitleByDefault: false, placeholderTitle: "Width of Span", fieldValue: formData.data?.widthOfSpan.description ?? "", textFieldStyling: TTTextFieldStyler.blueStyle)
+            _ = cell.collectionFormElement.setupTextField(id: fieldNo, fieldTitle: "Width of Span", showFieldTitleByDefault: false, placeholderTitle: "Width of Span", fieldValue: formData.data?.widthOfSpan?.description ?? "", textFieldStyling: TTTextFieldStyler.blueStyle)
 
         case 13:
-            _ = cell.collectionFormElement.setupTextField(id: fieldNo, fieldTitle: "no of main grider in a Span", showFieldTitleByDefault: false, placeholderTitle: "no of main grider in a Span", fieldValue: formData.data?.noOfMainGirderInASpan.description ?? "", textFieldStyling: TTTextFieldStyler.blueStyle)
+            _ = cell.collectionFormElement.setupTextField(id: fieldNo, fieldTitle: "no of main grider in a Span", showFieldTitleByDefault: false, placeholderTitle: "no of main grider in a Span", fieldValue: formData.data?.noOfMainGirderInASpan?.description ?? "", textFieldStyling: TTTextFieldStyler.blueStyle)
         
         case 14:
-            _ = cell.collectionFormElement.setupTextField(id: fieldNo, fieldTitle: "no of bearing in span", showFieldTitleByDefault: false, placeholderTitle: "no of bearing in span", fieldValue: formData.data?.noOfBearingInSpan.description ?? "", textFieldStyling: TTTextFieldStyler.blueStyle)
+            _ = cell.collectionFormElement.setupTextField(id: fieldNo, fieldTitle: "no of bearing in span", showFieldTitleByDefault: false, placeholderTitle: "no of bearing in span", fieldValue: formData.data?.noOfBearingInSpan?.description ?? "", textFieldStyling: TTTextFieldStyler.blueStyle)
 
         case 15:
-            _ = cell.collectionFormElement.setupTextField(id: fieldNo, fieldTitle: "no of pile", showFieldTitleByDefault: false, placeholderTitle: "no of pile", fieldValue: formData.data?.noOfPile.description ?? "", textFieldStyling: TTTextFieldStyler.blueStyle)
+            _ = cell.collectionFormElement.setupTextField(id: fieldNo, fieldTitle: "no of pile", showFieldTitleByDefault: false, placeholderTitle: "no of pile", fieldValue: formData.data?.noOfPile?.description ?? "", textFieldStyling: TTTextFieldStyler.blueStyle)
         
         case 16:
-            _ = cell.collectionFormElement.setupTextField(id: fieldNo, fieldTitle: "dia of pile", showFieldTitleByDefault: false, placeholderTitle: "dia of pile", fieldValue: formData.data?.diaOfPile.description ?? "", textFieldStyling: TTTextFieldStyler.blueStyle)
+            _ = cell.collectionFormElement.setupTextField(id: fieldNo, fieldTitle: "dia of pile", showFieldTitleByDefault: false, placeholderTitle: "dia of pile", fieldValue: formData.data?.diaOfPile?.description ?? "", textFieldStyling: TTTextFieldStyler.blueStyle)
         
         
         default:
