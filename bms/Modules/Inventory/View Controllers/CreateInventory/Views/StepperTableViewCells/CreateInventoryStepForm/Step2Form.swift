@@ -36,7 +36,7 @@ extension Step2Form: UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        5
+        fields.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -66,8 +66,6 @@ extension Step2Form: UICollectionViewDataSource {
         cell.collectionFormElement.delegate = self
         return cell
     }
-
-    
 }
 
 extension Step2Form: UICollectionViewDelegate {
