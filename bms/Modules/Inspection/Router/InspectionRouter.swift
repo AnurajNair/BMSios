@@ -86,20 +86,17 @@ enum InspectionRouterProtocol : RouterProtocol{
 
 
 
-class InspctionRouterManager{
-    
-    func getInspections(params: [String: Any],
-                        successCompletionHandler: @escaping (_ response: APIResponseModel) -> Void,
-                        errorCompletionHandler: @escaping (_ error: ApiError?) -> Void) {
-            RestClient.getAPIResponse(Router.inspectionRouterHandler(InspectionRouterProtocol.getInspection(APIRequestModel(params: params))),
-                                      successCompletionHandler: { (response) in
-                if let apiResponse = Mapper<APIResponseModel>().map(JSONObject: RestClient.getResultValue(response)) {
-                    successCompletionHandler(apiResponse)
-                }
-            }) { (error) in
-                errorCompletionHandler(error)
+class InspctionRouterManager {
+
+    func performInspectionsApiCall(api: InspectionRouterProtocol,
+                        successCompletionHandler: @escaping APISuccessHandler,
+                        errorCompletionHandler: @escaping APIFailureHandler) {
+        RestClient.getAPIResponse(Router.inspectionRouterHandler(api)) { (response) in
+            if let apiResponse = Mapper<APIResponseModel>().map(JSONObject: RestClient.getResultValue(response)) {
+                successCompletionHandler(apiResponse)
             }
+        } errorCompletionHandler: { (error) in
+            errorCompletionHandler(error)
         }
-    
- 
+    }
 }

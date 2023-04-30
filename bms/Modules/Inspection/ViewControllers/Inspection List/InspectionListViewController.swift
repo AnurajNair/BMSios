@@ -74,19 +74,11 @@ class InspectionListViewController: UIViewController {
         }
     }
 
-    func getInspectionReqParams() -> [String: Any] {
-        var params = [String : Any]()
-        params[APIRequestModel.RequestKeys.requestdata.rawValue] = encryptReq()
-        return params
-    }
-
-    func encryptReq() -> String {
+    func getInspectionReqParams() -> APIRequestParams {
         let obj = InventoryListRequestModel()
         obj.authId = SessionDetails.getInstance().currentUser?.profile?.authId
-        let jsonData = try! JSONSerialization.data(withJSONObject: Mapper().toJSON(obj),options: [])
-        let jsonString = String(data: jsonData, encoding: .utf8)
-        let encrypRequest = Utils().encryptData(json: jsonString! )
-       return encrypRequest
+        let params = APIUtils.createAPIRequestParams(dataObject: obj)
+        return params
     }
 
     func setupTableView(){
