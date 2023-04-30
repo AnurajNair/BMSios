@@ -15,18 +15,21 @@ import ObjectMapper_Realm
 enum InspectionRouterProtocol : RouterProtocol{
     
     case getInspection(APIRequestModel)
-   
+    case getInspectionById(APIRequestModel)
+
     
     var path: String{
         switch self {
         case .getInspection:
             return "Inspector/InspectionSummary"
+        case .getInspectionById(_):
+            return "Inspector/InspectionById"
         }
     }
     
     var method: HTTPMethod{
         switch self {
-        case .getInspection:
+        default:
             return .post
         }
     }
@@ -42,8 +45,8 @@ enum InspectionRouterProtocol : RouterProtocol{
         switch self {
         case .getInspection(let body):
             return body
-        default:
-            return nil
+        case .getInspectionById(let body):
+            return body
         }
     }
     
@@ -98,5 +101,22 @@ class InspctionRouterManager {
         } errorCompletionHandler: { (error) in
             errorCompletionHandler(error)
         }
+    }
+
+    func getInspections(params: [String: Any],
+                        successCompletionHandler: @escaping APISuccessHandler,
+                        errorCompletionHandler: @escaping APIFailureHandler) {
+        performInspectionsApiCall(api: .getInspection(APIRequestModel(params: params)),
+                                  successCompletionHandler: successCompletionHandler,
+                                  errorCompletionHandler: errorCompletionHandler)
+    }
+
+    func getInspectionById(params: [String: Any],
+                           successCompletionHandler: @escaping APISuccessHandler,
+                           errorCompletionHandler: @escaping APIFailureHandler) {
+        performInspectionsApiCall(api: .getInspectionById(APIRequestModel(params: params)),
+                                  successCompletionHandler: successCompletionHandler,
+                                  errorCompletionHandler: errorCompletionHandler)
+
     }
 }

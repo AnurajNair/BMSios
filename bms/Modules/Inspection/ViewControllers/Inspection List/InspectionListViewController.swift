@@ -75,8 +75,7 @@ class InspectionListViewController: UIViewController {
     }
 
     func getInspectionReqParams() -> APIRequestParams {
-        let obj = InventoryListRequestModel()
-        obj.authId = SessionDetails.getInstance().currentUser?.profile?.authId
+        let obj = InspectionListRequestModel()
         let params = APIUtils.createAPIRequestParams(dataObject: obj)
         return params
     }
@@ -154,11 +153,34 @@ extension InspectionListViewController:UITableViewDataSource{
 
 extension InspectionListViewController: InspectionListTableViewCellDelegate{
     func onInspectbtnClick(selectedItem: Inspection) {
-      
-        self.selectedBridge = selectedItem;
-        Navigate.routeUserToScreen(screenType: .routineInspbridgeDetailScreen,transitionType: .push,data: ["BridgeDetail" : self.selectedBridge as Any])
-        
+        self.selectedBridge = selectedItem
+        prepareForInspection(selectedItem)
     }
-    
-    
+
+    func prepareForInspection(_ inspection: Inspection) {
+        InspctionRouterManager().getInspectionById(params: getInspectionByIdParams(inspection)) { response in
+            Utils.hideLoadingInView(self.view)
+            self.handleInspectionByIdSuccess(response: response)
+        } errorCompletionHandler: { error in
+            Utils.showLoadingInView(self.view)
+            print("error - \(String(describing: error))")
+            Utils.displayAlert(title: "Error", message: "Something went wrong.")
+        }
+    }
+
+    func handleInspectionByIdSuccess(response: APIResponseModel) {
+        guard response.status == 0, response.response != "" else {
+            Utils.displayAlert(title: "Error", message: response.message ?? "Something went wrong.")
+            return
+        }
+        let responseJson = Utils.getJsonFromString(string:  Utils().decryptData(encryptdata: response.response!))
+        print(responseJson)
+    }
+
+    func getInspectionByIdParams(_ inspection: Inspection) -> APIRequestParams {
+        let obj = InspectionByIdRequestModel()
+        obj.inspectionId = inspection.inspectionId
+        let params = APIUtils.createAPIRequestParams(dataObject: obj)
+        return params
+    }
 }
