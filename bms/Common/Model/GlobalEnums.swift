@@ -20,3 +20,10 @@ enum SaveStatus: String {
     case draft = "D"
     case submitted = "S"
 }
+
+enum InspectionStatus: String {
+    case assigned = "A"
+    case draft = "D"
+    case submitted = "S"
+    case reviewed = "R"
+}

@@ -457,7 +457,20 @@ class Utils{
         }
         return ""
     }
-    
+
+    class func getJsonFromString(string: String) -> [String: Any]? {
+        guard let data = string.data(using: .utf8) else {
+            return nil
+        }
+        do {
+            let json = try JSONSerialization.jsonObject(with: data, options : .allowFragments) as? [String:Any]
+            return json
+        } catch let error as NSError {
+            print(error)
+            return nil
+        }
+    }
+
     //MARK: Encryption and Decryption
     
     func decryptData(encryptdata:String) -> String{

@@ -14,20 +14,20 @@ import ObjectMapper_Realm
 
 enum InspectionRouterProtocol : RouterProtocol{
     
-    case getInspection
+    case getInspection(APIRequestModel)
    
     
     var path: String{
         switch self {
         case .getInspection:
-            return ""
+            return "Inspector/InspectionSummary"
         }
     }
     
     var method: HTTPMethod{
         switch self {
         case .getInspection:
-            return .get
+            return .post
         }
     }
     
@@ -40,7 +40,8 @@ enum InspectionRouterProtocol : RouterProtocol{
     
     var body: Any?{
         switch self {
-      
+        case .getInspection(let body):
+            return body
         default:
             return nil
         }
@@ -87,16 +88,14 @@ enum InspectionRouterProtocol : RouterProtocol{
 
 class InspctionRouterManager{
     
-    func getInspections(successCompletionHandler: @escaping (
-        _ response: Any) -> Void, errorCompletionHandler: @escaping (_ error: ApiError?) -> Void){
-            
-            RestClient.getAPIResponse(Router.inspectionRouterHandler(InspectionRouterProtocol.getInspection), successCompletionHandler: { (response) in
-                successCompletionHandler(response)
-              
-//                if let apiResponse = Mapper<ApiSuccess>().map(JSONObject: RestClient.getResultValue(response as! DataResponse<Any, any Error>)) {
-//
-//                }
-                
+    func getInspections(params: [String: Any],
+                        successCompletionHandler: @escaping (_ response: APIResponseModel) -> Void,
+                        errorCompletionHandler: @escaping (_ error: ApiError?) -> Void) {
+            RestClient.getAPIResponse(Router.inspectionRouterHandler(InspectionRouterProtocol.getInspection(APIRequestModel(params: params))),
+                                      successCompletionHandler: { (response) in
+                if let apiResponse = Mapper<APIResponseModel>().map(JSONObject: RestClient.getResultValue(response)) {
+                    successCompletionHandler(apiResponse)
+                }
             }) { (error) in
                 errorCompletionHandler(error)
             }

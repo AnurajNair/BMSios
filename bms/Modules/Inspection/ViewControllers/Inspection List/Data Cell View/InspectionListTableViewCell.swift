@@ -9,36 +9,31 @@ import UIKit
 
 
 
- protocol InspectionListTableViewCellDelegate: class {
-      func onInspectbtnClick(selectedItem:InspectionBridgeListModel)
+protocol InspectionListTableViewCellDelegate: AnyObject {
+      func onInspectbtnClick(selectedItem:Inspection)
  
 }
 
 class InspectionListTableViewCell: UITableViewCell {
-    
-    @IBOutlet weak var moreActionsPopu: UIButton!
-    
-    @IBOutlet weak var idLabel: UILabel!
-    
-    @IBOutlet weak var projectNumberLabel: UILabel!
-    
-    @IBOutlet weak var projectNameLabel: UILabel!
-    
-    
-    @IBOutlet weak var locationLabel: UILabel!
-    
+        
+    @IBOutlet weak var srNoLabel: UILabel!
+    @IBOutlet weak var buidLabel: UILabel!
+    @IBOutlet weak var inspectionNameLabel: UILabel!
+    @IBOutlet weak var bridgeNameLabel: UILabel!
+    @IBOutlet weak var startDateLabel: UILabel!
+    @IBOutlet weak var endDateLabel: UILabel!
+    @IBOutlet weak var statusLabel: UILabel!
+    @IBOutlet weak internal var inspectButton: UIButton!
+
     
     class var identifier: String { return String(describing: self) }
 
     class var nib: UINib { return UINib(nibName: identifier, bundle: nil) }
     var delegate: InspectionListTableViewCellDelegate? 
     
-    var tableData:InspectionBridgeListModel?
+    var tableData:Inspection?
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        setupPopup()
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -49,26 +44,34 @@ class InspectionListTableViewCell: UITableViewCell {
     
     //Mark: functions
     
-    func setupPopup(){
-        
-        let optionClosure = {(action: UIAction) in print("hello")}
-        
-        moreActionsPopu.menu = UIMenu(children: [UIAction(title:"First Item", state: .on ,handler: optionClosure),UIAction(title:"Second Item" ,handler: optionClosure)])
-        
-        moreActionsPopu.showsMenuAsPrimaryAction = true
-        moreActionsPopu.changesSelectionAsPrimaryAction = true
-    }
-    
-    func configTableRow(tableData:InspectionBridgeListModel){
-        
+    func configTableRow(srNo: Int, tableData:Inspection){
         self.tableData = tableData;
-        self.idLabel.text = tableData.id
-        self.projectNumberLabel.text = tableData.project_code
-        self.projectNameLabel.text = tableData.project_name
-        self.locationLabel.text = tableData.location
+        self.srNoLabel.text = srNo.description
+        self.buidLabel.text = tableData.buid
+        self.inspectionNameLabel.text = tableData.inspectionName
+        self.bridgeNameLabel.text = tableData.bridgeName
+        self.startDateLabel.text = tableData.startDateAsString
+        self.endDateLabel.text = tableData.endDateAsString
+        self.statusLabel.text = tableData.inspectionStatusName
+        
+        guard let status = tableData.inspectionStatusEnum else {
+            return
+        }
+        let inspectButtonTitle = getInspectionButtonTitle(status: status)
+        inspectButton.setTitle(inspectButtonTitle, for: .normal)
+        inspectButton.isEnabled = status == .assigned || status == .draft
     }
     
-    
+    func getInspectionButtonTitle(status: InspectionStatus) -> String {
+        switch status {
+        case .assigned:
+            return "Start Inspection"
+        case .reviewed, .submitted:
+            return "Reviewed"
+        case.draft:
+            return "Resume"
+        }
+    }
     @IBAction func onInspectbtnClick(_ sender: Any) {
       
         self.delegate?.onInspectbtnClick(selectedItem: self.tableData!)

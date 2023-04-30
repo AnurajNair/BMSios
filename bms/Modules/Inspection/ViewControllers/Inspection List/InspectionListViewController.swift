@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import ObjectMapper
 
 class InspectionListViewController: UIViewController {
 
@@ -16,11 +17,13 @@ class InspectionListViewController: UIViewController {
     @IBOutlet weak var filterBtn: UIButton!
     @IBOutlet weak var unRegisterBtn: UIButton!
     
-    var selectedBridge:InspectionBridgeListModel?
+    var selectedBridge:Inspection?
     
     let tableList = [1,2,4,5,6]
     
     let inspectionData :[InspectionBridgeListModel] = [InspectionBridgeListModel(id: "#24351", project_name: "Project Name 1", project_code: "23324NM23456", location: "Location "),InspectionBridgeListModel(id: "#24351", project_name: "Project Name 1", project_code: "23324NM23456", location: "Location "),InspectionBridgeListModel(id: "#24351", project_name: "Project Name 1", project_code: "23324NM23456", location: "Location "),InspectionBridgeListModel(id: "#24351", project_name: "Project Name 1", project_code: "23324NM23456", location: "Location "),InspectionBridgeListModel(id: "#24351", project_name: "Project Name 1", project_code: "23324NM23456", location: "Location "),InspectionBridgeListModel(id: "#24351", project_name: "Project Name 1", project_code: "23324NM23456", location: "Location "),InspectionBridgeListModel(id: "#24351", project_name: "Project Name 1", project_code: "23324NM23456", location: "Location "),InspectionBridgeListModel(id: "#24351", project_name: "Project Name 1", project_code: "23324NM23456", location: "Location "),InspectionBridgeListModel(id: "#24351", project_name: "Project Name 1", project_code: "23324NM23456", location: "Location "),]
+
+    var inspectionList: [Inspection] = []
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -40,18 +43,52 @@ class InspectionListViewController: UIViewController {
 
     }
     
-    func getInspection(){
-       
-        let router = InspctionRouterManager()
-        router.getInspections { response in
-          
+    func getInspection() {
+        Utils.showLoadingInView(self.view)
+        InspctionRouterManager().getInspections(params: getInspectionReqParams()) { response in
+            if(response.status == 0){
+                if(response.response != ""){
+                    let responseJson = Utils.getJsonFromString(string:  Utils().decryptData(encryptdata: response.response!))
+                    if let list = responseJson?["inspections"] as? [[String: Any]] {
+                        list.forEach { item in
+                            print(item)
+                            if let inspection =  Mapper<Inspection>().map(JSON: item ) {
+                                self.inspectionList.append(inspection)
+                            }
+                        }
+                        self.tableView.reloadData()
+                    }
+                }else{
+                    Utils.displayAlert(title: "Error", message: response.message ?? "Something went wrong.")
+                }
+                Utils.hideLoadingInView(self.view)
+            } else {
+                Utils.hideLoadingInView(self.view)
+                
+                Utils.displayAlert(title: "Error", message: response.message ?? "Something went wrong.")
+            }
         } errorCompletionHandler: { error in
-            print(error)
+            Utils.showLoadingInView(self.view)
+            print("error - \(String(describing: error))")
+            Utils.displayAlert(title: "Error", message: "Something went wrong.")
         }
-
     }
-    
-    
+
+    func getInspectionReqParams() -> [String: Any] {
+        var params = [String : Any]()
+        params[APIRequestModel.RequestKeys.requestdata.rawValue] = encryptReq()
+        return params
+    }
+
+    func encryptReq() -> String {
+        let obj = InventoryListRequestModel()
+        obj.authId = SessionDetails.getInstance().currentUser?.profile?.authId
+        let jsonData = try! JSONSerialization.data(withJSONObject: Mapper().toJSON(obj),options: [])
+        let jsonString = String(data: jsonData, encoding: .utf8)
+        let encrypRequest = Utils().encryptData(json: jsonString! )
+       return encrypRequest
+    }
+
     func setupTableView(){
         self.tableView.bounces = false
         self.tableView.separatorStyle = .none
@@ -72,7 +109,6 @@ class InspectionListViewController: UIViewController {
    
     @IBAction func onUnregisterBtnClick(_ sender: Any) {
         Navigate.routeUserToScreen(screenType: .popUpView, transitionType: .modal)
-
     }
     
 }
@@ -91,9 +127,7 @@ extension InspectionListViewController:UITableViewDataSource{
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-      
-
-        return self.inspectionData.count
+        return self.inspectionList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -102,7 +136,7 @@ extension InspectionListViewController:UITableViewDataSource{
             
         }
         
-        cell.configTableRow(tableData: self.inspectionData[indexPath.row])
+        cell.configTableRow(srNo: indexPath.row+1, tableData: self.inspectionList[indexPath.row])
         cell.delegate = self
         
         return cell
@@ -127,7 +161,7 @@ extension InspectionListViewController:UITableViewDataSource{
 
 
 extension InspectionListViewController: InspectionListTableViewCellDelegate{
-    func onInspectbtnClick(selectedItem: InspectionBridgeListModel) {
+    func onInspectbtnClick(selectedItem: Inspection) {
       
         self.selectedBridge = selectedItem;
         Navigate.routeUserToScreen(screenType: .routineInspbridgeDetailScreen,transitionType: .push,data: ["BridgeDetail" : self.selectedBridge as Any])
