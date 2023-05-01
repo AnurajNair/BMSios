@@ -27,3 +27,13 @@ enum InspectionStatus: String {
     case submitted = "S"
     case reviewed = "R"
 }
+
+enum QuestionType: Int {
+    case text = 1
+    case radioOptions = 2
+}
+
+enum TrueFalse: String {
+    case `false` = "0"
+    case `true` = "1"
+}

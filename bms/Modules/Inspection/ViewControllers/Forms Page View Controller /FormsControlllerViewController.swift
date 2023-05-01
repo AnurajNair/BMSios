@@ -10,114 +10,87 @@ import UIKit
 
 
 class FormsControlllerViewController: UIViewController {
-
-    //private var pageController: UIPageViewController?
-  
-
-
+    private let sectionInsets = UIEdgeInsets(
+      top: 20.0,
+      left: 20.0,
+      bottom: 20.0,
+      right: 20.0)
 
     @IBOutlet weak var cutentView: UIView!
-    var inspectionSections :[sections]? = [sections(section_name: "General", isSubSectionPresent: "false", subSections: [], questions: [question_ans(question: "Bridge Name", type: "text"),question_ans(question: "River Name", type: "text"),question_ans(question: "Name ofHighway", type: "text"),question_ans(question: "Highway No.", type: "text"),question_ans(question: "Bridge Location", type: "text")]),sections(section_name: "Approach", isSubSectionPresent: "false", subSections: [], questions: [question_ans(question: "Bridge Name", type: "text"),question_ans(question: "Bridge Name", type: "text"),question_ans(question: "Bridge Name", type: "option"),])]
-    
-    
-    
     @IBOutlet weak var previousBtn: UIButton!
-    
     @IBOutlet weak var nextBtn: UIButton!
-    
     @IBOutlet weak var progressSection: UICollectionView!
     
-    let progressData = [1,2,3,4,5,6,7,8]
-    
+    var pageController: CustomPageViewController?
     var currentViewControllerIndex = 0
-    
-    var bridgeData:InspectionBridgeListModel?
+    var questionnaireForm:InspectionQuestionnaire?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("Data",bridgeData)
-
         self.view.backgroundColor = .lightGray
-        
         self.setupPageController()
         self.setupProgressCollection()
     }
     
     private func setupPageController() {
-        
         guard let pageController = storyboard?.instantiateViewController(withIdentifier: String(describing: CustomPageViewController.self)) as? CustomPageViewController else{
             return
         }
-        //        self.pageController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
-        //        self.pageController?.dataSource = self
-        //        self.pageController?.delegate = self
-        //        self.pageController?.view.backgroundColor = .clear
-        //        self.pageController?.view.frame = CGRect(x: 0,y: 0,width: self.view.frame.width,height: self.view.frame.height)
-        //        self.addChild(self.pageController!)
-        //        self.view.addSubview(self.pageController!.view)
-        //
-        //        let initialVC = BridgeDetailFormViewController(with: pages[0])
-        //
-        //        self.pageController?.setViewControllers([initialVC], direction: .forward, animated: true, completion: nil)
-        //
-        
-        
-        //        self.pageController?.didMove(toParent: self)
+        self.pageController = pageController
         pageController.delegate = self
         pageController.dataSource = self
         
         addChild(pageController)
-        pageController.didMove(toParent: self)
-        pageController.view.translatesAutoresizingMaskIntoConstraints = true
         cutentView.addSubview(pageController.view)
-        
+        pageController.view.frame = cutentView.bounds
+        pageController.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        pageController.didMove(toParent: self)
+
         guard let startingView = detailViewControllerAt(index: currentViewControllerIndex) else{
             return
         }
-        
         pageController.setViewControllers([startingView], direction: .forward, animated: true )
-        
     }
     
     func setupProgressCollection(){
         self.progressSection.delegate = self
         self.progressSection.dataSource = self
         self.progressSection.registerNib(ProgressCollectionViewCell.identifier)
-       // self.progressSection.registerNibs(["ProgressCollectionViewCell"])
-       
     }
     
     func detailViewControllerAt(index:Int)-> UIViewController?{
-        
-//        if index >= self.pages.count || self.pages.count == 0{
-//            return nil
-//        }
-//
-//        guard let detailView = NavigationRoute.onboardingStoryboard().instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController else{
-//            return nil
-//        }
-//
-//        detailView.index = index
-        
-        print(index)
-       
         let viewController = NavigationRoute.inspectionsStoryboard().instantiateViewController(withIdentifier: "FormViewController") as! FormViewController
-        let section = inspectionSections![index]
+        guard index < questionnaireForm?.sections.count ?? 0 else { return viewController }
+        let section = questionnaireForm?.sections[index]
         viewController.formDetails = section
         return viewController
     }
     
-    
     @IBAction func onPreviousBtnClick(_ sender: Any) {
+        guard currentViewControllerIndex > 0 else {
+            return
+        }
+        currentViewControllerIndex -= 1
+        movePage(direction: .reverse)
     }
     
     @IBAction func onNextBtnClick(_ sender: Any) {
+        guard currentViewControllerIndex < (questionnaireForm?.sections.count ?? 0) - 1 else {
+            return
+        }
+        currentViewControllerIndex += 1
+        movePage(direction: .forward)
     }
-    
-    
-    
+
+    func movePage(direction: UIPageViewController.NavigationDirection) {
+        guard let view = detailViewControllerAt(index: currentViewControllerIndex) else{
+            return
+        }
+        pageController?.setViewControllers([view], direction: direction, animated: true )
+    }
 }
 
+//MARK: Form Progress Collection View
 extension FormsControlllerViewController: UIPageViewControllerDataSource, UIPageViewControllerDelegate {
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
@@ -125,46 +98,31 @@ extension FormsControlllerViewController: UIPageViewControllerDataSource, UIPage
         guard let currentVC = viewController as? FormViewController else {
             return nil
         }
-        
-        var index = inspectionSections?.firstIndex(where: { section in
-            section.section_name == currentVC.formDetails?.section_name
+        var index = questionnaireForm?.sections.firstIndex(where: { section in
+            section.sectionName == currentVC.formDetails?.sectionName
         })
         
-        print("section",index)
-//
         if index == 0 {
             return nil
         }
 
         index! -= 1
         self.currentViewControllerIndex = index!
-
         return self.detailViewControllerAt(index: self.currentViewControllerIndex)
         
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
         
-
-        
-//        let cur = self.identifiers.index(of: viewController.restorationIdentifier)
-//        print(viewController.restorationIdentifier)
-//                // if you prefer to NOT scroll circularly, simply add here:
-//                 if cur == (pages.count - 1) { return nil }
-//
-//        let nxt = cur &+ 1
-//        print(nxt)
-//        self.currentViewControllerIndex = nxt
-        
         guard let currentVC = viewController as? FormViewController else {
             return nil
         }
         
-        var index = inspectionSections?.firstIndex(where: { section in
-            section.section_name == currentVC.formDetails?.section_name
+        var index = questionnaireForm?.sections.firstIndex(where: { section in
+            section.sectionName == currentVC.formDetails?.sectionName
         })
         
-        if index! >= self.inspectionSections!.count - 1 {
+        if index! >= (self.questionnaireForm?.sections.count ?? 0) - 1 {
             return nil
         }
         
@@ -175,7 +133,7 @@ extension FormsControlllerViewController: UIPageViewControllerDataSource, UIPage
     }
     
     func presentationCount(for pageViewController: UIPageViewController) -> Int {
-        return self.inspectionSections?.count ?? 1
+        return questionnaireForm?.sections.count ?? 1
     }
     
     func presentationIndex(for pageViewController: UIPageViewController) -> Int {
@@ -186,33 +144,34 @@ extension FormsControlllerViewController: UIPageViewControllerDataSource, UIPage
     
 }
 
-
-extension FormsControlllerViewController:UICollectionViewDelegate{
-    
-    
+extension FormsControlllerViewController:UICollectionViewDelegate {
 }
 
-extension FormsControlllerViewController:UICollectionViewDataSource{
-
-
-    
+extension FormsControlllerViewController:UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.inspectionSections!.count
+        return questionnaireForm?.sections.count ?? 0
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProgressCollectionViewCell.identifier, for: indexPath) as? ProgressCollectionViewCell else{
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProgressCollectionViewCell.identifier, for: indexPath) as? ProgressCollectionViewCell else {
             return UICollectionViewCell()
         }
-        
-//        let section = self.inspectionSections![indexPath.section]
-        
-//        cell.progressLabel.text =  "ok"
-        
+        let index = indexPath.row
+        let section = self.questionnaireForm?.sections[index]
+        cell.configHeader(stepNo: index+1,
+                          title: section?.sectionName ?? "",
+                          isActive: currentViewControllerIndex == index)
         return cell
     }
-    
-    
 }
 
-
+extension FormsControlllerViewController:UICollectionViewDelegateFlowLayout{
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+         let itemsPerRow = CGFloat(questionnaireForm?.sections.count ?? 0)
+         let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
+         let availableWidth = self.view.frame.width - paddingSpace
+             let widthPerItem = availableWidth / itemsPerRow
+             
+         return CGSize(width: widthPerItem, height: 70)
+     }
+}

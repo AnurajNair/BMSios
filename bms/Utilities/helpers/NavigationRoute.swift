@@ -287,8 +287,8 @@ class NavigationRoute: Navigate {
     class func getRoutineInspBridgeDetail(_ data:[String:Any] = [:]) -> FormsControlllerViewController {
         let viewController =  inspectionsStoryboard().instantiateViewController(withIdentifier: "FormsControlllerViewController") as! FormsControlllerViewController
         
-        if let value = data["BridgeDetail"] as? InspectionBridgeListModel {
-            viewController.bridgeData = value
+        if let value = data["BridgeDetail"] as? InspectionQuestionnaire {
+            viewController.questionnaireForm = value
         }
         
         return viewController

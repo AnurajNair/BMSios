@@ -173,6 +173,11 @@ extension InspectionListViewController: InspectionListTableViewCellDelegate{
             Utils.displayAlert(title: "Error", message: response.message ?? "Something went wrong.")
             return
         }
+        if let inspectionQues =  Mapper<InspectionQuestionnaire>().map(JSONString: Utils().decryptData(encryptdata: response.response!)) {
+        Navigate.routeUserToScreen(screenType: .routineInspbridgeDetailScreen,transitionType: .push,data: ["BridgeDetail" : inspectionQues])
+
+        }
+        
         let responseJson = Utils.getJsonFromString(string:  Utils().decryptData(encryptdata: response.response!))
         print(responseJson)
     }
