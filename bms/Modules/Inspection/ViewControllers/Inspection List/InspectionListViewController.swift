@@ -177,14 +177,12 @@ extension InspectionListViewController: InspectionListTableViewCellDelegate{
         Navigate.routeUserToScreen(screenType: .routineInspbridgeDetailScreen,transitionType: .push,data: ["BridgeDetail" : inspectionQues])
 
         }
-        
         let responseJson = Utils.getJsonFromString(string:  Utils().decryptData(encryptdata: response.response!))
-        print(responseJson)
     }
 
     func getInspectionByIdParams(_ inspection: Inspection) -> APIRequestParams {
         let obj = InspectionByIdRequestModel()
-        obj.inspectionId = inspection.inspectionId
+        obj.inspectionId = inspection.id
         let params = APIUtils.createAPIRequestParams(dataObject: obj)
         return params
     }
