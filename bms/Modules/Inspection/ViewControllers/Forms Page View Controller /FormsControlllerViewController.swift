@@ -22,6 +22,8 @@ class FormsControlllerViewController: UIViewController {
     @IBOutlet weak var progressSection: UICollectionView!
     
     var pageController: CustomPageViewController?
+    var pages: [FormViewController] = []
+
     var currentViewControllerIndex = 0
     var questionnaireForm:InspectionQuestionnaire?
     
@@ -58,11 +60,15 @@ class FormsControlllerViewController: UIViewController {
         self.progressSection.registerNib(ProgressCollectionViewCell.identifier)
     }
     
-    func detailViewControllerAt(index:Int)-> UIViewController?{
+    func detailViewControllerAt(index:Int)-> FormViewController? {
+        if index < pages.count {
+           return pages[index]
+        }
         let viewController = NavigationRoute.inspectionsStoryboard().instantiateViewController(withIdentifier: "FormViewController") as! FormViewController
         guard index < questionnaireForm?.sections.count ?? 0 else { return viewController }
         let section = questionnaireForm?.sections[index]
         viewController.formDetails = section
+        pages.append(viewController)
         return viewController
     }
     
@@ -109,7 +115,6 @@ extension FormsControlllerViewController: UIPageViewControllerDataSource, UIPage
         index! -= 1
         self.currentViewControllerIndex = index!
         return self.detailViewControllerAt(index: self.currentViewControllerIndex)
-        
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
