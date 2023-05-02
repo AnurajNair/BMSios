@@ -64,7 +64,7 @@ class FormViewController: UIViewController, UICollectionViewDataSource {
         let question = questions[indexPath.row]
         let questionText = question.question ?? ""
         let response = question.response ?? ""
-        let options = question.options.map({$0}) as [Option]
+        let options = question.optionsArray
         let optionsAsString = options.compactMap {$0.value}
         let textFieldStyler = TTTextFieldStyler.userDetailsStyle
         let formStyler = TTFormElementViewStyler.userDetailsStyle
@@ -100,7 +100,7 @@ class FormViewController: UIViewController, UICollectionViewDataSource {
                                                          showClear: true)
         }
         
-        
+        cell.collectionFormElement.delegate = self
         return cell
     }
 
@@ -126,3 +126,22 @@ extension FormViewController:UICollectionViewDelegate{
     
 }
 
+extension FormViewController: ReusableFormElementViewDelegate {
+    func setValues(index: Any, item: Any) {
+        guard let index = index as? IndexPath else {
+            return
+        }
+        let question = questions[index.row]
+        switch question.questionTypeEnum {
+        case .text:
+            question.response = item as? String
+        case .radioOptions:
+            guard let selectionOptionIndex = (item as? [Int])?.first else { return }
+            question.response = question.optionsArray[selectionOptionIndex].key
+        }
+    }
+    
+    func setError(index: Any, error: String) {
+        // Handle error
+    }
+}

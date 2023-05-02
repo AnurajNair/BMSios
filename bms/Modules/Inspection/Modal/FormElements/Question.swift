@@ -20,6 +20,10 @@ class Question: RequestBody {
     @objc dynamic var reviewerId: Int = 0
     @objc dynamic var reviewerName: String?
     var options = List<Option>()
+    var optionsArray: [Option] {
+        let options = options.map({$0}) as [Option]
+        return options
+    }
     var response: String?
 
     var questionTypeEnum: QuestionType {
