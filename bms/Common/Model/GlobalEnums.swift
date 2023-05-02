@@ -28,6 +28,12 @@ enum InspectionStatus: String {
     case reviewed = "R"
 }
 
+enum ReviewStatus: String {
+    case sendBack = "A"
+    case saveAs = "S"
+    case reviewed = "R"
+}
+
 enum QuestionType: Int {
     case text = 1
     case radioOptions = 2

@@ -177,7 +177,6 @@ extension InspectionListViewController: InspectionListTableViewCellDelegate{
         Navigate.routeUserToScreen(screenType: .routineInspbridgeDetailScreen,transitionType: .push,data: ["BridgeDetail" : inspectionQues])
 
         }
-        let responseJson = Utils.getJsonFromString(string:  Utils().decryptData(encryptdata: response.response!))
     }
 
     func getInspectionByIdParams(_ inspection: Inspection) -> APIRequestParams {

@@ -26,7 +26,8 @@ class FormsControlllerViewController: UIViewController {
 
     var currentViewControllerIndex = 0
     var questionnaireForm:InspectionQuestionnaire?
-    
+    private lazy var router = InspctionRouterManager()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .lightGray
@@ -82,10 +83,62 @@ class FormsControlllerViewController: UIViewController {
     
     @IBAction func onNextBtnClick(_ sender: Any) {
         guard currentViewControllerIndex < (questionnaireForm?.sections.count ?? 0) - 1 else {
+            saveInspection(status: .submitted, index: currentViewControllerIndex)
             return
         }
+        saveInspection(status: .draft, index: currentViewControllerIndex)
         currentViewControllerIndex += 1
         movePage(direction: .forward)
+    }
+
+    func saveInspection(status: InspectionStatus, index: Int) {
+        let saveRequest = SaveInspectionRequestModel()
+        saveRequest.inspectionAssignId = questionnaireForm?.id
+        saveRequest.inspectionStatus = status.rawValue
+        var responses: [[String: Any]] = []
+        guard index < questionnaireForm?.sections.count ?? 0,
+                let section = questionnaireForm?.sections[index] else {
+            return
+        }
+        section.subSections.forEach { subSection in
+            subSection.questions.forEach { question in
+                let response = ["questionid" : question.questionId,
+                                "response": question.response ?? "",
+                                "rating" : question.rating.description,
+                                "files" : []
+                                ]
+                responses.append(response)
+            }
+        }
+        saveRequest.response = responses
+        router.saveInspection(params: APIUtils.createAPIRequestParams(dataObject: saveRequest)) { response in
+            print("response - \(response.status) - \(response.message ?? "" )")
+        } errorCompletionHandler: { response in
+            //No Action
+        }
+    }
+
+    func saveReview(status: ReviewStatus, index: Int) {
+        let saveRequest = SaveReviewRequestModel()
+        saveRequest.inspectionAssignId = questionnaireForm?.id
+        saveRequest.inspectionStatus = status.rawValue
+        var reviews: [[String: Any]] = []
+        guard let section = questionnaireForm?.sections[index] else {
+            return
+        }
+        section.subSections.forEach { subSection in
+            subSection.questions.forEach { question in
+                let response = ["questionid" : question.questionId,
+                                "reviewerremark": question.response ?? ""
+                ]
+            }
+        }
+        saveRequest.reviews = reviews
+        router.saveReview(params: APIUtils.createAPIRequestParams(dataObject: saveRequest)) { response in
+            print( "response - \(response.status) - \(response.message ?? "")")
+        } errorCompletionHandler: { response in
+            //No Action
+        }
     }
 
     func movePage(direction: UIPageViewController.NavigationDirection) {
@@ -104,17 +157,17 @@ extension FormsControlllerViewController: UIPageViewControllerDataSource, UIPage
         guard let currentVC = viewController as? FormViewController else {
             return nil
         }
-        var index = questionnaireForm?.sections.firstIndex(where: { section in
+        let index = questionnaireForm?.sections.firstIndex(where: { section in
             section.sectionName == currentVC.formDetails?.sectionName
         })
         
-        if index == 0 {
+        guard let index = index, index > 0 else {
             return nil
         }
 
-        index! -= 1
-        self.currentViewControllerIndex = index!
-        return self.detailViewControllerAt(index: self.currentViewControllerIndex)
+        currentViewControllerIndex = index
+        let previousViewControllerIndex = currentViewControllerIndex - 1
+        return self.detailViewControllerAt(index: previousViewControllerIndex)
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
@@ -123,18 +176,17 @@ extension FormsControlllerViewController: UIPageViewControllerDataSource, UIPage
             return nil
         }
         
-        var index = questionnaireForm?.sections.firstIndex(where: { section in
+        let index = questionnaireForm?.sections.firstIndex(where: { section in
             section.sectionName == currentVC.formDetails?.sectionName
         })
         
-        if index! >= (self.questionnaireForm?.sections.count ?? 0) - 1 {
+        guard let index = index, index < (self.questionnaireForm?.sections.count ?? 0) - 1 else {
             return nil
         }
         
-        index! += 1
-        self.currentViewControllerIndex = index!
-        return self.detailViewControllerAt(index: self.currentViewControllerIndex)
-
+        currentViewControllerIndex = index
+        let nextViewControllerIndex = currentViewControllerIndex + 1
+        return self.detailViewControllerAt(index: nextViewControllerIndex)
     }
     
     func presentationCount(for pageViewController: UIPageViewController) -> Int {

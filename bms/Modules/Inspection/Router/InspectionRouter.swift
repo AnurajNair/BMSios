@@ -16,7 +16,8 @@ enum InspectionRouterProtocol : RouterProtocol{
     
     case getInspection(APIRequestModel)
     case getInspectionById(APIRequestModel)
-
+    case saveInspection(APIRequestModel)
+    case saveReview(APIRequestModel)
     
     var path: String{
         switch self {
@@ -24,6 +25,10 @@ enum InspectionRouterProtocol : RouterProtocol{
             return "Inspector/InspectionSummary"
         case .getInspectionById(_):
             return "Inspector/InspectionById"
+        case .saveInspection(_):
+            return "Inspector/SaveInspection"
+        case .saveReview(_):
+            return "Reviewer/SaveInspection"
         }
     }
     
@@ -43,10 +48,12 @@ enum InspectionRouterProtocol : RouterProtocol{
     
     var body: Any?{
         switch self {
-        case .getInspection(let body):
+        case .getInspection(let body),
+                .getInspectionById(let body),
+                .saveInspection((let body)),
+                .saveReview(let body):
             return body
-        case .getInspectionById(let body):
-            return body
+            
         }
     }
     
@@ -118,5 +125,23 @@ class InspctionRouterManager {
                                   successCompletionHandler: successCompletionHandler,
                                   errorCompletionHandler: errorCompletionHandler)
 
+    }
+
+    func saveInspection(params: [String: Any],
+                        successCompletionHandler: @escaping APISuccessHandler,
+                        errorCompletionHandler: @escaping APIFailureHandler) {
+        performInspectionsApiCall(api: .saveInspection(APIRequestModel(params: params)),
+                                  successCompletionHandler: successCompletionHandler,
+                                  errorCompletionHandler: errorCompletionHandler)
+        
+    }
+
+    func saveReview(params: [String: Any],
+                    successCompletionHandler: @escaping APISuccessHandler,
+                    errorCompletionHandler: @escaping APIFailureHandler) {
+        performInspectionsApiCall(api: .saveReview(APIRequestModel(params: params)),
+                                  successCompletionHandler: successCompletionHandler,
+                                  errorCompletionHandler: errorCompletionHandler)
+        
     }
 }
