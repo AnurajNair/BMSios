@@ -13,6 +13,9 @@ class AppStyler {
 }
 
 struct TextStyles {
+    static let ScreenHeaderTitle: Styler.textStyle = (UIFont.BMS.InterBold.withSize(35), UIColor.BMS.fontBlack)
+    static let ScreenSubTitle: Styler.textStyle = (UIFont.BMS.InterSemiBold.withSize(40), UIColor.BMS.fontBlack)
+
     static let ListItemBlackTitle: Styler.textStyle = (UIFont.BMS.InterBold.withSize(14), UIColor.BMS.fontBlack)
     static let TappableBaseStyle: Styler.textStyle = (UIFont.BMS.InterRegular.withSize(12), UIColor.BMS.fontBlack)
     static let TappableLinkStyle: Styler.textStyle = (UIFont.BMS.InterBold.withSize(12), UIColor.BMS.blue)

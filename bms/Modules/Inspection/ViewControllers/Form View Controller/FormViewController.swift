@@ -8,7 +8,7 @@
 import UIKit
 
 class FormViewController: UIViewController, UICollectionViewDataSource {
-    let itemsPerRow: CGFloat = 2
+    let itemsPerRow: CGFloat = 1
     
     private let sectionInsets = UIEdgeInsets(
       top: 20.0,
@@ -35,9 +35,9 @@ class FormViewController: UIViewController, UICollectionViewDataSource {
         setupViews()
         setupCollectionView()
     }
-
     func setupViews(){
         self.view.translatesAutoresizingMaskIntoConstraints = true
+        UILabel.style([(view: formTitleLbl, style: TextStyles.ScreenSubTitle)])
         self.formTitleLbl.text = self.formDetails?.subSections.first?.subSectionName
     }
 
@@ -99,9 +99,12 @@ class FormViewController: UIViewController, UICollectionViewDataSource {
                                                          showSelectAll: false,
                                                          showClear: true)
         }
-        
         cell.collectionFormElement.delegate = self
         return cell
+    }
+
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
     }
 
 }
@@ -114,10 +117,10 @@ extension FormViewController:UICollectionViewDelegateFlowLayout{
      ) -> CGSize {
        // 2
          let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
-         let availableWidth = self.view.frame.width - paddingSpace
+         let availableWidth = collectionView.bounds.width - paddingSpace
              let widthPerItem = availableWidth / itemsPerRow
              
-         return CGSize(width: widthPerItem, height: 70)
+         return CGSize(width: widthPerItem, height: 100)
      }
     
 }

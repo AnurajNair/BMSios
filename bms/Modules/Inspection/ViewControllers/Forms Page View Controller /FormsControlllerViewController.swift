@@ -16,6 +16,7 @@ class FormsControlllerViewController: UIViewController {
       bottom: 20.0,
       right: 20.0)
 
+    @IBOutlet weak var formTitleLabel: UILabel!
     @IBOutlet weak var cutentView: UIView!
     @IBOutlet weak var previousBtn: UIButton!
     @IBOutlet weak var nextBtn: UIButton!
@@ -30,11 +31,16 @@ class FormsControlllerViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .lightGray
-        self.setupPageController()
-        self.setupProgressCollection()
+        view.backgroundColor = .lightGray
+        setupView()
+        setupPageController()
+        setupProgressCollection()
     }
-    
+
+    private func setupView() {
+        UILabel.style([(view: formTitleLabel, style: TextStyles.ScreenHeaderTitle)])
+        formTitleLabel.text = "Inspection Form"
+    }
     private func setupPageController() {
         guard let pageController = storyboard?.instantiateViewController(withIdentifier: String(describing: CustomPageViewController.self)) as? CustomPageViewController else{
             return
@@ -74,6 +80,7 @@ class FormsControlllerViewController: UIViewController {
     }
     
     @IBAction func onPreviousBtnClick(_ sender: Any) {
+        view.endEditing(true)
         guard currentViewControllerIndex > 0 else {
             return
         }
@@ -82,6 +89,7 @@ class FormsControlllerViewController: UIViewController {
     }
     
     @IBAction func onNextBtnClick(_ sender: Any) {
+        view.endEditing(true)
         guard currentViewControllerIndex < (questionnaireForm?.sections.count ?? 0) - 1 else {
             saveInspection(status: .submitted, index: currentViewControllerIndex)
             return
