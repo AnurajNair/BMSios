@@ -51,6 +51,7 @@ class FormsControlllerViewController: UIViewController {
         formTitleLabel.text =  inspectionType == .review ? "Review Inspection Form " : "Inspection Form"
         setNextButtonTitle()
     }
+
     private func setupPageController() {
         guard let pageController = storyboard?.instantiateViewController(withIdentifier: String(describing: CustomPageViewController.self)) as? CustomPageViewController else{
             return
@@ -118,7 +119,7 @@ class FormsControlllerViewController: UIViewController {
         if inspectionType == .inspect {
             saveInspection(status: isCurrentVcLast ? .submitted : .draft, index: currentViewControllerIndex)
         } else if inspectionType == .review {
-            saveReview(status: isCurrentVcLast ? .reviewed : .saveAs, index: currentViewControllerIndex)
+            saveReview(status: isCurrentVcLast ? .reviewed : .submitted, index: currentViewControllerIndex)
         }
     }
     func saveInspection(status: InspectionStatus, index: Int) {
@@ -145,6 +146,7 @@ class FormsControlllerViewController: UIViewController {
             print("response - \(response.status) - \(response.message ?? "" )")
             guard status == .submitted else { return }
             if response.status == 0 {
+                self.questionnaireForm?.inspectionStatus = status.rawValue
                  _ = Utils.displayAlertController("Success", message: response.message ?? "", isSingleBtn: true) {
                     Navigate.routeUserBack(self) { /*No Action*/ }
                 } cancelclickHandler: {
@@ -158,7 +160,7 @@ class FormsControlllerViewController: UIViewController {
         }
     }
 
-    func saveReview(status: ReviewStatus, index: Int) {
+    func saveReview(status: InspectionStatus, index: Int) {
         let saveRequest = SaveReviewRequestModel()
         saveRequest.inspectionAssignId = questionnaireForm?.id
         saveRequest.inspectionStatus = status.rawValue

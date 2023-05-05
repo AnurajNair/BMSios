@@ -40,12 +40,19 @@ enum InspectionStatus: String {
     case draft = "D"
     case submitted = "S"
     case reviewed = "R"
-}
 
-enum ReviewStatus: String {
-    case sendBack = "A"
-    case saveAs = "S"
-    case reviewed = "R"
+    var text: String {
+        switch self {
+        case .assigned:
+            return "Assigned"
+        case .draft:
+            return "Draft"
+        case .submitted:
+            return "Submitted"
+        case .reviewed:
+            return "Reviewed"
+        }
+    }
 }
 
 enum QuestionType: Int {
