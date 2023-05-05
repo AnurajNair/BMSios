@@ -15,7 +15,6 @@ class FormViewController: UIViewController, UICollectionViewDataSource {
       left: 20.0,
       bottom: 20.0,
       right: 20.0)
-    let arr = [1,2,3]
    
     @IBOutlet weak var collection: UICollectionView!
     

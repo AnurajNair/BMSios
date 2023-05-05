@@ -27,6 +27,8 @@ class FormsControlllerViewController: UIViewController {
 
     var currentViewControllerIndex = 0
     var questionnaireForm:InspectionQuestionnaire?
+    var inspectionType: InspectionType?
+
     private lazy var router = InspctionRouterManager()
 
     override func viewDidLoad() {
@@ -94,11 +96,19 @@ class FormsControlllerViewController: UIViewController {
             saveInspection(status: .submitted, index: currentViewControllerIndex)
             return
         }
-        saveInspection(status: .draft, index: currentViewControllerIndex)
+        saveData()
         currentViewControllerIndex += 1
         movePage(direction: .forward)
     }
 
+    func saveData() {
+        let isLast = currentViewControllerIndex == (questionnaireForm?.sections.count ?? 0) - 1
+        if inspectionType == .inspect {
+            saveInspection(status: isLast ? .submitted : .draft, index: currentViewControllerIndex)
+        } else if inspectionType == .review {
+            saveReview(status: isLast ? .reviewed : .saveAs, index: currentViewControllerIndex)
+        }
+    }
     func saveInspection(status: InspectionStatus, index: Int) {
         let saveRequest = SaveInspectionRequestModel()
         saveRequest.inspectionAssignId = questionnaireForm?.id
@@ -121,8 +131,18 @@ class FormsControlllerViewController: UIViewController {
         saveRequest.response = responses
         router.saveInspection(params: APIUtils.createAPIRequestParams(dataObject: saveRequest)) { response in
             print("response - \(response.status) - \(response.message ?? "" )")
+            guard status == .submitted else { return }
+            if response.status == 0 {
+                 _ = Utils.displayAlertController("Success", message: response.message ?? "", isSingleBtn: true) {
+                    Navigate.routeUserBack(self) { /*No Action*/ }
+                } cancelclickHandler: {
+                    //No Action
+                }
+            } else {
+                Utils.displayAlert(title: "Error", message: response.message ?? "Something went wrong")
+            }
         } errorCompletionHandler: { response in
-            //No Action
+            Utils.displayAlert(title: "Error", message: response?.message ?? "Something went wrong")
         }
     }
 
@@ -131,22 +151,34 @@ class FormsControlllerViewController: UIViewController {
         saveRequest.inspectionAssignId = questionnaireForm?.id
         saveRequest.inspectionStatus = status.rawValue
         var reviews: [[String: Any]] = []
-        guard let section = questionnaireForm?.sections[index] else {
+        guard index < questionnaireForm?.sections.count ?? 0,
+                let section = questionnaireForm?.sections[index] else {
             return
         }
         section.subSections.forEach { subSection in
             subSection.questions.forEach { question in
-                let response = ["questionid" : question.questionId,
-                                "reviewerremark": question.response ?? ""
-                ]
+                let review = ["questionid" : question.questionId,
+                                "reviewerremark": question.response ?? ""]
+                reviews.append(review)
             }
         }
         saveRequest.reviews = reviews
         router.saveReview(params: APIUtils.createAPIRequestParams(dataObject: saveRequest)) { response in
-            print( "response - \(response.status) - \(response.message ?? "")")
+            print("response - \(response.status) - \(response.message ?? "" )")
+            guard status == .reviewed else { return }
+            if response.status == 0 {
+                 _ = Utils.displayAlertController("Success", message: response.message ?? "", isSingleBtn: true) {
+                    Navigate.routeUserBack(self) { /*No Action*/ }
+                } cancelclickHandler: {
+                    //No Action
+                }
+            } else {
+                Utils.displayAlert(title: "Error", message: response.message ?? "Something went wrong")
+            }
         } errorCompletionHandler: { response in
-            //No Action
+            Utils.displayAlert(title: "Error", message: response?.message ?? "Something went wrong")
         }
+
     }
 
     func movePage(direction: UIPageViewController.NavigationDirection) {

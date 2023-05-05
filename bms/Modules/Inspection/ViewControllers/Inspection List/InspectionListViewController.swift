@@ -8,12 +8,12 @@
 import UIKit
 import ObjectMapper
 
-class InspectionListViewController: UIViewController {
-    enum InspectionType {
-        case inspect
-        case review
-    }
+enum InspectionType {
+    case inspect
+    case review
+}
 
+class InspectionListViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var filterBtn: UIButton!
@@ -21,22 +21,14 @@ class InspectionListViewController: UIViewController {
     
     var selectedBridge:Inspection?
     var inspectionType: InspectionType?
-    let tableList = [1,2,4,5,6]
-    
-    let inspectionData :[InspectionBridgeListModel] = [InspectionBridgeListModel(id: "#24351", project_name: "Project Name 1", project_code: "23324NM23456", location: "Location "),InspectionBridgeListModel(id: "#24351", project_name: "Project Name 1", project_code: "23324NM23456", location: "Location "),InspectionBridgeListModel(id: "#24351", project_name: "Project Name 1", project_code: "23324NM23456", location: "Location "),InspectionBridgeListModel(id: "#24351", project_name: "Project Name 1", project_code: "23324NM23456", location: "Location "),InspectionBridgeListModel(id: "#24351", project_name: "Project Name 1", project_code: "23324NM23456", location: "Location "),InspectionBridgeListModel(id: "#24351", project_name: "Project Name 1", project_code: "23324NM23456", location: "Location "),InspectionBridgeListModel(id: "#24351", project_name: "Project Name 1", project_code: "23324NM23456", location: "Location "),InspectionBridgeListModel(id: "#24351", project_name: "Project Name 1", project_code: "23324NM23456", location: "Location "),InspectionBridgeListModel(id: "#24351", project_name: "Project Name 1", project_code: "23324NM23456", location: "Location "),]
 
     var inspectionList: [Inspection] = []
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        
         setupTableView()
-        
         getInspection()
         
         UIButton.style([(view: unRegisterBtn, title: "Unregister Inspection".localized(), style: ButtonStyles.greenButton)])
-//        UIView.style([(view: loginCard, style:(backgroundColor:nil, cornerRadius: 16, borderStyle: nil,shadowStyle : nil))])
         filterBtn.layer.cornerRadius = 8
         
         self.navigationController?.navigationBar.backgroundColor = UIColor.BMS.theme
@@ -188,7 +180,11 @@ extension InspectionListViewController: InspectionListTableViewCellDelegate{
             return
         }
         if let inspectionQues =  Mapper<InspectionQuestionnaire>().map(JSONString: Utils().decryptData(encryptdata: response.response!)) {
-        Navigate.routeUserToScreen(screenType: .routineInspbridgeDetailScreen,transitionType: .push,data: ["BridgeDetail" : inspectionQues])
+            var data: [String: Any] = ["inspectionQues" : inspectionQues]
+            if let inspectionType = inspectionType {
+                data["inspectionType"] = inspectionType
+            }
+            Navigate.routeUserToScreen(screenType: .routineInspbridgeDetailScreen,transitionType: .push,data: data)
 
         }
     }
