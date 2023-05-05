@@ -9,6 +9,20 @@
 enum Status: String {
     case active = "0"
     case inActive = "1"
+
+    var boolValue: Bool {
+        switch self {
+        case .active: return true
+        case .inActive: return false
+        }
+    }
+
+    var intValue: Int {
+        switch self {
+        case .active: return 0
+        case .inActive: return 1
+        }
+    }
 }
 
 enum Mode: String {
@@ -42,4 +56,12 @@ enum QuestionType: Int {
 enum TrueFalse: String {
     case `false` = "0"
     case `true` = "1"
+}
+
+enum ComponentType: Int {
+    case home = 0
+    case createInventory = 2
+    case reviewInspection = 5
+    case performInspection = 6
+    case selfInspection = 11
 }

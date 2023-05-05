@@ -14,15 +14,18 @@ import ObjectMapper_Realm
 
 enum InspectionRouterProtocol : RouterProtocol{
     
-    case getInspection(APIRequestModel)
+    case getInspectorInspections(APIRequestModel)
+    case getReviewerInspections(APIRequestModel)
     case getInspectionById(APIRequestModel)
     case saveInspection(APIRequestModel)
     case saveReview(APIRequestModel)
     
     var path: String{
         switch self {
-        case .getInspection:
+        case .getInspectorInspections:
             return "Inspector/InspectionSummary"
+        case .getReviewerInspections:
+            return "Reviewer/InspectionSummary"
         case .getInspectionById(_):
             return "Inspector/InspectionById"
         case .saveInspection(_):
@@ -48,7 +51,8 @@ enum InspectionRouterProtocol : RouterProtocol{
     
     var body: Any?{
         switch self {
-        case .getInspection(let body),
+        case .getInspectorInspections(let body),
+                .getReviewerInspections(let body),
                 .getInspectionById(let body),
                 .saveInspection((let body)),
                 .saveReview(let body):
@@ -110,10 +114,18 @@ class InspctionRouterManager {
         }
     }
 
-    func getInspections(params: [String: Any],
-                        successCompletionHandler: @escaping APISuccessHandler,
-                        errorCompletionHandler: @escaping APIFailureHandler) {
-        performInspectionsApiCall(api: .getInspection(APIRequestModel(params: params)),
+    func getInspectorInspections(params: [String: Any],
+                                 successCompletionHandler: @escaping APISuccessHandler,
+                                 errorCompletionHandler: @escaping APIFailureHandler) {
+        performInspectionsApiCall(api: .getInspectorInspections(APIRequestModel(params: params)),
+                                  successCompletionHandler: successCompletionHandler,
+                                  errorCompletionHandler: errorCompletionHandler)
+    }
+
+    func getReviewerInspections(params: [String: Any],
+                                successCompletionHandler: @escaping APISuccessHandler,
+                                errorCompletionHandler: @escaping APIFailureHandler) {
+        performInspectionsApiCall(api: .getReviewerInspections(APIRequestModel(params: params)),
                                   successCompletionHandler: successCompletionHandler,
                                   errorCompletionHandler: errorCompletionHandler)
     }

@@ -110,49 +110,51 @@ class RoleObj:RequestBody{
 
 
 
-class Role:RequestBody{
+class Role: RequestBody {
     @objc  dynamic var roleId:Int = 0
     @objc dynamic var roleName:String?
-    var modules = List<Module>()
-    
-    
+    var components = List<Component>() 
     enum ResponseKeys :String{
         case roleId  = "roleid"
         case roleName = "rolename"
-        case modules = "module"
-      
-        
+        case components = "component"
     }
   
     override func mapping(map: ObjectMapper.Map) {
         self.roleId              <- map[ResponseKeys.roleId.rawValue]
         self.roleName              <- map[ResponseKeys.roleName.rawValue]
-        self.modules              <- (map[ResponseKeys.modules.rawValue], ListTransform<Module>())
+        self.components              <- (map[ResponseKeys.components.rawValue], ListTransform<Component>())
       
     }
 }
 
-class Module:RequestBody{
-    @objc dynamic var moduleId:Int = 0
-    @objc dynamic var level : String?
-    @objc dynamic var moduleName:String?
-    @objc dynamic var url:String?
+class Component:RequestBody{
+    @objc dynamic var componentId:Int = 0
+    @objc dynamic var statusBitValue: Bool = Status.inActive.boolValue
+    @objc dynamic var ComponentName:String?
+    @objc dynamic var status: Int = Status.inActive.intValue
     
-    
+    var statusAsEnum: Status {
+        Status(rawValue: status.description) ?? .inActive
+    }
+
+    var type: ComponentType? {
+        ComponentType(rawValue: componentId)
+    }
     enum ResponseKeys :String{
-        case moduleId  = "moduleid"
-        case level = "level"
-        case moduleName = "modulename"
-        case url = "url"
+        case componentId  = "componentid"
+        case statusBitValue = "statusbitvalue"
+        case ComponentName = "componentname"
+        case status = "status"
       
         
     }
   
     override func mapping(map: ObjectMapper.Map) {
-        self.moduleId              <- map[ResponseKeys.moduleId.rawValue]
-        self.level              <- map[ResponseKeys.level.rawValue]
-        self.moduleName              <- map[ResponseKeys.moduleName.rawValue]
-        self.url              <- map[ResponseKeys.url.rawValue]
+        self.componentId              <- map[ResponseKeys.componentId.rawValue]
+        self.statusBitValue              <- map[ResponseKeys.statusBitValue.rawValue]
+        self.ComponentName              <- map[ResponseKeys.ComponentName.rawValue]
+        self.status              <- map[ResponseKeys.status.rawValue]
       
     }
     
