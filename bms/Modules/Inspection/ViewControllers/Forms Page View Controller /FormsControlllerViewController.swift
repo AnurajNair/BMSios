@@ -28,6 +28,13 @@ class FormsControlllerViewController: UIViewController {
     var currentViewControllerIndex = 0
     var questionnaireForm:InspectionQuestionnaire?
     var inspectionType: InspectionType?
+    var isCurrentVcLast: Bool {
+        let count = questionnaireForm?.sections.count
+        guard let count = count, count > 0 else {
+            return currentViewControllerIndex == count
+        }
+        return currentViewControllerIndex == count - 1
+    }
 
     private lazy var router = InspctionRouterManager()
 
@@ -41,7 +48,8 @@ class FormsControlllerViewController: UIViewController {
 
     private func setupView() {
         UILabel.style([(view: formTitleLabel, style: TextStyles.ScreenHeaderTitle)])
-        formTitleLabel.text = "Inspection Form"
+        formTitleLabel.text =  inspectionType == .review ? "Review Inspection Form " : "Inspection Form"
+        setNextButtonTitle()
     }
     private func setupPageController() {
         guard let pageController = storyboard?.instantiateViewController(withIdentifier: String(describing: CustomPageViewController.self)) as? CustomPageViewController else{
@@ -49,7 +57,6 @@ class FormsControlllerViewController: UIViewController {
         }
         self.pageController = pageController
         pageController.delegate = self
-        pageController.dataSource = self
         
         addChild(pageController)
         cutentView.addSubview(pageController.view)
@@ -88,9 +95,10 @@ class FormsControlllerViewController: UIViewController {
         }
         currentViewControllerIndex -= 1
         movePage(direction: .reverse)
+        setNextButtonTitle()
     }
     
-    @IBAction func onNextBtnClick(_ sender: Any) {
+    @IBAction func onNextBtnClick(_ sender: UIButton) {
         view.endEditing(true)
         guard currentViewControllerIndex < (questionnaireForm?.sections.count ?? 0) - 1 else {
             saveInspection(status: .submitted, index: currentViewControllerIndex)
@@ -99,14 +107,18 @@ class FormsControlllerViewController: UIViewController {
         saveData()
         currentViewControllerIndex += 1
         movePage(direction: .forward)
+        setNextButtonTitle()
+    }
+
+    func setNextButtonTitle() {
+        nextBtn.setTitle(isCurrentVcLast ? "Submit" : "Save & Continue", for: .normal)
     }
 
     func saveData() {
-        let isLast = currentViewControllerIndex == (questionnaireForm?.sections.count ?? 0) - 1
         if inspectionType == .inspect {
-            saveInspection(status: isLast ? .submitted : .draft, index: currentViewControllerIndex)
+            saveInspection(status: isCurrentVcLast ? .submitted : .draft, index: currentViewControllerIndex)
         } else if inspectionType == .review {
-            saveReview(status: isLast ? .reviewed : .saveAs, index: currentViewControllerIndex)
+            saveReview(status: isCurrentVcLast ? .reviewed : .saveAs, index: currentViewControllerIndex)
         }
     }
     func saveInspection(status: InspectionStatus, index: Int) {
@@ -186,6 +198,7 @@ class FormsControlllerViewController: UIViewController {
             return
         }
         pageController?.setViewControllers([view], direction: direction, animated: true )
+        self.progressSection.reloadData()
     }
 }
 
@@ -200,7 +213,7 @@ extension FormsControlllerViewController: UIPageViewControllerDataSource, UIPage
         let index = questionnaireForm?.sections.firstIndex(where: { section in
             section.sectionName == currentVC.formDetails?.sectionName
         })
-        
+
         guard let index = index, index > 0 else {
             return nil
         }
@@ -237,7 +250,9 @@ extension FormsControlllerViewController: UIPageViewControllerDataSource, UIPage
         return self.currentViewControllerIndex
     }
     
-    
+    func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController]) {
+        progressSection.reloadData()
+    }
     
 }
 
