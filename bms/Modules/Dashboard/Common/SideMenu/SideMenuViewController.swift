@@ -257,7 +257,20 @@ extension SideMenuViewController:SideMenuCellDelegate{
     func onSideSubMenuClick(_ selectedItem: Int) {
         print("ok",selectedItem)
         
+        guard let sectionData = inspection.menu?[selectedItem] else { return }
+//        setSelectedSideMenu(indexPath: indexPath)
+      
         
+        let type = sectionData.type
+        var data: [String: Any] = [:]
+        if(type == .performInspection || type == .reviewInspection){
+            if type == .performInspection {
+                data["component"] = ComponentType.performInspection
+            } else if type == .reviewInspection {
+                data["component"] = ComponentType.reviewInspection
+            }
+        }
+        Navigate.routeUserToScreen(screenType: sectionData.route, transitionType: sectionData.transition, data: data)
     }
     
    

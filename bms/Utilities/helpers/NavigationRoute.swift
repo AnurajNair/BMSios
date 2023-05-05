@@ -65,7 +65,7 @@ class NavigationRoute: Navigate {
             case .resetPasswordScreen: return (NavigationRoute.getResetPasswordScreen(), "" )
             case .passwordResetSuccessScreen: return (NavigationRoute.getPasswordSuccessfullScreen(), "" )
             case .homeScreen :return (NavigationRoute.getHomeViewController(), "" )
-            case .inspectionListScreen :return (NavigationRoute.getInspectionList(), "" )
+            case .inspectionListScreen :return (NavigationRoute.getInspectionList(data), "" )
                 
             case .routineInspbridgeDetailScreen :return (NavigationRoute.getRoutineInspBridgeDetail(data), "")
 
@@ -280,7 +280,13 @@ class NavigationRoute: Navigate {
         
         let viewController =  inspectionsStoryboard().instantiateViewController(withIdentifier: "InspectionListViewController") as! InspectionListViewController
       
-        
+        if let component = data["component"] as? ComponentType {
+            if component == .reviewInspection {
+                viewController.inspectionType = .review
+            } else if component == .performInspection {
+                viewController.inspectionType = .inspect
+            }
+        }
         return viewController
         
     }

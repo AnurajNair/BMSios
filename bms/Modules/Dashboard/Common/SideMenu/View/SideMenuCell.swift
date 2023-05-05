@@ -204,9 +204,6 @@ extension SideMenuCell: UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
       print(indexPath)
-        let sectionData = self.subMenu![indexPath.row]
         delegate?.onSideSubMenuClick(indexPath.row)
-        Navigate.routeUserToScreen(screenType: sectionData.route, transitionType: sectionData.transition)
-        
     }
 }

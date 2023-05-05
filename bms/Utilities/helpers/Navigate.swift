@@ -156,7 +156,7 @@ class Navigate {
                 if let topMostController = topController as? LGSideMenuController {
                     
                     if let value = topMostController.rootViewController as? BaseNavigationViewController {
-                        if value.viewControllers[0].classForCoder != destinationViewController.classForCoder {
+                        if screenType == .inspectionListScreen || value.viewControllers[0].classForCoder != destinationViewController.classForCoder {
                             topMostController.rootViewController = rootNavigationController
                         }
                     }

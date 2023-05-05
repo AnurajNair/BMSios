@@ -9,16 +9,18 @@ import UIKit
 import ObjectMapper
 
 class InspectionListViewController: UIViewController {
+    enum InspectionType {
+        case inspect
+        case review
+    }
 
     @IBOutlet weak var tableView: UITableView!
-    
-    
     
     @IBOutlet weak var filterBtn: UIButton!
     @IBOutlet weak var unRegisterBtn: UIButton!
     
     var selectedBridge:Inspection?
-    
+    var inspectionType: InspectionType?
     let tableList = [1,2,4,5,6]
     
     let inspectionData :[InspectionBridgeListModel] = [InspectionBridgeListModel(id: "#24351", project_name: "Project Name 1", project_code: "23324NM23456", location: "Location "),InspectionBridgeListModel(id: "#24351", project_name: "Project Name 1", project_code: "23324NM23456", location: "Location "),InspectionBridgeListModel(id: "#24351", project_name: "Project Name 1", project_code: "23324NM23456", location: "Location "),InspectionBridgeListModel(id: "#24351", project_name: "Project Name 1", project_code: "23324NM23456", location: "Location "),InspectionBridgeListModel(id: "#24351", project_name: "Project Name 1", project_code: "23324NM23456", location: "Location "),InspectionBridgeListModel(id: "#24351", project_name: "Project Name 1", project_code: "23324NM23456", location: "Location "),InspectionBridgeListModel(id: "#24351", project_name: "Project Name 1", project_code: "23324NM23456", location: "Location "),InspectionBridgeListModel(id: "#24351", project_name: "Project Name 1", project_code: "23324NM23456", location: "Location "),InspectionBridgeListModel(id: "#24351", project_name: "Project Name 1", project_code: "23324NM23456", location: "Location "),]
@@ -45,7 +47,7 @@ class InspectionListViewController: UIViewController {
     
     func getInspection() {
         Utils.showLoadingInView(self.view)
-        InspctionRouterManager().getInspections(params: getInspectionReqParams()) { response in
+        getInspection(type: inspectionType) { response in
             if(response.status == 0){
                 if(response.response != ""){
                     let responseJson = Utils.getJsonFromString(string:  Utils().decryptData(encryptdata: response.response!))
@@ -67,10 +69,22 @@ class InspectionListViewController: UIViewController {
                 
                 Utils.displayAlert(title: "Error", message: response.message ?? "Something went wrong.")
             }
-        } errorCompletionHandler: { error in
+        } failureHandler: { error in
             Utils.showLoadingInView(self.view)
             print("error - \(String(describing: error))")
             Utils.displayAlert(title: "Error", message: "Something went wrong.")
+        }
+    }
+
+    func getInspection(type: InspectionType?, successHandler: @escaping APISuccessHandler, failureHandler: @escaping APIFailureHandler) {
+        switch type {
+        case .inspect:
+            InspctionRouterManager().getInspectorInspections(params: getInspectionReqParams(), successCompletionHandler: successHandler, errorCompletionHandler: failureHandler )
+        case .review:
+            InspctionRouterManager().getReviewerInspections(params: getInspectionReqParams(), successCompletionHandler: successHandler, errorCompletionHandler: failureHandler )
+
+        case .none:
+            break
         }
     }
 
