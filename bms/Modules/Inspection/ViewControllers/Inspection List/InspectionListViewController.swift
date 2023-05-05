@@ -44,6 +44,7 @@ class InspectionListViewController: UIViewController {
                 if(response.response != ""){
                     let responseJson = Utils.getJsonFromString(string:  Utils().decryptData(encryptdata: response.response!))
                     if let list = responseJson?["inspections"] as? [[String: Any]] {
+                        self.inspectionList = []
                         list.forEach { item in
                             print(item)
                             if let inspection =  Mapper<Inspection>().map(JSON: item ) {
@@ -132,16 +133,29 @@ extension InspectionListViewController:UITableViewDataSource{
             fatalError("xib doesn't exist")
             
         }
-        
-        cell.configTableRow(srNo: indexPath.row+1, tableData: self.inspectionList[indexPath.row])
+        let data = inspectionList[indexPath.row]
+        let buttonaProperties = getButtonPropertiesFor(status: data.inspectionStatusEnum)
+        cell.configTableRow(srNo: indexPath.row+1, tableData: data, inspectionButtonTitle: buttonaProperties.title, inspectionButtonState: buttonaProperties.state)
         cell.delegate = self
         
         return cell
-        
-        
     }
     
-    
+    func getButtonPropertiesFor(status: InspectionStatus?) -> (title: String, state: UIButton.State) {
+        guard let status = status else { return ("", .disabled) }
+        //Assigned and draft status isn't valid for reviewer list.
+        switch status {
+        case .assigned:
+            return ("Start Inspection", .normal)
+        case .draft:
+            return ("Resume", .normal)
+        case .submitted:
+            return inspectionType == .inspect ?  (status.text, .disabled)  : ("Start Review", .normal)
+        case .reviewed:
+            return (status.text, .disabled)
+        }
+    }
+
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = self.tableView.dequeueReusableHeaderFooterView(withIdentifier: "TableHeaderView")  as! TableHeaderView
 
@@ -191,7 +205,7 @@ extension InspectionListViewController: InspectionListTableViewCellDelegate{
 
     func getInspectionByIdParams(_ inspection: Inspection) -> APIRequestParams {
         let obj = InspectionByIdRequestModel()
-        obj.inspectionId = inspection.id
+        obj.inspectionId = inspection.inspectionId
         let params = APIUtils.createAPIRequestParams(dataObject: obj)
         return params
     }

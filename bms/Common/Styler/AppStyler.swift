@@ -783,6 +783,7 @@ extension UIColor {
         static var theme: UIColor {return UIColor(red: 90/255, green: 110/255, blue: 129/255, alpha: 1)}
         static var white: UIColor { return UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1) }
         static var gray: UIColor { return UIColor(red: 193/255, green: 193/255, blue: 193/255, alpha: 1) }
+        static var darkGray: UIColor { return UIColor(red: 96/255, green: 96/255, blue: 96/255, alpha: 1) }
         static var lightGray: UIColor { return UIColor(red: 216/255, green: 216/255, blue: 216/255, alpha: 1) }
         static var dashboardCard: UIColor { return UIColor(red: 245/255, green: 245/255, blue: 245/255, alpha: 1) }
         static var textBorderGrey:UIColor { return UIColor(red: 220/255, green: 220/255, blue: 220/255, alpha: 1) }
@@ -790,11 +791,14 @@ extension UIColor {
         static var backgroundGrey: UIColor { return UIColor(red: 242/255, green: 242/255, blue: 242/255, alpha: 1) }
         static var palePink: UIColor { return UIColor(red: 255/255, green: 240/255, blue: 240/255, alpha: 1) }
         
+        static var buttonGreen: UIColor { return UIColor(red: 127/255, green: 235/255, blue: 170/255, alpha: 1) }
+
         //Computed Font Colours
         static var fontBlack: UIColor { return UIColor.BMS.black }
         static var fontWhite: UIColor { return UIColor.BMS.white }
         static var fontGray: UIColor { return UIColor.BMS.gray }
-        
+        static var fontDarkGray: UIColor { return UIColor.BMS.darkGray }
+
         //Computed Other Colours
         static var linkBlue: UIColor { return UIColor.BMS.blue }
         static var imageBackgroundColor: UIColor { return UIColor.BMS.lightGray }

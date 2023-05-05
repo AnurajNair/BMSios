@@ -34,6 +34,9 @@ class InspectionListTableViewCell: UITableViewCell {
     var tableData:Inspection?
     override func awakeFromNib() {
         super.awakeFromNib()
+        inspectButton.setTitleColor(UIColor.BMS.fontWhite, for: .normal)
+        inspectButton.setTitleColor(UIColor.BMS.fontDarkGray, for: .disabled)
+        inspectButton.setAsRounded(cornerRadius: 5)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -44,7 +47,7 @@ class InspectionListTableViewCell: UITableViewCell {
     
     //Mark: functions
     
-    func configTableRow(srNo: Int, tableData:Inspection){
+    func configTableRow(srNo: Int, tableData:Inspection, inspectionButtonTitle: String, inspectionButtonState: UIButton.State){
         self.tableData = tableData;
         self.srNoLabel.text = srNo.description
         self.buidLabel.text = tableData.buid
@@ -54,24 +57,12 @@ class InspectionListTableViewCell: UITableViewCell {
         self.endDateLabel.text = tableData.endDateAsString
         self.statusLabel.text = tableData.inspectionStatusName
         
-        guard let status = tableData.inspectionStatusEnum else {
-            return
-        }
-        let inspectButtonTitle = getInspectionButtonTitle(status: status)
-        inspectButton.setTitle(inspectButtonTitle, for: .normal)
-        inspectButton.isEnabled = status == .assigned || status == .draft
+        inspectButton.setTitle(inspectionButtonTitle, for: inspectionButtonState)
+        inspectButton.isEnabled = inspectionButtonState != .disabled
+        inspectButton.backgroundColor = inspectionButtonState == .disabled ? .BMS.backgroundGrey : .BMS.buttonGreen
+        
     }
-    
-    func getInspectionButtonTitle(status: InspectionStatus) -> String {
-        switch status {
-        case .assigned:
-            return "Start Inspection"
-        case .reviewed, .submitted:
-            return "Reviewed"
-        case.draft:
-            return "Resume"
-        }
-    }
+
     @IBAction func onInspectbtnClick(_ sender: Any) {
       
         self.delegate?.onInspectbtnClick(selectedItem: self.tableData!)
