@@ -31,7 +31,7 @@ class DashboardViewController: UIViewController {
         
         setupCollectionView()
         setupTableView()
-        // Do any additional setup after loading the view.
+        DataStore.shared.fetchAllPropertiesMaster()
     }
     
 

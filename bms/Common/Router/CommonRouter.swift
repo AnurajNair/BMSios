@@ -23,7 +23,7 @@ enum CommonRouterProtocol: RouterProtocol {
     case upsertToken(SyncToken)
     case getProjectMaster(APIRequestModel)
     case getBridgeFromProjectId(APIRequestModel)
-
+    case getAllMasters(APIRequestModel)
     var path: String {
         switch self {
         case .syncContacts(_):
@@ -41,13 +41,15 @@ enum CommonRouterProtocol: RouterProtocol {
 
         case.getBridgeFromProjectId(_):
             return "Masters/BridgeFromProjectid"
+        case.getAllMasters(_):
+            return "Masters/AllMasters"
         }
     }
     
     var method: HTTPMethod {
         switch self {
             
-        case .syncContacts(_) ,.upsertGroup,.upsertToken(_), .getProjectMaster(_), .getBridgeFromProjectId(_):
+        case .syncContacts(_) ,.upsertGroup,.upsertToken(_), .getProjectMaster(_), .getBridgeFromProjectId(_), .getAllMasters(_):
             return .post
             
         case  .getGroups(_):
@@ -71,6 +73,8 @@ enum CommonRouterProtocol: RouterProtocol {
         case .getProjectMaster(let body):
             return body
         case .getBridgeFromProjectId(let body):
+            return body
+        case .getAllMasters(let body):
             return body
         default:
             return nil
@@ -227,6 +231,17 @@ class BridgeFromProjectIDRequestKeys: APIRequestBody {
     }
 }
 
+class AllMastersRequestKeys: APIRequestBody {
+    var authId:String? = SessionDetails.getInstance().currentUser?.profile?.authId
+    enum ResponseKeys :String{
+        case authId  = "authid"
+    }
+    
+    override func mapping(map: ObjectMapper.Map) {
+        self.authId              <- map[ResponseKeys.authId.rawValue]
+    }
+}
+
 class CommonRouterManager {
     
     func getProjectMaster(params : [String: Any],
@@ -246,6 +261,19 @@ class CommonRouterManager {
                            successCompletionHandler: @escaping (_ response: APIResponseModel) -> Void,
                            errorCompletionHandler: @escaping (_ response: ApiError?) -> Void) {
          RestClient.getAPIResponse(Router.commonRouterHandler( CommonRouterProtocol.getBridgeFromProjectId(APIRequestModel(params: params))), successCompletionHandler: { (response) in
+             
+             if let apiResponse = Mapper<APIResponseModel>().map(JSONObject: RestClient.getResultValue(response))  {
+                 successCompletionHandler(apiResponse)
+             }
+         }) { (error) in
+             errorCompletionHandler(error)
+         }
+     }
+
+    func getAllMasters(params : [String: Any],
+                       successCompletionHandler: @escaping (_ response: APIResponseModel) -> Void,
+                       errorCompletionHandler: @escaping (_ response: ApiError?) -> Void) {
+         RestClient.getAPIResponse(Router.commonRouterHandler( CommonRouterProtocol.getAllMasters(APIRequestModel(params: params))), successCompletionHandler: { (response) in
              
              if let apiResponse = Mapper<APIResponseModel>().map(JSONObject: RestClient.getResultValue(response))  {
                  successCompletionHandler(apiResponse)
