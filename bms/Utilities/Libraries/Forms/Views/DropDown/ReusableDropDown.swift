@@ -47,6 +47,7 @@ class ReusableDropDown: UIView {
     func setupDropDown(options: [DropDownModel], placeHolder: String = "", selectedItemIndex: Int? = nil, style: FormElementStyler.formDropDownStyle = TTDropDownStyle.defaultStyle) {
         dropDown.dataSource = options.compactMap { $0.name }
         dropDown.anchorView = dropDownView
+        applyStyle(style: style)
         self.placeHolder = placeHolder
         if let index = selectedItemIndex, index < options.count {
             titleLabel.text = options[index].displayableValue
@@ -68,7 +69,9 @@ class ReusableDropDown: UIView {
         titleLabel.font = style.titleFont
         titleLabel.textColor = style.titleTextColor
         dropDownView.backgroundColor = style.backgroundColor
-        dropDownView.addBorders(edges: .bottom, color: UIColor.BMS.textBorderGrey)
+        if let edges = style.fieldBorderEdges {
+            dropDownView.addBorders(edges: edges, color: UIColor.BMS.textBorderGrey)
+        }
         if let icon = style.icon {
             iconImageView.image = UIImage(named: icon)
         }

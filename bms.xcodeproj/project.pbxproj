@@ -236,6 +236,7 @@
 		3D7EB5712A0A257800A72C66 /* RailingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7EB5702A0A257800A72C66 /* RailingType.swift */; };
 		3D7EB5732A0A257A00A72C66 /* ExpansionJointType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7EB5722A0A257A00A72C66 /* ExpansionJointType.swift */; };
 		3D7EB5772A0A25ED00A72C66 /* BearingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7EB5762A0A25ED00A72C66 /* BearingType.swift */; };
+		3D7EB57A2A0A767B00A72C66 /* SelfInspectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7EB5792A0A767B00A72C66 /* SelfInspectionViewController.swift */; };
 		3D7FD3EB29ED1C4000C6AC4C /* Bridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7FD3E929ED1C3F00C6AC4C /* Bridge.swift */; };
 		3D7FD3EC29ED1C4000C6AC4C /* BridgeList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7FD3EA29ED1C4000C6AC4C /* BridgeList.swift */; };
 		3D8190FC29D9736600C2BF3B /* CreateInventoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8190FB29D9736600C2BF3B /* CreateInventoryViewController.swift */; };
@@ -513,6 +514,7 @@
 		3D7EB5702A0A257800A72C66 /* RailingType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RailingType.swift; sourceTree = "<group>"; };
 		3D7EB5722A0A257A00A72C66 /* ExpansionJointType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpansionJointType.swift; sourceTree = "<group>"; };
 		3D7EB5762A0A25ED00A72C66 /* BearingType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BearingType.swift; sourceTree = "<group>"; };
+		3D7EB5792A0A767B00A72C66 /* SelfInspectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfInspectionViewController.swift; sourceTree = "<group>"; };
 		3D7FD3E929ED1C3F00C6AC4C /* Bridge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bridge.swift; sourceTree = "<group>"; };
 		3D7FD3EA29ED1C4000C6AC4C /* BridgeList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BridgeList.swift; sourceTree = "<group>"; };
 		3D8190FB29D9736600C2BF3B /* CreateInventoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateInventoryViewController.swift; sourceTree = "<group>"; };
@@ -1502,6 +1504,7 @@
 		1D98DA662907F8B1007FA48B /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				3D7EB5782A0A765600A72C66 /* SelfInspection */,
 				1DC40CDC29335F8300A86025 /* Views */,
 				1D07C72229100DAA0088DCAC /* Approach Form */,
 				1D0CC93D290DC0E000A557ED /* Forms Page View Controller  */,
@@ -1780,6 +1783,14 @@
 				3D7EB5642A0A24E800A72C66 /* BridgeType.swift */,
 			);
 			path = Masters;
+			sourceTree = "<group>";
+		};
+		3D7EB5782A0A765600A72C66 /* SelfInspection */ = {
+			isa = PBXGroup;
+			children = (
+				3D7EB5792A0A767B00A72C66 /* SelfInspectionViewController.swift */,
+			);
+			path = SelfInspection;
 			sourceTree = "<group>";
 		};
 		3D8190FA29D9731700C2BF3B /* CreateInventory */ = {
@@ -2266,6 +2277,7 @@
 				1D34C6B628FF2E7D00A8BAF3 /* ReusableFormHelper.swift in Sources */,
 				1D01C26D293A2D2300F9AC9B /* ReusableDropDown.swift in Sources */,
 				3D45AA4629E5FD0300A83397 /* LowViscosityGrout.swift in Sources */,
+				3D7EB57A2A0A767B00A72C66 /* SelfInspectionViewController.swift in Sources */,
 				1D34C69428FF28B700A8BAF3 /* ReusableFormSegmentedController.swift in Sources */,
 				1D34C68C28FF27A800A8BAF3 /* CharacterLengthRule.swift in Sources */,
 				1D9A2480290725AF000D2A39 /* ReusableTitleView.swift in Sources */,

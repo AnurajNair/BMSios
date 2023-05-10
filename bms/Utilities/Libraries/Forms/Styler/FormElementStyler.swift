@@ -14,7 +14,7 @@ class FormElementStyler {
     
     typealias formElementViewStyle = (titleFontDefault: UIFont , titleFontSelected: UIFont , titleTextColorDefault: UIColor , titleTextColorSelected: UIColor , errorFont: UIFont , errorTextColor: UIColor , errorImage: String? , errorImageRenderingMode: UIImage.RenderingMode , errorImageTintColor: UIColor ,formBackgroundColor : UIColor, nonEditableFieldAlpha:CGFloat)
     
-    typealias formDropDownStyle = (titleFont: UIFont, titleTextColor: UIColor, backgroundColor : UIColor, icon: String?, iconRenderingMode: UIImage.RenderingMode, iconTintColor: UIColor )
+    typealias formDropDownStyle = (titleFont: UIFont, titleTextColor: UIColor, backgroundColor : UIColor, fieldBorderEdges: UIRectEdge?, icon: String?, iconRenderingMode: UIImage.RenderingMode, iconTintColor: UIColor )
 
     struct FormHelper {
         static var imagePickerControllerBarTintColor: UIColor { return UIColor.BMS.blue.getColorWithTranslucency(true) }
@@ -230,7 +230,7 @@ class FormElementStyler {
     }
 
     struct DropDown {
-        static var titleFont: UIFont { return UIFont.BMS.InterRegular.withSize(14) }
+        static var titleFont: UIFont { return UIFont.BMS.InterRegular.withSize(17) }
         static var titleColor: UIColor { return UIColor.BMS.fontBlack }
         static var backgroundColor: UIColor { return UIColor.BMS.clear }
         static var icon = "Form-Icon-Expandable-Arrow-Medium"
@@ -309,7 +309,15 @@ class TTDropDownStyle {
     static let defaultStyle = FormElementStyler.formDropDownStyle(titleFont: FormElementStyler.DropDown.titleFont,
                                                                   titleTextColor: FormElementStyler.DropDown.titleColor,
                                                                   backgroundColor : FormElementStyler.DropDown.backgroundColor,
+                                                                  fieldBorderEdges: .all,
                                                                   icon: FormElementStyler.DropDown.icon,
                                                                   iconRenderingMode: .alwaysTemplate,
                                                                   iconTintColor: UIColor.BMS.black )
+    static let borderedStyle = FormElementStyler.formDropDownStyle(titleFont: FormElementStyler.DropDown.titleFont,
+                                                                   titleTextColor: FormElementStyler.DropDown.titleColor,
+                                                                   backgroundColor : FormElementStyler.DropDown.backgroundColor,
+                                                                   fieldBorderEdges: .all,
+                                                                   icon: FormElementStyler.DropDown.icon,
+                                                                   iconRenderingMode: .alwaysTemplate,
+                                                                   iconTintColor: UIColor.BMS.black )
 }

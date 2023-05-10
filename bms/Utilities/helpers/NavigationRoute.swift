@@ -47,7 +47,7 @@ class NavigationRoute: Navigate {
         dashboardScreen,
         inspectionListScreen,
         inventoryListScreen,
-        
+        selfInspectionScreen,
        
         // Routine Inspection
         routineInspbridgeDetailScreen,
@@ -66,7 +66,8 @@ class NavigationRoute: Navigate {
             case .passwordResetSuccessScreen: return (NavigationRoute.getPasswordSuccessfullScreen(), "" )
             case .homeScreen :return (NavigationRoute.getHomeViewController(), "" )
             case .inspectionListScreen :return (NavigationRoute.getInspectionList(data), "" )
-                
+            case .selfInspectionScreen :return (NavigationRoute.getSelfInspection(), "" )
+
             case .routineInspbridgeDetailScreen :return (NavigationRoute.getRoutineInspBridgeDetail(data), "")
 
             case.inventoryListScreen:return (NavigationRoute.getInventoryList(), "" )
@@ -290,6 +291,14 @@ class NavigationRoute: Navigate {
         return viewController
         
     }
+
+    class func getSelfInspection(_ data:[String:Any] = [:]) -> SelfInspectionViewController {
+        
+        let viewController =  inspectionsStoryboard().instantiateViewController(withIdentifier: "SelfInspectionViewController") as! SelfInspectionViewController
+        return viewController
+        
+    }
+
     class func getRoutineInspBridgeDetail(_ data:[String:Any] = [:]) -> FormsControlllerViewController {
         let viewController =  inspectionsStoryboard().instantiateViewController(withIdentifier: "FormsControlllerViewController") as! FormsControlllerViewController
         

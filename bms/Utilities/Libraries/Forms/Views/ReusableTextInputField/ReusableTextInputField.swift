@@ -19,27 +19,18 @@ class ReusableTextInputField: UIView{
     override init(frame: CGRect) {
         super.init(frame: frame)
 //        fromNib()
-        initFromNib()
+        _ = initFromNib()
 //        self.setupView()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
 //        fromNib()
-        initFromNib()
+        _ = initFromNib()
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
 //        self.setupView()
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        
-//        if self.frameWidth != self.frame.size.width {
-//            self.frameWidth = self.frame.size.width
-//            self.updateHeight()
-//        }
     }
 }

@@ -11,6 +11,7 @@ import ObjectMapper
 class DataStore {
     static let shared = DataStore()
 
+    private(set) var bridges: [Bridge] = []
     private var bridgePropertiesMaster: BridgePropertiesMaster?
 
     func getMasters() -> BridgePropertiesMaster? {
@@ -44,5 +45,9 @@ class DataStore {
             print("error - \(String(describing: error))")
             Utils.displayAlert(title: "Error", message: "Something went wrong.")
         }
+    }
+
+    func storeBridges(_ bridges: [Bridge]) {
+        self.bridges = bridges
     }
 }
