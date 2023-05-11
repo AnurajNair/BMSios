@@ -231,6 +231,7 @@
 		3D63D36B2A0BF6F9000C87EC /* TypeOfCarriageWaySecondDigit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D63D36A2A0BF6F9000C87EC /* TypeOfCarriageWaySecondDigit.swift */; };
 		3D63D36D2A0BF77F000C87EC /* AlternativeRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D63D36C2A0BF77F000C87EC /* AlternativeRoute.swift */; };
 		3D63D36F2A0CB951000C87EC /* InspectionSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D63D36E2A0CB951000C87EC /* InspectionSummary.swift */; };
+		3D63D3712A0D20C1000C87EC /* Reviewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D63D3702A0D20C1000C87EC /* Reviewer.swift */; };
 		3D7EB5122A07767500A72C66 /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7EB5112A07767500A72C66 /* DataStore.swift */; };
 		3D7EB5612A094F1700A72C66 /* BridgePropertiesMaster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7EB5602A094F1700A72C66 /* BridgePropertiesMaster.swift */; };
 		3D7EB5632A0A0C1100A72C66 /* BasicDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7EB5622A0A0C1100A72C66 /* BasicDetails.swift */; };
@@ -515,6 +516,7 @@
 		3D63D36A2A0BF6F9000C87EC /* TypeOfCarriageWaySecondDigit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeOfCarriageWaySecondDigit.swift; sourceTree = "<group>"; };
 		3D63D36C2A0BF77F000C87EC /* AlternativeRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlternativeRoute.swift; sourceTree = "<group>"; };
 		3D63D36E2A0CB951000C87EC /* InspectionSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectionSummary.swift; sourceTree = "<group>"; };
+		3D63D3702A0D20C1000C87EC /* Reviewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reviewer.swift; sourceTree = "<group>"; };
 		3D7EB5112A07767500A72C66 /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
 		3D7EB5602A094F1700A72C66 /* BridgePropertiesMaster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BridgePropertiesMaster.swift; sourceTree = "<group>"; };
 		3D7EB5622A0A0C1100A72C66 /* BasicDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicDetails.swift; sourceTree = "<group>"; };
@@ -1379,6 +1381,7 @@
 				3D45AA6029EC324200A83397 /* Project.swift */,
 				3D45AA5E29E92DCD00A83397 /* GlobalEnums.swift */,
 				3D45AA6229EC366A00A83397 /* ProjectList.swift */,
+				3D63D3702A0D20C1000C87EC /* Reviewer.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2381,6 +2384,7 @@
 				1D72C3D129033FBC0099AAB4 /* ForgotPassword.swift in Sources */,
 				1DB69EE0293659B70005FBAD /* LoginHeaderView.swift in Sources */,
 				3D45AA5229E6826100A83397 /* RailingAndKerbBeam.swift in Sources */,
+				3D63D3712A0D20C1000C87EC /* Reviewer.swift in Sources */,
 				1D2E17BD2911DFEC00214593 /* InventoryListViewController.swift in Sources */,
 				3D45AA5429E682E500A83397 /* ExpansionJoint.swift in Sources */,
 				3D63D3692A0BF688000C87EC /* TypeOfCarriageWayFirstDigit.swift in Sources */,

@@ -15,6 +15,7 @@ class SelfInspectionViewController: UIViewController {
     @IBOutlet weak var bridgeDropDown: ReusableDropDown!
     @IBOutlet weak var inspectionDropDown: ReusableDropDown!
     @IBOutlet weak var unregisteredButton: UIButton!
+    @IBOutlet weak var reviewerDropDown: ReusableDropDown!
     @IBOutlet weak var startInspectionButton: UIButton!
 
     var bridges: [Bridge] = [] {
@@ -29,6 +30,12 @@ class SelfInspectionViewController: UIViewController {
         }
     }
 
+    var reviewers: [Reviewer] = [] {
+        didSet {
+            setupReviewersDropDown()
+        }
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
@@ -36,6 +43,7 @@ class SelfInspectionViewController: UIViewController {
         setupInspectionDropDown()
         getBridges()
         getInspectionSummary()
+        getReviewers()
     }
 
     func setupView() {
@@ -59,6 +67,15 @@ class SelfInspectionViewController: UIViewController {
             options.append(option)
         }
         inspectionDropDown.setupDropDown(options: options, placeHolder: "Select Inspection", style: TTDropDownStyle.borderedStyle)
+    }
+
+    func setupReviewersDropDown() {
+        var options = [DropDownModel]()
+        reviewers.forEach {
+            let option = DropDownModel(id: $0.id, name: $0.name ?? "")
+            options.append(option)
+        }
+        reviewerDropDown.setupDropDown(options: options, placeHolder: "Select Reviewer", style: TTDropDownStyle.borderedStyle)
     }
 
     @IBAction func unregisteredDidTap(_ sender: Any) {
@@ -117,6 +134,36 @@ extension SelfInspectionViewController {
                             }
                         }
                         self.inspections = inspections
+                    }
+                }else{
+                    Utils.displayAlert(title: "Error", message: response.message ?? "Something went wrong.")
+                }
+            } else {
+                Utils.displayAlert(title: "Error", message: response.message ?? "Something went wrong.")
+            }
+        } errorCompletionHandler: { error in
+            Utils.hideLoadingInView(self.view)
+            print("error - \(String(describing: error))")
+            Utils.displayAlert(title: "Error", message: "Something went wrong.")
+        }
+    }
+
+    func getReviewers() {
+        Utils.showLoadingInView(self.view)
+            InspctionRouterManager().getReviewers(params: APIUtils.createAPIRequestParams(dataObject: MastersRequestKeys())) { response in
+                Utils.hideLoadingInView(self.view)
+
+                if(response.status == 0){
+                if(response.response != ""){
+                    let responseJson = Utils.getJsonFromString(string: Utils().decryptData(encryptdata: response.response!))
+                    if let reviewersArray =  responseJson?["reviewerlist"] as? [[String: Any]]{
+                        var reviewers: [Reviewer] = []
+                        reviewersArray.forEach { reviewer in
+                            if let reviewer = Mapper<Reviewer>().map(JSON: reviewer) {
+                                reviewers.append(reviewer)
+                            }
+                        }
+                        self.reviewers = reviewers
                     }
                 }else{
                     Utils.displayAlert(title: "Error", message: response.message ?? "Something went wrong.")

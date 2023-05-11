@@ -81,10 +81,19 @@
                                                     </button>
                                                 </subviews>
                                             </stackView>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sjs-ep-ieg" customClass="ReusableDropDown" customModule="bms" customModuleProvider="target">
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Mii-cw-uPu">
                                                 <rect key="frame" x="0.0" y="100" width="712" height="80"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                            </view>
+                                                <subviews>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sjs-ep-ieg" customClass="ReusableDropDown" customModule="bms" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="346" height="80"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z9L-yy-9fv" customClass="ReusableDropDown" customModule="bms" customModuleProvider="target">
+                                                        <rect key="frame" x="366" y="0.0" width="346" height="80"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    </view>
+                                                </subviews>
+                                            </stackView>
                                         </subviews>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="180" id="kMW-vL-aMG"/>
@@ -134,6 +143,7 @@
                     <connections>
                         <outlet property="bridgeDropDown" destination="iBI-dv-r2X" id="T2j-uN-gyc"/>
                         <outlet property="inspectionDropDown" destination="Sjs-ep-ieg" id="iGS-Ys-Q1c"/>
+                        <outlet property="reviewerDropDown" destination="z9L-yy-9fv" id="6CY-iq-A4g"/>
                         <outlet property="startInspectionButton" destination="zPE-29-CuO" id="72a-qu-7dI"/>
                         <outlet property="unregisteredButton" destination="uy8-2d-Ji0" id="rID-OM-Yg7"/>
                     </connections>
