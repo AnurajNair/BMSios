@@ -83,3 +83,50 @@ class SaveReviewRequestModel: APIRequestBody {
         self.reviews <- map[ResponseKeys.reviews.rawValue]
     }
 }
+
+class AddOnBridgeRequestModel: APIRequestBody {
+    typealias Review = [String: Any]
+
+    lazy var authId = SessionDetails.getInstance().currentUser?.profile?.authId
+    var projectId: Int?
+    var name: String?
+    var chainagekm: Int?
+    var chainagemet: Int?
+    var carriageWayFirstDigit: Int?
+    var carriageWaySecondDigit: Int?
+    var bridgeType: Int?
+    var foundation: Int?
+    var superStructure: Int?
+    var structure: Int?
+    var alternateRoute: Int?
+
+    enum ResponseKeys :String{
+        case authId  = "authid"
+        case projectId = "projectid"
+        case name = "name"
+        case chainagekm = "chainagekm"
+        case chainagemet = "chainagemet"
+        case carriageWayFirstDigit = "carriagewayfirstdigit"
+        case carriageWaySecondDigit = "carriagewayseconddigit"
+        case bridgeType = "bridgetype"
+        case foundation = "foundation"
+        case superStructure = "superstructure"
+        case structure = "structure"
+        case alternateRoute = "alternateroute"
+    }
+  
+    override func mapping(map: ObjectMapper.Map) {
+        self.authId              <- map[ResponseKeys.authId.rawValue]
+        self.projectId <- map[ResponseKeys.projectId.rawValue]
+        self.name <- map[ResponseKeys.name.rawValue]
+        self.chainagekm <- map[ResponseKeys.chainagekm.rawValue]
+        self.chainagemet <- map[ResponseKeys.chainagemet.rawValue]
+        self.carriageWayFirstDigit <- map[ResponseKeys.carriageWayFirstDigit.rawValue]
+        self.carriageWaySecondDigit <- map[ResponseKeys.carriageWaySecondDigit.rawValue]
+        self.bridgeType <- map[ResponseKeys.bridgeType.rawValue]
+        self.foundation <- map[ResponseKeys.foundation.rawValue]
+        self.superStructure <- map[ResponseKeys.superStructure.rawValue]
+        self.structure <- map[ResponseKeys.structure.rawValue]
+        self.alternateRoute <- map[ResponseKeys.alternateRoute.rawValue]
+    }
+}

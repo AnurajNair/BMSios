@@ -17,7 +17,11 @@ class SelfInspectionViewController: UIViewController {
     @IBOutlet weak var unregisteredButton: UIButton!
     @IBOutlet weak var startInspectionButton: UIButton!
 
-    var dataStore = DataStore.shared
+    var bridges: [Bridge] = [] {
+        didSet {
+            setupDropDown()
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +37,7 @@ class SelfInspectionViewController: UIViewController {
 
     func setupDropDown() {
         var options = [DropDownModel]()
-        dataStore.bridges.forEach {
+        bridges.forEach {
             let option = DropDownModel(id: $0.id, name: $0.name ?? "")
             options.append(option)
         }
@@ -41,6 +45,7 @@ class SelfInspectionViewController: UIViewController {
     }
 
     @IBAction func unregisteredDidTap(_ sender: Any) {
+        Navigate.routeUserToScreen(screenType: .registerBridge, transitionType: .modal)
     }
     
     @IBAction func startInspectionDidTap(_ sender: UIButton) {
@@ -50,7 +55,7 @@ class SelfInspectionViewController: UIViewController {
 extension SelfInspectionViewController {
     func getBridges() {
         Utils.showLoadingInView(self.view)
-            CommonRouterManager().getBridgeMaster(params: APIUtils.createAPIRequestParams(dataObject: AllMastersRequestKeys())) { response in
+            CommonRouterManager().getBridgeMaster(params: APIUtils.createAPIRequestParams(dataObject: MastersRequestKeys())) { response in
                 Utils.hideLoadingInView(self.view)
 
                 if(response.status == 0){
@@ -63,8 +68,7 @@ extension SelfInspectionViewController {
                                 bridges.append(bridge)
                             }
                         }
-                        self.dataStore.storeBridges(bridges)
-                        self.setupDropDown()
+                        self.bridges = bridges
                     }
                 }else{
                     Utils.displayAlert(title: "Error", message: response.message ?? "Something went wrong.")
@@ -78,5 +82,12 @@ extension SelfInspectionViewController {
             Utils.displayAlert(title: "Error", message: "Something went wrong.")
         }
 
+    }
+}
+
+extension SelfInspectionViewController: RegisterBridgeViewControllerDelegate {
+    func didRegisterSuccessfully(bridge: Bridge) {
+        bridges.insert(bridge, at: 0)
+        setupView()
     }
 }

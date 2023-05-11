@@ -225,6 +225,12 @@
 		3D4A5DEB29FEB99E002B0280 /* FormSubSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4A5DEA29FEB99E002B0280 /* FormSubSection.swift */; };
 		3D4A5DED29FEBA5A002B0280 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4A5DEC29FEBA5A002B0280 /* Question.swift */; };
 		3D4A5DEF29FFBC5E002B0280 /* Option.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4A5DEE29FFBC5E002B0280 /* Option.swift */; };
+		3D63D3632A0BBDCE000C87EC /* RegisterBridgeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D63D3622A0BBDCD000C87EC /* RegisterBridgeViewController.swift */; };
+		3D63D3652A0BEED1000C87EC /* CommonApiRequestModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D63D3642A0BEED1000C87EC /* CommonApiRequestModels.swift */; };
+		3D63D3672A0BF3CA000C87EC /* AddOnBridgeMaster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D63D3662A0BF3CA000C87EC /* AddOnBridgeMaster.swift */; };
+		3D63D3692A0BF688000C87EC /* TypeOfCarriageWayFirstDigit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D63D3682A0BF688000C87EC /* TypeOfCarriageWayFirstDigit.swift */; };
+		3D63D36B2A0BF6F9000C87EC /* TypeOfCarriageWaySecondDigit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D63D36A2A0BF6F9000C87EC /* TypeOfCarriageWaySecondDigit.swift */; };
+		3D63D36D2A0BF77F000C87EC /* AlternativeRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D63D36C2A0BF77F000C87EC /* AlternativeRoute.swift */; };
 		3D7EB5122A07767500A72C66 /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7EB5112A07767500A72C66 /* DataStore.swift */; };
 		3D7EB5612A094F1700A72C66 /* BridgePropertiesMaster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7EB5602A094F1700A72C66 /* BridgePropertiesMaster.swift */; };
 		3D7EB5632A0A0C1100A72C66 /* BasicDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7EB5622A0A0C1100A72C66 /* BasicDetails.swift */; };
@@ -503,6 +509,12 @@
 		3D4A5DEA29FEB99E002B0280 /* FormSubSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormSubSection.swift; sourceTree = "<group>"; };
 		3D4A5DEC29FEBA5A002B0280 /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		3D4A5DEE29FFBC5E002B0280 /* Option.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Option.swift; sourceTree = "<group>"; };
+		3D63D3622A0BBDCD000C87EC /* RegisterBridgeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterBridgeViewController.swift; sourceTree = "<group>"; };
+		3D63D3642A0BEED1000C87EC /* CommonApiRequestModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonApiRequestModels.swift; sourceTree = "<group>"; };
+		3D63D3662A0BF3CA000C87EC /* AddOnBridgeMaster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOnBridgeMaster.swift; sourceTree = "<group>"; };
+		3D63D3682A0BF688000C87EC /* TypeOfCarriageWayFirstDigit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeOfCarriageWayFirstDigit.swift; sourceTree = "<group>"; };
+		3D63D36A2A0BF6F9000C87EC /* TypeOfCarriageWaySecondDigit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeOfCarriageWaySecondDigit.swift; sourceTree = "<group>"; };
+		3D63D36C2A0BF77F000C87EC /* AlternativeRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlternativeRoute.swift; sourceTree = "<group>"; };
 		3D7EB5112A07767500A72C66 /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
 		3D7EB5602A094F1700A72C66 /* BridgePropertiesMaster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BridgePropertiesMaster.swift; sourceTree = "<group>"; };
 		3D7EB5622A0A0C1100A72C66 /* BasicDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicDetails.swift; sourceTree = "<group>"; };
@@ -1367,6 +1379,7 @@
 				3D45AA6029EC324200A83397 /* Project.swift */,
 				3D45AA5E29E92DCD00A83397 /* GlobalEnums.swift */,
 				3D45AA6229EC366A00A83397 /* ProjectList.swift */,
+				3D63D3642A0BEED1000C87EC /* CommonApiRequestModels.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1772,11 +1785,15 @@
 			isa = PBXGroup;
 			children = (
 				3D7EB5602A094F1700A72C66 /* BridgePropertiesMaster.swift */,
+				3D63D3662A0BF3CA000C87EC /* AddOnBridgeMaster.swift */,
 				3D7EB5622A0A0C1100A72C66 /* BasicDetails.swift */,
+				3D63D36C2A0BF77F000C87EC /* AlternativeRoute.swift */,
 				3D7EB5662A0A251A00A72C66 /* WearingCoarseType.swift */,
 				3D7EB5722A0A257A00A72C66 /* ExpansionJointType.swift */,
 				3D7EB5762A0A25ED00A72C66 /* BearingType.swift */,
 				3D7EB5702A0A257800A72C66 /* RailingType.swift */,
+				3D63D3682A0BF688000C87EC /* TypeOfCarriageWayFirstDigit.swift */,
+				3D63D36A2A0BF6F9000C87EC /* TypeOfCarriageWaySecondDigit.swift */,
 				3D7EB56E2A0A257600A72C66 /* SubStructureType.swift */,
 				3D7EB5682A0A251C00A72C66 /* FoundationType.swift */,
 				3D7EB56A2A0A251E00A72C66 /* SuperStructureType.swift */,
@@ -1789,6 +1806,7 @@
 			isa = PBXGroup;
 			children = (
 				3D7EB5792A0A767B00A72C66 /* SelfInspectionViewController.swift */,
+				3D63D3622A0BBDCD000C87EC /* RegisterBridgeViewController.swift */,
 			);
 			path = SelfInspection;
 			sourceTree = "<group>";
@@ -2210,6 +2228,7 @@
 				3D4A5DEF29FFBC5E002B0280 /* Option.swift in Sources */,
 				3D45AA5829E6840400A83397 /* Wrapping.swift in Sources */,
 				1D64735C2945CF7B00EDD9ED /* ForgotPasswordModel.swift in Sources */,
+				3D63D36D2A0BF77F000C87EC /* AlternativeRoute.swift in Sources */,
 				3D45AA1129E1674500A83397 /* InventoryListHeaderView.swift in Sources */,
 				1D5B74D828FC950E0053B079 /* ServerDownViewController.swift in Sources */,
 				3D7FD3EB29ED1C4000C6AC4C /* Bridge.swift in Sources */,
@@ -2234,6 +2253,7 @@
 				3D7EB56B2A0A251E00A72C66 /* SuperStructureType.swift in Sources */,
 				3D7EB5712A0A257800A72C66 /* RailingType.swift in Sources */,
 				1D34C6A528FF2A4B00A8BAF3 /* ReusableFormFileField.swift in Sources */,
+				3D63D3672A0BF3CA000C87EC /* AddOnBridgeMaster.swift in Sources */,
 				1D5B74C028FC42CB0053B079 /* ReusableEmptyStateView.swift in Sources */,
 				3D7EB5732A0A257A00A72C66 /* ExpansionJointType.swift in Sources */,
 				3D45AA2B29E30DC900A83397 /* Step17Form.swift in Sources */,
@@ -2254,6 +2274,7 @@
 				3D4A5DEB29FEB99E002B0280 /* FormSubSection.swift in Sources */,
 				3D45AA3129E4711200A83397 /* InventoryListApiModel.swift in Sources */,
 				3D4A5DE229FD6EDA002B0280 /* InspectionApiModels.swift in Sources */,
+				3D63D36B2A0BF6F9000C87EC /* TypeOfCarriageWaySecondDigit.swift in Sources */,
 				1D5B74AC28FADEC40053B079 /* AnalyticsHelper.swift in Sources */,
 				3D7EB56F2A0A257600A72C66 /* SubStructureType.swift in Sources */,
 				1DD82A59290AF95300D520B9 /* FormViewController.swift in Sources */,
@@ -2322,6 +2343,7 @@
 				3D45AA1B29E306FB00A83397 /* Step9Form.swift in Sources */,
 				1D33EA7C2922E69300B9363D /* InspectionRouter.swift in Sources */,
 				1D5B747928FAC7C30053B079 /* CustomNavigationTitleView.swift in Sources */,
+				3D63D3652A0BEED1000C87EC /* CommonApiRequestModels.swift in Sources */,
 				3D45AA5F29E92DCD00A83397 /* GlobalEnums.swift in Sources */,
 				1D4CB3502900868B00B152CF /* ExampleTableCell.swift in Sources */,
 				1DF2F6E8292F87F00012A31B /* LoginUserResponse.swift in Sources */,
@@ -2354,12 +2376,14 @@
 				3DD7292129E02DD200AFADE8 /* Step3Form.swift in Sources */,
 				3D45AA3329E5918E00A83397 /* InventoryList.swift in Sources */,
 				1D3279DA28FD9DED00077777 /* UnknownErrorViewController.swift in Sources */,
+				3D63D3632A0BBDCE000C87EC /* RegisterBridgeViewController.swift in Sources */,
 				1D34C6A228FF29E100A8BAF3 /* ReusableSelectableCollectionViewCell.swift in Sources */,
 				1D72C3D129033FBC0099AAB4 /* ForgotPassword.swift in Sources */,
 				1DB69EE0293659B70005FBAD /* LoginHeaderView.swift in Sources */,
 				3D45AA5229E6826100A83397 /* RailingAndKerbBeam.swift in Sources */,
 				1D2E17BD2911DFEC00214593 /* InventoryListViewController.swift in Sources */,
 				3D45AA5429E682E500A83397 /* ExpansionJoint.swift in Sources */,
+				3D63D3692A0BF688000C87EC /* TypeOfCarriageWayFirstDigit.swift in Sources */,
 				1D5B745E28F9FCCB0053B079 /* Utils.swift in Sources */,
 				3D4A5DE429FE8DF5002B0280 /* APIUtils.swift in Sources */,
 				1D34C6B428FF2E6800A8BAF3 /* ReusableFormCollectionFlowLayout.swift in Sources */,

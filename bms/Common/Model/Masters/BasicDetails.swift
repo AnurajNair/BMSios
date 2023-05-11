@@ -12,7 +12,7 @@ class BasicDetails: RequestBody {
     @objc dynamic var id: Int = 0
     @objc dynamic var name: String?
     @objc dynamic var desc: String?
-    @objc dynamic var status: Int = 0
+    @objc dynamic var status: String?
 
     enum ResponseKeys :String {
         case id     = "id"

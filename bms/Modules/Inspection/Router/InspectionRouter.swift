@@ -19,7 +19,8 @@ enum InspectionRouterProtocol : RouterProtocol{
     case getInspectionById(APIRequestModel)
     case saveInspection(APIRequestModel)
     case saveReview(APIRequestModel)
-    
+    case saveAddOnBridge(APIRequestModel)
+
     var path: String{
         switch self {
         case .getInspectorInspections:
@@ -32,6 +33,8 @@ enum InspectionRouterProtocol : RouterProtocol{
             return "Inspector/SaveInspection"
         case .saveReview(_):
             return "Reviewer/SaveInspection"
+        case .saveAddOnBridge(_):
+            return "Bridge/AddOnBridge"
         }
     }
     
@@ -55,7 +58,8 @@ enum InspectionRouterProtocol : RouterProtocol{
                 .getReviewerInspections(let body),
                 .getInspectionById(let body),
                 .saveInspection((let body)),
-                .saveReview(let body):
+                .saveReview(let body),
+                .saveAddOnBridge(let body):
             return body
             
         }
@@ -152,6 +156,15 @@ class InspctionRouterManager {
                     successCompletionHandler: @escaping APISuccessHandler,
                     errorCompletionHandler: @escaping APIFailureHandler) {
         performInspectionsApiCall(api: .saveReview(APIRequestModel(params: params)),
+                                  successCompletionHandler: successCompletionHandler,
+                                  errorCompletionHandler: errorCompletionHandler)
+        
+    }
+
+    func saveAddOnBridge(params: [String: Any],
+                    successCompletionHandler: @escaping APISuccessHandler,
+                    errorCompletionHandler: @escaping APIFailureHandler) {
+        performInspectionsApiCall(api: .saveAddOnBridge(APIRequestModel(params: params)),
                                   successCompletionHandler: successCompletionHandler,
                                   errorCompletionHandler: errorCompletionHandler)
         
