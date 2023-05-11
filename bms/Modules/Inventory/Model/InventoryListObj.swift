@@ -20,6 +20,9 @@ class InventoryListObj: RequestBody {
     @objc dynamic var saveStatus:String?
     @objc dynamic var status:String?
 
+    var saveStatusEnum: SaveStatus? {
+        SaveStatus(rawValue: saveStatus ?? "")
+    }
 
     enum ResponseKeys :String {
         case id     = "id"

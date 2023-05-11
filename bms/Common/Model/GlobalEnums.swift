@@ -19,4 +19,13 @@ enum Mode: String {
 enum SaveStatus: String {
     case draft = "D"
     case submitted = "S"
+
+    var text: String {
+        switch self {
+        case .draft:
+            return "Draft"
+        case .submitted:
+            return "Submitted"
+        }
+    }
 }
