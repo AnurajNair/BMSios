@@ -309,7 +309,7 @@ class TTDropDownStyle {
     static let defaultStyle = FormElementStyler.formDropDownStyle(titleFont: FormElementStyler.DropDown.titleFont,
                                                                   titleTextColor: FormElementStyler.DropDown.titleColor,
                                                                   backgroundColor : FormElementStyler.DropDown.backgroundColor,
-                                                                  fieldBorderEdges: .all,
+                                                                  fieldBorderEdges: .bottom,
                                                                   icon: FormElementStyler.DropDown.icon,
                                                                   iconRenderingMode: .alwaysTemplate,
                                                                   iconTintColor: UIColor.BMS.black )

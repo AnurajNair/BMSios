@@ -18,10 +18,14 @@ class ReusableDropDown: UIView {
 
     @IBOutlet weak var iconImageView: UIImageView!
     private lazy var dropDown = DropDown()
-
+    var style: FormElementStyler.formDropDownStyle?
     var delegate: ReusableDropDownDelegate?
+    var options: [DropDownModel] = []
     var placeHolder = ""
-
+    var selectedItem: DropDownModel? {
+        guard let selectedIndex = dropDown.indexForSelectedRow else { return nil }
+        return options[selectedIndex]
+    }
     override init(frame: CGRect) {
         super.init(frame: frame)
        _ = initFromNib()
@@ -45,29 +49,35 @@ class ReusableDropDown: UIView {
     }
 
     func setupDropDown(options: [DropDownModel], placeHolder: String = "", selectedItemIndex: Int? = nil, style: FormElementStyler.formDropDownStyle = TTDropDownStyle.defaultStyle) {
+        self.options = options
         dropDown.dataSource = options.compactMap { $0.name }
         dropDown.anchorView = dropDownView
         applyStyle(style: style)
         self.placeHolder = placeHolder
         if let index = selectedItemIndex, index < options.count {
-            titleLabel.text = options[index].displayableValue
+            setTitle(text: options[index].displayableValue)
             dropDown.selectRow(at: index)
         } else {
-            titleLabel.text = placeHolder
+            setTitle(text: placeHolder, isPlaceholder: true)
         }
         dropDown.selectionAction = { [weak self] index, displayValue in
             self?.makeSelection(option: options[index])
         }
     }
 
+    func setTitle(text: String, isPlaceholder: Bool = false) {
+        titleLabel.text = text
+        titleLabel.textColor = isPlaceholder ? UIColor.BMS.black.withAlphaComponent(0.5) : style?.titleTextColor ?? .black
+    }
+
     func makeSelection(option: DropDownModel) {
-        titleLabel.text = option.displayableValue
+        setTitle(text: option.displayableValue)
         delegate?.didSelectOption(option: option)
     }
 
     private func applyStyle(style: FormElementStyler.formDropDownStyle) {
+        self.style = style
         titleLabel.font = style.titleFont
-        titleLabel.textColor = style.titleTextColor
         dropDownView.backgroundColor = style.backgroundColor
         if let edges = style.fieldBorderEdges {
             dropDownView.addBorders(edges: edges, color: UIColor.BMS.textBorderGrey)
