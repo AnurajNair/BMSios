@@ -146,7 +146,7 @@ extension RegisterBridgeViewController {
             return
         }
         Utils.showLoadingInView(self.view)
-        InspctionRouterManager().SaveAddOnBridge(params: params) { response in
+        InspctionRouterManager().saveAddOnBridge(params: params) { response in
             Utils.hideLoadingInView(self.view)
             if(response.status == 0){
                 if(response.response != "") {

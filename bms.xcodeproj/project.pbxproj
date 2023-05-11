@@ -226,11 +226,11 @@
 		3D4A5DED29FEBA5A002B0280 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4A5DEC29FEBA5A002B0280 /* Question.swift */; };
 		3D4A5DEF29FFBC5E002B0280 /* Option.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4A5DEE29FFBC5E002B0280 /* Option.swift */; };
 		3D63D3632A0BBDCE000C87EC /* RegisterBridgeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D63D3622A0BBDCD000C87EC /* RegisterBridgeViewController.swift */; };
-		3D63D3652A0BEED1000C87EC /* CommonApiRequestModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D63D3642A0BEED1000C87EC /* CommonApiRequestModels.swift */; };
 		3D63D3672A0BF3CA000C87EC /* AddOnBridgeMaster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D63D3662A0BF3CA000C87EC /* AddOnBridgeMaster.swift */; };
 		3D63D3692A0BF688000C87EC /* TypeOfCarriageWayFirstDigit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D63D3682A0BF688000C87EC /* TypeOfCarriageWayFirstDigit.swift */; };
 		3D63D36B2A0BF6F9000C87EC /* TypeOfCarriageWaySecondDigit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D63D36A2A0BF6F9000C87EC /* TypeOfCarriageWaySecondDigit.swift */; };
 		3D63D36D2A0BF77F000C87EC /* AlternativeRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D63D36C2A0BF77F000C87EC /* AlternativeRoute.swift */; };
+		3D63D36F2A0CB951000C87EC /* InspectionSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D63D36E2A0CB951000C87EC /* InspectionSummary.swift */; };
 		3D7EB5122A07767500A72C66 /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7EB5112A07767500A72C66 /* DataStore.swift */; };
 		3D7EB5612A094F1700A72C66 /* BridgePropertiesMaster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7EB5602A094F1700A72C66 /* BridgePropertiesMaster.swift */; };
 		3D7EB5632A0A0C1100A72C66 /* BasicDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7EB5622A0A0C1100A72C66 /* BasicDetails.swift */; };
@@ -510,11 +510,11 @@
 		3D4A5DEC29FEBA5A002B0280 /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		3D4A5DEE29FFBC5E002B0280 /* Option.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Option.swift; sourceTree = "<group>"; };
 		3D63D3622A0BBDCD000C87EC /* RegisterBridgeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterBridgeViewController.swift; sourceTree = "<group>"; };
-		3D63D3642A0BEED1000C87EC /* CommonApiRequestModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonApiRequestModels.swift; sourceTree = "<group>"; };
 		3D63D3662A0BF3CA000C87EC /* AddOnBridgeMaster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOnBridgeMaster.swift; sourceTree = "<group>"; };
 		3D63D3682A0BF688000C87EC /* TypeOfCarriageWayFirstDigit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeOfCarriageWayFirstDigit.swift; sourceTree = "<group>"; };
 		3D63D36A2A0BF6F9000C87EC /* TypeOfCarriageWaySecondDigit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeOfCarriageWaySecondDigit.swift; sourceTree = "<group>"; };
 		3D63D36C2A0BF77F000C87EC /* AlternativeRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlternativeRoute.swift; sourceTree = "<group>"; };
+		3D63D36E2A0CB951000C87EC /* InspectionSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectionSummary.swift; sourceTree = "<group>"; };
 		3D7EB5112A07767500A72C66 /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
 		3D7EB5602A094F1700A72C66 /* BridgePropertiesMaster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BridgePropertiesMaster.swift; sourceTree = "<group>"; };
 		3D7EB5622A0A0C1100A72C66 /* BasicDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicDetails.swift; sourceTree = "<group>"; };
@@ -1379,7 +1379,6 @@
 				3D45AA6029EC324200A83397 /* Project.swift */,
 				3D45AA5E29E92DCD00A83397 /* GlobalEnums.swift */,
 				3D45AA6229EC366A00A83397 /* ProjectList.swift */,
-				3D63D3642A0BEED1000C87EC /* CommonApiRequestModels.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1788,6 +1787,7 @@
 				3D63D3662A0BF3CA000C87EC /* AddOnBridgeMaster.swift */,
 				3D7EB5622A0A0C1100A72C66 /* BasicDetails.swift */,
 				3D63D36C2A0BF77F000C87EC /* AlternativeRoute.swift */,
+				3D63D36E2A0CB951000C87EC /* InspectionSummary.swift */,
 				3D7EB5662A0A251A00A72C66 /* WearingCoarseType.swift */,
 				3D7EB5722A0A257A00A72C66 /* ExpansionJointType.swift */,
 				3D7EB5762A0A25ED00A72C66 /* BearingType.swift */,
@@ -2286,6 +2286,7 @@
 				3D45AA4829E6067900A83397 /* PolymerModifiedCementGrout.swift in Sources */,
 				3D7EB5122A07767500A72C66 /* DataStore.swift in Sources */,
 				1D5B746328F9FD2A0053B079 /* ApiBaseResponse.swift in Sources */,
+				3D63D36F2A0CB951000C87EC /* InspectionSummary.swift in Sources */,
 				1D7E41992941F02300788254 /* ActivityTableHeader.swift in Sources */,
 				3D45AA4A29E6733F00A83397 /* GroutingCommon.swift in Sources */,
 				1D34C6B128FF2B8E00A8BAF3 /* ReusableFormSliderField.swift in Sources */,
@@ -2343,7 +2344,6 @@
 				3D45AA1B29E306FB00A83397 /* Step9Form.swift in Sources */,
 				1D33EA7C2922E69300B9363D /* InspectionRouter.swift in Sources */,
 				1D5B747928FAC7C30053B079 /* CustomNavigationTitleView.swift in Sources */,
-				3D63D3652A0BEED1000C87EC /* CommonApiRequestModels.swift in Sources */,
 				3D45AA5F29E92DCD00A83397 /* GlobalEnums.swift in Sources */,
 				1D4CB3502900868B00B152CF /* ExampleTableCell.swift in Sources */,
 				1DF2F6E8292F87F00012A31B /* LoginUserResponse.swift in Sources */,

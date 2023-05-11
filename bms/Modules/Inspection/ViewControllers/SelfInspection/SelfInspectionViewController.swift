@@ -19,15 +19,23 @@ class SelfInspectionViewController: UIViewController {
 
     var bridges: [Bridge] = [] {
         didSet {
-            setupDropDown()
+            setupBridgeDropDown()
+        }
+    }
+
+    var inspections: [InspectionSummary] = [] {
+        didSet {
+            setupInspectionDropDown()
         }
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
-        setupDropDown()
+        setupBridgeDropDown()
+        setupInspectionDropDown()
         getBridges()
+        getInspectionSummary()
     }
 
     func setupView() {
@@ -35,13 +43,22 @@ class SelfInspectionViewController: UIViewController {
         startInspectionButton.setAsRounded()
     }
 
-    func setupDropDown() {
+    func setupBridgeDropDown() {
         var options = [DropDownModel]()
         bridges.forEach {
             let option = DropDownModel(id: $0.id, name: $0.name ?? "")
             options.append(option)
         }
         bridgeDropDown.setupDropDown(options: options, placeHolder: "Select Bridge", style: TTDropDownStyle.borderedStyle)
+    }
+
+    func setupInspectionDropDown() {
+        var options = [DropDownModel]()
+        inspections.forEach {
+            let option = DropDownModel(id: $0.id, name: $0.name ?? "")
+            options.append(option)
+        }
+        inspectionDropDown.setupDropDown(options: options, placeHolder: "Select Inspection", style: TTDropDownStyle.borderedStyle)
     }
 
     @IBAction func unregisteredDidTap(_ sender: Any) {
@@ -82,6 +99,36 @@ extension SelfInspectionViewController {
             Utils.displayAlert(title: "Error", message: "Something went wrong.")
         }
 
+    }
+
+    func getInspectionSummary() {
+        Utils.showLoadingInView(self.view)
+            InspctionRouterManager().getInspectionSummary(params: APIUtils.createAPIRequestParams(dataObject: MastersRequestKeys())) { response in
+                Utils.hideLoadingInView(self.view)
+
+                if(response.status == 0){
+                if(response.response != ""){
+                    let responseJson = Utils.getJsonFromString(string: Utils().decryptData(encryptdata: response.response!))
+                    if let inspectionArray =  responseJson?["inspectionlist"] as? [[String: Any]]{
+                        var inspections: [InspectionSummary] = []
+                        inspectionArray.forEach { bridgeData in
+                            if let bridge = Mapper<InspectionSummary>().map(JSON: bridgeData) {
+                                inspections.append(bridge)
+                            }
+                        }
+                        self.inspections = inspections
+                    }
+                }else{
+                    Utils.displayAlert(title: "Error", message: response.message ?? "Something went wrong.")
+                }
+            } else {
+                Utils.displayAlert(title: "Error", message: response.message ?? "Something went wrong.")
+            }
+        } errorCompletionHandler: { error in
+            Utils.hideLoadingInView(self.view)
+            print("error - \(String(describing: error))")
+            Utils.displayAlert(title: "Error", message: "Something went wrong.")
+        }
     }
 }
 
