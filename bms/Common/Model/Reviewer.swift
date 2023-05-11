@@ -14,7 +14,7 @@ class Reviewer : RequestBody {
     @objc dynamic var company : String?
        
     enum ResponseKeys :String {
-        case id     = "userid"
+        case id     = "id"
         case name = "name"
         case employeeId = "employeeid"
         case company = "company"

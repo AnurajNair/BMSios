@@ -83,6 +83,7 @@ class SelfInspectionViewController: UIViewController {
     }
     
     @IBAction func startInspectionDidTap(_ sender: UIButton) {
+        assignAndStartInspection()
     }
 }
 
@@ -176,6 +177,77 @@ extension SelfInspectionViewController {
             print("error - \(String(describing: error))")
             Utils.displayAlert(title: "Error", message: "Something went wrong.")
         }
+    }
+
+    func assignAndStartInspection() {
+        guard let params = getAssignInspectionParams() else {
+            return
+        }
+        Utils.showLoadingInView(self.view)
+        InspctionRouterManager().assignInspection(params: params) { response in
+                Utils.hideLoadingInView(self.view)
+
+                if(response.status == 0){
+                if let response = response.response, let inspectionId = Int(response) {
+                    self.prepareForInspection(inspectionId)
+                }else{
+                    Utils.displayAlert(title: "Error", message: response.message ?? "Something went wrong.")
+                }
+            } else {
+                Utils.displayAlert(title: "Error", message: response.message ?? "Something went wrong.")
+            }
+        } errorCompletionHandler: { error in
+            Utils.hideLoadingInView(self.view)
+            print("error - \(String(describing: error))")
+            Utils.displayAlert(title: "Error", message: "Something went wrong.")
+        }
+    }
+
+    func getAssignInspectionParams() -> APIRequestParams? {
+        guard let userId = SessionDetails.getInstance().currentUser?.profile?.userId,
+              let bridgeId = bridgeDropDown.selectedItem?.id as? Int,
+              let inspectionId = inspectionDropDown.selectedItem?.id as? Int,
+              let reviewerId = reviewerDropDown.selectedItem?.id as? Int else {
+            return nil
+        }
+        let model = AssignInspectionRequestModel()
+        model.mode = Mode.insert.rawValue
+        model.bridgeId = bridgeId
+        model.inspectionId = inspectionId
+        model.inspector = [userId]
+        model.reviewer = [reviewerId]
+
+        return APIUtils.createAPIRequestParams(dataObject: model)
+    }
+
+    func prepareForInspection(_ inspectionId: Int) {
+        InspctionRouterManager().getInspectionById(params: getInspectionByIdParams(inspectionId)) { response in
+            Utils.hideLoadingInView(self.view)
+            self.handleInspectionByIdSuccess(response: response)
+        } errorCompletionHandler: { error in
+            Utils.showLoadingInView(self.view)
+            print("error - \(String(describing: error))")
+            Utils.displayAlert(title: "Error", message: "Something went wrong.")
+        }
+    }
+
+    func handleInspectionByIdSuccess(response: APIResponseModel) {
+        guard response.status == 0, response.response != "" else {
+            Utils.displayAlert(title: "Error", message: response.message ?? "Something went wrong.")
+            return
+        }
+        if let inspectionQues =  Mapper<InspectionQuestionnaire>().map(JSONString: Utils().decryptData(encryptdata: response.response!)) {
+            var data: [String: Any] = ["inspectionQues" : inspectionQues]
+            data["inspectionType"] = InspectionType.inspect
+            Navigate.routeUserToScreen(screenType: .routineInspbridgeDetailScreen,transitionType: .changeSlider,data: data)
+        }
+    }
+
+    func getInspectionByIdParams(_ inspectionId: Int) -> APIRequestParams {
+        let obj = InspectionByIdRequestModel()
+        obj.inspectionId = inspectionId
+        let params = APIUtils.createAPIRequestParams(dataObject: obj)
+        return params
     }
 }
 

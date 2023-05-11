@@ -22,7 +22,7 @@ enum InspectionRouterProtocol : RouterProtocol{
     case saveAddOnBridge(APIRequestModel)
     case getInspectionSummary(APIRequestModel)
     case getReviewers(APIRequestModel)
-
+    case assignInspection(APIRequestModel)
 
     var path: String{
         switch self {
@@ -42,6 +42,8 @@ enum InspectionRouterProtocol : RouterProtocol{
             return "Inspection/InspectionSummary"
         case .getReviewers(_):
             return "Inspection/ReviewerList"
+        case .assignInspection(_):
+            return "Inspection/CRUDAssignInspection"
 
         }
     }
@@ -69,7 +71,8 @@ enum InspectionRouterProtocol : RouterProtocol{
                 .saveReview(let body),
                 .saveAddOnBridge(let body),
                 .getInspectionSummary(let body),
-                .getReviewers(let body):
+                .getReviewers(let body),
+                .assignInspection(let body):
             return body
             
         }
@@ -193,6 +196,15 @@ class InspctionRouterManager {
                               successCompletionHandler: @escaping APISuccessHandler,
                               errorCompletionHandler: @escaping APIFailureHandler) {
         performInspectionsApiCall(api: .getReviewers(APIRequestModel(params: params)),
+                                  successCompletionHandler: successCompletionHandler,
+                                  errorCompletionHandler: errorCompletionHandler)
+        
+    }
+
+    func assignInspection(params: [String: Any],
+                              successCompletionHandler: @escaping APISuccessHandler,
+                              errorCompletionHandler: @escaping APIFailureHandler) {
+        performInspectionsApiCall(api: .assignInspection(APIRequestModel(params: params)),
                                   successCompletionHandler: successCompletionHandler,
                                   errorCompletionHandler: errorCompletionHandler)
         

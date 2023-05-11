@@ -130,3 +130,45 @@ class AddOnBridgeRequestModel: APIRequestBody {
         self.alternateRoute <- map[ResponseKeys.alternateRoute.rawValue]
     }
 }
+
+class AssignInspectionRequestModel: APIRequestBody {
+    lazy var authId = SessionDetails.getInstance().currentUser?.profile?.authId
+    var mode: String?
+    var id: Int = 0
+    var inspectionId: Int = 0
+    var bridgeId: Int = 0
+    var startDateAsString: String? = ""
+    var endDateAsString: String? = ""
+    var nextReviewDateAsString: String? = ""
+    var inspector: [Int] = []
+    var reviewer: [Int] = []
+    var desc: String?
+
+    enum ResponseKeys: String {
+        case authId  = "authid"
+        case id = "id"
+        case inspectionId = "inspectionid"
+        case mode = "mode"
+        case bridgeId = "bridgeid"
+        case startDateAsString = "startdate"
+        case endDateAsString = "enddate"
+        case nextReviewDateAsString = "nextreviewdate"
+        case inspector = "inspectorid"
+        case reviewer = "reviewerid"
+        case desc = "description"
+    }
+
+    override func mapping(map: Map) {
+        authId  <- map[ResponseKeys.authId.rawValue]
+        id <- map[ResponseKeys.id.rawValue]
+        inspectionId <- map[ResponseKeys.inspectionId.rawValue]
+        mode <- map[ResponseKeys.mode.rawValue]
+        bridgeId <- map[ResponseKeys.bridgeId.rawValue]
+        startDateAsString <- map[ResponseKeys.startDateAsString.rawValue]
+        endDateAsString <- map[ResponseKeys.endDateAsString.rawValue]
+        nextReviewDateAsString <- map[ResponseKeys.nextReviewDateAsString.rawValue]
+        inspector <- map[ResponseKeys.inspector.rawValue]
+        reviewer <- map[ResponseKeys.reviewer.rawValue]
+        desc <- map[ResponseKeys.desc.rawValue]
+    }
+}
