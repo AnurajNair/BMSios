@@ -24,14 +24,21 @@ class SideMenuViewController: UIViewController {
     
     @IBOutlet weak var userNameLabel: UILabel!
     var defaultHighlightedCell: Int = 0
-    
+
+    let dashboard = SideMenuModel(icon: "dashboardIcon", title: "Dashboard",menu: [], route: .homeScreen, transition: .rootSlider,isSelected: true, type: .dashboard)
+    let inventory = SideMenuModel(icon: "inspectionIcon", title: "Inventory",menu: [], route: .inventoryListScreen, transition: .changeSlider,isSelected: false, type: .inventory)
+    var inspection = SideMenuModel(icon: "inspectionIcon", title: "Inspection",menu: [], route: .inspectionListScreen, transition: .changeSlider,isSelected:false, type: .inspection)
+    var reviewInspection = SideMenuModel(icon: "dashboardIcon" , title: "Review Inspection", route: .inspectionListScreen, transition: .changeSlider, type: .reviewInspection)
+    var performInspection = SideMenuModel(icon: "dashboardIcon" , title: "Perform Inspection", route: .inspectionListScreen, transition: .changeSlider, type: .performInspection)
+    var selfInspection = SideMenuModel(icon: "dashboardIcon" , title: "Self Inspection", route: .inspectionListScreen, transition: .changeSlider, type: .selfInspection)
+
     var isSubMenuHidden:Bool = true
 
     var selectedCellIndexPath: IndexPath?
     
     @IBOutlet weak var onLogOutClick: UIView!
     
-    var data: [SideMenuModel] = [SideMenuModel(icon: "dashboardIcon", title: "Dashboard",menu: [], route: .homeScreen, transition: .rootSlider,isSelected: true),SideMenuModel(icon: "inspectionIcon", title: "Inventory",menu: [], route: .inventoryListScreen, transition: .changeSlider,isSelected: false)]
+    var data: [SideMenuModel] = []
     
     var delegate: SideMenuViewControllerDelegate?
 
@@ -45,19 +52,59 @@ class SideMenuViewController: UIViewController {
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(onLogoutClick))
         self.onLogOutClick.addGestureRecognizer(tap)
-        
-        self.userNameLabel.text = (SessionDetails.getInstance().currentUser?.profile?.firstName)! + " " + (SessionDetails.getInstance().currentUser?.profile?.lastName)!
-        
-        if((SessionDetails.getInstance().currentUser?.role?.roles.contains(where: { Role in
-            Role.roleName == "Inspector"
-        })) != nil){
-            data.append(SideMenuModel(icon: "inspectionIcon", title: "Inspection",menu: [SideMenuModel(icon: "dashboardIcon" , title: "Inspection", route: .inspectionListScreen, transition: .changeSlider),SideMenuModel(icon: "dashboardIcon" , title: "Custom Inspection", route: .inspectionListScreen, transition: .changeSlider),SideMenuModel(icon: "dashboardIcon" , title: "Review Inspection", route: .inspectionListScreen, transition: .changeSlider)], route: .inspectionListScreen, transition: .changeSlider,isSelected:false))
-        }else{
-            data.append(SideMenuModel(icon: "inspectionIcon", title: "Inspection",menu: [SideMenuModel(icon: "dashboardIcon" , title: "Review Inspection", route: .inspectionListScreen, transition: .changeSlider)], route: .inspectionListScreen, transition: .changeSlider,isSelected:false))
+        data = getSideMenu()
+
+        guard let user = SessionDetails.getInstance().currentUser else { return }
+        self.userNameLabel.text = (user.profile?.firstName)! + " " + (user.profile?.lastName)!
+    }
+
+    func getUsersComponents() -> Set<Component> {
+        guard let roles = SessionDetails.getInstance().currentUser?.role?.roles else {
+            return []
         }
-     
+        var components: Set<Component> = []
+        roles.forEach { role in
+            guard components.isEmpty == false else {
+                components = Set(role.components)
+                return
+            }
+            components = components.intersection(Set(role.components))
+        }
+        print ("Count - \(components.count) \n set - \(components)")
+        return components
     }
     
+    func getSideMenu() -> [SideMenuModel] {
+        let components = getUsersComponents()
+
+        var menu: [SideMenuModel] = []
+        
+        components.forEach { component in
+            guard component.statusAsEnum == .active else {
+                return
+            }
+            let title = component.ComponentName
+            
+            switch component.type {
+            case .home:
+                menu.append(dashboard)
+            case .createInventory:
+                menu.append(inventory)
+            case .performInspection:
+                performInspection.title = title ?? performInspection.title
+                inspection.menu?.append(performInspection)
+            case .reviewInspection:
+                reviewInspection.title = title ?? performInspection.title
+                inspection.menu?.append(reviewInspection)
+            case .selfInspection:
+                inspection.menu?.append(selfInspection)
+            case .none:
+                break
+            }
+        }
+        menu.append(inspection)
+        return menu
+    }
     func setupMenuData(){
    
     }
@@ -142,7 +189,6 @@ extension SideMenuViewController: UITableViewDelegate {
         }
     }
     
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
        // tableView.deselectRow(at: indexPath, animated: false)
@@ -152,9 +198,15 @@ extension SideMenuViewController: UITableViewDelegate {
         setSelectedSideMenu(indexPath: indexPath)
       
         
-      
-        if(sectionData.title != "Inspection"){
-            Navigate.routeUserToScreen(screenType: sectionData.route, transitionType: sectionData.transition)
+        let type = sectionData.type
+        if(type != .inspection){
+            var data: [String: Any] = [:]
+            if type == .performInspection {
+                data["component"] = ComponentType.performInspection
+            } else if type == .reviewInspection {
+                data["component"] = ComponentType.reviewInspection
+            }
+            Navigate.routeUserToScreen(screenType: sectionData.route, transitionType: sectionData.transition, data: data)
         }else{
             self.selectedCellIndexPath = indexPath
         }
@@ -205,7 +257,20 @@ extension SideMenuViewController:SideMenuCellDelegate{
     func onSideSubMenuClick(_ selectedItem: Int) {
         print("ok",selectedItem)
         
+        guard let sectionData = inspection.menu?[selectedItem] else { return }
+//        setSelectedSideMenu(indexPath: indexPath)
+      
         
+        let type = sectionData.type
+        var data: [String: Any] = [:]
+        if(type == .performInspection || type == .reviewInspection){
+            if type == .performInspection {
+                data["component"] = ComponentType.performInspection
+            } else if type == .reviewInspection {
+                data["component"] = ComponentType.reviewInspection
+            }
+        }
+        Navigate.routeUserToScreen(screenType: sectionData.route, transitionType: sectionData.transition, data: data)
     }
     
    

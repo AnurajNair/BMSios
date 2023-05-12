@@ -9,6 +9,20 @@
 enum Status: String {
     case active = "0"
     case inActive = "1"
+
+    var boolValue: Bool {
+        switch self {
+        case .active: return true
+        case .inActive: return false
+        }
+    }
+
+    var intValue: Int {
+        switch self {
+        case .active: return 0
+        case .inActive: return 1
+        }
+    }
 }
 
 enum Mode: String {
@@ -31,4 +45,42 @@ enum SaveStatus: String {
             return "Submitted"
         }
     }
+}
+
+enum InspectionStatus: String {
+    case assigned = "A"
+    case draft = "D"
+    case submitted = "S"
+    case reviewed = "R"
+
+    var text: String {
+        switch self {
+        case .assigned:
+            return "Assigned"
+        case .draft:
+            return "Draft"
+        case .submitted:
+            return "Submitted"
+        case .reviewed:
+            return "Reviewed"
+        }
+    }
+}
+
+enum QuestionType: Int {
+    case text = 1
+    case radioOptions = 2
+}
+
+enum TrueFalse: String {
+    case `false` = "0"
+    case `true` = "1"
+}
+
+enum ComponentType: Int {
+    case home = 0
+    case createInventory = 2
+    case reviewInspection = 5
+    case performInspection = 6
+    case selfInspection = 11
 }

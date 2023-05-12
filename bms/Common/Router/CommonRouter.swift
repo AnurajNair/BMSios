@@ -10,6 +10,9 @@ import Alamofire
 import ObjectMapper
 import RealmSwift
 
+typealias APISuccessHandler =  (_ response: APIResponseModel) -> Void
+typealias APIFailureHandler = (_ response: ApiError?) -> Void
+
 enum CommonRouterProtocol: RouterProtocol {
     
     

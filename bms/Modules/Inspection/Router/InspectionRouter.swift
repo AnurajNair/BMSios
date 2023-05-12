@@ -14,20 +14,31 @@ import ObjectMapper_Realm
 
 enum InspectionRouterProtocol : RouterProtocol{
     
-    case getInspection
-   
+    case getInspectorInspections(APIRequestModel)
+    case getReviewerInspections(APIRequestModel)
+    case getInspectionById(APIRequestModel)
+    case saveInspection(APIRequestModel)
+    case saveReview(APIRequestModel)
     
     var path: String{
         switch self {
-        case .getInspection:
-            return ""
+        case .getInspectorInspections:
+            return "Inspector/InspectionSummary"
+        case .getReviewerInspections:
+            return "Reviewer/InspectionSummary"
+        case .getInspectionById(_):
+            return "Inspector/InspectionById"
+        case .saveInspection(_):
+            return "Inspector/SaveInspection"
+        case .saveReview(_):
+            return "Reviewer/SaveInspection"
         }
     }
     
     var method: HTTPMethod{
         switch self {
-        case .getInspection:
-            return .get
+        default:
+            return .post
         }
     }
     
@@ -40,9 +51,13 @@ enum InspectionRouterProtocol : RouterProtocol{
     
     var body: Any?{
         switch self {
-      
-        default:
-            return nil
+        case .getInspectorInspections(let body),
+                .getReviewerInspections(let body),
+                .getInspectionById(let body),
+                .saveInspection((let body)),
+                .saveReview(let body):
+            return body
+            
         }
     }
     
@@ -85,22 +100,60 @@ enum InspectionRouterProtocol : RouterProtocol{
 
 
 
-class InspctionRouterManager{
-    
-    func getInspections(successCompletionHandler: @escaping (
-        _ response: Any) -> Void, errorCompletionHandler: @escaping (_ error: ApiError?) -> Void){
-            
-            RestClient.getAPIResponse(Router.inspectionRouterHandler(InspectionRouterProtocol.getInspection), successCompletionHandler: { (response) in
-                successCompletionHandler(response)
-              
-//                if let apiResponse = Mapper<ApiSuccess>().map(JSONObject: RestClient.getResultValue(response as! DataResponse<Any, any Error>)) {
-//
-//                }
-                
-            }) { (error) in
-                errorCompletionHandler(error)
+class InspctionRouterManager {
+
+    func performInspectionsApiCall(api: InspectionRouterProtocol,
+                        successCompletionHandler: @escaping APISuccessHandler,
+                        errorCompletionHandler: @escaping APIFailureHandler) {
+        RestClient.getAPIResponse(Router.inspectionRouterHandler(api)) { (response) in
+            if let apiResponse = Mapper<APIResponseModel>().map(JSONObject: RestClient.getResultValue(response)) {
+                successCompletionHandler(apiResponse)
             }
+        } errorCompletionHandler: { (error) in
+            errorCompletionHandler(error)
         }
-    
- 
+    }
+
+    func getInspectorInspections(params: [String: Any],
+                                 successCompletionHandler: @escaping APISuccessHandler,
+                                 errorCompletionHandler: @escaping APIFailureHandler) {
+        performInspectionsApiCall(api: .getInspectorInspections(APIRequestModel(params: params)),
+                                  successCompletionHandler: successCompletionHandler,
+                                  errorCompletionHandler: errorCompletionHandler)
+    }
+
+    func getReviewerInspections(params: [String: Any],
+                                successCompletionHandler: @escaping APISuccessHandler,
+                                errorCompletionHandler: @escaping APIFailureHandler) {
+        performInspectionsApiCall(api: .getReviewerInspections(APIRequestModel(params: params)),
+                                  successCompletionHandler: successCompletionHandler,
+                                  errorCompletionHandler: errorCompletionHandler)
+    }
+
+    func getInspectionById(params: [String: Any],
+                           successCompletionHandler: @escaping APISuccessHandler,
+                           errorCompletionHandler: @escaping APIFailureHandler) {
+        performInspectionsApiCall(api: .getInspectionById(APIRequestModel(params: params)),
+                                  successCompletionHandler: successCompletionHandler,
+                                  errorCompletionHandler: errorCompletionHandler)
+
+    }
+
+    func saveInspection(params: [String: Any],
+                        successCompletionHandler: @escaping APISuccessHandler,
+                        errorCompletionHandler: @escaping APIFailureHandler) {
+        performInspectionsApiCall(api: .saveInspection(APIRequestModel(params: params)),
+                                  successCompletionHandler: successCompletionHandler,
+                                  errorCompletionHandler: errorCompletionHandler)
+        
+    }
+
+    func saveReview(params: [String: Any],
+                    successCompletionHandler: @escaping APISuccessHandler,
+                    errorCompletionHandler: @escaping APIFailureHandler) {
+        performInspectionsApiCall(api: .saveReview(APIRequestModel(params: params)),
+                                  successCompletionHandler: successCompletionHandler,
+                                  errorCompletionHandler: errorCompletionHandler)
+        
+    }
 }
