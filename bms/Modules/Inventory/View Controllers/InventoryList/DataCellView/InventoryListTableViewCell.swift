@@ -21,6 +21,8 @@ class InventoryListTableViewCell: UITableViewCell {
     @IBOutlet weak var removeButton: UIButton!
 
     var onTapEdit: (()->())?
+    var onTapRemove: (()->())?
+    var onStatusChange: ((_ isActive: Bool)->())?
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -59,7 +61,9 @@ class InventoryListTableViewCell: UITableViewCell {
         onTapEdit?()
     }
     @IBAction func removeButtonDidTap(_ sender: UIButton) {
+        onTapRemove?()
     }
     @IBAction func statusSwitchDidChange(_ sender: UISwitch) {
+        onStatusChange?(sender.isOn)
     }
 }

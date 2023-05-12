@@ -22,21 +22,23 @@ class InventoryListRequestModel: APIRequestBody {
 }
 
 class InventoryDataRequestModel: APIRequestBody {
-    var authId:String?
+    var authId:String? = SessionDetails.getInstance().currentUser?.profile?.authId
     var mode: String?
     var id: Int?
+    var status: String?
 
     enum ResponseKeys :String{
         case authId  = "authid"
         case mode = "mode"
         case id = "id"
+        case status = "status"
     }
   
     override func mapping(map: ObjectMapper.Map) {
         self.authId              <- map[ResponseKeys.authId.rawValue]
         self.mode              <- map[ResponseKeys.mode.rawValue]
         self.id              <- map[ResponseKeys.id.rawValue]
-
+        self.status              <- map[ResponseKeys.status.rawValue]
     }
 }
 

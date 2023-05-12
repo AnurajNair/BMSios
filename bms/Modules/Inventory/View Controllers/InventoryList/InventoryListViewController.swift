@@ -96,6 +96,12 @@ extension InventoryListViewController: UITableViewDataSource {
         cell.onTapEdit = { [weak self] in
             self?.performEditAction(on: inventoryObj)
         }
+        cell.onTapRemove = { [weak self] in
+            self?.removeInventory(inventoryObj, indexPath: indexPath)
+        }
+        cell.onStatusChange = { [weak self] isActive in
+            self?.updateStatusOf(inventoryObj, status: isActive, indexPath: indexPath)
+        }
         return cell
     }
     
@@ -106,6 +112,32 @@ extension InventoryListViewController: UITableViewDataSource {
 
     func performEditAction(on inventoryObj: InventoryListObj) {
         getInventoryData(inventoryObj: inventoryObj)
+    }
+
+    func updateStatusOf(_ inventoryObj: InventoryListObj, status: Bool, indexPath: IndexPath) {
+        let statusKey = status ? Status.active.rawValue : Status.inActive.rawValue
+        let obj = InventoryDataRequestModel()
+        obj.mode = Mode.change.rawValue
+        obj.id = inventoryObj.id
+        obj.status = statusKey
+        let param = APIUtils.createAPIRequestParams(dataObject: obj)
+        updateInventoryBridge(params: param) { [weak self] success in
+            if success {
+                inventoryObj.status = statusKey
+            }
+            self?.tableView.reloadRows(at: [indexPath], with: .none)
+        }
+    }
+
+    func removeInventory(_ inventoryObj: InventoryListObj, indexPath: IndexPath) {
+        let obj = InventoryDataRequestModel()
+        obj.mode = Mode.delete.rawValue
+        obj.id = inventoryObj.id
+        let param = APIUtils.createAPIRequestParams(dataObject: obj)
+        updateInventoryBridge(params: param) { [weak self] status in
+            self?.inventoryList.remove(at: indexPath.row)
+            self?.tableView.deleteRows(at: [indexPath], with: .fade)
+        }
     }
 
     func getInventoryData(inventoryObj: InventoryListObj) {
@@ -134,21 +166,30 @@ extension InventoryListViewController: UITableViewDataSource {
     }
 
     func getInventoryDataParams(inventoryObj: InventoryListObj) -> [String : Any] {
-        var params = [String : Any]()
-        params[APIRequestModel.RequestKeys.requestdata.rawValue] = encrypInventoryDataReq(inventoryListObj: inventoryObj)
-        return params
-
-    }
-
-    func encrypInventoryDataReq(inventoryListObj: InventoryListObj) -> String {
         let obj = InventoryDataRequestModel()
         obj.authId = SessionDetails.getInstance().currentUser?.profile?.authId
         obj.mode = "S"
-        obj.id = inventoryListObj.id
-        let jsonData = try! JSONSerialization.data(withJSONObject: Mapper().toJSON(obj),options: [])
-        let jsonString = String(data: jsonData, encoding: .utf8)
-        let encrypRequest = Utils().encryptData(json: jsonString! )
-       return encrypRequest
+        obj.id = inventoryObj.id
+        return APIUtils.createAPIRequestParams(dataObject: obj)
+    }
+
+    func updateInventoryBridge(params: APIRequestParams, completion: @escaping ((Bool)->())) {
+        Utils.showLoadingInView(self.view)
+        InventoryRouterManager().performInventoryCRUD(params: params) { response in
+            if(response.status == 0){
+                    completion(true)
+                Utils.hideLoadingInView(self.view)
+            } else {
+                Utils.hideLoadingInView(self.view)
+                completion(false)
+                Utils.displayAlert(title: "Error", message: response.message ?? "Something went wrong.")
+            }
+        } errorCompletionHandler: { error in
+            Utils.showLoadingInView(self.view)
+            completion(false)
+            print("error - \(String(describing: error))")
+            Utils.displayAlert(title: "Error", message: "Something went wrong.")
+        }
     }
 }
 

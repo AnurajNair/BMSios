@@ -14,6 +14,9 @@ enum Status: String {
 enum Mode: String {
     case insert = "I"
     case update = "U"
+    case delete = "D"
+    case select = "S"
+    case change = "C"
 }
 
 enum SaveStatus: String {
