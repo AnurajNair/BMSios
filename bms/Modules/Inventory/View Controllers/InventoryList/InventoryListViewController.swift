@@ -16,9 +16,13 @@ class InventoryListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupTableView()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
         getInventoryList()
     }
-    
+
     func setupTableView() {
         self.tableView.bounces = false
         self.tableView.separatorStyle = .none
@@ -44,7 +48,7 @@ class InventoryListViewController: UIViewController {
                 if(response.response != ""){
                     if let inventoryList = Mapper<InventoryList>().map(JSONString: Utils().decryptData(encryptdata: response.response!)) {
                         self.inventoryList = inventoryList.inventoryList.map { $0 } as [InventoryListObj]
-                        self.setupTableView()
+                        self.tableView.reloadData()
                     }
                 }else{
                     Utils.displayAlert(title: "Error", message: response.message ?? "Something went wrong.")

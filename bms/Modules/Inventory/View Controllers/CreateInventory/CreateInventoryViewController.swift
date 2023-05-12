@@ -98,26 +98,17 @@ extension CreateInventoryViewController:UITableViewDataSource {
             if  !isLast  {
                 self?.expandSection(indexPath.section+1)
             }
-            self?.saveInventory()
+            self?.saveInventory(as: isLast ? .submitted : .draft)
         }
         return cell
     }
 
-    func saveInventory() {
+    func saveInventory(as saveStatus: SaveStatus) {
         inventory.updateDataDict()
         Utils.showLoadingInView(self.view)
-        InventoryRouterManager().performInventoryCRUD(params: getParams(inventory: inventory)) { response in
+        InventoryRouterManager().performInventoryCRUD(params: getParams(inventory: inventory, saveStatus: saveStatus)) { response in
             if(response.status == 0){
-                if(response.response != ""){
-                    if let inventory = Mapper<Inventory>().map(JSONString: Utils().decryptData(encryptdata: response.response!)) {
-                        self.inventory = inventory
-                        Utils.displayAlert(title: "Inventory Saved", message: "") {
-                            print("save completed")
-                        }
-                    }
-                }else{
-//                    Utils.displayAlert(title: "Error", message: response.message ?? "Something went wrong.")
-                }
+                self.showSuccessAlertFor(saveStatus: saveStatus)
                 Utils.hideLoadingInView(self.view)
             } else {
                 Utils.hideLoadingInView(self.view)
@@ -131,15 +122,28 @@ extension CreateInventoryViewController:UITableViewDataSource {
         }
     }
 
-    func getParams(inventory: Inventory) -> [String : Any] {
+    func showSuccessAlertFor(saveStatus: SaveStatus) {
+        guard saveStatus == .submitted else {
+            return
+        }
+        _ = Utils.displayAlertController("Inventory Saved Successfully", message: "", isSingleBtn: true) {
+            Navigate.routeUserBack(self) {
+                //No Action
+            }
+        } cancelclickHandler: {
+            //Not Valid
+        }
+    }
+
+    func getParams(inventory: Inventory, saveStatus: SaveStatus) -> [String : Any] {
         var params = [String : Any]()
-        params[APIRequestModel.RequestKeys.requestdata.rawValue] = encryptReq(inventory: inventory)
+        params[APIRequestModel.RequestKeys.requestdata.rawValue] = encryptReq(inventory: inventory, saveStatus: saveStatus)
         return params
 
     }
 
-    func encryptReq(inventory: Inventory) -> String {
-        inventory.saveStatus = SaveStatus.draft.rawValue
+    func encryptReq(inventory: Inventory, saveStatus: SaveStatus) -> String {
+        inventory.saveStatus = saveStatus.rawValue
         let json = InventoryCRUDRequestModel(inventory: inventory, mode: inventory.id == 0 ? .insert : .update).getJson()
         print("inventory json \(json)")
         let jsonData = try! JSONSerialization.data(withJSONObject: json,options: [])

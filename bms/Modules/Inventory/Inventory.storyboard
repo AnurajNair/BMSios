@@ -17,22 +17,49 @@
                         <rect key="frame" x="0.0" y="0.0" width="834" height="1112"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="KTv-xc-8SR">
-                                <rect key="frame" x="8" y="40" width="818" height="1064"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="YcW-Aw-Fwc" id="OVm-gT-nZ2"/>
-                                    <outlet property="delegate" destination="YcW-Aw-Fwc" id="Wkq-lu-jHJ"/>
-                                </connections>
-                            </tableView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="7wp-h0-Uqa">
+                                <rect key="frame" x="8" y="28" width="818" height="1084"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="1dR-Ko-89c">
+                                        <rect key="frame" x="8" y="0.0" width="802" height="50"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create Bridge" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aFJ-Vo-laO">
+                                                <rect key="frame" x="0.0" y="0.0" width="802" height="41"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="34"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w4F-V4-Dji">
+                                                <rect key="frame" x="0.0" y="49" width="802" height="1"/>
+                                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="1" id="obQ-n1-sAk"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                    </stackView>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="KTv-xc-8SR">
+                                        <rect key="frame" x="0.0" y="70" width="818" height="1014"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <connections>
+                                            <outlet property="dataSource" destination="YcW-Aw-Fwc" id="OVm-gT-nZ2"/>
+                                            <outlet property="delegate" destination="YcW-Aw-Fwc" id="Wkq-lu-jHJ"/>
+                                        </connections>
+                                    </tableView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="1dR-Ko-89c" firstAttribute="leading" secondItem="7wp-h0-Uqa" secondAttribute="leading" constant="8" id="PgV-5o-mcd"/>
+                                    <constraint firstAttribute="trailing" secondItem="1dR-Ko-89c" secondAttribute="trailing" constant="8" id="W1r-jD-aup"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="IVW-bt-VGF"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="KTv-xc-8SR" firstAttribute="top" secondItem="IVW-bt-VGF" secondAttribute="top" constant="20" id="4gi-ug-kpw"/>
-                            <constraint firstItem="IVW-bt-VGF" firstAttribute="bottom" secondItem="KTv-xc-8SR" secondAttribute="bottom" constant="8" id="V2G-IN-SjU"/>
-                            <constraint firstItem="IVW-bt-VGF" firstAttribute="trailing" secondItem="KTv-xc-8SR" secondAttribute="trailing" constant="8" id="bun-Qi-8WP"/>
-                            <constraint firstItem="KTv-xc-8SR" firstAttribute="leading" secondItem="IVW-bt-VGF" secondAttribute="leading" constant="8" id="c5D-92-Ct4"/>
+                            <constraint firstItem="7wp-h0-Uqa" firstAttribute="top" secondItem="IVW-bt-VGF" secondAttribute="top" constant="8" id="DKy-dK-uaY"/>
+                            <constraint firstItem="IVW-bt-VGF" firstAttribute="trailing" secondItem="7wp-h0-Uqa" secondAttribute="trailing" constant="8" id="EwX-1U-CNf"/>
+                            <constraint firstItem="7wp-h0-Uqa" firstAttribute="leading" secondItem="IVW-bt-VGF" secondAttribute="leading" constant="8" id="U1W-oX-u1F"/>
+                            <constraint firstAttribute="bottom" secondItem="7wp-h0-Uqa" secondAttribute="bottom" id="Uwa-78-Xrf"/>
                         </constraints>
                     </view>
                     <connections>
