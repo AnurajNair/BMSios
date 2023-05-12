@@ -25,6 +25,10 @@ class Step1Form: NSObject, StepperTableViewCellFormProtocol {
         }
     }
 
+    private lazy var typeMasters: BridgePropertiesMaster? = {
+        DataStore.shared.getMasters()
+    }()
+
     init(formData: Inventory) {
         self.formData = formData
         super.init()
@@ -130,66 +134,40 @@ extension Step1Form: UICollectionViewDataSource {
             cell.collectionFormElement.setupDropdownField(id: fieldNo, fieldTitle: "BUID", options: options , placeHolder: "BUID", selectedIndex: selectedIndex)
 
         case 3:
-            let options = [DropDownModel(id: 1, name: "Open"),
-                           DropDownModel(id: 2, name: "Pile"),
-                           DropDownModel(id: 3, name: "Well")]
+            let options = getDropDownOptionsFrom(list: typeMasters?.typeOfFoundation ?? List())
             let selectedIndex = options.firstIndex { $0.id as? Int == formData.data?.typeOfFoundation }
             cell.collectionFormElement.setupDropdownField(id: fieldNo, fieldTitle: "Type of Foundation", options: options , placeHolder: "Type of Foundation", selectedIndex: selectedIndex)
 
         case 4:
-            let options = [DropDownModel(id: 1, name: "Solid RCC Pier"),
-                           DropDownModel(id: 2, name: "Hollow Box"),
-                           DropDownModel(id: 3, name: "RCC Pier with Prestress Pier Cap")]
+            let options = getDropDownOptionsFrom(list: typeMasters?.typeOfSubStructure ?? List())
             let selectedIndex = options.firstIndex { $0.id as? Int == formData.data?.typeOfSubstructure }
 
             cell.collectionFormElement.setupDropdownField(id: fieldNo, fieldTitle: "Type of Sub-Structure", options: options , placeHolder: "Type of Sub-Structure", selectedIndex: selectedIndex)
         
         case 5:
-            let options = [DropDownModel(id: 1, name: "RCC Solid Slab"),
-                           DropDownModel(id: 2, name: "RCC T Girder"),
-                           DropDownModel(id: 3, name: "PSC T Girder"),
-                           DropDownModel(id: 4, name: "RCC box Girder"),
-                           DropDownModel(id: 5, name: "RCC twin cell box girder"),
-                           DropDownModel(id: 6, name: "PSC Box girder"),
-                           DropDownModel(id: 7, name: "PSC twin celll box girder"),
-                           DropDownModel(id: 8, name: "Steel Box Girder"),
-                           DropDownModel(id: 9, name: "Steel T Girder")]
+            let options = getDropDownOptionsFrom(list: typeMasters?.typeOfSuperStructure ?? List())
             let selectedIndex = options.firstIndex { $0.id as? Int == formData.data?.typeOfSuperstructure }
             cell.collectionFormElement.setupDropdownField(id: fieldNo, fieldTitle: "Type of Super-Structure", options: options , placeHolder: "Type of Super-Structure", selectedIndex: selectedIndex)
 
         case 6:
-            let options = [DropDownModel(id: 1, name: "Steel"),
-                           DropDownModel(id: 2, name: "Neoprene"),
-                           DropDownModel(id: 3, name: "POT PTFE"),
-                           DropDownModel(id: 4, name: "Spherical"),
-                           DropDownModel(id: 5, name: "Special")]
+            let options = getDropDownOptionsFrom(list: typeMasters?.typeOfBearing ?? List())
             let selectedIndex = options.firstIndex { $0.id as? Int == formData.data?.typeOfBearing }
 
             cell.collectionFormElement.setupDropdownField(id: fieldNo, fieldTitle: "Type of Bearing", options: options , placeHolder: "Type of Bearing", selectedIndex: selectedIndex)
         
         case 7:
-            let options = [DropDownModel(id: 1, name: "Burried Joint"),
-                           DropDownModel(id: 2, name: "Filler"),
-                           DropDownModel(id: 1, name: "Strip seal"),
-                           DropDownModel(id: 1, name: "modular"),
-                           DropDownModel(id: 1, name: "Special")]
+            let options = getDropDownOptionsFrom(list: typeMasters?.typeOfExpansionJoint ?? List())
             let selectedIndex = options.firstIndex { $0.id as? Int == formData.data?.typeOfExpansionJoint}
 
             cell.collectionFormElement.setupDropdownField(id: fieldNo, fieldTitle: "Type of Expansion Joint", options: options , placeHolder: "Type of Expansion Joint", selectedIndex: selectedIndex)
         
         case 8:
-            let options = [DropDownModel(id: 1, name: "RCC wearing"),
-                           DropDownModel(id: 2, name: "BC"),
-                           DropDownModel(id: 2, name: "BC with mastic")]
+            let options = getDropDownOptionsFrom(list: typeMasters?.typeOfWearingCoarse ?? List())
             let selectedIndex = options.firstIndex { $0.id as? Int == formData.data?.typeOfWearingCoars}
             cell.collectionFormElement.setupDropdownField(id: fieldNo, fieldTitle: "Type of Wearing Coars", options: options, placeHolder: "Type of Wearing Coars", selectedIndex: selectedIndex)
         
         case 9:
-            let options = [DropDownModel(id: 1, name: "Steel"),
-                           DropDownModel(id: 2, name: "Hand rail - htype"),
-                           DropDownModel(id: 2, name: "RCC railing with 2 tier"),
-                           DropDownModel(id: 2, name: "RCC Railing with 3 tier"),
-                           DropDownModel(id: 2, name: "RCC Crash barrier")]
+            let options = getDropDownOptionsFrom(list: typeMasters?.typeOfRailing ?? List())
             let selectedIndex = options.firstIndex { $0.id as? Int == formData.data?.typeOfRailing}
             cell.collectionFormElement.setupDropdownField(id: fieldNo, fieldTitle: "Type of Railing", options: options , placeHolder: "Type of Railing", selectedIndex: selectedIndex)
         case 10:
@@ -221,6 +199,15 @@ extension Step1Form: UICollectionViewDataSource {
         return cell
     }
 
+    func getDropDownOptionsFrom<T: BasicDetails>(list: List<T>) -> [DropDownModel]{
+        let array = list.map { $0 } as [T]
+        var options: [DropDownModel] = []
+        array.forEach { item in
+            let option = DropDownModel(id: item.id, name: item.name ?? "")
+            options.append(option)
+        }
+        return options
+    }
     
 }
 

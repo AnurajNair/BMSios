@@ -45,14 +45,16 @@ class NavigationRoute: Navigate {
         //Home
         homeScreen,
         dashboardScreen,
+
         inspectionListScreen,
-        inventoryListScreen,
-        
-       
+        selfInspectionScreen,
+        registerBridge,
+
         // Routine Inspection
         routineInspbridgeDetailScreen,
         
         //Create Inventory
+        inventoryListScreen,
         createInventoryScreen
         
         func viewControllerDetails(_ data:[String:Any] = [:], transitionType: Navigate.TransitionType = .undecided) -> (viewController: UIViewController, title: String) {
@@ -66,7 +68,8 @@ class NavigationRoute: Navigate {
             case .passwordResetSuccessScreen: return (NavigationRoute.getPasswordSuccessfullScreen(), "" )
             case .homeScreen :return (NavigationRoute.getHomeViewController(), "" )
             case .inspectionListScreen :return (NavigationRoute.getInspectionList(data), "" )
-                
+            case .selfInspectionScreen :return (NavigationRoute.getSelfInspection(), "" )
+            case .registerBridge: return (NavigationRoute.getRegisterBridge(), "" )
             case .routineInspbridgeDetailScreen :return (NavigationRoute.getRoutineInspBridgeDetail(data), "")
 
             case.inventoryListScreen:return (NavigationRoute.getInventoryList(), "" )
@@ -290,6 +293,21 @@ class NavigationRoute: Navigate {
         return viewController
         
     }
+
+    class func getSelfInspection(_ data:[String:Any] = [:]) -> SelfInspectionViewController {
+        
+        let viewController =  inspectionsStoryboard().instantiateViewController(withIdentifier: "SelfInspectionViewController") as! SelfInspectionViewController
+        return viewController
+        
+    }
+
+    class func getRegisterBridge(_ data:[String:Any] = [:]) -> RegisterBridgeViewController {
+        
+        let viewController =  inspectionsStoryboard().instantiateViewController(withIdentifier: "RegisterBridgeViewController") as! RegisterBridgeViewController
+        return viewController
+        
+    }
+
     class func getRoutineInspBridgeDetail(_ data:[String:Any] = [:]) -> FormsControlllerViewController {
         let viewController =  inspectionsStoryboard().instantiateViewController(withIdentifier: "FormsControlllerViewController") as! FormsControlllerViewController
         

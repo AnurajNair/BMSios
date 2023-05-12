@@ -30,7 +30,7 @@ class SideMenuViewController: UIViewController {
     var inspection = SideMenuModel(icon: "inspectionIcon", title: "Inspection",menu: [], route: .inspectionListScreen, transition: .changeSlider,isSelected:false, type: .inspection)
     var reviewInspection = SideMenuModel(icon: "dashboardIcon" , title: "Review Inspection", route: .inspectionListScreen, transition: .changeSlider, type: .reviewInspection)
     var performInspection = SideMenuModel(icon: "dashboardIcon" , title: "Perform Inspection", route: .inspectionListScreen, transition: .changeSlider, type: .performInspection)
-    var selfInspection = SideMenuModel(icon: "dashboardIcon" , title: "Self Inspection", route: .inspectionListScreen, transition: .changeSlider, type: .selfInspection)
+    var selfInspection = SideMenuModel(icon: "dashboardIcon" , title: "Self Inspection", route: .selfInspectionScreen, transition: .changeSlider, type: .selfInspection)
 
     var isSubMenuHidden:Bool = true
 
