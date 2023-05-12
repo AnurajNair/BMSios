@@ -218,6 +218,7 @@
 		3D45AA5F29E92DCD00A83397 /* GlobalEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D45AA5E29E92DCD00A83397 /* GlobalEnums.swift */; };
 		3D45AA6129EC324200A83397 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D45AA6029EC324200A83397 /* Project.swift */; };
 		3D45AA6329EC366A00A83397 /* ProjectList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D45AA6229EC366A00A83397 /* ProjectList.swift */; };
+		3D4A5DE429FE8DF5002B0280 /* APIUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4A5DE329FE8DF5002B0280 /* APIUtils.swift */; };
 		3D7FD3EB29ED1C4000C6AC4C /* Bridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7FD3E929ED1C3F00C6AC4C /* Bridge.swift */; };
 		3D7FD3EC29ED1C4000C6AC4C /* BridgeList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7FD3EA29ED1C4000C6AC4C /* BridgeList.swift */; };
 		3D8190FC29D9736600C2BF3B /* CreateInventoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8190FB29D9736600C2BF3B /* CreateInventoryViewController.swift */; };
@@ -477,6 +478,7 @@
 		3D45AA5E29E92DCD00A83397 /* GlobalEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalEnums.swift; sourceTree = "<group>"; };
 		3D45AA6029EC324200A83397 /* Project.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
 		3D45AA6229EC366A00A83397 /* ProjectList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectList.swift; sourceTree = "<group>"; };
+		3D4A5DE329FE8DF5002B0280 /* APIUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIUtils.swift; sourceTree = "<group>"; };
 		3D7FD3E929ED1C3F00C6AC4C /* Bridge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bridge.swift; sourceTree = "<group>"; };
 		3D7FD3EA29ED1C4000C6AC4C /* BridgeList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BridgeList.swift; sourceTree = "<group>"; };
 		3D8190FB29D9736600C2BF3B /* CreateInventoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateInventoryViewController.swift; sourceTree = "<group>"; };
@@ -1051,6 +1053,7 @@
 				1D5B748428FAC9270053B079 /* Navigate.swift */,
 				1D5B74AB28FADEC40053B079 /* AnalyticsHelper.swift */,
 				1D34C6C728FF38A500A8BAF3 /* ImageUtils.swift */,
+				3D4A5DE329FE8DF5002B0280 /* APIUtils.swift */,
 			);
 			path = helpers;
 			sourceTree = "<group>";
@@ -2254,6 +2257,7 @@
 				1D2E17BD2911DFEC00214593 /* InventoryListViewController.swift in Sources */,
 				3D45AA5429E682E500A83397 /* ExpansionJoint.swift in Sources */,
 				1D5B745E28F9FCCB0053B079 /* Utils.swift in Sources */,
+				3D4A5DE429FE8DF5002B0280 /* APIUtils.swift in Sources */,
 				1D34C6B428FF2E6800A8BAF3 /* ReusableFormCollectionFlowLayout.swift in Sources */,
 				1D5B746528F9FD600053B079 /* ApiBaseRequestKeys.swift in Sources */,
 				1D5E2E842906DE04005D83C0 /* SideMenuCell.swift in Sources */,
