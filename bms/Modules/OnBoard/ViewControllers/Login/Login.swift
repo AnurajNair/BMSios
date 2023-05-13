@@ -296,7 +296,7 @@ class LoginViewController: UIViewController{
     
     @IBAction func onForgotPasswordBtnClick(_ sender: Any) {
         
-        Navigate.routeUserToScreen(screenType: .forgotPasswordScreen, transitionType: .push)
+//        Navigate.routeUserToScreen(screenType: .forgotPasswordScreen, transitionType: .push)
     }
     
     func validate(){
