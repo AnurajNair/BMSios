@@ -9,7 +9,7 @@ import UIKit
 import Alamofire
 
 class UnknownErrorViewController: UIViewController, ReusableEmptyStateViewDelegate {
-    var emptyView: ReusableEmptyStateView = ReusableEmptyStateView()
+    lazy var emptyView: ReusableEmptyStateView = ReusableEmptyStateView()
     var manager: NetworkReachabilityManager? = nil
     var emptyStateData: EmptyStateViewStyler.EmptyViewData?
     
