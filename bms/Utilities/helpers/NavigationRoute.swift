@@ -69,7 +69,7 @@ class NavigationRoute: Navigate {
             case .homeScreen :return (NavigationRoute.getHomeViewController(), "" )
             case .inspectionListScreen :return (NavigationRoute.getInspectionList(data), "" )
             case .selfInspectionScreen :return (NavigationRoute.getSelfInspection(), "" )
-            case .registerBridge: return (NavigationRoute.getRegisterBridge(), "" )
+            case .registerBridge: return (NavigationRoute.getRegisterBridge(data), "" )
             case .routineInspbridgeDetailScreen :return (NavigationRoute.getRoutineInspBridgeDetail(data), "")
 
             case.inventoryListScreen:return (NavigationRoute.getInventoryList(), "" )
@@ -304,6 +304,9 @@ class NavigationRoute: Navigate {
     class func getRegisterBridge(_ data:[String:Any] = [:]) -> RegisterBridgeViewController {
         
         let viewController =  inspectionsStoryboard().instantiateViewController(withIdentifier: "RegisterBridgeViewController") as! RegisterBridgeViewController
+            if let delegate = data["delegate"] as? RegisterBridgeViewControllerDelegate {
+                viewController.delegate = delegate
+            }
         return viewController
         
     }

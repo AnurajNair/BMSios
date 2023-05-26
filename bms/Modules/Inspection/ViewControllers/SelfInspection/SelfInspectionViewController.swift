@@ -79,7 +79,8 @@ class SelfInspectionViewController: UIViewController {
     }
 
     @IBAction func unregisteredDidTap(_ sender: Any) {
-        Navigate.routeUserToScreen(screenType: .registerBridge, transitionType: .modal)
+        let delegateData = ["delegate": self]
+        Navigate.routeUserToScreen(screenType: .registerBridge, transitionType: .modal, data: delegateData)
     }
     
     @IBAction func startInspectionDidTap(_ sender: UIButton) {
