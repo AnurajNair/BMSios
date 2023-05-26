@@ -371,7 +371,7 @@ class BaseNavigationViewController: UINavigationController, UINavigationControll
         for item in rightBarButtonItems {
             
             if item == RightBarButtons.skip {
-                let skipButton = self.createRightSideNameItem(title: "Cyberian Consulting Pvt. Ltd.")
+                let skipButton = self.createRightSideNameItem(title: "Shivam Concrete Pvt. Ltd.")
                 skipButton.isEnabled = false
      
                 rightButtons.append(skipButton)
@@ -428,7 +428,7 @@ class BaseNavigationViewController: UINavigationController, UINavigationControll
                 break
             }
             else if item == RightBarButtons.clientName {
-                let clientTitle = self.createRightSideNameItem(title: "Cyberian Consulting Pvt. Ltd.")
+                let clientTitle = self.createRightSideNameItem(title: "Shivam Concrete Pvt. Ltd.")
                 clientTitle.isEnabled = false
                 rightButtons.append(clientTitle)
                 break

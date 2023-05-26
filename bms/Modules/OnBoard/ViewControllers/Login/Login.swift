@@ -70,8 +70,8 @@ class LoginViewController: UIViewController{
         self.portraitLoginBtn.isEnabled = true
        
         
-        firstHalfClientNameLabel.text = "Cyberian Consulting"
-        seconHalfClientNameLabel.text = "Cyberian Consulting Pvt. Ltd."
+        firstHalfClientNameLabel.text = "Shivam Concrete"
+        seconHalfClientNameLabel.text = "Technology & Consultancy Pvt Ltd"
         logoLabel.text = "BMS"
         logoLabel.font = UIFont.BMS.InterSemiBold.withSize(48.0)
 
