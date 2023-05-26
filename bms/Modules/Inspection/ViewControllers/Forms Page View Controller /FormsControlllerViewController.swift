@@ -101,8 +101,8 @@ class FormsControlllerViewController: UIViewController {
     
     @IBAction func onNextBtnClick(_ sender: UIButton) {
         view.endEditing(true)
-        guard currentViewControllerIndex < (questionnaireForm?.sections.count ?? 0) - 1 else {
-            saveInspection(status: .submitted, index: currentViewControllerIndex)
+        guard isCurrentVcLast else {
+            saveData()
             return
         }
         saveData()
