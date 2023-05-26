@@ -299,7 +299,7 @@ class Navigate {
 
         let sideMenuController = LGSideMenuController(rootViewController: viewController, leftViewController: menuViewController, rightViewController: nil)
 
-        sideMenuController.leftViewWidth = 300
+        sideMenuController.leftViewWidth = 320
         sideMenuController.leftViewAnimationDuration = 0.5
 
         return sideMenuController
