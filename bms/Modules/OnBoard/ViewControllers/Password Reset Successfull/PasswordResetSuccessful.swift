@@ -24,6 +24,5 @@ class PasswordResetSuccessfullViewController:UIViewController{
     
     @IBAction func onLoginBtnClick(_ sender: Any) {
         Navigate.routeUserToScreen(screenType: .homeScreen, transitionType: .root)
-
     }
 }

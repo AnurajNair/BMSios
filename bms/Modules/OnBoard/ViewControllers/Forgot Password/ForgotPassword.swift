@@ -18,6 +18,7 @@ class ForgotPasswordViewController:UIViewController{
     @IBOutlet weak var dropDown: ReusableDropDown!
     
     @IBOutlet weak var sendEmailBtn: UIButton!
+    var isFormValid = false
     let arr = ["item","item322","item23","iteemmmm"]
     var options:[DropDownModel]? = nil
     var encryptedRequest:String = ""
@@ -65,16 +66,15 @@ func setupViewStyle(){
     }
    
     @IBAction func onSendOTPBtnClick(_ sender: Any) {
-       
-       // self.forgotPasswordApi()
-      //  self.afterForgotPasswordLink()
-        print(self.resetPasswordMail)
+        view.endEditing(true)
         if(self.resetPasswordMail != ""){
+            guard isFormValid else {
+                return
+            }
             self.forgotPasswordApi()
         }else{
             self.ForgotPassworEmailView.formElementErrorStackView.isHidden = false
-          
-            self.ForgotPassworEmailView.formElementError.text = "Please enter password."
+            self.ForgotPassworEmailView.formElementError.text = "Please enter email"
         }
     }
     
@@ -98,25 +98,17 @@ func setupViewStyle(){
     
     
     func forgotPasswordApi(){
-        Utils.showLoadingInView(self.view)
+        Utils.showLoadingInView(self.view , withText: "Sending")
         let router = OnBoardRouterManager()
         router.forgotPassword(params: getParams()) { response in
             print(response)
-            if(response.status == 0){
-                Utils.hideLoadingInView(self.view)
+            Utils.hideLoadingInView(self.view)
+
+            if(response.status == 0 && response.response != ""){
                 self.afterForgotPasswordLink()
-//                if(response.message == "Successfully resetted password .Please login again !!!"){
-//                    self.afterForgotPasswordLink()
-//                }else{
-//                    Utils.displayAlert(title: "Error", message: response.message ?? "Something went wrong.")
-//                } 
-             
-            }else{
-                Utils.hideLoadingInView(self.view)
+            } else {
                 Utils.displayAlert(title: "Error", message: response.message ?? "Something went wrong.")
             }
-          
-            
         } errorCompletionHandler: { error in
             print(error as Any)
             Utils.hideLoadingInView(self.view)
@@ -133,6 +125,11 @@ extension ForgotPasswordViewController:ReusableFormElementViewDelegate{
     func setValues(index: Any, item: Any) {
         print(item)
         self.resetPasswordMail = item as! String
+        isFormValid = true
         print(self.resetPasswordMail)
+    }
+
+    func setError(index: Any, error: String) {
+        isFormValid =  error.isEmpty
     }
 }

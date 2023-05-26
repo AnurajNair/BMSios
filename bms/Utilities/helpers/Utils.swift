@@ -32,7 +32,7 @@ class Utils{
     
     class func displayAlert(title: String, message: String, senderViewController: UIViewController? = nil, alertDisplayedHandler : @escaping ()-> Void = {}) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let alertAction = UIAlertAction(title: "Ok", style: .destructive) { (action) in
+        let alertAction = UIAlertAction(title: "Ok", style: .default) { (action) in
         }
         alert.addAction(alertAction)
         let delegate = UIApplication.shared.delegate as! AppDelegate

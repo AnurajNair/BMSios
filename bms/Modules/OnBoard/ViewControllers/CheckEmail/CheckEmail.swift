@@ -107,5 +107,8 @@ func setupViewStyle(){
         forgotPasswordApi()
     }
     
+    @IBAction func loginDidTap(_ sender: UIButton) {
+        Navigate.routeUserToScreen(screenType: .loginScreen, transitionType: .root)
+    }
     
 }
