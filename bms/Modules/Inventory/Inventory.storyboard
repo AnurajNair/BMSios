@@ -50,6 +50,7 @@
                                 <constraints>
                                     <constraint firstItem="1dR-Ko-89c" firstAttribute="leading" secondItem="7wp-h0-Uqa" secondAttribute="leading" constant="8" id="PgV-5o-mcd"/>
                                     <constraint firstAttribute="trailing" secondItem="1dR-Ko-89c" secondAttribute="trailing" constant="8" id="W1r-jD-aup"/>
+                                    <constraint firstAttribute="trailing" secondItem="KTv-xc-8SR" secondAttribute="trailing" id="qMp-7n-PUN"/>
                                 </constraints>
                             </stackView>
                         </subviews>
