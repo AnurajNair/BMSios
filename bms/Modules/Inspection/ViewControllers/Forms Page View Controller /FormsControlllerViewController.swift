@@ -101,7 +101,7 @@ class FormsControlllerViewController: UIViewController {
     
     @IBAction func onNextBtnClick(_ sender: UIButton) {
         view.endEditing(true)
-        guard isCurrentVcLast else {
+        guard isCurrentVcLast == false else {
             saveData()
             return
         }
