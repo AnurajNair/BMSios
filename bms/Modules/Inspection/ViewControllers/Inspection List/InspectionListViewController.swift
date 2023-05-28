@@ -26,7 +26,6 @@ class InspectionListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
-        getInspection()
         
         UIButton.style([(view: unRegisterBtn, title: "Unregister Inspection".localized(), style: ButtonStyles.greenButton)])
         filterBtn.layer.cornerRadius = 8
@@ -36,7 +35,11 @@ class InspectionListViewController: UIViewController {
             .userInterfaceLayoutDirection == .rightToLeft ? .forceLeftToRight : .forceRightToLeft
 
     }
-    
+
+    override func viewWillAppear(_ animated: Bool) {
+        getInspection()
+    }
+
     func getInspection() {
         Utils.showLoadingInView(self.view)
         getInspection(type: inspectionType) { response in
@@ -205,7 +208,7 @@ extension InspectionListViewController: InspectionListTableViewCellDelegate{
 
     func getInspectionByIdParams(_ inspection: Inspection) -> APIRequestParams {
         let obj = InspectionByIdRequestModel()
-        obj.inspectionId = inspection.inspectionId
+        obj.inspectionId = inspection.id
         let params = APIUtils.createAPIRequestParams(dataObject: obj)
         return params
     }
