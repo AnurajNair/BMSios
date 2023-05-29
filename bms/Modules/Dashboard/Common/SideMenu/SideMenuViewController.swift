@@ -57,25 +57,12 @@ class SideMenuViewController: UIViewController {
         guard let user = SessionDetails.getInstance().currentUser else { return }
         self.userNameLabel.text = (user.profile?.firstName)! + " " + (user.profile?.lastName)!
     }
-
-    func getUsersComponents() -> Set<Component> {
-        guard let roles = SessionDetails.getInstance().currentUser?.role?.roles else {
-            return []
-        }
-        var components: Set<Component> = []
-        roles.forEach { role in
-            guard components.isEmpty == false else {
-                components = Set(role.components)
-                return
-            }
-            components = components.intersection(Set(role.components))
-        }
-        print ("Count - \(components.count) \n set - \(components)")
-        return components
-    }
     
     func getSideMenu() -> [SideMenuModel] {
-        let components = getUsersComponents()
+        guard let role = SessionDetails.getInstance().currentUser?.role else {
+            return []
+        }
+        let components = role.getAllDistinctComponents()
 
         var menu: [SideMenuModel] = []
         

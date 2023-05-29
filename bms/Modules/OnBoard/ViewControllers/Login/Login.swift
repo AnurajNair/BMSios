@@ -376,13 +376,28 @@ class LoginViewController: UIViewController{
     }
     
     func afterLogin(userProfile:Profile){
+        guard checkAuthorization(userProfile: userProfile) else {
+            Utils.displayAlert(title: "Alert", message: "You are not authorised to login") {
+                //No Action
+            }
+            return
+        }
         let session = SessionDetails.getInstance()
         session.saveCurrentUser(user: userProfile)
         Navigate.routeUserToScreen(screenType: .homeScreen, transitionType: .rootSlider)
     }
     
-    
-    
+    func checkAuthorization(userProfile: Profile) -> Bool {
+        guard let role = userProfile.role else {
+            return false
+        }
+        let components = role.getAllDistinctComponents()
+        //2 - Inventory, 5 - review insp, 6 - perform insp, 11- self insp sohuld only be authorised
+        let isAuthorised = components.contains {
+            $0.componentId == 2 || $0.componentId == 5 || $0.componentId == 6 || $0.componentId == 11
+        }
+        return isAuthorised
+    }
 }
 
 

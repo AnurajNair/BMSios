@@ -95,7 +95,6 @@ class RoleObj:RequestBody{
   var roles = List<Role>()
 //    @objc dynamic var role :[Role]?
     
-    
     enum ResponseKeys :String{
         case roles  = "roles"
 //      case role = "role"
@@ -106,6 +105,19 @@ class RoleObj:RequestBody{
         self.roles              <- (map[ResponseKeys.roles.rawValue], ListTransform<Role>())
 //        self.role              <- map[ResponseKeys.role.rawValue]
     }
+
+    func getAllDistinctComponents() -> Set<Component> {
+        var components: Set<Component> = []
+        roles.forEach { role in
+            guard components.isEmpty == false else {
+                components = Set(role.components)
+                return
+            }
+            components = components.intersection(Set(role.components))
+        }
+        print ("Count - \(components.count) \n set - \(components)")
+        return components
+    }
 }
 
 
@@ -113,7 +125,7 @@ class RoleObj:RequestBody{
 class Role: RequestBody {
     @objc  dynamic var roleId:Int = 0
     @objc dynamic var roleName:String?
-    var components = List<Component>() 
+    var components = List<Component>()
     enum ResponseKeys :String{
         case roleId  = "roleid"
         case roleName = "rolename"
