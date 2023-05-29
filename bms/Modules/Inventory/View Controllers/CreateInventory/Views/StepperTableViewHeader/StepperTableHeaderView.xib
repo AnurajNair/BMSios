@@ -28,7 +28,7 @@
                     </constraints>
                 </view>
                 <stackView opaque="NO" contentMode="scaleToFill" spacing="28" translatesAutoresizingMaskIntoConstraints="NO" id="2Ty-zW-uri">
-                    <rect key="frame" x="20.000000000000007" y="44" width="120.66666666666669" height="40"/>
+                    <rect key="frame" x="20" y="44" width="843" height="40"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hTJ-fO-K9B">
                             <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
@@ -42,7 +42,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nle-s7-Dif">
-                            <rect key="frame" x="68" y="0.0" width="52.666666666666657" height="40"/>
+                            <rect key="frame" x="68" y="0.0" width="775" height="40"/>
                             <gestureRecognizers/>
                             <fontDescription key="fontDescription" name="Inter-SemiBold" family="Inter" pointSize="20"/>
                             <nil key="highlightedColor"/>
@@ -58,6 +58,7 @@
             <constraints>
                 <constraint firstItem="3Ru-1T-bkT" firstAttribute="top" secondItem="ziB-2Z-iTb" secondAttribute="top" id="A2x-gM-7jP"/>
                 <constraint firstItem="2Ty-zW-uri" firstAttribute="centerY" secondItem="ziB-2Z-iTb" secondAttribute="centerYWithinMargins" id="QDY-JX-aZ3"/>
+                <constraint firstItem="jll-xi-uI8" firstAttribute="trailing" secondItem="2Ty-zW-uri" secondAttribute="trailing" constant="20" id="bg0-VE-dOI"/>
                 <constraint firstItem="3Ru-1T-bkT" firstAttribute="centerX" secondItem="hTJ-fO-K9B" secondAttribute="centerX" id="fYa-S4-0aJ"/>
                 <constraint firstItem="2Ty-zW-uri" firstAttribute="leading" secondItem="jll-xi-uI8" secondAttribute="leading" constant="20" id="fkR-ru-l1l"/>
                 <constraint firstAttribute="bottom" secondItem="3Ru-1T-bkT" secondAttribute="bottom" id="lzf-Nu-APY"/>
