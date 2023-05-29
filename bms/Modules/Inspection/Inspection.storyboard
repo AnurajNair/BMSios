@@ -4,11 +4,9 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
-        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
-        <capability name="UIMenu" message="Requires Xcode 11 or later." minToolsVersion="11.0" requiredIntegratedClassName="UICommandDiff"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -327,48 +325,11 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="712" height="41"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Inspection" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xfM-Fx-3v4">
-                                                        <rect key="frame" x="0.0" y="0.0" width="296" height="41"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="712" height="41"/>
                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="34"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="bb7-CJ-t7x">
-                                                        <rect key="frame" x="296" y="0.0" width="416" height="41"/>
-                                                        <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rcC-SS-t4M">
-                                                                <rect key="frame" x="0.0" y="0.0" width="280" height="41"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="width" constant="280" id="Sa7-UJ-mAt"/>
-                                                                </constraints>
-                                                                <state key="normal" title="Button"/>
-                                                                <buttonConfiguration key="configuration" style="filled" title="Unregisterd Inspection" cornerStyle="medium">
-                                                                    <color key="baseBackgroundColor" red="0.49803921579999999" green="0.92156863209999995" blue="0.66666668650000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                                </buttonConfiguration>
-                                                                <connections>
-                                                                    <action selector="onUnregisterBtnClick:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Zgc-BE-qCh"/>
-                                                                </connections>
-                                                            </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" preferredBehavioralStyle="pad" translatesAutoresizingMaskIntoConstraints="NO" id="iA3-Vd-H2C">
-                                                                <rect key="frame" x="288" y="0.0" width="128" height="41"/>
-                                                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="width" constant="128" id="D9g-ce-bJN"/>
-                                                                </constraints>
-                                                                <color key="tintColor" red="0.37254902719999999" green="0.37647059560000001" blue="0.37647059560000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="-4" maxY="0.0"/>
-                                                                <menu key="menu" id="aCI-zO-Dfs">
-                                                                    <children>
-                                                                        <command title="Item 1" id="VLh-SS-dIr"/>
-                                                                        <command title="Item 2" id="EMm-qS-nE0"/>
-                                                                    </children>
-                                                                </menu>
-                                                                <state key="normal" title="Filter">
-                                                                    <color key="titleColor" systemColor="labelColor"/>
-                                                                    <imageReference key="image" image="slider.horizontal.3" catalog="system" symbolScale="medium"/>
-                                                                </state>
-                                                            </button>
-                                                        </subviews>
-                                                    </stackView>
                                                 </subviews>
                                             </stackView>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Ozy-Ms-SRk">
@@ -407,9 +368,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="filterBtn" destination="iA3-Vd-H2C" id="PLO-Jy-ZzI"/>
                         <outlet property="tableView" destination="Ozy-Ms-SRk" id="IBK-o6-Az7"/>
-                        <outlet property="unRegisterBtn" destination="rcC-SS-t4M" id="Ah4-Jb-UBg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -953,10 +912,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="slider.horizontal.3" catalog="system" width="128" height="99"/>
-        <systemColor name="labelColor">
-            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

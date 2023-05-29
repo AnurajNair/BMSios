@@ -15,10 +15,6 @@ enum InspectionType {
 
 class InspectionListViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
-    
-    @IBOutlet weak var filterBtn: UIButton!
-    @IBOutlet weak var unRegisterBtn: UIButton!
-    
     var selectedBridge:Inspection?
     var inspectionType: InspectionType?
 
@@ -26,14 +22,8 @@ class InspectionListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
-        
-        UIButton.style([(view: unRegisterBtn, title: "Unregister Inspection".localized(), style: ButtonStyles.greenButton)])
-        filterBtn.layer.cornerRadius = 8
-        
+                
         self.navigationController?.navigationBar.backgroundColor = UIColor.BMS.theme
-        filterBtn.semanticContentAttribute = UIApplication.shared
-            .userInterfaceLayoutDirection == .rightToLeft ? .forceLeftToRight : .forceRightToLeft
-
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -106,12 +96,6 @@ class InspectionListViewController: UIViewController {
         frame.size.height = .leastNormalMagnitude
         tableView.tableHeaderView = UIView(frame: frame)
     }
-
-   
-    @IBAction func onUnregisterBtnClick(_ sender: Any) {
-        Navigate.routeUserToScreen(screenType: .popUpView, transitionType: .modal)
-    }
-    
 }
 
 extension InspectionListViewController:UITableViewDelegate{
