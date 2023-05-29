@@ -26,6 +26,8 @@ target 'bms' do
   pod 'CryptoSwift', '~> 1.6.0'
   pod 'SwiftyMenu', '~> 1.0.1'
   pod "Device", '~> 3.3.0'
+  pod 'DropDown'
+  pod 'IQKeyboardManagerSwift'
   target 'bmsTests' do
     inherit! :search_paths
     # Pods for testing
