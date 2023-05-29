@@ -14,6 +14,7 @@ enum InspectionType {
 }
 
 class InspectionListViewController: UIViewController {
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     var selectedBridge:Inspection?
     var inspectionType: InspectionType?
@@ -22,7 +23,7 @@ class InspectionListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
-                
+        titleLabel.text = inspectionType == .review ? "Review Inspection List" : "Assigned Inspection List"
         self.navigationController?.navigationBar.backgroundColor = UIColor.BMS.theme
     }
 
