@@ -390,8 +390,8 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="jbx-Vn-3cK">
                                         <rect key="frame" x="8" y="8" width="678" height="980"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bridge Details" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iii-yb-5dw">
-                                                <rect key="frame" x="0.0" y="0.0" width="156" height="31.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bridge Details" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iii-yb-5dw">
+                                                <rect key="frame" x="0.0" y="0.0" width="678" height="31.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -409,7 +409,9 @@
                                             </collectionView>
                                         </subviews>
                                         <constraints>
+                                            <constraint firstItem="Iii-yb-5dw" firstAttribute="leading" secondItem="jbx-Vn-3cK" secondAttribute="leading" id="Jgb-3X-Viy"/>
                                             <constraint firstAttribute="trailing" secondItem="YXM-Dc-bcH" secondAttribute="trailing" id="Mnq-lX-8hT"/>
+                                            <constraint firstAttribute="trailing" secondItem="Iii-yb-5dw" secondAttribute="trailing" id="hPu-4W-CYM"/>
                                         </constraints>
                                     </stackView>
                                 </subviews>
