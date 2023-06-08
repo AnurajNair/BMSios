@@ -802,6 +802,7 @@ extension UIColor {
         //Computed Other Colours
         static var linkBlue: UIColor { return UIColor.BMS.blue }
         static var imageBackgroundColor: UIColor { return UIColor.BMS.lightGray }
+        static var imageBackgroundGreen: UIColor { return UIColor(red: 35/255, green: 193/255, blue: 122/255, alpha: 1)}
         static var separatorGray: UIColor { return UIColor.BMS.lightGray.withAlphaComponent(0.6) }
         static var toastBackgroundColor: UIColor { return UIColor.BMS.black.withAlphaComponent(0.9) }
         

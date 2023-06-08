@@ -187,7 +187,7 @@ class FormElementStyler {
         
         static var fileActionSheetTextColor: UIColor { return UIColor.BMS.green }
         
-        static var fileViewStyle: Styler.viewStyle { return (backgroundColor: UIColor.BMS.imageBackgroundColor, cornerRadius: 0.0, borderStyle: (edges: .all, thickness: 1.0, color: UIColor.BMS.separatorGray),shadowStyle : nil) }
+        static var fileViewStyle: Styler.viewStyle { return (backgroundColor: UIColor.BMS.imageBackgroundGreen, cornerRadius: 0.0, borderStyle: (edges: .all, thickness: 1.0, color: UIColor.BMS.separatorGray),shadowStyle : nil) }
         
         static var uploadDocumentHolderSpacing: CGFloat { return 10.0 }
         

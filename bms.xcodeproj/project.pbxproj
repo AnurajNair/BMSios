@@ -59,7 +59,7 @@
 		1D34C6B428FF2E6800A8BAF3 /* ReusableFormCollectionFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D34C6B328FF2E6800A8BAF3 /* ReusableFormCollectionFlowLayout.swift */; };
 		1D34C6B628FF2E7D00A8BAF3 /* ReusableFormHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D34C6B528FF2E7D00A8BAF3 /* ReusableFormHelper.swift */; };
 		1D34C6C028FF307C00A8BAF3 /* ReusableImagePickerCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D34C6BF28FF307C00A8BAF3 /* ReusableImagePickerCollectionViewController.xib */; };
-		1D34C6C228FF30A100A8BAF3 /* ReusableFilerCommonCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D34C6C128FF30A100A8BAF3 /* ReusableFilerCommonCollectionViewCell.xib */; };
+		1D34C6C228FF30A100A8BAF3 /* ReusableFileCommonCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D34C6C128FF30A100A8BAF3 /* ReusableFileCommonCollectionViewCell.xib */; };
 		1D34C6C428FF30C200A8BAF3 /* ReusableFileCommonCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D34C6C328FF30C200A8BAF3 /* ReusableFileCommonCollectionViewCell.swift */; };
 		1D34C6C628FF30E700A8BAF3 /* ReusableImagePickerCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D34C6C528FF30E700A8BAF3 /* ReusableImagePickerCollectionViewController.swift */; };
 		1D34C6C828FF38A500A8BAF3 /* ImageUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D34C6C728FF38A500A8BAF3 /* ImageUtils.swift */; };
@@ -337,7 +337,7 @@
 		1D34C6B328FF2E6800A8BAF3 /* ReusableFormCollectionFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableFormCollectionFlowLayout.swift; sourceTree = "<group>"; };
 		1D34C6B528FF2E7D00A8BAF3 /* ReusableFormHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableFormHelper.swift; sourceTree = "<group>"; };
 		1D34C6BF28FF307C00A8BAF3 /* ReusableImagePickerCollectionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReusableImagePickerCollectionViewController.xib; sourceTree = "<group>"; };
-		1D34C6C128FF30A100A8BAF3 /* ReusableFilerCommonCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReusableFilerCommonCollectionViewCell.xib; sourceTree = "<group>"; };
+		1D34C6C128FF30A100A8BAF3 /* ReusableFileCommonCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReusableFileCommonCollectionViewCell.xib; sourceTree = "<group>"; };
 		1D34C6C328FF30C200A8BAF3 /* ReusableFileCommonCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableFileCommonCollectionViewCell.swift; sourceTree = "<group>"; };
 		1D34C6C528FF30E700A8BAF3 /* ReusableImagePickerCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableImagePickerCollectionViewController.swift; sourceTree = "<group>"; };
 		1D34C6C728FF38A500A8BAF3 /* ImageUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUtils.swift; sourceTree = "<group>"; };
@@ -544,6 +544,7 @@
 		3DD7292629E0306300AFADE8 /* Step7Form.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Step7Form.swift; sourceTree = "<group>"; };
 		3DD7292829E0549C00AFADE8 /* ReusableCollectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReusableCollectionHeaderView.xib; sourceTree = "<group>"; };
 		3DD7292A29E0553100AFADE8 /* ReusableCollectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableCollectionHeaderView.swift; sourceTree = "<group>"; };
+		3DE03B522A322117003F53CB /* DKPhotoGallery.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DKPhotoGallery.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		45283459BD333868B9BEA8C6 /* Pods_bms_bmsUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_bms_bmsUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BE8C64C5466C4F0D7EFB18A /* Pods-bms-bmsUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bms-bmsUITests.release.xcconfig"; path = "Target Support Files/Pods-bms-bmsUITests/Pods-bms-bmsUITests.release.xcconfig"; sourceTree = "<group>"; };
 		5D3A4D86523A2D7FCB6B51DA /* Pods-bms-bmsUITests.live release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bms-bmsUITests.live release.xcconfig"; path = "Target Support Files/Pods-bms-bmsUITests/Pods-bms-bmsUITests.live release.xcconfig"; sourceTree = "<group>"; };
@@ -934,7 +935,7 @@
 			isa = PBXGroup;
 			children = (
 				1D34C6BF28FF307C00A8BAF3 /* ReusableImagePickerCollectionViewController.xib */,
-				1D34C6C128FF30A100A8BAF3 /* ReusableFilerCommonCollectionViewCell.xib */,
+				1D34C6C128FF30A100A8BAF3 /* ReusableFileCommonCollectionViewCell.xib */,
 				1D34C6C328FF30C200A8BAF3 /* ReusableFileCommonCollectionViewCell.swift */,
 				1D34C6C528FF30E700A8BAF3 /* ReusableImagePickerCollectionViewController.swift */,
 			);
@@ -1872,6 +1873,7 @@
 		EBC967350AFE5D7BF29ADD6E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3DE03B522A322117003F53CB /* DKPhotoGallery.framework */,
 				C9607B721E77C447FCF9331A /* Pods_bms.framework */,
 				45283459BD333868B9BEA8C6 /* Pods_bms_bmsUITests.framework */,
 				FCF05091035BF75998347E59 /* Pods_bmsTests.framework */,
@@ -2000,7 +2002,7 @@
 				1D5B74B328FAE1480053B079 /* ReusableFormTextView.xib in Resources */,
 				1D5B749C28FACC800053B079 /* ReusableSelectableTableViewCell.xib in Resources */,
 				3D81910629DAD39F00C2BF3B /* StepperTableViewCell.xib in Resources */,
-				1D34C6C228FF30A100A8BAF3 /* ReusableFilerCommonCollectionViewCell.xib in Resources */,
+				1D34C6C228FF30A100A8BAF3 /* ReusableFileCommonCollectionViewCell.xib in Resources */,
 				1D01C26F293A2D3700F9AC9B /* ReusableDropDown.xib in Resources */,
 				1D5B74A828FADDB30053B079 /* LeftMenuTableViewCell.xib in Resources */,
 				1D34C69E28FF299D00A8BAF3 /* ReusableSelectableCollectionViewCell.xib in Resources */,
@@ -2523,7 +2525,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = R4KLA4XQ55;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -2650,7 +2652,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = R4KLA4XQ55;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -2777,7 +2779,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = R4KLA4XQ55;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -2963,7 +2965,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = R4KLA4XQ55;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -2998,7 +3000,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = R4KLA4XQ55;
 				GENERATE_INFOPLIST_FILE = YES;

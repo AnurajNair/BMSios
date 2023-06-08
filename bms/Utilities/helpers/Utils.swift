@@ -103,11 +103,15 @@ class Utils{
         if let rootController = UIApplication.shared.delegate?.window??.rootViewController, presentingViewController == nil {
             presentingViewController = rootController
         }
-        
+
         if let viewController = presentingViewController, viewController.presentedViewController == nil {
+            /* Below two lines were added for single image upload in inspection for ipad
+            actionSheet.popoverPresentationController?.sourceView = viewController.view
+            actionSheet.popoverPresentationController?.sourceRect = CGRect(x: 0, y: 0, width: 1, height: 1)
+             */
             viewController.present(actionSheet, animated: true, completion: nil)
         }
-        
+
         return actionSheet
     }
     

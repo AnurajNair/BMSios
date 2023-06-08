@@ -52,7 +52,7 @@ class FormViewController: UIViewController, UICollectionViewDataSource {
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return questions.count
+        return questions.count > 0 ? questions.count+1 : questions.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -60,6 +60,18 @@ class FormViewController: UIViewController, UICollectionViewDataSource {
             return UICollectionViewCell()
         }
         
+        if indexPath.row == questions.count {
+            _ = cell.collectionFormElement.setupFileField(id: indexPath,
+                                                          fieldTitle: "Image Upload",
+                                                          maxCount: 10,
+                                                          previewImageContentMode: .scaleToFill,
+                                                          scrollDirection: .vertical,
+                                                          numberOfItemsPerRow: 4,
+                                                          isPreviewEnabled: true,
+                                                          isCameraEnabled: true)
+            return cell
+        }
+
         let question = questions[indexPath.row]
         let questionText = question.question ?? ""
         let response = question.response ?? ""
@@ -68,6 +80,7 @@ class FormViewController: UIViewController, UICollectionViewDataSource {
         let textFieldStyler = TTTextFieldStyler.userDetailsStyle
         let formStyler = TTFormElementViewStyler.userDetailsStyle
 
+        
         if(question.questionTypeEnum == .text) {
             _ = cell.collectionFormElement.setupTextField(id: indexPath,
                                                           fieldTitle: questionText,
@@ -115,6 +128,11 @@ extension FormViewController:UICollectionViewDelegateFlowLayout{
        sizeForItemAt indexPath: IndexPath
      ) -> CGSize {
        // 2
+         //Image field
+         guard indexPath.row != questions.count else {
+            return  CGSize(width: collectionView.bounds.width, height: 600)
+         }
+         //Other Fields
          let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
          let availableWidth = collectionView.bounds.width - paddingSpace
              let widthPerItem = availableWidth / itemsPerRow

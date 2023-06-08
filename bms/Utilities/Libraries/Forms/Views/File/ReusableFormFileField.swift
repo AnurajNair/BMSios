@@ -73,9 +73,11 @@ class ReusableFormFileField: UIView {
     var isRoundedPreview: Bool = false
     var isViewCentered: Bool = true
     var addPreviewImagePlaceholder: String = ""
+    var uploadImagePlaceholder: String = "Form-Upload-Image"
     var displayPreviewImagePlaceholder: String = ""
     var editingEnabled: Bool = true
     var indexForAdd: Int = 0
+    lazy var indexForUpload: Int = indexForAdd+1
     var isSingleSelect: Bool = false
     var canDelete: Bool = true
     var isPreviewEnabled: Bool = true
@@ -313,7 +315,8 @@ class ReusableFormFileField: UIView {
     
     func getFileIndex(_ indexPath: IndexPath) -> IndexPath {
         if self.indexForAdd == 0 && shouldShowAddInMultiSelect() {
-            return IndexPath(row: indexPath.row - 1, section: indexPath.section)
+            //-2 contains 1 for upload image cell
+            return IndexPath(row: indexPath.row - 2, section: indexPath.section)
         }
         
         return indexPath
@@ -451,14 +454,14 @@ class ReusableFormFileField: UIView {
     func numberOfItemsInView() -> Int {
         
         if shouldShowAddInMultiSelect() {
-            return self.data.count + 1
+            return self.data.count + 2 //+2 for add Image and Upload Image cell
         }
         
         else if !self.isSingleSelect {
             return self.data.count
         }
         
-        return 1
+        return 2
         
     }
     
@@ -645,51 +648,51 @@ class ReusableFormFileField: UIView {
         
     }
     
-//    @objc func addImage() {
-//
-//        ReusableFormHelper.showMultiSelectImagePickerController(isSingleSelect: self.isSingleSelect, maxCount: self.maxCount - self.data.count, isCameraEnabled: isCameraEnabled, completed: { (response) in
-//
-//            self.setDataForNewObjects(response)
-//            self.shouldUpdateSavedImages()
-//
-//        }, cancelled: {
-//            self.cancelledPickerView()
-//        })
-//
-//    }
+    @objc func addImage() {
+
+        ReusableFormHelper.showMultiSelectImagePickerController(isSingleSelect: self.isSingleSelect, maxCount: self.maxCount - self.data.count, isCameraEnabled: isCameraEnabled, completed: { (response) in
+
+            self.setDataForNewObjects(response)
+            self.shouldUpdateSavedImages()
+
+        }, cancelled: {
+            self.cancelledPickerView()
+        })
+
+    }
     
-//    func editSingleImage(_ indexPath: IndexPath) {
-//
-//        if self.isPreviewEnabled && self.data.count > 0 {
-//
-//            var actions: [(String, String , UIAlertAction.Style, (() -> Void))] = []
-//
-//            let primaryAction: (String,String, UIAlertAction.Style, (() -> Void)) = ("Edit Image", "" ,
-//                                                                             .default,
-//                                                                             { self.addImage() })
-//
-//            actions.append(primaryAction)
-//
-//            let secondaryAction: (String,String, UIAlertAction.Style, (() -> Void)) = ("Preview Image", "",
-//                                                                               .default,
-//                                                                               { self.previewFile(indexPath) })
-//
-//            actions.append(secondaryAction)
-//
-//            let cancelAction: (String,String , UIAlertAction.Style, (() -> Void)) = ("Cancel", "" ,
-//                                                                            .default,
-//                                                                            {})
-//            actions.append(cancelAction)
-//
-//            let _ = Utils.displayActionSheet(title: "Choose from the options below", message: nil, viewTintColor: FormElementStyler.File.fileActionSheetTextColor, actions: actions)
-//
-//        }
-//
-//        else {
-//            self.addImage()
-//        }
-//
-//    }
+    func editSingleImage(_ indexPath: IndexPath) {
+
+        if self.isPreviewEnabled && self.data.count > 0 {
+
+            var actions: [(String, String , UIAlertAction.Style, (() -> Void))] = []
+
+            let primaryAction: (String,String, UIAlertAction.Style, (() -> Void)) = ("Edit Image", "" ,
+                                                                             .default,
+                                                                             { self.addImage() })
+
+            actions.append(primaryAction)
+
+            let secondaryAction: (String,String, UIAlertAction.Style, (() -> Void)) = ("Preview Image", "",
+                                                                               .default,
+                                                                               { self.previewFile(indexPath) })
+
+            actions.append(secondaryAction)
+
+            let cancelAction: (String,String , UIAlertAction.Style, (() -> Void)) = ("Cancel", "" ,
+                                                                            .default,
+                                                                            {})
+            actions.append(cancelAction)
+
+            _ = Utils.displayActionSheet(title: "Choose from the options below", message: nil, viewTintColor: FormElementStyler.File.fileActionSheetTextColor, actions: actions)
+
+        }
+
+        else {
+            self.addImage()
+        }
+
+    }
     
     @objc func editFile() {
         uploadMoreFiles(true)
@@ -816,9 +819,12 @@ extension ReusableFormFileField: UICollectionViewDataSource {
             
             //This means it's there's no image or the box to add a file in multi-select as long as editing is enabled
             
-            contentMode = .scaleToFill
+            contentMode = .center
             placeHolderImage = self.addPreviewImagePlaceholder
             
+        } else if indexPath.row == indexForUpload {
+            contentMode = .center
+            placeHolderImage = self.uploadImagePlaceholder
         }
         
         else {
@@ -872,11 +878,11 @@ extension ReusableFormFileField: UICollectionViewDelegate {
                 case .images:
                     
                     if isSingleSelect {
-                        //self.editSingleImage(indexPath)
+                        self.editSingleImage(indexPath)
                     }
                     
                     else {
-//                        self.addImage()
+                        self.addImage()
                     }
                 case .custom:
                     selectedIndexPath = indexPath
@@ -893,12 +899,12 @@ extension ReusableFormFileField: UICollectionViewDelegate {
                 
             }
             
+        } else if indexPath.row == indexForUpload {
+            
         }
-        
         else if self.isPreviewEnabled && self.data.count > 0 {
             previewFile(indexPath)
         }
-        
     }
     
 }
