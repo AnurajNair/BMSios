@@ -52,7 +52,7 @@ class FormViewController: UIViewController, UICollectionViewDataSource {
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return questions.count > 0 ? questions.count+1 : questions.count
+        return (questions.count > 0 && formDetails?.sectionName != "General Details") ? questions.count+1 : questions.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -60,7 +60,7 @@ class FormViewController: UIViewController, UICollectionViewDataSource {
             return UICollectionViewCell()
         }
         
-        if indexPath.row == questions.count {
+        if indexPath.row == questions.count  {
             _ = cell.collectionFormElement.setupFileField(id: indexPath,
                                                           fieldTitle: "Image Upload",
                                                           maxCount: 10,
