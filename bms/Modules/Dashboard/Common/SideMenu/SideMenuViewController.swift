@@ -26,8 +26,8 @@ class SideMenuViewController: UIViewController {
     var defaultHighlightedCell: Int = 0
 
     let dashboard = SideMenuModel(icon: "dashboardIcon", title: "Dashboard",menu: [], route: .homeScreen, transition: .rootSlider,isSelected: true, type: .dashboard)
-    let inventory = SideMenuModel(icon: "inspectionIcon", title: "Inventory",menu: [], route: .inventoryListScreen, transition: .changeSlider,isSelected: false, type: .inventory)
-    var inspection = SideMenuModel(icon: "inspectionIcon", title: "Inspection",menu: [], route: .inspectionListScreen, transition: .changeSlider,isSelected:false, type: .inspection)
+    let inventory = SideMenuModel(icon: "inspectionIcon", title: "Inventory Management",menu: [], route: .inventoryListScreen, transition: .changeSlider,isSelected: false, type: .inventory)
+    var inspection = SideMenuModel(icon: "inspectionIcon", title: "Inspection Management",menu: [], route: .inspectionListScreen, transition: .changeSlider,isSelected:false, type: .inspection)
     var reviewInspection = SideMenuModel(icon: "dashboardIcon" , title: "Review Inspection", route: .inspectionListScreen, transition: .changeSlider, type: .reviewInspection)
     var performInspection = SideMenuModel(icon: "dashboardIcon" , title: "Perform Inspection", route: .inspectionListScreen, transition: .changeSlider, type: .performInspection)
     var selfInspection = SideMenuModel(icon: "dashboardIcon" , title: "Self Inspection", route: .selfInspectionScreen, transition: .changeSlider, type: .selfInspection)
