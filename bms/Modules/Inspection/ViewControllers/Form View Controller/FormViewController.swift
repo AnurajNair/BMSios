@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class FormViewController: UIViewController, UICollectionViewDataSource {
     let itemsPerRow: CGFloat = 1
@@ -61,10 +62,12 @@ class FormViewController: UIViewController, UICollectionViewDataSource {
         }
         
         if indexPath.row == questions.count  {
+            let files = (formDetails?.files ?? List<String>()).map { $0 } as [String]
             _ = cell.collectionFormElement.setupFileField(id: indexPath,
                                                           fieldTitle: "Image Upload",
                                                           maxCount: 10,
                                                           previewImageContentMode: .scaleToFill,
+                                                          files: files,
                                                           scrollDirection: .vertical,
                                                           numberOfItemsPerRow: 4,
                                                           isPreviewEnabled: true,
