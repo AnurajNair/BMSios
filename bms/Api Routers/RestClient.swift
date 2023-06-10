@@ -177,13 +177,17 @@ class RestClient {
                     print(response.result)
                     switch response.result {
                     case .success(let value):
-                        print(try? JSONSerialization.jsonObject(with: value!))
-                        successCompletionHandler(value)
+                        do {
+                            guard let value = value else {
+                                fatalError("received non-dictionary JSON response")
+                            }
+                            let responseData = try JSONSerialization.jsonObject(with: value)
+                            successCompletionHandler(responseData)
+                        } catch {
+                            fatalError("received non-dictionary JSON response")
+                        }
                     case .failure(let error):
                         print(error)
-                        
-                    default:
-                        fatalError("received non-dictionary JSON response")
                     }
                     // print(String(data: response.data!, encoding: String.Encoding.utf8))
                     
