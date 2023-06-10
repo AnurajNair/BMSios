@@ -307,8 +307,9 @@ extension FormsControlllerViewController: formViewControllerDelegate {
         uploadRequest.inspectionAssignId = inpectionAssignId
         uploadRequest.fileName = getFileName(id: inpectionAssignId, section: section)
         uploadRequest.fileType = "PNG"
-//        Utils.showLoadingInRootView()
+        Utils.showLoadingInView(self.view)
             UploadFileRouterManager() .uploadImage(params: APIUtils.createAPIRequestParams(dataObject: uploadRequest), imageData: file) { response in
+                Utils.hideLoadingInView(self.view)
                 print("response - \(response.status) - \(response.message ?? "" )")
                 if response.status == 0 {
                      _ = Utils.displayAlertController("Success", message: response.message ?? "", isSingleBtn: true) {
@@ -320,6 +321,7 @@ extension FormsControlllerViewController: formViewControllerDelegate {
                     Utils.displayAlert(title: "Error", message: response.message ?? "Something went wrong")
                 }
             } errorCompletionHandler: { response in
+                Utils.hideLoadingInView(self.view)
                 Utils.displayAlert(title: "Error", message: response?.message ?? "Something went wrong")
             }
     }
