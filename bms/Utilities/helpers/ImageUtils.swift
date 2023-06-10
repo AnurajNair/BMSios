@@ -92,8 +92,8 @@ class ImageUtils {
 //    }
     
     class func clearImageCache(){
-        SDImageCache.shared().clearMemory()
-        SDImageCache.shared().clearDisk()
+        SDImageCache.shared.clearMemory()
+        SDImageCache.shared.clearDisk()
     }
     
     class func setupPhotoBrowser(_ urls: [Any] = [], selectedIndex: Int = 0, shouldTransition:Bool = true) -> IDMPhotoBrowser {
