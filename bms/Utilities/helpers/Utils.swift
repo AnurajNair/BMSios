@@ -429,7 +429,15 @@ class Utils{
         return colors[Int(rand)]
         
     }
+
     
+    class func random3DigitString() -> String {
+        let min: UInt32 = 100
+        let max: UInt32 = 999
+        let i = min + arc4random_uniform(max - min + 1)
+        return String(i)
+    }
+
     static func readJSONFromFile(fileName: String) -> Any?
     {
         var json: Any?

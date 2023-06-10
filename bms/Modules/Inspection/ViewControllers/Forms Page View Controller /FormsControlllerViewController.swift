@@ -85,6 +85,7 @@ class FormsControlllerViewController: UIViewController {
         guard index < questionnaireForm?.sections.count ?? 0 else { return viewController }
         let section = questionnaireForm?.sections[index]
         viewController.formDetails = section
+        viewController.delegate = self
         pages.append(viewController)
         return viewController
     }
@@ -288,4 +289,50 @@ extension FormsControlllerViewController:UICollectionViewDelegateFlowLayout{
              
          return CGSize(width: widthPerItem, height: 70)
      }
+}
+
+extension FormsControlllerViewController: formViewControllerDelegate {
+    func uploadFiles(_ files: [Any], for section: Int) {
+        files.forEach { file in
+            guard let file = file as? UIImage, let fileData = file.pngData() else {
+                return
+            }
+            uploadFile(fileData, section: section)
+        }
+    }
+
+    func uploadFile(_ file: Data, section: Int) {
+        guard let inpectionAssignId = questionnaireForm?.id else { return }
+        let uploadRequest = UploadFileRequestModel()
+        uploadRequest.inspectionAssignId = inpectionAssignId
+        uploadRequest.fileName = getFileName(id: inpectionAssignId, section: section)
+        uploadRequest.fileType = "PNG"
+//        Utils.showLoadingInRootView()
+            UploadFileRouterManager() .uploadImage(params: APIUtils.createAPIRequestParams(dataObject: uploadRequest), imageData: file) { response in
+                print("response - \(response.status) - \(response.message ?? "" )")
+                if response.status == 0 {
+                     _ = Utils.displayAlertController("Success", message: response.message ?? "", isSingleBtn: true) {
+                        Navigate.routeUserBack(self) { /*No Action*/ }
+                    } cancelclickHandler: {
+                        //No Action
+                    }
+                } else {
+                    Utils.displayAlert(title: "Error", message: response.message ?? "Something went wrong")
+                }
+            } errorCompletionHandler: { response in
+                Utils.displayAlert(title: "Error", message: response?.message ?? "Something went wrong")
+            }
+    }
+
+    func getFileName(id: Int, section: Int) -> String {
+//        YYYYMMDDHHMMSS_inspectionassignid_secno_3digitnonconfictingrandomnumber.extension
+       return "\(currentDateAsString())_\(id)_\(section)_\(Utils.random3DigitString())"
+    }
+
+    func currentDateAsString() -> String {
+        let mytime = Date()
+        let format = DateFormatter()
+        format.dateFormat = "yyyyMMddHHmmss"
+        return format.string(from: mytime)
+    }
 }

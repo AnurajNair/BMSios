@@ -259,6 +259,7 @@
 		3DD7292729E0306300AFADE8 /* Step7Form.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD7292629E0306300AFADE8 /* Step7Form.swift */; };
 		3DD7292929E0549C00AFADE8 /* ReusableCollectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DD7292829E0549C00AFADE8 /* ReusableCollectionHeaderView.xib */; };
 		3DD7292B29E0553100AFADE8 /* ReusableCollectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD7292A29E0553100AFADE8 /* ReusableCollectionHeaderView.swift */; };
+		3DF9E7A52A345714005B8395 /* UploadFileRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF9E7A42A345714005B8395 /* UploadFileRouter.swift */; };
 		90FAFACD1B15FA2F1AEE6BCF /* Pods_bms_bmsUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45283459BD333868B9BEA8C6 /* Pods_bms_bmsUITests.framework */; };
 		ABD457588229FDE252BCE307 /* Pods_bms.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9607B721E77C447FCF9331A /* Pods_bms.framework */; };
 		E844387CD879072573C8521B /* Pods_bmsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCF05091035BF75998347E59 /* Pods_bmsTests.framework */; };
@@ -545,6 +546,7 @@
 		3DD7292829E0549C00AFADE8 /* ReusableCollectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReusableCollectionHeaderView.xib; sourceTree = "<group>"; };
 		3DD7292A29E0553100AFADE8 /* ReusableCollectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableCollectionHeaderView.swift; sourceTree = "<group>"; };
 		3DE03B522A322117003F53CB /* DKPhotoGallery.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DKPhotoGallery.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3DF9E7A42A345714005B8395 /* UploadFileRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadFileRouter.swift; sourceTree = "<group>"; };
 		45283459BD333868B9BEA8C6 /* Pods_bms_bmsUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_bms_bmsUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BE8C64C5466C4F0D7EFB18A /* Pods-bms-bmsUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bms-bmsUITests.release.xcconfig"; path = "Target Support Files/Pods-bms-bmsUITests/Pods-bms-bmsUITests.release.xcconfig"; sourceTree = "<group>"; };
 		5D3A4D86523A2D7FCB6B51DA /* Pods-bms-bmsUITests.live release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bms-bmsUITests.live release.xcconfig"; path = "Target Support Files/Pods-bms-bmsUITests/Pods-bms-bmsUITests.live release.xcconfig"; sourceTree = "<group>"; };
@@ -1400,6 +1402,7 @@
 			children = (
 				1DBE250728FD7A9A00CE9519 /* CommonRouter.swift */,
 				1DBE250928FD7DC400CE9519 /* DummyDataResponse.swift */,
+				3DF9E7A42A345714005B8395 /* UploadFileRouter.swift */,
 			);
 			path = Router;
 			sourceTree = "<group>";
@@ -2313,6 +2316,7 @@
 				1D3249AF29087DA900ECDA08 /* InspectionListTableViewCell.swift in Sources */,
 				1D07C72429100DC90088DCAC /* ApproachFormViewController.swift in Sources */,
 				1D0CC942290DD20F00A557ED /* CustomPageViewController.swift in Sources */,
+				3DF9E7A52A345714005B8395 /* UploadFileRouter.swift in Sources */,
 				1D5B742A28F9B2F20053B079 /* bms.xcdatamodeld in Sources */,
 				3D81910829DB555300C2BF3B /* StepperTableViewCell.swift in Sources */,
 				1D5B748528FAC9270053B079 /* Navigate.swift in Sources */,

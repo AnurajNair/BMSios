@@ -26,7 +26,8 @@ enum Router: URLRequestConvertible {
 //    case settingsRouterHandler(SettingsRouterProtocol , Bool)
 //    case dashboardRouterHandler(DashboardRouterProtocol , Bool)
     case inventoryRouterHandler(InventoryRouterProtocol)
-
+    case uploadFileRouterHandler(UploadFileRouterProtocol)
+    
     func asURLRequest() throws -> URLRequest {
         switch self {
         case .commonRouterHandler(let request):
@@ -62,6 +63,11 @@ enum Router: URLRequestConvertible {
         case .inventoryRouterHandler(let request):
             let urlRequest = configureRequest(request)
             return urlRequest
+
+        case .uploadFileRouterHandler(let request):
+            let urlRequest = configureUploadFileRequest(request)
+            return urlRequest
+            
         }
     }
     
@@ -102,7 +108,9 @@ enum Router: URLRequestConvertible {
         else if let value = requestObj.header as? RequestBody {
             headers = Mapper().toJSON(value)
         }
-        
+
+        headers["Accept"] = "application/json"
+        headers["Content-Type"] = "application/json"
         var  mutableURLRequest = getUrlRequestWithHeaders(requestObj.method.rawValue, path: requestObj.path, parameters: headers )
         
         // Check if Request has Body defined
@@ -154,7 +162,56 @@ enum Router: URLRequestConvertible {
         
         return mutableURLRequest
     }
-    
+
+    func configureUploadFileRequest(_ requestObj: RouterProtocol) -> URLRequest {
+        var parameters:[String:Any] = [:]
+        
+        var headers:[String:Any] = [:]
+        
+        if let value = requestObj.parameters as? APIRequestBody {
+            parameters = Mapper().toJSON(value)
+        }
+            
+        else if let value = requestObj.parameters as? RequestBody {
+            parameters = Mapper().toJSON(value)
+        }
+        
+        if let value = requestObj.header as? APIRequestBody {
+            headers = Mapper().toJSON(value)
+        }
+            
+        else if let value = requestObj.header as? RequestBody {
+            headers = Mapper().toJSON(value)
+        }
+        headers["Content-Disposition"] = "form-data"
+        headers["Content-Type"] = "multipart/form-data"
+
+        var  mutableURLRequest = getUrlRequestWithHeaders(requestObj.method.rawValue, path: requestObj.path, parameters: headers )
+        
+        
+        // Check if Request has parameters defined
+        
+        if parameters.count > 0 {
+            
+            print("\(parameters)")
+            
+            do{
+                
+                if requestObj.method == Alamofire.HTTPMethod.get {
+                    return try Alamofire.URLEncoding.default.encode(mutableURLRequest as URLRequestConvertible, with: parameters)
+                }
+                
+                return try Alamofire.JSONEncoding.default.encode(mutableURLRequest as URLRequestConvertible, with: parameters)
+            }
+            catch{
+                print(error)
+            }
+            
+        }
+        
+        return mutableURLRequest
+    }
+
     func getBaseUrl() -> String {
         
         let appUrl =  APIConstants.apiBaseUrl
@@ -175,8 +232,6 @@ enum Router: URLRequestConvertible {
         var mutableURLRequest = URLRequest(url: url.appendingPathComponent(path)) // Set request path
         mutableURLRequest.httpMethod = httpMethod // Set request method
         
-        mutableURLRequest.setValue("application/json", forHTTPHeaderField:"Accept")
-        mutableURLRequest.setValue("application/json", forHTTPHeaderField:"Content-Type")
         mutableURLRequest.timeoutInterval = Constants.serverTimeoutInterval
         
         let headers = Router.getAuthorizationHeaders()

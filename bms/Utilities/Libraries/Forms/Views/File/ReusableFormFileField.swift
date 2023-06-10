@@ -13,6 +13,7 @@ import UIKit
     @objc optional func fileViewDidCancelAddingFiles(_ fileView: ReusableFormFileField, files: [Any])
     
     @objc optional func customFileSet(_ fileIndex : Int)
+    @objc optional func uploadFilesDidTap(_ files : [Any])
 }
 
 class ReusableFormFileField: UIView {
@@ -900,7 +901,7 @@ extension ReusableFormFileField: UICollectionViewDelegate {
             }
             
         } else if indexPath.row == indexForUpload {
-            
+            delegate?.uploadFilesDidTap?(data)
         }
         else if self.isPreviewEnabled && self.data.count > 0 {
             previewFile(indexPath)

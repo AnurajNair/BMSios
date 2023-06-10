@@ -8,6 +8,10 @@
 import UIKit
 import RealmSwift
 
+protocol formViewControllerDelegate: AnyObject {
+    func uploadFiles(_ files: [Any], for section: Int)
+}
+
 class FormViewController: UIViewController, UICollectionViewDataSource {
     let itemsPerRow: CGFloat = 1
     
@@ -20,6 +24,8 @@ class FormViewController: UIViewController, UICollectionViewDataSource {
     @IBOutlet weak var collection: UICollectionView!
     
     @IBOutlet weak var formTitleLbl: UILabel!
+    weak var delegate: formViewControllerDelegate?
+
     var formDetails: FormSection?  = nil
     var questions:[Question] {
         guard let questions = self.formDetails?.subSections.first?.questions else {
@@ -72,6 +78,7 @@ class FormViewController: UIViewController, UICollectionViewDataSource {
                                                           numberOfItemsPerRow: 4,
                                                           isPreviewEnabled: true,
                                                           isCameraEnabled: true)
+            cell.collectionFormElement.delegate = self
             return cell
         }
 
@@ -151,7 +158,7 @@ extension FormViewController:UICollectionViewDelegate{
 
 extension FormViewController: ReusableFormElementViewDelegate {
     func setValues(index: Any, item: Any) {
-        guard let index = index as? IndexPath else {
+        guard let index = index as? IndexPath, index.row < questions.count else {
             return
         }
         let question = questions[index.row]
@@ -166,5 +173,10 @@ extension FormViewController: ReusableFormElementViewDelegate {
     
     func setError(index: Any, error: String) {
         // Handle error
+    }
+
+    func uploadFilesDidTap(index: Any, files: [Any]) {
+        guard let sectionIndex = formDetails?.sectionIndex else { return }
+        delegate?.uploadFiles(files, for: sectionIndex)
     }
 }

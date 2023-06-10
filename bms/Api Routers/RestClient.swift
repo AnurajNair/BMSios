@@ -133,7 +133,65 @@ class RestClient {
        // manager?.up()
         
     }
-    
+
+    class func upload(_ uploadRouter: UploadFileRouterProtocol,
+                      imageData: Data,
+                      isTokenRequired: Bool = true,
+                      isBackgroundCall: Bool = false,
+                      successCompletionHandler : @escaping (_ res : Any) -> Void,
+                      errorCompletionHandler : @escaping (_ error: ApiError?) -> Void ){
+        
+        var manager = NetworkReachabilityManager(host: "www.apple.com")
+        
+        if !isConnected {
+            ///Internet is not available; handle error
+            handleUnknownError(manager: manager)
+        }
+        
+        manager?.startListening { status in
+            
+            switch status {
+            case .notReachable: handleUnknownError(manager: manager)
+                
+            case .unknown: handleUnknownError(manager: manager)
+                
+            default:
+                manager?.stopListening()
+                manager = nil
+                
+                print("resp")
+                let (isVisible, viewController) = isUnknownErrorControllerVisible()
+                
+                if isVisible && viewController != nil {
+                    viewController!.dismiss(animated: false, completion: {
+                    })
+                }
+                let request = Router.uploadFileRouterHandler(uploadRouter)
+                AF.upload(multipartFormData: { (multipartFormData) in
+                    for (key, value) in uploadRouter.formData ?? [:] {
+                        multipartFormData.append((value as! String).data(using: String.Encoding.utf8)!, withName: key)
+                    }
+                    multipartFormData.append(imageData, withName: "")
+                }, with: request).response {
+                    (response) in
+                    print(response.result)
+                    switch response.result {
+                    case .success(let value):
+                        print(try? JSONSerialization.jsonObject(with: value!))
+                        successCompletionHandler(value)
+                    case .failure(let error):
+                        print(error)
+                        
+                    default:
+                        fatalError("received non-dictionary JSON response")
+                    }
+                    // print(String(data: response.data!, encoding: String.Encoding.utf8))
+                    
+                }
+            }
+        }
+    }
+
     class func handleError(_ response: DataResponse<Any,Error>?,
                            isBackgroundCall: Bool = false,
                            manager: NetworkReachabilityManager?,

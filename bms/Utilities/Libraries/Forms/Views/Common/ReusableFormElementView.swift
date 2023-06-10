@@ -12,6 +12,7 @@ import SwiftValidator
     @objc optional func refreshView(index: Any)
     @objc optional func setValues(index: Any, item: Any)
     @objc optional func setError(index: Any, error: String)
+    @objc optional func uploadFilesDidTap(index: Any, files: [Any])
 }
 
 class ReusableFormElementView: UIView {
@@ -1087,6 +1088,10 @@ extension ReusableFormElementView: ReusableFormFileFieldDelegate {
     
     func fileViewDidCancelAddingFiles(_ fileView: ReusableFormFileField, files: [Any]) {
         validateRequiredItems(files)
+    }
+
+    func uploadFilesDidTap(_ files: [Any]) {
+        self.delegate?.uploadFilesDidTap?(index: self.index, files: files)
     }
 }
 
