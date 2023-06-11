@@ -25,6 +25,8 @@ class ActivityTableViewCell: UITableViewCell {
 
     class var nib: UINib { return UINib(nibName: identifier, bundle: nil) }
 
+    var onEyeButtonTap: (()->())?
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -46,5 +48,6 @@ class ActivityTableViewCell: UITableViewCell {
 
     
     @IBAction func eyeButtonDidTap(_ sender: Any) {
+        onEyeButtonTap?()
     }
 }

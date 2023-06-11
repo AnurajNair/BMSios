@@ -2560,7 +2560,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B063B3144C1328B9031C1549 /* Pods-bms.live debug.xcconfig */;
 			buildSettings = {
-				API_BASE_URL = "http://4.240.89.114:8001/API/";
+				API_BASE_URL = "http://4.240.89.114:7001/API/";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -2686,7 +2686,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9A739E1BE9437009A7E5527B /* Pods-bms.live release.xcconfig */;
 			buildSettings = {
-				API_BASE_URL = "http://4.240.89.114:8001/API/";
+				API_BASE_URL = "http://4.240.89.114:7001/API/";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -2813,7 +2813,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6100FF807029866D588BB903 /* Pods-bms.dev release.xcconfig */;
 			buildSettings = {
-				API_BASE_URL = "http://4.240.89.114:8001/API/";
+				API_BASE_URL = "http://4.240.89.114:7001/API/";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -3000,7 +3000,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A994502B7E5AE709E41D7CBA /* Pods-bms.dev debug.xcconfig */;
 			buildSettings = {
-				API_BASE_URL = "http://4.240.89.114:8001/API/";
+				API_BASE_URL = "http://4.240.89.114:7001/API/";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -3034,7 +3034,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 67605279155D69EB7A186637 /* Pods-bms.appstore release.xcconfig */;
 			buildSettings = {
-				API_BASE_URL = "http://4.240.89.114:8001/API/";
+				API_BASE_URL = "http://4.240.89.114:7001/API/";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";

@@ -12,6 +12,7 @@ import ObjectMapper
 enum DashboardRouterProtocol: RouterProtocol{
     case dashbordData(APIRequestModel)
     case myActivites(APIRequestModel)
+    case markActivityRead(APIRequestModel)
 
     var path: String{
         switch self {
@@ -19,6 +20,8 @@ enum DashboardRouterProtocol: RouterProtocol{
             return "Dashboard/Dashboarddata"
         case .myActivites(_):
             return "Dashboard/MyActivity"
+        case .markActivityRead(_):
+            return "Dashboard/MarkActivityRead"
         }
     }
     
@@ -39,7 +42,8 @@ enum DashboardRouterProtocol: RouterProtocol{
     var body: Any?{
         switch self {
         case .dashbordData(let body),
-                .myActivites(let body):
+                .myActivites(let body),
+                .markActivityRead(let body):
             return body
         }
     }
@@ -77,6 +81,14 @@ class DashboardRouterManager {
                        successCompletionHandler: @escaping APISuccessHandler,
                        errorCompletionHandler: @escaping APIFailureHandler) {
         performDashboardApiCall(api: .myActivites(APIRequestModel(params: params)),
+                                successCompletionHandler: successCompletionHandler,
+                                errorCompletionHandler: errorCompletionHandler)
+    }
+
+    func markActivityRead(params: [String: Any],
+                       successCompletionHandler: @escaping APISuccessHandler,
+                       errorCompletionHandler: @escaping APIFailureHandler) {
+        performDashboardApiCall(api: .markActivityRead(APIRequestModel(params: params)),
                                 successCompletionHandler: successCompletionHandler,
                                 errorCompletionHandler: errorCompletionHandler)
     }

@@ -19,3 +19,18 @@ class DashboardDataRequestModel: APIRequestBody {
         self.authId              <- map[ResponseKeys.authId.rawValue]
     }
 }
+
+class ActivityReadRequestModel: APIRequestBody {
+    lazy var authId = SessionDetails.getInstance().currentUser?.profile?.authId
+    var activityId: Int?
+
+    enum ResponseKeys :String{
+        case authId  = "authid"
+        case activityId = "activityid"
+    }
+  
+    override func mapping(map: ObjectMapper.Map) {
+        self.authId              <- map[ResponseKeys.authId.rawValue]
+        self.activityId              <- map[ResponseKeys.activityId.rawValue]
+    }
+}

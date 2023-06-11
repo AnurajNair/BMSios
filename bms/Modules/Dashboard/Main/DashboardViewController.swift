@@ -25,7 +25,7 @@ class DashboardViewController: UIViewController {
     lazy var userRoles = SessionDetails.getInstance().currentUser?.role?.rolesAsEnum ?? []
 
     var activityList :[Activity] = []
-    
+    private lazy var router = DashboardRouterManager()
     var routineInspectionCount = 0
     var thuroughInspectionCount = 0
     var countArray : [Int] = []
@@ -178,6 +178,9 @@ extension DashboardViewController:UITableViewDataSource{
         }
         let activity = self.activityList[indexPath.row]
         cell.configCell(srNo: indexPath.row+1, activity: activity)
+        cell.onEyeButtonTap = {
+            self.markActivityRead(at: indexPath, id: activity.activityId)
+        }
          return cell
     }
     
@@ -191,14 +194,34 @@ extension DashboardViewController:UITableViewDataSource{
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 48
     }
-    
+
+    func markActivityRead(at indexPath: IndexPath, id: Int) {
+        let readRequest = ActivityReadRequestModel()
+        readRequest.activityId = id
+        Utils.showLoadingInView(self.view)
+        router.markActivityRead(params: APIUtils.createAPIRequestParams(dataObject: readRequest)) { [self] response in
+            if(response.status == 0){
+                Utils.hideLoadingInView(self.view)
+                if(response.response != ""){
+                    activityList.remove(at: indexPath.row)
+                    activityTable.deleteRows(at: [indexPath], with: .fade)
+                }else{
+                    Utils.displayAlert(title: "Error", message: response.message ?? "Something went wrong.")
+                }
+            }else{
+                Utils.hideLoadingInView(self.view)
+                Utils.displayAlert(title: "Error", message: response.message ?? "Something went wrong.")
+            }
+        } errorCompletionHandler: { error in
+            print(error as Any)
+            Utils.hideLoadingInView(self.view)
+        }
+    }
 }
 
 extension DashboardViewController{
     func getInspectionStats(){
 //        Utils.showLoadingInView(self.view)
-        let router = DashboardRouterManager()
-        
         router.getInspectionStats(params: APIUtils.createAPIRequestParams(dataObject: DashboardDataRequestModel())) { [self] response in
             if(response.status == 0){
                 Utils.hideLoadingInView(self.view)
@@ -237,8 +260,6 @@ extension DashboardViewController{
 extension DashboardViewController{
     func getMyActivities(){
 //        Utils.showLoadingInView(self.view)
-        let router = DashboardRouterManager()
-        
         router.getMyActivities(params: APIUtils.createAPIRequestParams(dataObject: DashboardDataRequestModel())) { [self] response in
             if(response.status == 0){
                 Utils.hideLoadingInView(self.view)
