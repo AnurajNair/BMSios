@@ -150,12 +150,6 @@ extension InspectionListViewController:UITableViewDataSource{
       
         return headerView
     }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 48
-    }
-    
-    
 }
 
 

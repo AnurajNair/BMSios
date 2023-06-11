@@ -9,19 +9,20 @@ import UIKit
 
 class TableHeaderView: UITableViewHeaderFooterView {
     
- 
+    @IBOutlet weak var srNoLabel: UILabel!
     
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
+    @IBOutlet weak var buidLabel: UILabel!
     
+    @IBOutlet weak var inspectionLabel: UILabel!
+    @IBOutlet weak var bridgeNameLabel: UILabel!
+    @IBOutlet weak var startDateLabel: UILabel!
+    @IBOutlet weak var endDateLabel: UILabel!
+    @IBOutlet weak var statusLabel: UILabel!
+    @IBOutlet weak var startInspectionLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        setupView()
     }
 
     override init(reuseIdentifier: String?) {
@@ -33,7 +34,15 @@ class TableHeaderView: UITableViewHeaderFooterView {
     }
     
     func setupView(){
-//        idLabel.frame.size.width = outerView.frame.size.width/4.4
+        let labelStyle = Styler.textStyle(font: UIFont.BMS.InterSemiBold.withSize(20), color: UIColor.BMS.bmsLabelGrey)
+        UILabel.style([(view: srNoLabel, style: labelStyle),
+                       (view: buidLabel, style: labelStyle),
+                       (view: inspectionLabel, style: labelStyle),
+                       (view: bridgeNameLabel, style: labelStyle),
+                       (view: startDateLabel, style: labelStyle),
+                       (view: endDateLabel, style: labelStyle),
+                       (view: statusLabel, style: labelStyle),
+                       (view: startInspectionLabel, style: labelStyle)])
     }
 
 }
