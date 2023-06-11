@@ -30,7 +30,6 @@
 		1D2E17C72913FE5300214593 /* ProgressCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D2E17C52913FE5300214593 /* ProgressCollectionViewCell.xib */; };
 		1D2E17CB29157A6F00214593 /* DashboardStatsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2E17C929157A6F00214593 /* DashboardStatsCollectionViewCell.swift */; };
 		1D2E17CC29157A6F00214593 /* DashboardStatsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D2E17CA29157A6F00214593 /* DashboardStatsCollectionViewCell.xib */; };
-		1D2E17CF29157E2300214593 /* statsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2E17CE29157E2300214593 /* statsModel.swift */; };
 		1D3249AF29087DA900ECDA08 /* InspectionListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3249AD29087DA900ECDA08 /* InspectionListTableViewCell.swift */; };
 		1D3249B029087DA900ECDA08 /* InspectionListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D3249AE29087DA900ECDA08 /* InspectionListTableViewCell.xib */; };
 		1D3279DA28FD9DED00077777 /* UnknownErrorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3279D928FD9DED00077777 /* UnknownErrorViewController.swift */; };
@@ -256,6 +255,7 @@
 		3DCE069D2A3591B700B35CBB /* DashboardData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCE069C2A3591B700B35CBB /* DashboardData.swift */; };
 		3DCE069F2A35940900B35CBB /* InspectionStatsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCE069E2A35940900B35CBB /* InspectionStatsModel.swift */; };
 		3DCE06A12A359E3400B35CBB /* UserRole.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCE06A02A359E3400B35CBB /* UserRole.swift */; };
+		3DCE06A32A35C44400B35CBB /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCE06A22A35C44400B35CBB /* Activity.swift */; };
 		3DD7291D29DFF19600AFADE8 /* Step1Form.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD7291C29DFF19600AFADE8 /* Step1Form.swift */; };
 		3DD7291F29E02CD400AFADE8 /* Step2Form.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD7291E29E02CD300AFADE8 /* Step2Form.swift */; };
 		3DD7292129E02DD200AFADE8 /* Step3Form.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD7292029E02DD200AFADE8 /* Step3Form.swift */; };
@@ -313,7 +313,6 @@
 		1D2E17C52913FE5300214593 /* ProgressCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProgressCollectionViewCell.xib; sourceTree = "<group>"; };
 		1D2E17C929157A6F00214593 /* DashboardStatsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardStatsCollectionViewCell.swift; sourceTree = "<group>"; };
 		1D2E17CA29157A6F00214593 /* DashboardStatsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DashboardStatsCollectionViewCell.xib; sourceTree = "<group>"; };
-		1D2E17CE29157E2300214593 /* statsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = statsModel.swift; sourceTree = "<group>"; };
 		1D3249AD29087DA900ECDA08 /* InspectionListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectionListTableViewCell.swift; sourceTree = "<group>"; };
 		1D3249AE29087DA900ECDA08 /* InspectionListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InspectionListTableViewCell.xib; sourceTree = "<group>"; };
 		1D3279D928FD9DED00077777 /* UnknownErrorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnknownErrorViewController.swift; sourceTree = "<group>"; };
@@ -547,6 +546,7 @@
 		3DCE069C2A3591B700B35CBB /* DashboardData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardData.swift; sourceTree = "<group>"; };
 		3DCE069E2A35940900B35CBB /* InspectionStatsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectionStatsModel.swift; sourceTree = "<group>"; };
 		3DCE06A02A359E3400B35CBB /* UserRole.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRole.swift; sourceTree = "<group>"; };
+		3DCE06A22A35C44400B35CBB /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
 		3DD7291C29DFF19600AFADE8 /* Step1Form.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Step1Form.swift; sourceTree = "<group>"; };
 		3DD7291E29E02CD300AFADE8 /* Step2Form.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Step2Form.swift; sourceTree = "<group>"; };
 		3DD7292029E02DD200AFADE8 /* Step3Form.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Step3Form.swift; sourceTree = "<group>"; };
@@ -754,9 +754,9 @@
 		1D2E17CD29157D1B00214593 /* model */ = {
 			isa = PBXGroup;
 			children = (
-				1D2E17CE29157E2300214593 /* statsModel.swift */,
 				3DCE069C2A3591B700B35CBB /* DashboardData.swift */,
 				3DCE069E2A35940900B35CBB /* InspectionStatsModel.swift */,
+				3DCE06A22A35C44400B35CBB /* Activity.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -2350,6 +2350,7 @@
 				1D07C72429100DC90088DCAC /* ApproachFormViewController.swift in Sources */,
 				1D0CC942290DD20F00A557ED /* CustomPageViewController.swift in Sources */,
 				3DF9E7A52A345714005B8395 /* UploadFileRouter.swift in Sources */,
+				3DCE06A32A35C44400B35CBB /* Activity.swift in Sources */,
 				1D5B742A28F9B2F20053B079 /* bms.xcdatamodeld in Sources */,
 				3D81910829DB555300C2BF3B /* StepperTableViewCell.swift in Sources */,
 				1D5B748528FAC9270053B079 /* Navigate.swift in Sources */,
@@ -2383,7 +2384,6 @@
 				1D5B74D528FC91E60053B079 /* User.swift in Sources */,
 				1D5B745828F9B4D50053B079 /* RequestBody.swift in Sources */,
 				1D34C68F28FF27ED00A8BAF3 /* ReusableFormSwitch.swift in Sources */,
-				1D2E17CF29157E2300214593 /* statsModel.swift in Sources */,
 				3DD7292329E02E4500AFADE8 /* Step4Form.swift in Sources */,
 				3D45AA1B29E306FB00A83397 /* Step9Form.swift in Sources */,
 				1D33EA7C2922E69300B9363D /* InspectionRouter.swift in Sources */,

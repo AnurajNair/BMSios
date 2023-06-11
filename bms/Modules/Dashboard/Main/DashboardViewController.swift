@@ -24,9 +24,7 @@ class DashboardViewController: UIViewController {
     
     lazy var userRoles = SessionDetails.getInstance().currentUser?.role?.rolesAsEnum ?? []
 
-    var activityList :[ActivityModel] = [ActivityModel(id: "A231", author: "Anuraj Nair", activity: "Routine Inspection", date: "05/12/2022", time: "12:05 PM", status: "Pending"),ActivityModel(id: "A231", author: "Zahid Shaikh", activity: "Thurough Inspection", date: "08/12/2022", time: "11:00 AM", status: "Pending"),ActivityModel(id: "A231", author: "Adiba Tirandaz", activity: "Routine Inspection", date: "0/12/2022", time: "12:05 PM", status: "Pending"),ActivityModel(id: "A231", author: "Naveed Lambe", activity: "Routine Inspection", date: "01/12/2022", time: "01:05 PM", status: "Pending"),ActivityModel(id: "A231", author: "Anuraj Nair", activity: "Routine Inspection", date: "0/12/2022", time: "12:05 PM", status: "Pending"),ActivityModel(id: "A231", author: "Anuraj Nair", activity: "Routine Inspection", date: "0/12/2022", time: "12:05 PM", status: "Pending")]
-    
-    var statsList:[StatsModel] = [StatsModel(label: "Total Inspections", statsCount: 24),StatsModel(label: "Routine Inspection", statsCount: 20),StatsModel(label: "Thurough Inspection", statsCount: 10),]
+    var activityList :[Activity] = []
     
     var routineInspectionCount = 0
     var thuroughInspectionCount = 0
@@ -38,6 +36,7 @@ class DashboardViewController: UIViewController {
         setupCollectionView()
         setupTableView()
         getInspectionStats()
+        getMyActivities()
         DataStore.shared.fetchAllPropertiesMaster()
     }
     
@@ -177,16 +176,10 @@ extension DashboardViewController:UITableViewDataSource{
             fatalError("xib doesn't exist")
             
         }
-        
-        let inspection = self.activityList[indexPath.row]
-        
-        cell.configCell(activity: inspection)
- 
-        
-        return cell
-        
+        let activity = self.activityList[indexPath.row]
+        cell.configCell(srNo: indexPath.row+1, activity: activity)
+         return cell
     }
-    
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = self.activityTable.dequeueReusableHeaderFooterView(withIdentifier: "ActivityTableHeader")  as! ActivityTableHeader
@@ -202,8 +195,6 @@ extension DashboardViewController:UITableViewDataSource{
 }
 
 extension DashboardViewController{
-    
-    
     func getInspectionStats(){
 //        Utils.showLoadingInView(self.view)
         let router = DashboardRouterManager()
@@ -219,6 +210,52 @@ extension DashboardViewController{
                     print(dashboardData.toJSON())
                     generateDashboardDataArray(dashboardData)
                     self.statsCollectionView.reloadData()
+                }else{
+                    Utils.displayAlert(title: "Error", message: response.message ?? "Something went wrong.")
+                }
+            }else{
+                Utils.hideLoadingInView(self.view)
+                Utils.displayAlert(title: "Error", message: response.message ?? "Something went wrong.")
+            }
+        } errorCompletionHandler: { error in
+            print(error as Any)
+            Utils.hideLoadingInView(self.view)
+        }
+
+        func generateDashboardDataArray(_ data: DashboardData) {
+            if userRoles.filter({ $0 == .inspector || $0 == .admin}).count > 0, let data = data.inspectionData {
+                inspectionStats.append((.inspector,data))
+            }
+            if userRoles.filter({ $0 == .reviewer || $0 == .admin}).count > 0, let data = data.reviewData {
+                inspectionStats.append((.reviewer,data))
+            }
+        }
+
+    }
+}
+
+extension DashboardViewController{
+    func getMyActivities(){
+//        Utils.showLoadingInView(self.view)
+        let router = DashboardRouterManager()
+        
+        router.getMyActivities(params: APIUtils.createAPIRequestParams(dataObject: DashboardDataRequestModel())) { [self] response in
+            if(response.status == 0){
+                Utils.hideLoadingInView(self.view)
+                if(response.response != ""){
+                    let responseJson = Utils.getJsonFromString(string: Utils().decryptData(encryptdata: response.response!))
+                    guard let activityArray =  responseJson?["activitylist"] as? [[String: Any]] else {
+                        return
+                    }
+                    var activities: [Activity] = []
+                    activityArray.forEach { activityData in
+                        if let activity = Mapper<Activity>().map(JSON: activityData) {
+                            activities.append(activity)
+                        }
+                    }
+                    print(activities)
+                    activityList = activities
+                    self.activityTable.reloadData()
                 }else{
                     Utils.displayAlert(title: "Error", message: response.message ?? "Something went wrong.")
                 }

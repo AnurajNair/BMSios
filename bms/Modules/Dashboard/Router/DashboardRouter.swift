@@ -11,11 +11,14 @@ import ObjectMapper
 
 enum DashboardRouterProtocol: RouterProtocol{
     case dashbordData(APIRequestModel)
-    
+    case myActivites(APIRequestModel)
+
     var path: String{
         switch self {
         case .dashbordData(_):
             return "Dashboard/Dashboarddata"
+        case .myActivites(_):
+            return "Dashboard/MyActivity"
         }
     }
     
@@ -35,7 +38,8 @@ enum DashboardRouterProtocol: RouterProtocol{
     
     var body: Any?{
         switch self {
-        case .dashbordData(let body):
+        case .dashbordData(let body),
+                .myActivites(let body):
             return body
         }
     }
@@ -49,15 +53,31 @@ enum DashboardRouterProtocol: RouterProtocol{
 }
 
 class DashboardRouterManager {
-    func getInspectionStats(params: [String: Any],
-                          successCompletionHandler: @escaping APISuccessHandler,
-                          errorCompletionHandler: @escaping APIFailureHandler) {
-        RestClient.getAPIResponse(Router.dashboardRouterHandler(.dashbordData(APIRequestModel(params: params)))) { (response) in
+    func performDashboardApiCall(api: DashboardRouterProtocol,
+                                 successCompletionHandler: @escaping APISuccessHandler,
+                                 errorCompletionHandler: @escaping APIFailureHandler) {
+        RestClient.getAPIResponse(Router.dashboardRouterHandler(api)) { (response) in
             if let apiResponse = Mapper<APIResponseModel>().map(JSONObject: RestClient.getResultValue(response)) {
                 successCompletionHandler(apiResponse)
             }
         } errorCompletionHandler: { error in
             errorCompletionHandler(error)
         }
+    }
+
+    func getInspectionStats(params: [String: Any],
+                            successCompletionHandler: @escaping APISuccessHandler,
+                            errorCompletionHandler: @escaping APIFailureHandler) {
+        performDashboardApiCall(api: .dashbordData(APIRequestModel(params: params)),
+                                successCompletionHandler: successCompletionHandler,
+                                errorCompletionHandler: errorCompletionHandler)
+    }
+
+    func getMyActivities(params: [String: Any],
+                       successCompletionHandler: @escaping APISuccessHandler,
+                       errorCompletionHandler: @escaping APIFailureHandler) {
+        performDashboardApiCall(api: .myActivites(APIRequestModel(params: params)),
+                                successCompletionHandler: successCompletionHandler,
+                                errorCompletionHandler: errorCompletionHandler)
     }
 }
