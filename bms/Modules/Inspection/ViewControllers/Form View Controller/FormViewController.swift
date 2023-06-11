@@ -73,6 +73,7 @@ class FormViewController: UIViewController, UICollectionViewDataSource {
                                                           fieldTitle: "Image Upload",
                                                           maxCount: 10,
                                                           previewImageContentMode: .scaleToFill,
+                                                          isRequired: false,
                                                           files: files,
                                                           scrollDirection: .vertical,
                                                           numberOfItemsPerRow: 4,
@@ -89,12 +90,13 @@ class FormViewController: UIViewController, UICollectionViewDataSource {
         let optionsAsString = options.compactMap {$0.value}
         let textFieldStyler = TTTextFieldStyler.userDetailsStyle
         let formStyler = TTFormElementViewStyler.userDetailsStyle
-
+        let isRequired = question.isMandatory
         
         if(question.questionTypeEnum == .text) {
             _ = cell.collectionFormElement.setupTextField(id: indexPath,
                                                           fieldTitle: questionText,
                                                           fieldValue: response,
+                                                          isRequired: isRequired,
                                                           textFieldStyling: textFieldStyler,
                                                           formStyling: formStyler)
         } else if(question.questionTypeEnum == .radioOptions){
@@ -109,7 +111,7 @@ class FormViewController: UIViewController, UICollectionViewDataSource {
                                                          fieldTitle: questionText,
                                                          showFieldTitleByDefault: true,
                                                          isEditable: true,
-                                                         isRequired: question.isMandatory,
+                                                         isRequired: isRequired,
                                                          optionValues: optionsAsString,
                                                          selectedItems: selectedOptions,
                                                          scrollDirection: .vertical,
