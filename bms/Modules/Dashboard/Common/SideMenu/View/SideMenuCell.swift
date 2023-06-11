@@ -23,7 +23,7 @@ class SideMenuCell: UITableViewCell {
     
     @IBOutlet weak var menStackView: UIStackView!
     
-    var subMenu:[SideMenuModel]?
+    var subMenu:[SideMenuModel] = []
     
      var delegate:SideMenuCellDelegate?
     
@@ -56,45 +56,29 @@ class SideMenuCell: UITableViewCell {
     }
     
   
-    func configureCell(image:String,title:String,menu:[SideMenuModel]?,isSelected:Bool?){
+    func configureCell(image:UIImage?, title:String, menu:[SideMenuModel], isSelected:Bool){
         _ = {(action: UIAction) in print("hello")}
-        self.menuIcon.image = UIImage(named: image)
+        self.menuIcon.image = image?.withRenderingMode(.alwaysTemplate)
         self.menuLabel.text = title
         self.subMenu = menu
 //        self.cellStack.addConstraint(self.cellStack.heightAnchor.constraint(equalToConstant: <#T##CGFloat#>))
 //        self.title = title
 //        print(title , menu)
         setupTableView()
-        
-        if(isSelected!){
-            if(title == "Inspection"){
-                self.menuView.backgroundColor = UIColor.BMS.theme
-                self.menuView.setAsRounded(cornerRadius: 5.0)
-                self.menuLabel.textColor = UIColor.BMS.white
+        menuIcon.tintColor = isSelected ? .white : .black
+        if isSelected {
+            self.menuView.backgroundColor = UIColor.BMS.theme
+            self.menuView.setAsRounded(cornerRadius: 5.0)
+            self.menuLabel.textColor = UIColor.BMS.white
+            if subMenu.count > 0 {
                 self.arrowIcon.image = UIImage(named: "chevron-down")
-                self.menuIcon.image = UIImage(named: "inspection")
-            }else{
-                self.menuView.backgroundColor = UIColor.BMS.theme
-                self.menuView.setAsRounded(cornerRadius: 5.0)
-                self.menuLabel.textColor = UIColor.BMS.white
-                
-//                self.arrowIcon.image = UIImage(named: "chevron-down")
             }
-            
-        }else{
-            if(title == "Inspection"){
-                self.arrowIcon.image = UIImage(named: "forwardArrowIcon")
-                self.menuIcon.image = UIImage(named: "inspectionIcon")
-            }else if(title == "Dashboard"){
-                self.arrowIcon.image = UIImage(named: "forwardArrowIcon")
-                self.menuIcon.image = UIImage(named: "dashboardColorIcon")
-            }else{
-                self.arrowIcon.image = UIImage(named: "forwardArrowIcon")
-                self.menuIcon.image = UIImage(named: "dashboardColorIcon")
-            }
+        } else {
+            self.menuView.backgroundColor = UIColor.BMS.white
+            self.menuLabel.textColor = UIColor.BMS.black
+            self.arrowIcon.image = UIImage(named: "forwardArrowIcon")
         }
-        
-      
+
 //        if(title == "Inspection"){
 //            subMenuTable.isHidden = false
 //        }else{
@@ -174,16 +158,12 @@ extension SideMenuCell: UITableViewDelegate{
 
 extension SideMenuCell: UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if(self.subMenu != nil){
-        return self.subMenu!.count
-        }else{
-            return 0
-        }
+        subMenu.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: SideMenuCell.identifier, for: indexPath) as? SideMenuCell else { fatalError("xib doesn't exist") }
-        let sectionData = self.subMenu![indexPath.row]
+        let sectionData = self.subMenu[indexPath.row]
         cell.delegate = self.delegate;
         print(sectionData)
      

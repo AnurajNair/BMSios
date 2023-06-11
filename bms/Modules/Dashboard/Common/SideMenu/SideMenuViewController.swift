@@ -25,12 +25,12 @@ class SideMenuViewController: UIViewController {
     @IBOutlet weak var userNameLabel: UILabel!
     var defaultHighlightedCell: Int = 0
 
-    let dashboard = SideMenuModel(icon: "dashboardIcon", title: "Dashboard",menu: [], route: .homeScreen, transition: .rootSlider,isSelected: true, type: .dashboard)
-    let inventory = SideMenuModel(icon: "inspectionIcon", title: "Inventory Management",menu: [], route: .inventoryListScreen, transition: .changeSlider,isSelected: false, type: .inventory)
-    var inspection = SideMenuModel(icon: "inspectionIcon", title: "Inspection Management",menu: [], route: .inspectionListScreen, transition: .changeSlider,isSelected:false, type: .inspection)
-    var reviewInspection = SideMenuModel(icon: "dashboardIcon" , title: "Review Inspection", route: .inspectionListScreen, transition: .changeSlider, type: .reviewInspection)
-    var performInspection = SideMenuModel(icon: "dashboardIcon" , title: "Perform Inspection", route: .inspectionListScreen, transition: .changeSlider, type: .performInspection)
-    var selfInspection = SideMenuModel(icon: "dashboardIcon" , title: "Self Inspection", route: .selfInspectionScreen, transition: .changeSlider, type: .selfInspection)
+    let dashboard = SideMenuModel(icon:UIImage(named: "dashboardIcon"), title: "Dashboard",menu: [], route: .homeScreen, transition: .rootSlider,isSelected: true, type: .dashboard, index: 0)
+    let inventory = SideMenuModel(icon: UIImage(systemName: "cylinder.split.1x2"), title: "Inventory Management",menu: [], route: .inventoryListScreen, transition: .changeSlider,isSelected: false, type: .inventory, index: 1)
+    var inspection = SideMenuModel(icon: UIImage(systemName:"display"), title: "Inspection Management",menu: [], route: .inspectionListScreen, transition: .changeSlider,isSelected:false, type: .inspection, index: 2)
+    var reviewInspection = SideMenuModel(title: "Review Inspection", route: .inspectionListScreen, transition: .changeSlider, type: .reviewInspection, index: 2)
+    var performInspection = SideMenuModel(title: "Perform Inspection", route: .inspectionListScreen, transition: .changeSlider, type: .performInspection, index: 0)
+    var selfInspection = SideMenuModel(title: "Self Inspection", route: .selfInspectionScreen, transition: .changeSlider, type: .selfInspection, index: 1)
 
     var isSubMenuHidden:Bool = true
 
@@ -65,7 +65,7 @@ class SideMenuViewController: UIViewController {
         let components = role.getAllDistinctComponents()
 
         var menu: [SideMenuModel] = []
-        
+        var inspectionSubMenu: [SideMenuModel] = []
         components.forEach { component in
             guard component.statusAsEnum == .active else {
                 return
@@ -79,17 +79,24 @@ class SideMenuViewController: UIViewController {
                 menu.append(inventory)
             case .performInspection:
                 performInspection.title = title ?? performInspection.title
-                inspection.menu?.append(performInspection)
+                inspectionSubMenu.append(performInspection)
             case .reviewInspection:
                 reviewInspection.title = title ?? performInspection.title
-                inspection.menu?.append(reviewInspection)
+                inspectionSubMenu.append(reviewInspection)
             case .selfInspection:
-                inspection.menu?.append(selfInspection)
+                inspectionSubMenu.append(selfInspection)
             case .none:
                 break
             }
         }
+        inspectionSubMenu.sort {
+            $0.index < $1.index
+        }
+        inspection.menu = inspectionSubMenu
         menu.append(inspection)
+        menu.sort {
+            $0.index < $1.index
+        }
         return menu
     }
     func setupMenuData(){
@@ -224,9 +231,7 @@ extension SideMenuViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: SideMenuCell.identifier, for: indexPath) as? SideMenuCell else { fatalError("xib doesn't exist") }
         
         let sectionData = self.data[indexPath.row]
-        
-    
-        cell.configureCell(image:sectionData.icon, title: sectionData.title,menu: sectionData.menu,isSelected: sectionData.isSelected )
+        cell.configureCell(image: sectionData.icon, title: sectionData.title,menu: sectionData.menu,isSelected: sectionData.isSelected )
         cell.delegate = self
         return cell
     }
@@ -244,7 +249,7 @@ extension SideMenuViewController:SideMenuCellDelegate{
     func onSideSubMenuClick(_ selectedItem: Int) {
         print("ok",selectedItem)
         
-        guard let sectionData = inspection.menu?[selectedItem] else { return }
+        let sectionData = inspection.menu[selectedItem] 
 //        setSelectedSideMenu(indexPath: indexPath)
       
         

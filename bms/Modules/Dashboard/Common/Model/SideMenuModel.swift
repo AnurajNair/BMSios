@@ -17,11 +17,12 @@ struct SideMenuModel {
         case reviewInspection
         case selfInspection
     }
-    var icon: String
+    var icon: UIImage?
     var title: String
-    var menu: [Self]?
+    var menu: [Self] = []
     var route: NavigationRoute.ScreenType
     var transition: Navigate.TransitionType
-    var isSelected:Bool?
+    var isSelected = false
     var type: SideMenuType
+    var index: Int
 }
