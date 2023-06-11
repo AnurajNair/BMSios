@@ -251,6 +251,11 @@
 		3D81910329DA22FE00C2BF3B /* StepperTableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D8190FF29D9AB2500C2BF3B /* StepperTableHeaderView.xib */; };
 		3D81910629DAD39F00C2BF3B /* StepperTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D81910529DAD39F00C2BF3B /* StepperTableViewCell.xib */; };
 		3D81910829DB555300C2BF3B /* StepperTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D81910729DB555300C2BF3B /* StepperTableViewCell.swift */; };
+		3DCE06982A34FB0500B35CBB /* DashboardRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCE06972A34FB0500B35CBB /* DashboardRouter.swift */; };
+		3DCE069B2A35173B00B35CBB /* DashboardApiModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCE069A2A35173B00B35CBB /* DashboardApiModels.swift */; };
+		3DCE069D2A3591B700B35CBB /* DashboardData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCE069C2A3591B700B35CBB /* DashboardData.swift */; };
+		3DCE069F2A35940900B35CBB /* InspectionStatsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCE069E2A35940900B35CBB /* InspectionStatsModel.swift */; };
+		3DCE06A12A359E3400B35CBB /* UserRole.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCE06A02A359E3400B35CBB /* UserRole.swift */; };
 		3DD7291D29DFF19600AFADE8 /* Step1Form.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD7291C29DFF19600AFADE8 /* Step1Form.swift */; };
 		3DD7291F29E02CD400AFADE8 /* Step2Form.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD7291E29E02CD300AFADE8 /* Step2Form.swift */; };
 		3DD7292129E02DD200AFADE8 /* Step3Form.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD7292029E02DD200AFADE8 /* Step3Form.swift */; };
@@ -537,6 +542,11 @@
 		3D81910129DA1FF800C2BF3B /* StepperTableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepperTableHeaderView.swift; sourceTree = "<group>"; };
 		3D81910529DAD39F00C2BF3B /* StepperTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StepperTableViewCell.xib; sourceTree = "<group>"; };
 		3D81910729DB555300C2BF3B /* StepperTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepperTableViewCell.swift; sourceTree = "<group>"; };
+		3DCE06972A34FB0500B35CBB /* DashboardRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardRouter.swift; sourceTree = "<group>"; };
+		3DCE069A2A35173B00B35CBB /* DashboardApiModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardApiModels.swift; sourceTree = "<group>"; };
+		3DCE069C2A3591B700B35CBB /* DashboardData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardData.swift; sourceTree = "<group>"; };
+		3DCE069E2A35940900B35CBB /* InspectionStatsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectionStatsModel.swift; sourceTree = "<group>"; };
+		3DCE06A02A359E3400B35CBB /* UserRole.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRole.swift; sourceTree = "<group>"; };
 		3DD7291C29DFF19600AFADE8 /* Step1Form.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Step1Form.swift; sourceTree = "<group>"; };
 		3DD7291E29E02CD300AFADE8 /* Step2Form.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Step2Form.swift; sourceTree = "<group>"; };
 		3DD7292029E02DD200AFADE8 /* Step3Form.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Step3Form.swift; sourceTree = "<group>"; };
@@ -745,6 +755,8 @@
 			isa = PBXGroup;
 			children = (
 				1D2E17CE29157E2300214593 /* statsModel.swift */,
+				3DCE069C2A3591B700B35CBB /* DashboardData.swift */,
+				3DCE069E2A35940900B35CBB /* InspectionStatsModel.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -773,6 +785,8 @@
 		1D3279DC28FDA13C00077777 /* Dashboard */ = {
 			isa = PBXGroup;
 			children = (
+				3DCE06992A3516F400B35CBB /* Model */,
+				3DCE06962A34FAEF00B35CBB /* Router */,
 				1DF2F6EB293203CF0012A31B /* HomeViewController */,
 				1D5E2E862906EB3D005D83C0 /* Main */,
 				1D72C3DF2905339A0099AAB4 /* Common */,
@@ -1385,6 +1399,7 @@
 				3D45AA5E29E92DCD00A83397 /* GlobalEnums.swift */,
 				3D45AA6229EC366A00A83397 /* ProjectList.swift */,
 				3D63D3702A0D20C1000C87EC /* Reviewer.swift */,
+				3DCE06A02A359E3400B35CBB /* UserRole.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1845,6 +1860,22 @@
 			path = StepperTableViewHeader;
 			sourceTree = "<group>";
 		};
+		3DCE06962A34FAEF00B35CBB /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				3DCE06972A34FB0500B35CBB /* DashboardRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		3DCE06992A3516F400B35CBB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3DCE069A2A35173B00B35CBB /* DashboardApiModels.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		7655F1C4BFA698C5CB00559C /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -2284,6 +2315,7 @@
 				3D4A5DE229FD6EDA002B0280 /* InspectionApiModels.swift in Sources */,
 				3D63D36B2A0BF6F9000C87EC /* TypeOfCarriageWaySecondDigit.swift in Sources */,
 				1D5B74AC28FADEC40053B079 /* AnalyticsHelper.swift in Sources */,
+				3DCE069D2A3591B700B35CBB /* DashboardData.swift in Sources */,
 				3D7EB56F2A0A257600A72C66 /* SubStructureType.swift in Sources */,
 				1DD82A59290AF95300D520B9 /* FormViewController.swift in Sources */,
 				3D4A5DE629FEB252002B0280 /* InspectionQuestionnaire.swift in Sources */,
@@ -2297,6 +2329,7 @@
 				3D63D36F2A0CB951000C87EC /* InspectionSummary.swift in Sources */,
 				1D7E41992941F02300788254 /* ActivityTableHeader.swift in Sources */,
 				3D45AA4A29E6733F00A83397 /* GroutingCommon.swift in Sources */,
+				3DCE069F2A35940900B35CBB /* InspectionStatsModel.swift in Sources */,
 				1D34C6B128FF2B8E00A8BAF3 /* ReusableFormSliderField.swift in Sources */,
 				1D5B747428FA10C90053B079 /* BaseNavigationViewController.swift in Sources */,
 				3D45AA4E29E67FF800A83397 /* GirderCommon.swift in Sources */,
@@ -2332,9 +2365,11 @@
 				3D45AA5B29E6A2EC00A83397 /* APIRequestModel.swift in Sources */,
 				1D5B746D28F9FEE20053B079 /* AppStyler.swift in Sources */,
 				3D45AA5D29E6A43B00A83397 /* APIResponseModel.swift in Sources */,
+				3DCE06982A34FB0500B35CBB /* DashboardRouter.swift in Sources */,
 				1D5B74BA28FAE1C10053B079 /* FormElementStyler.swift in Sources */,
 				1D5B748D28FACA8B0053B079 /* ReusableFooterLoadingView.swift in Sources */,
 				1D72C3D42903E9EB0099AAB4 /* CheckEmail.swift in Sources */,
+				3DCE069B2A35173B00B35CBB /* DashboardApiModels.swift in Sources */,
 				1D3F347529265544002A39C0 /* InspectionsTemplate.swift in Sources */,
 				3D45AA3A29E5C04C00A83397 /* PileCapDimension.swift in Sources */,
 				3D45AA2729E30B7300A83397 /* Step15Form.swift in Sources */,
@@ -2367,6 +2402,7 @@
 				1D9A247E2906EC2A000D2A39 /* DashboardViewController.swift in Sources */,
 				1DBE250828FD7A9A00CE9519 /* CommonRouter.swift in Sources */,
 				3D45AA3E29E5F53100A83397 /* MainGirder.swift in Sources */,
+				3DCE06A12A359E3400B35CBB /* UserRole.swift in Sources */,
 				3DD7292B29E0553100AFADE8 /* ReusableCollectionHeaderView.swift in Sources */,
 				1D647358294280BB00EDD9ED /* SideMenuFooter.swift in Sources */,
 				1DF2F6EA2930E5C20012A31B /* inspectionModel.swift in Sources */,
@@ -2524,7 +2560,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B063B3144C1328B9031C1549 /* Pods-bms.live debug.xcconfig */;
 			buildSettings = {
-				API_BASE_URL = "http://4.240.89.114:7001/API/";
+				API_BASE_URL = "http://4.240.89.114:8001/API/";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -2650,7 +2686,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9A739E1BE9437009A7E5527B /* Pods-bms.live release.xcconfig */;
 			buildSettings = {
-				API_BASE_URL = "http://4.240.89.114:7001/API/";
+				API_BASE_URL = "http://4.240.89.114:8001/API/";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -2777,7 +2813,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6100FF807029866D588BB903 /* Pods-bms.dev release.xcconfig */;
 			buildSettings = {
-				API_BASE_URL = "http://4.240.89.114:7001/API/";
+				API_BASE_URL = "http://4.240.89.114:8001/API/";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -2964,7 +3000,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A994502B7E5AE709E41D7CBA /* Pods-bms.dev debug.xcconfig */;
 			buildSettings = {
-				API_BASE_URL = "http://4.240.89.114:7001/API/";
+				API_BASE_URL = "http://4.240.89.114:8001/API/";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -2998,7 +3034,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 67605279155D69EB7A186637 /* Pods-bms.appstore release.xcconfig */;
 			buildSettings = {
-				API_BASE_URL = "http://4.240.89.114:7001/API/";
+				API_BASE_URL = "http://4.240.89.114:8001/API/";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";

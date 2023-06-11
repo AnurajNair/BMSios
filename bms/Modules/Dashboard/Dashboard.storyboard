@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="ipad9_7" orientation="portrait" layout="fullscreen" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -46,10 +46,32 @@
                                             <constraint firstItem="uWo-Ca-lxi" firstAttribute="centerY" secondItem="7QN-ZK-tlJ" secondAttribute="centerY" id="oBi-qL-368"/>
                                         </constraints>
                                     </view>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="jtv-jZ-C42">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Ff-Bg-ZIP">
                                         <rect key="frame" x="0.0" y="117" width="280" height="683"/>
+                                        <subviews>
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="jtv-jZ-C42">
+                                                <rect key="frame" x="50" y="0.0" width="230" height="683"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                            </tableView>
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="L87-zg-Z0N">
+                                                <rect key="frame" x="0.0" y="0.0" width="50" height="683"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="50" id="ZpA-xh-RGf"/>
+                                                </constraints>
+                                            </tableView>
+                                        </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                    </tableView>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="jtv-jZ-C42" secondAttribute="trailing" id="AUb-IL-dld"/>
+                                            <constraint firstItem="L87-zg-Z0N" firstAttribute="leading" secondItem="1Ff-Bg-ZIP" secondAttribute="leading" id="IRw-tK-6P8"/>
+                                            <constraint firstItem="jtv-jZ-C42" firstAttribute="leading" secondItem="L87-zg-Z0N" secondAttribute="trailing" id="cH7-at-Evz"/>
+                                            <constraint firstAttribute="bottom" secondItem="jtv-jZ-C42" secondAttribute="bottom" id="hLf-7d-NbP"/>
+                                            <constraint firstItem="jtv-jZ-C42" firstAttribute="top" secondItem="1Ff-Bg-ZIP" secondAttribute="top" id="jX2-tO-ANI"/>
+                                            <constraint firstItem="L87-zg-Z0N" firstAttribute="top" secondItem="1Ff-Bg-ZIP" secondAttribute="top" id="pIw-dp-NcY"/>
+                                            <constraint firstAttribute="bottom" secondItem="L87-zg-Z0N" secondAttribute="bottom" id="t3P-pz-esp"/>
+                                        </constraints>
+                                    </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xpv-Qk-tR3">
                                         <rect key="frame" x="0.0" y="802" width="280" height="80"/>
                                         <subviews>
@@ -67,12 +89,24 @@
                                                     <constraint firstAttribute="height" constant="38.5" id="NNC-p9-VWB"/>
                                                 </constraints>
                                             </imageView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f3O-HM-Yel">
+                                                <rect key="frame" x="0.0" y="0.0" width="280" height="80"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                                <connections>
+                                                    <action selector="profileBtnAction:" destination="ZTb-UN-wE1" eventType="touchUpInside" id="fZp-WV-BqO"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="BYL-f0-qWm" secondAttribute="trailing" constant="28" id="02z-i8-Gef"/>
+                                            <constraint firstItem="f3O-HM-Yel" firstAttribute="top" secondItem="Xpv-Qk-tR3" secondAttribute="top" id="4J2-I0-pA8"/>
                                             <constraint firstItem="BYL-f0-qWm" firstAttribute="top" secondItem="Xpv-Qk-tR3" secondAttribute="top" constant="13" id="EA1-tZ-3zk"/>
                                             <constraint firstAttribute="width" constant="280" id="HJl-Z7-hXD"/>
+                                            <constraint firstItem="f3O-HM-Yel" firstAttribute="leading" secondItem="Xpv-Qk-tR3" secondAttribute="leading" id="IY7-9u-ZeJ"/>
+                                            <constraint firstAttribute="bottom" secondItem="f3O-HM-Yel" secondAttribute="bottom" id="QSw-4Y-mXS"/>
+                                            <constraint firstAttribute="trailing" secondItem="f3O-HM-Yel" secondAttribute="trailing" id="b01-MY-c1v"/>
                                             <constraint firstItem="ebG-Zw-Jia" firstAttribute="leading" secondItem="Xpv-Qk-tR3" secondAttribute="leading" constant="20" id="d6j-fY-Xho"/>
                                             <constraint firstAttribute="bottom" secondItem="BYL-f0-qWm" secondAttribute="bottom" constant="19" id="e71-go-oiw"/>
                                             <constraint firstItem="BYL-f0-qWm" firstAttribute="leading" secondItem="ebG-Zw-Jia" secondAttribute="trailing" constant="8" id="fD3-dD-W02"/>
@@ -115,8 +149,8 @@
                                     </view>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="jtv-jZ-C42" secondAttribute="trailing" id="MeJ-qi-MDP"/>
-                                    <constraint firstItem="jtv-jZ-C42" firstAttribute="leading" secondItem="AGj-zy-dYc" secondAttribute="leading" id="lcP-LW-13g"/>
+                                    <constraint firstAttribute="trailing" secondItem="1Ff-Bg-ZIP" secondAttribute="trailing" id="02j-Kg-pGa"/>
+                                    <constraint firstItem="1Ff-Bg-ZIP" firstAttribute="leading" secondItem="AGj-zy-dYc" secondAttribute="leading" id="Anv-Ww-vV2"/>
                                 </constraints>
                             </stackView>
                         </subviews>
@@ -152,9 +186,12 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EKj-JX-t7S">
                                 <rect key="frame" x="14" y="34" width="734" height="976"/>
                                 <subviews>
-                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="zf3-Tu-q5Z" customClass="DynamicHeightCollectionView" customModule="bms" customModuleProvider="target">
-                                        <rect key="frame" x="14" y="20" width="717" height="180"/>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="zf3-Tu-q5Z" customClass="DynamicHeightCollectionView" customModule="bms" customModuleProvider="target">
+                                        <rect key="frame" x="9" y="20" width="717" height="180"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" priority="250" constant="180" id="8yY-WB-zj4"/>
+                                        </constraints>
                                         <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="qv0-zb-V2a">
                                             <size key="itemSize" width="128" height="128"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -163,8 +200,8 @@
                                         </collectionViewFlowLayout>
                                         <cells/>
                                     </collectionView>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="VMM-7y-XYt">
-                                        <rect key="frame" x="14" y="221" width="717" height="747"/>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="VMM-7y-XYt">
+                                        <rect key="frame" x="9" y="221" width="717" height="747"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     </tableView>
                                 </subviews>

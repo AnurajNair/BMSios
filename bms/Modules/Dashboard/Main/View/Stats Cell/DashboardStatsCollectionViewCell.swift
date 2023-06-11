@@ -25,8 +25,8 @@ class DashboardStatsCollectionViewCell: UICollectionViewCell {
         
     }
     
-    func configCell(count:Int,statName:String){
-        self.countNumber.text = (count as NSNumber).stringValue
+    func configCell(count: Int, statName: String){
+        self.countNumber.text = count.description
         self.statName.text = statName
         
     }

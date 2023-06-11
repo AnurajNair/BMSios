@@ -92,18 +92,25 @@ class Profile:RequestBody{
 
 
 class RoleObj:RequestBody{
-  var roles = List<Role>()
-//    @objc dynamic var role :[Role]?
+    var roles = List<Role>()
+    lazy var rolesAsEnum = {
+        roles.compactMap { UserRole(rawValue: $0.roleId)} as [UserRole]
+    }()
+    //    @objc dynamic var role :[Role]?
     
     enum ResponseKeys :String{
         case roles  = "roles"
-//      case role = "role"
+        //      case role = "role"
         
     }
-  
+    
     override func mapping(map: ObjectMapper.Map) {
         self.roles              <- (map[ResponseKeys.roles.rawValue], ListTransform<Role>())
-//        self.role              <- map[ResponseKeys.role.rawValue]
+        //        self.role              <- map[ResponseKeys.role.rawValue]
+    }
+    
+    override static func ignoredProperties() -> [String] {
+            return ["rolesAsEnum"]
     }
 
     func getAllDistinctComponents() -> Set<Component> {
