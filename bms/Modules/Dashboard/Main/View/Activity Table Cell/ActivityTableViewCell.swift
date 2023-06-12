@@ -21,12 +21,11 @@ class ActivityTableViewCell: UITableViewCell {
     
     @IBOutlet weak var timeLabel: UILabel!
     
-    @IBOutlet weak var statuslabel: UILabel!
-    
-    
     class var identifier: String { return String(describing: self) }
 
     class var nib: UINib { return UINib(nibName: identifier, bundle: nil) }
+
+    var onEyeButtonTap: (()->())?
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -39,8 +38,7 @@ class ActivityTableViewCell: UITableViewCell {
                        (view: authorLabel, style: labelStyle),
                        (view: activityNameLabel, style: labelStyle),
                        (view: dateLabel, style: labelStyle),
-                       (view: timeLabel, style: labelStyle),
-                       (view: statuslabel, style: labelStyle)])
+                       (view: timeLabel, style: labelStyle)])
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -48,16 +46,17 @@ class ActivityTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
-    func configCell(activity:ActivityModel){
-        
-        self.idLabel.text = activity.id
-        self.authorLabel.text = activity.author
-        self.activityNameLabel.text = activity.activity
-        self.dateLabel.text = activity.date
-        self.timeLabel.text = activity.time
-        self.statuslabel.text = activity.status
-        
+
+    func configCell(srNo: Int, activity:Activity){
+        self.idLabel.text = srNo.description
+        self.authorLabel.text = activity.publisherName
+        self.activityNameLabel.text = activity.activityDesc
+        self.dateLabel.text = activity.publishedDate
+        self.timeLabel.text = activity.publishedTime
     }
+
     
+    @IBAction func eyeButtonDidTap(_ sender: Any) {
+        onEyeButtonTap?()
+    }
 }

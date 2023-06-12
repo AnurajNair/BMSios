@@ -6,13 +6,14 @@
 //
 
 import UIKit
+import ObjectMapper
 
 class DashboardViewController: UIViewController {
     
     
     @IBOutlet weak var statsCollectionView: UICollectionView!
-    
-    let itemsPerRow: CGFloat = 3
+    var inspectionStats: [(role: UserRole, data: InspectionStatsModel)] = []
+    let itemsPerRow: CGFloat = 4
     
     @IBOutlet weak var activityTable: UITableView!
     private let sectionInsets = UIEdgeInsets(
@@ -21,16 +22,21 @@ class DashboardViewController: UIViewController {
       bottom: 20.0,
       right: 20.0)
     
-    var activityList :[ActivityModel] = [ActivityModel(id: "A231", author: "Anuraj Nair", activity: "Routine Inspection", date: "05/12/2022", time: "12:05 PM", status: "Pending"),ActivityModel(id: "A231", author: "Zahid Shaikh", activity: "Thurough Inspection", date: "08/12/2022", time: "11:00 AM", status: "Pending"),ActivityModel(id: "A231", author: "Adiba Tirandaz", activity: "Routine Inspection", date: "0/12/2022", time: "12:05 PM", status: "Pending"),ActivityModel(id: "A231", author: "Naveed Lambe", activity: "Routine Inspection", date: "01/12/2022", time: "01:05 PM", status: "Pending"),ActivityModel(id: "A231", author: "Anuraj Nair", activity: "Routine Inspection", date: "0/12/2022", time: "12:05 PM", status: "Pending"),ActivityModel(id: "A231", author: "Anuraj Nair", activity: "Routine Inspection", date: "0/12/2022", time: "12:05 PM", status: "Pending")]
-    
-    var statsList:[StatsModel] = [StatsModel(label: "Total Inspections", statsCount: 24),StatsModel(label: "Routine Inspection", statsCount: 20),StatsModel(label: "Thurough Inspection", statsCount: 10),]
-    
+    lazy var userRoles = SessionDetails.getInstance().currentUser?.role?.rolesAsEnum ?? []
+
+    var activityList :[Activity] = []
+    private lazy var router = DashboardRouterManager()
+    var routineInspectionCount = 0
+    var thuroughInspectionCount = 0
+    var countArray : [Int] = []
     override func viewDidLoad() {
         super.viewDidLoad()
 //setupNavigationTitleView()
         
         setupCollectionView()
         setupTableView()
+        getInspectionStats()
+        getMyActivities()
         DataStore.shared.fetchAllPropertiesMaster()
     }
     
@@ -85,7 +91,7 @@ extension DashboardViewController:UICollectionViewDelegateFlowLayout{
        sizeForItemAt indexPath: IndexPath
      ) -> CGSize {
        // 2
-         let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
+         let paddingSpace = (sectionInsets.left+sectionInsets.right) * (itemsPerRow + 1)
              let availableWidth = view.frame.width - paddingSpace
              let widthPerItem = availableWidth / itemsPerRow
              
@@ -94,13 +100,13 @@ extension DashboardViewController:UICollectionViewDelegateFlowLayout{
     
     
 //    // 3
-//    func collectionView(
-//      _ collectionView: UICollectionView,
-//      layout collectionViewLayout: UICollectionViewLayout,
-//      insetForSectionAt section: Int
-//    ) -> UIEdgeInsets {
-//      return sectionInsets
-//    }
+    func collectionView(
+      _ collectionView: UICollectionView,
+      layout collectionViewLayout: UICollectionViewLayout,
+      insetForSectionAt section: Int
+    ) -> UIEdgeInsets {
+      return sectionInsets
+    }
 //
 //    // 4
 //    func collectionView(
@@ -113,18 +119,43 @@ extension DashboardViewController:UICollectionViewDelegateFlowLayout{
 }
 
 extension DashboardViewController:UICollectionViewDataSource{
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.statsList.count
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        inspectionStats.count
     }
-    
+
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        4
+    }
+
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DashboardStatsCollectionViewCell", for: indexPath) as? DashboardStatsCollectionViewCell else{
             return UICollectionViewCell()
         }
-        let section = self.statsList[indexPath.row]
-        
-        cell.configCell(count: section.statsCount, statName: section.label)
-        
+        let sectionData = inspectionStats[indexPath.section].data
+        var labelName = ""
+        var count = 0
+        switch indexPath.row {
+        case 0:
+            labelName = "Completed Inspection"
+            count = sectionData.completed
+            
+        case 1:
+            labelName = "Pending Inspection"
+            count = sectionData.pendingForInspection
+            
+        case 2:
+            labelName = "Pending Review"
+            count = sectionData.pendingForReview
+            
+        case 3:
+            labelName = "Total Inspection"
+            count = sectionData.total
+            
+        default:
+            labelName = "NA"
+            count = 0
+        }
+        cell.configCell(count: count, statName: labelName)
         return cell
     }
         
@@ -145,14 +176,13 @@ extension DashboardViewController:UITableViewDataSource{
             fatalError("xib doesn't exist")
             
         }
-        
-        cell.configCell(activity:  self.activityList[indexPath.row])
- 
-        
-        return cell
-        
+        let activity = self.activityList[indexPath.row]
+        cell.configCell(srNo: indexPath.row+1, activity: activity)
+        cell.onEyeButtonTap = {
+            self.markActivityRead(at: indexPath, id: activity.activityId)
+        }
+         return cell
     }
-    
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = self.activityTable.dequeueReusableHeaderFooterView(withIdentifier: "ActivityTableHeader")  as! ActivityTableHeader
@@ -164,5 +194,109 @@ extension DashboardViewController:UITableViewDataSource{
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 48
     }
-    
+
+    func markActivityRead(at indexPath: IndexPath, id: Int) {
+        let readRequest = ActivityReadRequestModel()
+        readRequest.activityId = id
+        Utils.showLoadingInView(self.view)
+        router.markActivityRead(params: APIUtils.createAPIRequestParams(dataObject: readRequest)) { [self] response in
+            if(response.status == 0){
+                Utils.hideLoadingInView(self.view)
+                if(response.response != ""){
+                    activityList.remove(at: indexPath.row)
+                    activityTable.deleteRows(at: [indexPath], with: .fade)
+                }else{
+                    Utils.displayAlert(title: "Error", message: response.message ?? "Something went wrong.")
+                }
+            }else{
+                Utils.hideLoadingInView(self.view)
+                Utils.displayAlert(title: "Error", message: response.message ?? "Something went wrong.")
+            }
+        } errorCompletionHandler: { error in
+            print(error as Any)
+            Utils.hideLoadingInView(self.view)
+        }
+    }
+}
+
+extension DashboardViewController{
+    func getInspectionStats(){
+//        Utils.showLoadingInView(self.view)
+        router.getInspectionStats(params: APIUtils.createAPIRequestParams(dataObject: DashboardDataRequestModel())) { [self] response in
+            if(response.status == 0){
+                Utils.hideLoadingInView(self.view)
+                if(response.response != ""){
+                    guard let dashboardData = Mapper<DashboardData>().map(JSONString: Utils().decryptData(encryptdata: response.response!)) else {
+                        print("Could not get dashboard data")
+                        return
+                    }
+                    print(dashboardData.toJSON())
+                    generateDashboardDataArray(dashboardData)
+                    self.statsCollectionView.reloadData()
+                }else{
+                    Utils.displayAlert(title: "Error", message: response.message ?? "Something went wrong.")
+                }
+            }else{
+                Utils.hideLoadingInView(self.view)
+                Utils.displayAlert(title: "Error", message: response.message ?? "Something went wrong.")
+            }
+        } errorCompletionHandler: { error in
+            print(error as Any)
+            Utils.hideLoadingInView(self.view)
+        }
+
+        func generateDashboardDataArray(_ data: DashboardData) {
+            if userRoles.filter({ $0 == .inspector || $0 == .admin}).count > 0, let data = data.inspectionData {
+                inspectionStats.append((.inspector,data))
+            }
+            if userRoles.filter({ $0 == .reviewer || $0 == .admin}).count > 0, let data = data.reviewData {
+                inspectionStats.append((.reviewer,data))
+            }
+        }
+
+    }
+}
+
+extension DashboardViewController{
+    func getMyActivities(){
+//        Utils.showLoadingInView(self.view)
+        router.getMyActivities(params: APIUtils.createAPIRequestParams(dataObject: DashboardDataRequestModel())) { [self] response in
+            if(response.status == 0){
+                Utils.hideLoadingInView(self.view)
+                if(response.response != ""){
+                    let responseJson = Utils.getJsonFromString(string: Utils().decryptData(encryptdata: response.response!))
+                    guard let activityArray =  responseJson?["activitylist"] as? [[String: Any]] else {
+                        return
+                    }
+                    var activities: [Activity] = []
+                    activityArray.forEach { activityData in
+                        if let activity = Mapper<Activity>().map(JSON: activityData) {
+                            activities.append(activity)
+                        }
+                    }
+                    print(activities)
+                    activityList = activities
+                    self.activityTable.reloadData()
+                }else{
+                    Utils.displayAlert(title: "Error", message: response.message ?? "Something went wrong.")
+                }
+            }else{
+                Utils.hideLoadingInView(self.view)
+                Utils.displayAlert(title: "Error", message: response.message ?? "Something went wrong.")
+            }
+        } errorCompletionHandler: { error in
+            print(error as Any)
+            Utils.hideLoadingInView(self.view)
+        }
+
+        func generateDashboardDataArray(_ data: DashboardData) {
+            if userRoles.filter({ $0 == .inspector || $0 == .admin}).count > 0, let data = data.inspectionData {
+                inspectionStats.append((.inspector,data))
+            }
+            if userRoles.filter({ $0 == .reviewer || $0 == .admin}).count > 0, let data = data.reviewData {
+                inspectionStats.append((.reviewer,data))
+            }
+        }
+
+    }
 }

@@ -18,7 +18,8 @@ enum Router: URLRequestConvertible {
     // Custom variable defined in build.
     case commonRouterHandler(CommonRouterProtocol)
     case inspectionRouterHandler(InspectionRouterProtocol)
-   case onBoardingRouterHandler(OnBoardRouterProtocol)
+    case onBoardingRouterHandler(OnBoardRouterProtocol)
+    case dashboardRouterHandler(DashboardRouterProtocol)
 //    case profileRouterHandler(ProfileRouterProtocol , Bool)
 //    case placeRouterHandler(PlaceRouterProtocol ,Bool)
 //    case planRouterHandler(PlanRouterProtocol ,Bool)
@@ -31,6 +32,9 @@ enum Router: URLRequestConvertible {
     func asURLRequest() throws -> URLRequest {
         switch self {
         case .commonRouterHandler(let request):
+            let urlRequest = configureRequest(request)
+            return urlRequest
+        case .dashboardRouterHandler(let request):
             let urlRequest = configureRequest(request)
             return urlRequest
         case .inspectionRouterHandler(let request):
