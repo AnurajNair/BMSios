@@ -298,7 +298,7 @@ class RestClient {
                 data["errorData"] = value
             }
             
-            NavigationRoute.routeUserToScreen(screenType: .unknownError, transitionType: .root, data: data)
+            NavigationRoute.routeUserToScreen(screenType: .unknownError, transitionType: .modal, data: data)
         }
     }
     
