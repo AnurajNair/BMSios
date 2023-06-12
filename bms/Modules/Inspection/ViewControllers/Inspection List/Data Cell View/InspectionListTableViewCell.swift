@@ -37,6 +37,19 @@ class InspectionListTableViewCell: UITableViewCell {
         inspectButton.setTitleColor(UIColor.BMS.fontWhite, for: .normal)
         inspectButton.setTitleColor(UIColor.BMS.fontDarkGray, for: .disabled)
         inspectButton.setAsRounded(cornerRadius: 5)
+        
+        setup()
+    }
+
+    func setup() {
+        let labelStyle = TextStyles.ListItemBlackTitle
+        UILabel.style([(view: srNoLabel, style: labelStyle),
+                       (view: buidLabel, style: labelStyle),
+                       (view: inspectionNameLabel, style: labelStyle),
+                       (view: bridgeNameLabel, style: labelStyle),
+                       (view: startDateLabel, style: labelStyle),
+                       (view: endDateLabel, style: labelStyle),
+                       (view: statusLabel, style: labelStyle)])
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

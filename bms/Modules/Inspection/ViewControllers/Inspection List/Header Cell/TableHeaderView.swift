@@ -34,7 +34,7 @@ class TableHeaderView: UITableViewHeaderFooterView {
     }
     
     func setupView(){
-        let labelStyle = Styler.textStyle(font: UIFont.BMS.InterSemiBold.withSize(20), color: UIColor.BMS.bmsLabelGrey)
+        let labelStyle = TextStyles.ListHeaderGreyTitle
         UILabel.style([(view: srNoLabel, style: labelStyle),
                        (view: buidLabel, style: labelStyle),
                        (view: inspectionLabel, style: labelStyle),
