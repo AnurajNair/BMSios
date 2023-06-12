@@ -33,7 +33,7 @@ class InventoryListHeaderView: UITableViewHeaderFooterView {
     }
 
     func setup() {
-        let labelStyle = Styler.textStyle(font: UIFont.BMS.InterSemiBold.withSize(20), color: UIColor.BMS.bmsLabelGrey)
+        let labelStyle = TextStyles.ListHeaderGreyTitle
         UILabel.style([(view: srNoLabel, style: labelStyle),
                        (view: projectNameLabel, style: labelStyle),
                        (view: projectIdLabel, style: labelStyle),

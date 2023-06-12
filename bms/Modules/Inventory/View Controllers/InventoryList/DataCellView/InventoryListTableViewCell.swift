@@ -35,7 +35,7 @@ class InventoryListTableViewCell: UITableViewCell {
     }
 
     func setup() {
-        let labelStyle = Styler.textStyle(font: UIFont.BMS.InterMedium.withSize(20), color: UIColor.BMS.bmsLabelGrey)
+        let labelStyle = TextStyles.ListItemBlackTitle
         UILabel.style([(view: srNoLabel, style: labelStyle),
                        (view: projectNameLabel, style: labelStyle),
                        (view: projectIdLabel, style: labelStyle),
