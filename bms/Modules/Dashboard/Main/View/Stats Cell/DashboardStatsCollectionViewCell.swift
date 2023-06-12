@@ -22,7 +22,10 @@ class DashboardStatsCollectionViewCell: UICollectionViewCell {
 //        self.statsCard.addConstraint(self.statsCard.heightAnchor.constraint(equalToConstant: 200))
 
         UIView.style([(view: self.statsCard, style:(backgroundColor:UIColor.BMS.dashboardCard, cornerRadius: 16, borderStyle: nil,shadowStyle : ShadowStyles.CardShadowStyle))])
-        
+
+        countNumber.textColor = UIColor.BMS.theme
+        statName.textColor = UIColor.BMS.bmsLabelGrey
+
     }
     
     func configCell(count:Int,statName:String){
