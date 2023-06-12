@@ -30,7 +30,17 @@ class ActivityTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+       setupView()
+    }
+
+    func setupView(){
+        let labelStyle = TextStyles.ListItemBlackTitle
+        UILabel.style([(view: idLabel, style: labelStyle),
+                       (view: authorLabel, style: labelStyle),
+                       (view: activityNameLabel, style: labelStyle),
+                       (view: dateLabel, style: labelStyle),
+                       (view: timeLabel, style: labelStyle),
+                       (view: statuslabel, style: labelStyle)])
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

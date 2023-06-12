@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -83,6 +83,14 @@
                 <constraint firstAttribute="trailing" secondItem="fqc-tc-S5u" secondAttribute="trailing" id="piX-ju-FHm"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="activityLabel" destination="Ipe-3y-dqS" id="pcR-oY-rPz"/>
+                <outlet property="authorLabel" destination="O1j-CJ-b5W" id="8Tz-RU-OCG"/>
+                <outlet property="dateLabel" destination="zoP-pF-iRW" id="GJ7-q1-yht"/>
+                <outlet property="idLabel" destination="uVE-Ek-eXa" id="g7d-Je-Ie9"/>
+                <outlet property="statuslabel" destination="5iE-0G-QDG" id="Yqs-HD-zYf"/>
+                <outlet property="timeLabel" destination="OEj-qw-ej3" id="DUP-Bz-2JQ"/>
+            </connections>
             <point key="canvasLocation" x="522.30769230769226" y="622.39336492890993"/>
         </view>
     </objects>
