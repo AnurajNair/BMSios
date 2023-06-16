@@ -50,14 +50,14 @@
                                         <rect key="frame" x="0.0" y="117" width="280" height="683"/>
                                         <subviews>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="jtv-jZ-C42">
-                                                <rect key="frame" x="50" y="0.0" width="230" height="683"/>
+                                                <rect key="frame" x="35" y="0.0" width="245" height="683"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             </tableView>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="L87-zg-Z0N">
-                                                <rect key="frame" x="0.0" y="0.0" width="50" height="683"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="35" height="683"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="50" id="ZpA-xh-RGf"/>
+                                                    <constraint firstAttribute="width" constant="35" id="ZpA-xh-RGf"/>
                                                 </constraints>
                                             </tableView>
                                         </subviews>

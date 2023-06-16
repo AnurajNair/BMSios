@@ -168,7 +168,7 @@ class SideMenuViewController: UIViewController {
 extension SideMenuViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if selectedCellIndexPath == indexPath {
-               return 188
+               return 200
         }else{
             return 70
         }
@@ -176,7 +176,7 @@ extension SideMenuViewController: UITableViewDelegate {
         
     }
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        if(self.data[indexPath.row].title == "Inspection"){
+        if(self.data[indexPath.row] == inspection){
             return 168
         }else{
             return 70

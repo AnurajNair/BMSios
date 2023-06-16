@@ -8,7 +8,7 @@
 import UIKit
 import Foundation
 
-struct SideMenuModel {
+struct SideMenuModel: Equatable {
     enum SideMenuType {
         case dashboard
         case inventory
