@@ -89,24 +89,12 @@
                                                     <constraint firstAttribute="height" constant="38.5" id="NNC-p9-VWB"/>
                                                 </constraints>
                                             </imageView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f3O-HM-Yel">
-                                                <rect key="frame" x="0.0" y="0.0" width="280" height="80"/>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
-                                                <connections>
-                                                    <action selector="profileBtnAction:" destination="ZTb-UN-wE1" eventType="touchUpInside" id="fZp-WV-BqO"/>
-                                                </connections>
-                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="BYL-f0-qWm" secondAttribute="trailing" constant="28" id="02z-i8-Gef"/>
-                                            <constraint firstItem="f3O-HM-Yel" firstAttribute="top" secondItem="Xpv-Qk-tR3" secondAttribute="top" id="4J2-I0-pA8"/>
                                             <constraint firstItem="BYL-f0-qWm" firstAttribute="top" secondItem="Xpv-Qk-tR3" secondAttribute="top" constant="13" id="EA1-tZ-3zk"/>
                                             <constraint firstAttribute="width" constant="280" id="HJl-Z7-hXD"/>
-                                            <constraint firstItem="f3O-HM-Yel" firstAttribute="leading" secondItem="Xpv-Qk-tR3" secondAttribute="leading" id="IY7-9u-ZeJ"/>
-                                            <constraint firstAttribute="bottom" secondItem="f3O-HM-Yel" secondAttribute="bottom" id="QSw-4Y-mXS"/>
-                                            <constraint firstAttribute="trailing" secondItem="f3O-HM-Yel" secondAttribute="trailing" id="b01-MY-c1v"/>
                                             <constraint firstItem="ebG-Zw-Jia" firstAttribute="leading" secondItem="Xpv-Qk-tR3" secondAttribute="leading" constant="20" id="d6j-fY-Xho"/>
                                             <constraint firstAttribute="bottom" secondItem="BYL-f0-qWm" secondAttribute="bottom" constant="19" id="e71-go-oiw"/>
                                             <constraint firstItem="BYL-f0-qWm" firstAttribute="leading" secondItem="ebG-Zw-Jia" secondAttribute="trailing" constant="8" id="fD3-dD-W02"/>
@@ -166,6 +154,7 @@
                     <size key="freeformSize" width="280" height="1024"/>
                     <connections>
                         <outlet property="onLogOutClick" destination="3AH-vJ-qRF" id="ncQ-mf-Mrt"/>
+                        <outlet property="onProfileClick" destination="Xpv-Qk-tR3" id="WML-gt-n5U"/>
                         <outlet property="sideMenuTableView" destination="jtv-jZ-C42" id="nH1-qp-DLH"/>
                         <outlet property="userNameLabel" destination="BYL-f0-qWm" id="ite-J0-DAp"/>
                         <outlet property="viewStack" destination="AGj-zy-dYc" id="Tda-YH-eqC"/>

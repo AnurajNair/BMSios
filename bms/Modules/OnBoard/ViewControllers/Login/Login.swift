@@ -31,8 +31,8 @@ class LoginViewController: UIViewController{
     
     @IBOutlet weak var loginCard: UIView!
    
-    var userName = ""
-    var password = ""
+    var userName = "tapan@shivamconcrete.com"
+    var password = "Pass@123"
     var encrypRequest = ""
     
     

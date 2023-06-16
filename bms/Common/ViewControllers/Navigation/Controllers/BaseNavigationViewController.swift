@@ -210,7 +210,7 @@ class BaseNavigationViewController: UINavigationController, UINavigationControll
     
     func setRightButtons() {
         switch screenType {
-        case .homeScreen,.inspectionListScreen,.inventoryListScreen,.routineInspbridgeDetailScreen, .createInventoryScreen, .selfInspectionScreen:
+        case .homeScreen,.inspectionListScreen,.inventoryListScreen,.routineInspbridgeDetailScreen, .createInventoryScreen, .profile:
             rightBarButtonItems = [.skip,.clientName]
 //        case .friendsScreen:
 //            rightBarButtonItems = [.add]
@@ -223,8 +223,8 @@ class BaseNavigationViewController: UINavigationController, UINavigationControll
     
     func getNavigationStyle() -> BaseNavigationViewController.NavigationStyle {
         switch screenType {
-            
-        case .dashboardScreen,.inspectionListScreen,.routineInspbridgeDetailScreen, .inventoryListScreen, .createInventoryScreen, .selfInspectionScreen:
+
+        case .dashboardScreen,.inspectionListScreen,.routineInspbridgeDetailScreen, .inventoryListScreen, .createInventoryScreen, .profile:
             return .baseThemeTint
         case .homeScreen:
             return .baseThemeTint
@@ -294,21 +294,19 @@ class BaseNavigationViewController: UINavigationController, UINavigationControll
             
         }
         
-        if(screenType == .homeScreen || screenType == .inspectionListScreen  || screenType == .routineInspbridgeDetailScreen  || screenType == .inventoryListScreen || screenType == .createInventoryScreen || screenType == .selfInspectionScreen){
+        if(screenType == .homeScreen || screenType == .inspectionListScreen  || screenType == .routineInspbridgeDetailScreen  || screenType == .inventoryListScreen || screenType == .createInventoryScreen || screenType == .profile){
             self.navigationBar.frame.size.height = 58
             self.navigationBar.backgroundColor = UIColor.BMS.theme
         }else{
             self.navigationBar.backgroundColor = UIColor.BMS.clear
         }
        
-        
         customizeSideMenu()
         
         if (screenType == .loginScreen || screenType == .tutorialScreen) {
             // && (transitionType == .root || transitionType == .rootSlider)
             self.navigationBar.isHidden = true
         }
-            
         else {
             self.navigationBar.isHidden = false
         }
