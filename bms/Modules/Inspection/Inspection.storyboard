@@ -35,7 +35,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="7oE-tX-Cbh">
-                                <rect key="frame" x="28" y="34" width="712" height="391"/>
+                                <rect key="frame" x="28" y="34" width="712" height="336"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="SRw-NJ-AZD">
                                         <rect key="frame" x="0.0" y="0.0" width="712" height="51"/>
@@ -56,17 +56,17 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="S6E-jC-QQp">
-                                        <rect key="frame" x="0.0" y="81" width="712" height="180"/>
+                                        <rect key="frame" x="0.0" y="81" width="712" height="125"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="LNa-O1-5OU">
-                                                <rect key="frame" x="0.0" y="0.0" width="712" height="80"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="712" height="52.5"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iBI-dv-r2X" customClass="ReusableDropDown" customModule="bms" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="346" height="80"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="346" height="52.5"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     </view>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uy8-2d-Ji0">
-                                                        <rect key="frame" x="366" y="0.0" width="346" height="80"/>
+                                                        <rect key="frame" x="366" y="0.0" width="346" height="52.5"/>
                                                         <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" name="Inter-Regular_SemiBold" family="Inter" pointSize="18"/>
                                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -80,32 +80,32 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Mii-cw-uPu">
-                                                <rect key="frame" x="0.0" y="100" width="712" height="80"/>
+                                                <rect key="frame" x="0.0" y="72.5" width="712" height="52.5"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sjs-ep-ieg" customClass="ReusableDropDown" customModule="bms" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="346" height="80"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="346" height="52.5"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z9L-yy-9fv" customClass="ReusableDropDown" customModule="bms" customModuleProvider="target">
-                                                        <rect key="frame" x="366" y="0.0" width="346" height="80"/>
+                                                        <rect key="frame" x="366" y="0.0" width="346" height="52.5"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     </view>
                                                 </subviews>
                                             </stackView>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="180" id="kMW-vL-aMG"/>
+                                            <constraint firstAttribute="height" constant="125" id="kMW-vL-aMG"/>
                                         </constraints>
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VmJ-1y-b7s">
-                                        <rect key="frame" x="0.0" y="291" width="712" height="20"/>
+                                        <rect key="frame" x="0.0" y="236" width="712" height="20"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="81l-1I-Lzy"/>
                                         </constraints>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="zg8-3Q-fWq">
-                                        <rect key="frame" x="0.0" y="341" width="712" height="50"/>
+                                        <rect key="frame" x="0.0" y="286" width="712" height="50"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zPE-29-CuO">
                                                 <rect key="frame" x="206" y="0.0" width="300" height="50"/>
