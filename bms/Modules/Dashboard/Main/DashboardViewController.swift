@@ -224,6 +224,7 @@ extension DashboardViewController:UITableViewDataSource{
                 if(response.response != ""){
                     activityList.remove(at: indexPath.row)
                     activityTable.deleteRows(at: [indexPath], with: .fade)
+                    activityTable.reloadData()
                 }else{
                     Utils.displayAlert(title: "Error", message: response.message ?? "Something went wrong.")
                 }
