@@ -17,6 +17,7 @@ class ReusableFormHelper {
 
         let pickerController = DKImagePickerController()
         pickerController.singleSelect = isSingleSelect
+        UINavigationBar.appearance().backgroundColor = UIColor.BMS.theme
 
         if !isSingleSelect && maxCount > 0 {
             pickerController.maxSelectableCount = maxCount
