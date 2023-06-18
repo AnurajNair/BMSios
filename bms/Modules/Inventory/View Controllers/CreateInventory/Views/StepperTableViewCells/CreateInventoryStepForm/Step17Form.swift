@@ -12,12 +12,12 @@ class Step17Form: NSObject, StepperTableViewCellFormProtocol {
     private let itemsPerRow: CGFloat = 1
 
     let fields = Array(["": ["Place at 50 mm distance"],
-                        "Cross girder": ["No. of nipple along legth of the girder",
+                        "Cross girder": ["No. of nipple along length of the girder",
                                                 "No. of nipple across depth of the girder", "Porous Volume",
                                                 "Total no. of nipples in side of the girder", "Total no. of nipples in a girder",
                                          "Total no. of nipples in the bridge"],
                         "Top Slab (grouting to be done from the top)": ["No. of nipples across the width of Slab",
-                                                  "No. of nipples along the legth of slab",
+                                                  "No. of nipples along the length of slab",
                                                   "Total no. of nipples in a slab of a span",
                                                   "Total no. of nipples in the bridge", "Pier Cap", "Total nipples"]])
 

@@ -12,7 +12,7 @@ class Step16Form: NSObject, StepperTableViewCellFormProtocol {
     private let itemsPerRow: CGFloat = 1
 
     let fields = [(sectionName: "Main Girder", fields: ["Place at 50 mm distance"]),
-                  (sectionName: "Side of Main girder", fields: ["No. of nipple along legth of the girder",
+                  (sectionName: "Side of Main girder", fields: ["No. of nipple along length of the girder",
                                                                 "No. of nipple along depth of the girder", "Porous Volume",
                                                                 "Total no. of nipples in side of the girder"]),
                   (sectionName: "Bottom of Main girder", fields: ["No. of nipple",
