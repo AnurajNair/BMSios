@@ -14,12 +14,13 @@ protocol formViewControllerDelegate: AnyObject {
 
 class FormViewController: UIViewController, UICollectionViewDataSource {
     let itemsPerRow: CGFloat = 1
-    
+    let itemsPerRowForGeneralSec: CGFloat = 2
+
     private let sectionInsets = UIEdgeInsets(
-      top: 20.0,
-      left: 20.0,
-      bottom: 20.0,
-      right: 20.0)
+      top: 10.0,
+      left: 10.0,
+      bottom: 10.0,
+      right: 10.0)
    
     @IBOutlet weak var collection: UICollectionView!
     
@@ -34,7 +35,9 @@ class FormViewController: UIViewController, UICollectionViewDataSource {
         return questions.map {$0} as [Question]
     }
   
-    
+    private var isGeneralDetailsSection: Bool {
+        formDetails?.sectionName == "General Details"
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,7 +62,7 @@ class FormViewController: UIViewController, UICollectionViewDataSource {
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return (questions.count > 0 && formDetails?.sectionName != "General Details") ? questions.count+1 : questions.count
+        return (questions.count > 0 && !isGeneralDetailsSection) ? questions.count+1 : questions.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -144,10 +147,12 @@ extension FormViewController:UICollectionViewDelegateFlowLayout{
          guard indexPath.row != questions.count else {
             return  CGSize(width: collectionView.bounds.width, height: 600)
          }
-         //Other Fields
+         let itemsPerRow = isGeneralDetailsSection ? itemsPerRowForGeneralSec : itemsPerRow
          let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
-         let availableWidth = collectionView.bounds.width - paddingSpace
-             let widthPerItem = availableWidth / itemsPerRow
+         let fullWidth = collectionView.bounds.width
+         let availableWidth = fullWidth - paddingSpace
+         let isLastOddIndexQuestion = isGeneralDetailsSection && (indexPath.row == questions.count-1) && (indexPath.section%2 == 0) // for last question of general details section that is on odd number in position give full width
+         let widthPerItem = isLastOddIndexQuestion ? fullWidth : availableWidth / itemsPerRow
              
          return CGSize(width: widthPerItem, height: 100)
      }

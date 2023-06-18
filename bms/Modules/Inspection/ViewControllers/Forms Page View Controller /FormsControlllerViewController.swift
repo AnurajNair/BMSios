@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 
 
@@ -31,6 +32,7 @@ class FormsControlllerViewController: UIViewController {
         }
     }
     var questionnaireForm:InspectionQuestionnaire?
+    private var sections: [FormSection] = []
     var inspectionType: InspectionType?
     var isCurrentVcLast: Bool {
         let count = questionnaireForm?.sections.count
@@ -39,16 +41,84 @@ class FormsControlllerViewController: UIViewController {
         }
         return currentViewControllerIndex == count - 1
     }
-
+    private let generalDetailsSectionIndex = 0
     private lazy var router = InspctionRouterManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .lightGray
+        setupSections()
         setupView()
         setupPageController()
         setupProgressCollection()
         setupButton()
+    }
+
+    private func setupSections() {
+        guard let formSections = questionnaireForm?.sections else {
+            return
+        }
+        var formSectionsArray = formSections.map { $0 } as [FormSection]
+        let generalSections = getGeneralSection()
+        formSectionsArray.insert(generalSections, at: 0)
+        sections = formSectionsArray
+    }
+
+    private func getGeneralSection() -> FormSection {
+        let generalSection = FormSection()
+        generalSection.sectionIndex = 0
+        generalSection.sectionName = "General Details"
+        
+        let subSection = FormSubSection()
+        subSection.subSectionIndex = 0
+        subSection.subSectionName = "Basic Details"
+        
+        let question1 = Question()
+        question1.question = "Inspection Name"
+        question1.response = questionnaireForm?.inspectionName
+        question1.questionIndex = 0
+        
+        let question2 = Question()
+        question2.question = "Bridge Name"
+        question2.response = questionnaireForm?.bridgeName
+        question2.questionIndex = 1
+        
+        let question3 = Question()
+        question3.question = "BUID"
+        question3.response = questionnaireForm?.buid
+        question3.questionIndex = 2
+        
+        let question4 = Question()
+        question4.question = "Next Review Date"
+        question4.response = questionnaireForm?.nextReviewDateAsString
+        question4.questionIndex = 3
+        
+        let question5 = Question()
+        question5.question = "Start Date"
+        question5.response = questionnaireForm?.startDateAsString
+        question5.questionIndex = 4
+        
+        let question6 = Question()
+        question6.question = "End Date"
+        question6.response = questionnaireForm?.endDateAsString
+        question6.questionIndex = 5
+        
+        let question7 = Question()
+        question7.question = "Description"
+        question7.response = questionnaireForm?.desc
+        question7.questionIndex = 6
+        
+        let questions = [question1, question2, question3, question4, question5, question6, question7]
+        let questionsList = List<Question>()
+        questionsList.append(objectsIn: questions)
+        subSection.questions = questionsList
+        
+        let subSections = List<FormSubSection>()
+        subSections.append(subSection)
+
+        generalSection.subSections = subSections
+        
+        return generalSection
     }
 
     private func setupView() {
@@ -91,8 +161,8 @@ class FormsControlllerViewController: UIViewController {
            return pages[index]
         }
         let viewController = NavigationRoute.inspectionsStoryboard().instantiateViewController(withIdentifier: "FormViewController") as! FormViewController
-        guard index < questionnaireForm?.sections.count ?? 0 else { return viewController }
-        let section = questionnaireForm?.sections[index]
+        guard index < sections.count else { return viewController }
+        let section = sections[index]
         viewController.formDetails = section
         viewController.delegate = self
         pages.append(viewController)
@@ -115,17 +185,29 @@ class FormsControlllerViewController: UIViewController {
             saveData()
             return
         }
-        saveData()
+        saveData() //should be before updating current vc index
         currentViewControllerIndex += 1
         movePage(direction: .forward)
         setNextButtonTitle()
     }
 
     func setNextButtonTitle() {
-        nextBtn.setTitle(isCurrentVcLast ? "Submit" : "Save & Continue", for: .normal)
+        let title: String
+        if currentViewControllerIndex == generalDetailsSectionIndex {
+            title = "Next"
+        } else if isCurrentVcLast {
+            title = "Submit"
+        } else {
+            title = "Save & Continue"
+
+        }
+        nextBtn.setTitle(title , for: .normal)
     }
 
     func saveData() {
+        guard currentViewControllerIndex != generalDetailsSectionIndex else  {
+            return
+        }
         if inspectionType == .inspect {
             saveInspection(status: isCurrentVcLast ? .submitted : .draft, index: currentViewControllerIndex)
         } else if inspectionType == .review {
@@ -137,10 +219,10 @@ class FormsControlllerViewController: UIViewController {
         saveRequest.inspectionAssignId = questionnaireForm?.id
         saveRequest.inspectionStatus = status.rawValue
         var responses: [[String: Any]] = []
-        guard index < questionnaireForm?.sections.count ?? 0,
-                let section = questionnaireForm?.sections[index] else {
+        guard index < sections.count else {
             return
         }
+        let section = sections[index]
         section.subSections.forEach { subSection in
             subSection.questions.forEach { question in
                 let response = ["questionid" : question.questionId,
@@ -175,10 +257,11 @@ class FormsControlllerViewController: UIViewController {
         saveRequest.inspectionAssignId = questionnaireForm?.id
         saveRequest.inspectionStatus = status.rawValue
         var reviews: [[String: Any]] = []
-        guard index < questionnaireForm?.sections.count ?? 0,
-                let section = questionnaireForm?.sections[index] else {
+        guard index < sections.count
+                else {
             return
         }
+        let section = sections[index]
         section.subSections.forEach { subSection in
             subSection.questions.forEach { question in
                 let review = ["questionid" : question.questionId,
@@ -222,7 +305,7 @@ extension FormsControlllerViewController: UIPageViewControllerDataSource, UIPage
         guard let currentVC = viewController as? FormViewController else {
             return nil
         }
-        let index = questionnaireForm?.sections.firstIndex(where: { section in
+        let index = sections.firstIndex(where: { section in
             section.sectionName == currentVC.formDetails?.sectionName
         })
 
@@ -241,11 +324,11 @@ extension FormsControlllerViewController: UIPageViewControllerDataSource, UIPage
             return nil
         }
         
-        let index = questionnaireForm?.sections.firstIndex(where: { section in
+        let index = sections.firstIndex(where: { section in
             section.sectionName == currentVC.formDetails?.sectionName
         })
         
-        guard let index = index, index < (self.questionnaireForm?.sections.count ?? 0) - 1 else {
+        guard let index = index, index < sections.count - 1 else {
             return nil
         }
         
@@ -255,7 +338,7 @@ extension FormsControlllerViewController: UIPageViewControllerDataSource, UIPage
     }
     
     func presentationCount(for pageViewController: UIPageViewController) -> Int {
-        return questionnaireForm?.sections.count ?? 1
+        return sections.count
     }
     
     func presentationIndex(for pageViewController: UIPageViewController) -> Int {
@@ -273,7 +356,7 @@ extension FormsControlllerViewController:UICollectionViewDelegate {
 
 extension FormsControlllerViewController:UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return questionnaireForm?.sections.count ?? 0
+        return sections.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -281,9 +364,9 @@ extension FormsControlllerViewController:UICollectionViewDataSource {
             return UICollectionViewCell()
         }
         let index = indexPath.row
-        let section = self.questionnaireForm?.sections[index]
+        let section = sections[index]
         cell.configHeader(stepNo: index+1,
-                          title: section?.sectionName ?? "",
+                          title: section.sectionName ?? "",
                           isActive: currentViewControllerIndex == index)
         return cell
     }

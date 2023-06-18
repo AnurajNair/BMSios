@@ -13,11 +13,11 @@ class ProgressCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var stepNoLabel: UILabel!
     @IBOutlet weak var progressLabel: UILabel!
     private var activeLabelStyle: Styler.textStyle {
-        Styler.textStyle(font: UIFont.BMS.InterSemiBold.withSize(24),
+        Styler.textStyle(font: UIFont.BMS.InterSemiBold.withSize(20),
                          color: UIColor.BMS.fontBlack)
     }
     private var inactiveLabelStyle: Styler.textStyle {
-        Styler.textStyle(font: UIFont.BMS.InterRegular.withSize(24),
+        Styler.textStyle(font: UIFont.BMS.InterRegular.withSize(20),
                          color: UIColor.BMS.fontBlack)
     }
     class var identifier: String { return String(describing: self) }
