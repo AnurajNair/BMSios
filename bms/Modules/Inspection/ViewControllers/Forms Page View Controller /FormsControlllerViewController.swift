@@ -25,7 +25,11 @@ class FormsControlllerViewController: UIViewController {
     var pageController: CustomPageViewController?
     var pages: [FormViewController] = []
 
-    var currentViewControllerIndex = 0
+    var currentViewControllerIndex = 0 {
+        didSet {
+            setupButton()
+        }
+    }
     var questionnaireForm:InspectionQuestionnaire?
     var inspectionType: InspectionType?
     var isCurrentVcLast: Bool {
@@ -44,12 +48,17 @@ class FormsControlllerViewController: UIViewController {
         setupView()
         setupPageController()
         setupProgressCollection()
+        setupButton()
     }
 
     private func setupView() {
         UILabel.style([(view: formTitleLabel, style: TextStyles.ScreenHeaderTitle)])
         formTitleLabel.text =  inspectionType == .review ? "Review Inspection Form " : "Inspection Form"
         setNextButtonTitle()
+    }
+
+    private func setupButton() {
+        previousBtn.isHidden = currentViewControllerIndex == 0 //First vc
     }
 
     private func setupPageController() {
