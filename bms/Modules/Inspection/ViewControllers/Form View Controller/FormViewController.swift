@@ -94,11 +94,13 @@ class FormViewController: UIViewController, UICollectionViewDataSource {
         let textFieldStyler = TTTextFieldStyler.userDetailsStyle
         let formStyler = TTFormElementViewStyler.userDetailsStyle
         let isRequired = question.isMandatory
-        
+        let isEditable = !isGeneralDetailsSection
+
         if(question.questionTypeEnum == .text) {
             _ = cell.collectionFormElement.setupTextField(id: indexPath,
                                                           fieldTitle: questionText,
                                                           fieldValue: response,
+                                                          isEditable: isEditable,
                                                           isRequired: isRequired,
                                                           textFieldStyling: textFieldStyler,
                                                           formStyling: formStyler)
