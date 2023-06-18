@@ -231,6 +231,8 @@
 		3D63D36D2A0BF77F000C87EC /* AlternativeRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D63D36C2A0BF77F000C87EC /* AlternativeRoute.swift */; };
 		3D63D36F2A0CB951000C87EC /* InspectionSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D63D36E2A0CB951000C87EC /* InspectionSummary.swift */; };
 		3D63D3712A0D20C1000C87EC /* Reviewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D63D3702A0D20C1000C87EC /* Reviewer.swift */; };
+		3D7EB50E2A06E3F400A72C66 /* User.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D7EB5092A06E3F300A72C66 /* User.storyboard */; };
+		3D7EB50F2A06E3F400A72C66 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7EB50B2A06E3F300A72C66 /* UserProfileViewController.swift */; };
 		3D7EB5122A07767500A72C66 /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7EB5112A07767500A72C66 /* DataStore.swift */; };
 		3D7EB5612A094F1700A72C66 /* BridgePropertiesMaster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7EB5602A094F1700A72C66 /* BridgePropertiesMaster.swift */; };
 		3D7EB5632A0A0C1100A72C66 /* BasicDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7EB5622A0A0C1100A72C66 /* BasicDetails.swift */; };
@@ -243,8 +245,6 @@
 		3D7EB5732A0A257A00A72C66 /* ExpansionJointType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7EB5722A0A257A00A72C66 /* ExpansionJointType.swift */; };
 		3D7EB5772A0A25ED00A72C66 /* BearingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7EB5762A0A25ED00A72C66 /* BearingType.swift */; };
 		3D7EB57A2A0A767B00A72C66 /* SelfInspectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7EB5792A0A767B00A72C66 /* SelfInspectionViewController.swift */; };
-		3D7EB50E2A06E3F400A72C66 /* User.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D7EB5092A06E3F300A72C66 /* User.storyboard */; };
-		3D7EB50F2A06E3F400A72C66 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7EB50B2A06E3F300A72C66 /* UserProfileViewController.swift */; };
 		3D7FD3EB29ED1C4000C6AC4C /* Bridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7FD3E929ED1C3F00C6AC4C /* Bridge.swift */; };
 		3D7FD3EC29ED1C4000C6AC4C /* BridgeList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7FD3EA29ED1C4000C6AC4C /* BridgeList.swift */; };
 		3D8190FC29D9736600C2BF3B /* CreateInventoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8190FB29D9736600C2BF3B /* CreateInventoryViewController.swift */; };
@@ -526,6 +526,8 @@
 		3D63D36C2A0BF77F000C87EC /* AlternativeRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlternativeRoute.swift; sourceTree = "<group>"; };
 		3D63D36E2A0CB951000C87EC /* InspectionSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectionSummary.swift; sourceTree = "<group>"; };
 		3D63D3702A0D20C1000C87EC /* Reviewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reviewer.swift; sourceTree = "<group>"; };
+		3D7EB5092A06E3F300A72C66 /* User.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = User.storyboard; sourceTree = "<group>"; };
+		3D7EB50B2A06E3F300A72C66 /* UserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		3D7EB5112A07767500A72C66 /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
 		3D7EB5602A094F1700A72C66 /* BridgePropertiesMaster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BridgePropertiesMaster.swift; sourceTree = "<group>"; };
 		3D7EB5622A0A0C1100A72C66 /* BasicDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicDetails.swift; sourceTree = "<group>"; };
@@ -538,8 +540,6 @@
 		3D7EB5722A0A257A00A72C66 /* ExpansionJointType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpansionJointType.swift; sourceTree = "<group>"; };
 		3D7EB5762A0A25ED00A72C66 /* BearingType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BearingType.swift; sourceTree = "<group>"; };
 		3D7EB5792A0A767B00A72C66 /* SelfInspectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfInspectionViewController.swift; sourceTree = "<group>"; };
-		3D7EB5092A06E3F300A72C66 /* User.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = User.storyboard; sourceTree = "<group>"; };
-		3D7EB50B2A06E3F300A72C66 /* UserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		3D7FD3E929ED1C3F00C6AC4C /* Bridge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bridge.swift; sourceTree = "<group>"; };
 		3D7FD3EA29ED1C4000C6AC4C /* BridgeList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BridgeList.swift; sourceTree = "<group>"; };
 		3D8190FB29D9736600C2BF3B /* CreateInventoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateInventoryViewController.swift; sourceTree = "<group>"; };
@@ -1804,45 +1804,6 @@
 			path = FormElements;
 			sourceTree = "<group>";
 		};
-		3D7EB5102A07763500A72C66 /* DataStore */ = {
-			isa = PBXGroup;
-			children = (
-				3D7EB5112A07767500A72C66 /* DataStore.swift */,
-			);
-			path = DataStore;
-			sourceTree = "<group>";
-		};
-		3D7EB55F2A094F0900A72C66 /* Masters */ = {
-			isa = PBXGroup;
-			children = (
-				3D7EB5602A094F1700A72C66 /* BridgePropertiesMaster.swift */,
-				3D63D3662A0BF3CA000C87EC /* AddOnBridgeMaster.swift */,
-				3D7EB5622A0A0C1100A72C66 /* BasicDetails.swift */,
-				3D63D36C2A0BF77F000C87EC /* AlternativeRoute.swift */,
-				3D63D36E2A0CB951000C87EC /* InspectionSummary.swift */,
-				3D7EB5662A0A251A00A72C66 /* WearingCoarseType.swift */,
-				3D7EB5722A0A257A00A72C66 /* ExpansionJointType.swift */,
-				3D7EB5762A0A25ED00A72C66 /* BearingType.swift */,
-				3D7EB5702A0A257800A72C66 /* RailingType.swift */,
-				3D63D3682A0BF688000C87EC /* TypeOfCarriageWayFirstDigit.swift */,
-				3D63D36A2A0BF6F9000C87EC /* TypeOfCarriageWaySecondDigit.swift */,
-				3D7EB56E2A0A257600A72C66 /* SubStructureType.swift */,
-				3D7EB5682A0A251C00A72C66 /* FoundationType.swift */,
-				3D7EB56A2A0A251E00A72C66 /* SuperStructureType.swift */,
-				3D7EB5642A0A24E800A72C66 /* BridgeType.swift */,
-			);
-			path = Masters;
-			sourceTree = "<group>";
-		};
-		3D7EB5782A0A765600A72C66 /* SelfInspection */ = {
-			isa = PBXGroup;
-			children = (
-				3D7EB5792A0A767B00A72C66 /* SelfInspectionViewController.swift */,
-				3D63D3622A0BBDCD000C87EC /* RegisterBridgeViewController.swift */,
-			);
-			path = SelfInspection;
-			sourceTree = "<group>";
-		};
 		3D7EB5072A06E3F300A72C66 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
@@ -1882,6 +1843,45 @@
 			children = (
 			);
 			path = Router;
+			sourceTree = "<group>";
+		};
+		3D7EB5102A07763500A72C66 /* DataStore */ = {
+			isa = PBXGroup;
+			children = (
+				3D7EB5112A07767500A72C66 /* DataStore.swift */,
+			);
+			path = DataStore;
+			sourceTree = "<group>";
+		};
+		3D7EB55F2A094F0900A72C66 /* Masters */ = {
+			isa = PBXGroup;
+			children = (
+				3D7EB5602A094F1700A72C66 /* BridgePropertiesMaster.swift */,
+				3D63D3662A0BF3CA000C87EC /* AddOnBridgeMaster.swift */,
+				3D7EB5622A0A0C1100A72C66 /* BasicDetails.swift */,
+				3D63D36C2A0BF77F000C87EC /* AlternativeRoute.swift */,
+				3D63D36E2A0CB951000C87EC /* InspectionSummary.swift */,
+				3D7EB5662A0A251A00A72C66 /* WearingCoarseType.swift */,
+				3D7EB5722A0A257A00A72C66 /* ExpansionJointType.swift */,
+				3D7EB5762A0A25ED00A72C66 /* BearingType.swift */,
+				3D7EB5702A0A257800A72C66 /* RailingType.swift */,
+				3D63D3682A0BF688000C87EC /* TypeOfCarriageWayFirstDigit.swift */,
+				3D63D36A2A0BF6F9000C87EC /* TypeOfCarriageWaySecondDigit.swift */,
+				3D7EB56E2A0A257600A72C66 /* SubStructureType.swift */,
+				3D7EB5682A0A251C00A72C66 /* FoundationType.swift */,
+				3D7EB56A2A0A251E00A72C66 /* SuperStructureType.swift */,
+				3D7EB5642A0A24E800A72C66 /* BridgeType.swift */,
+			);
+			path = Masters;
+			sourceTree = "<group>";
+		};
+		3D7EB5782A0A765600A72C66 /* SelfInspection */ = {
+			isa = PBXGroup;
+			children = (
+				3D7EB5792A0A767B00A72C66 /* SelfInspectionViewController.swift */,
+				3D63D3622A0BBDCD000C87EC /* RegisterBridgeViewController.swift */,
+			);
+			path = SelfInspection;
 			sourceTree = "<group>";
 		};
 		3D8190FA29D9731700C2BF3B /* CreateInventory */ = {
@@ -2629,7 +2629,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = R4KLA4XQ55;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -2756,7 +2756,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = R4KLA4XQ55;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -2883,7 +2883,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = R4KLA4XQ55;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -3069,7 +3069,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = R4KLA4XQ55;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -3104,7 +3104,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = R4KLA4XQ55;
 				GENERATE_INFOPLIST_FILE = YES;
