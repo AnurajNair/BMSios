@@ -243,6 +243,8 @@
 		3D7EB5732A0A257A00A72C66 /* ExpansionJointType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7EB5722A0A257A00A72C66 /* ExpansionJointType.swift */; };
 		3D7EB5772A0A25ED00A72C66 /* BearingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7EB5762A0A25ED00A72C66 /* BearingType.swift */; };
 		3D7EB57A2A0A767B00A72C66 /* SelfInspectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7EB5792A0A767B00A72C66 /* SelfInspectionViewController.swift */; };
+		3D7EB50E2A06E3F400A72C66 /* User.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D7EB5092A06E3F300A72C66 /* User.storyboard */; };
+		3D7EB50F2A06E3F400A72C66 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7EB50B2A06E3F300A72C66 /* UserProfileViewController.swift */; };
 		3D7FD3EB29ED1C4000C6AC4C /* Bridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7FD3E929ED1C3F00C6AC4C /* Bridge.swift */; };
 		3D7FD3EC29ED1C4000C6AC4C /* BridgeList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7FD3EA29ED1C4000C6AC4C /* BridgeList.swift */; };
 		3D8190FC29D9736600C2BF3B /* CreateInventoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8190FB29D9736600C2BF3B /* CreateInventoryViewController.swift */; };
@@ -536,6 +538,8 @@
 		3D7EB5722A0A257A00A72C66 /* ExpansionJointType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpansionJointType.swift; sourceTree = "<group>"; };
 		3D7EB5762A0A25ED00A72C66 /* BearingType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BearingType.swift; sourceTree = "<group>"; };
 		3D7EB5792A0A767B00A72C66 /* SelfInspectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfInspectionViewController.swift; sourceTree = "<group>"; };
+		3D7EB5092A06E3F300A72C66 /* User.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = User.storyboard; sourceTree = "<group>"; };
+		3D7EB50B2A06E3F300A72C66 /* UserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		3D7FD3E929ED1C3F00C6AC4C /* Bridge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bridge.swift; sourceTree = "<group>"; };
 		3D7FD3EA29ED1C4000C6AC4C /* BridgeList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BridgeList.swift; sourceTree = "<group>"; };
 		3D8190FB29D9736600C2BF3B /* CreateInventoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateInventoryViewController.swift; sourceTree = "<group>"; };
@@ -656,6 +660,7 @@
 		1D01C28F293BA4F700F9AC9B /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				3D7EB5072A06E3F300A72C66 /* Profile */,
 				1D3279DB28FDA12900077777 /* OnBoard */,
 				1D3279DC28FDA13C00077777 /* Dashboard */,
 				1D9A248329073191000D2A39 /* Inspection */,
@@ -1838,6 +1843,47 @@
 			path = SelfInspection;
 			sourceTree = "<group>";
 		};
+		3D7EB5072A06E3F300A72C66 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				3D7EB5082A06E3F300A72C66 /* storyboard */,
+				3D7EB50A2A06E3F300A72C66 /* ViewControllers */,
+				3D7EB50C2A06E3F300A72C66 /* Model */,
+				3D7EB50D2A06E3F300A72C66 /* Router */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		3D7EB5082A06E3F300A72C66 /* storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				3D7EB5092A06E3F300A72C66 /* User.storyboard */,
+			);
+			path = storyboard;
+			sourceTree = "<group>";
+		};
+		3D7EB50A2A06E3F300A72C66 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				3D7EB50B2A06E3F300A72C66 /* UserProfileViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		3D7EB50C2A06E3F300A72C66 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		3D7EB50D2A06E3F300A72C66 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
 		3D8190FA29D9731700C2BF3B /* CreateInventory */ = {
 			isa = PBXGroup;
 			children = (
@@ -2065,6 +2111,7 @@
 				1D34C67D28FEB4F000A8BAF3 /* LogoView.xib in Resources */,
 				3D45AA1329E1676600A83397 /* InventoryListTableViewCell.xib in Resources */,
 				1D2E17C72913FE5300214593 /* ProgressCollectionViewCell.xib in Resources */,
+				3D7EB50E2A06E3F400A72C66 /* User.storyboard in Resources */,
 				1D5B74BE28FC42B40053B079 /* ReusableEmptyStateView.xib in Resources */,
 				1D9A2482290725C6000D2A39 /* ReusableTitleView.xib in Resources */,
 				1D5B748728FAC9A40053B079 /* CustomNavigationTitleView.xib in Resources */,
@@ -2271,6 +2318,7 @@
 				3D45A9EF29E0BDB200A83397 /* EmptyForm.swift in Sources */,
 				3D45AA1D29E3092700A83397 /* Step10Form.swift in Sources */,
 				1D5E2E7D2906DCF3005D83C0 /* SideMenuViewController.swift in Sources */,
+				3D7EB50F2A06E3F400A72C66 /* UserProfileViewController.swift in Sources */,
 				1D4CB3482900811A00B152CF /* FormElementTableViewCell.swift in Sources */,
 				1D5B749428FACB9D0053B079 /* ReusablePopupViewController.swift in Sources */,
 				1D6473552942693500EDD9ED /* APIConstants.swift in Sources */,

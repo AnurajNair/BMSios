@@ -37,7 +37,8 @@ class SideMenuViewController: UIViewController {
     var selectedCellIndexPath: IndexPath?
     
     @IBOutlet weak var onLogOutClick: UIView!
-    
+    @IBOutlet weak var onProfileClick: UIView!
+
     var data: [SideMenuModel] = []
     
     var delegate: SideMenuViewControllerDelegate?
@@ -52,6 +53,10 @@ class SideMenuViewController: UIViewController {
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(onLogoutClick))
         self.onLogOutClick.addGestureRecognizer(tap)
+
+        let profiletap = UITapGestureRecognizer(target: self, action: #selector(onProfileClickAction))
+        self.onProfileClick.addGestureRecognizer(profiletap)
+
         data = getSideMenu()
 
         guard let user = SessionDetails.getInstance().currentUser else { return }
@@ -103,6 +108,9 @@ class SideMenuViewController: UIViewController {
    
     }
     
+    @objc func onProfileClickAction() {
+        Navigate.routeUserToScreen(screenType: .profile, transitionType: .changeSlider)
+    }
     func setupTableView(){
         // TableView
         self.sideMenuTableView.delegate = self
@@ -131,7 +139,8 @@ class SideMenuViewController: UIViewController {
     }
     func setSelectedSideMenu(indexPath:IndexPath){
         let sectionData = data[indexPath.row]
-        let change = self.data.map { e in
+        
+        let change = self.data.map { e -> SideMenuModel in
             var c = e
             if(c.title == sectionData.title){
                 c.isSelected = true
@@ -147,7 +156,7 @@ class SideMenuViewController: UIViewController {
         print("changed Data",data)
         self.sideMenuTableView.reloadData()
     }
-    
+    //UserProfileViewController
     @objc func onLogoutClick(){
       print("click")
         _ = Utils.displayAlertController("Alert", message: "Are you sure to logout?",isSingleBtn: false,cancelButtonTitle: "No",submitButtonTitle: "Yes") {

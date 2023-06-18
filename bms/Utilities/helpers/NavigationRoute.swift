@@ -31,7 +31,7 @@ class NavigationRoute: Navigate {
         serverDownScreen,
         imagePicker,
         imageCropper,
-        
+        profile,
         popUpView,
         
         //Onboarding
@@ -70,6 +70,7 @@ class NavigationRoute: Navigate {
             case .inspectionListScreen :return (NavigationRoute.getInspectionList(data), "" )
             case .selfInspectionScreen :return (NavigationRoute.getSelfInspection(), "" )
             case .registerBridge: return (NavigationRoute.getRegisterBridge(data), "" )
+            case .profile : return (NavigationRoute.getProfile(), "" )
             case .routineInspbridgeDetailScreen :return (NavigationRoute.getRoutineInspBridgeDetail(data), "")
 
             case.inventoryListScreen:return (NavigationRoute.getInventoryList(), "" )
@@ -311,6 +312,13 @@ class NavigationRoute: Navigate {
         
     }
 
+    
+    class func getProfile(_ data:[String:Any] = [:]) -> UserProfileViewController
+    {
+        let vc = UIStoryboard.init(name: "User", bundle: Bundle.main).instantiateViewController(withIdentifier: "UserProfileViewController") as! UserProfileViewController
+        return vc
+    }
+    
     class func getRoutineInspBridgeDetail(_ data:[String:Any] = [:]) -> FormsControlllerViewController {
         let viewController =  inspectionsStoryboard().instantiateViewController(withIdentifier: "FormsControlllerViewController") as! FormsControlllerViewController
         
