@@ -55,8 +55,8 @@ class DashboardViewController: UIViewController {
         self.statsCollectionView.delegate = self
         self.statsCollectionView.dataSource = self
         self.statsCollectionView.registerNibs(["DashboardStatsCollectionViewCell"])
+        self.statsCollectionView.registerReusableHeaderNibs([DashboardStatsCollectionReusableView.identifier])
         self.statsCollectionView.layoutIfNeeded()
-      
     }
     
     func setupTableView(){
@@ -80,8 +80,27 @@ class DashboardViewController: UIViewController {
 
 extension DashboardViewController:UICollectionViewDelegate{
     
-
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let view = collectionView.dequeueReusableSupplementaryView(
+              ofKind: kind,
+              withReuseIdentifier: DashboardStatsCollectionReusableView.identifier,
+              for: indexPath)
+        
+        guard let view = view as? DashboardStatsCollectionReusableView,
+              indexPath.section < inspectionStats.count,
+                kind == UICollectionView.elementKindSectionHeader else  {
+            return UICollectionReusableView()
+        }
+        
+        let role = inspectionStats[indexPath.section].role
+        let title = role == .inspector ? "My Inspection" : "My Review"
+        view.titleLbl.text = title
+        return view
+    }
   
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        CGSize(width: collectionView.frame.size.width, height: 30)
+    }
 }
 
 extension DashboardViewController:UICollectionViewDelegateFlowLayout{
