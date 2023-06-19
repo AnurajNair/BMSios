@@ -89,7 +89,9 @@ class InventoryListViewController: UIViewController {
 
 extension InventoryListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        inventoryList.count
+        inventoryList.count == 0 ? tableView.setNoDataPlaceholder("No Inventory Found") : tableView.removeNoDataPlaceholder()
+
+        return inventoryList.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: InventoryListTableViewCell.identifier) as? InventoryListTableViewCell else {

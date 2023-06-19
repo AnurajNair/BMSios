@@ -112,6 +112,9 @@ struct TextStyles {
     static let RespondedStatusStyle : Styler.textStyle = (UIFont.BMS.InterBold.withSize(6), UIColor.BMS.fontWhite)
     
     static let DashboardHeaderStyle : Styler.textStyle = (UIFont.BMS.InterBold.withSize(24), UIColor.BMS.fontBlack)
+
+    static let NoRecordPlaceholderStyle : Styler.textStyle = (UIFont.BMS.InterBold.withSize(24), UIColor.BMS.fontBlack)
+
 }
 
 struct ButtonStyles {

@@ -15,6 +15,7 @@ class DashboardViewController: UIViewController {
     var inspectionStats: [(role: UserRole, data: InspectionStatsModel)] = []
     let itemsPerRow: CGFloat = 4
     
+    @IBOutlet weak var noRecordLabel: UILabel!
     @IBOutlet weak var activityTable: UITableView!
     private let sectionInsets = UIEdgeInsets(
       top: 20.0,
@@ -187,6 +188,7 @@ extension DashboardViewController:UITableViewDelegate{
 
 extension DashboardViewController:UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        activityList.count == 0 ? tableView.setNoDataPlaceholder("No activities yet") : tableView.removeNoDataPlaceholder()
         return self.activityList.count
     }
     

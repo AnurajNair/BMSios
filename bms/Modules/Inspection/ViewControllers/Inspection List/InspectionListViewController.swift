@@ -113,6 +113,9 @@ extension InspectionListViewController:UITableViewDataSource{
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        let noRecordMessage = inspectionType == .inspect ? "No Inspections are assigned yet" : "No Review Inspections are assigned yet"
+        inspectionList.count == 0 ? tableView.setNoDataPlaceholder(noRecordMessage) : tableView.removeNoDataPlaceholder()
+
         return self.inspectionList.count
     }
     

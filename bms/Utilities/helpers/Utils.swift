@@ -750,6 +750,25 @@ extension UITableView {
             self.addSubview(refreshControl)
         }
     }
+
+    func setNoDataPlaceholder(_ message: String) {
+        let label = UILabel(frame: CGRect(x: 0, y: 0, width: self.bounds.size.width, height: self.bounds.size.height))
+        UILabel.style([(view: label, style: TextStyles.NoRecordPlaceholderStyle)])
+        label.text = message
+        label.textAlignment = .center
+        // styling
+        label.sizeToFit()
+        
+        self.isScrollEnabled = false
+        self.backgroundView = label
+        self.separatorStyle = .none
+    }
+
+    func removeNoDataPlaceholder() {
+        self.isScrollEnabled = true
+        self.backgroundView = nil
+        self.separatorStyle = .singleLine
+    }
 }
 
 extension UIView{
