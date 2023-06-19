@@ -394,7 +394,10 @@ class LoginViewController: UIViewController{
         let components = role.getAllDistinctComponents()
         //2 - Inventory, 5 - review insp, 6 - perform insp, 11- self insp sohuld only be authorised
         let isAuthorised = components.contains {
-            $0.componentId == 2 || $0.componentId == 5 || $0.componentId == 6 || $0.componentId == 11
+            $0.componentId == ComponentType.createInventory.rawValue ||
+            $0.componentId == ComponentType.reviewInspection.rawValue ||
+            $0.componentId == ComponentType.performInspection.rawValue ||
+            $0.componentId == ComponentType.selfInspection.rawValue
         }
         return isAuthorised
     }

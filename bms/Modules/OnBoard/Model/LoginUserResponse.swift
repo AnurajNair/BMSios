@@ -94,7 +94,16 @@ class Profile:RequestBody{
 class RoleObj:RequestBody{
     var roles = List<Role>()
     lazy var rolesAsEnum = {
-        roles.compactMap { UserRole(rawValue: $0.roleId)} as [UserRole]
+        var roles: [UserRole] = []
+        let comp = getAllDistinctComponents()
+        comp.forEach { comp in
+            if comp.componentId == ComponentType.performInspection.rawValue {
+                roles.append(.inspector)
+            } else if comp.componentId == ComponentType.reviewInspection.rawValue {
+                roles.append(.reviewer)
+            }
+        }
+        return roles
     }()
     //    @objc dynamic var role :[Role]?
     
