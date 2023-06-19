@@ -210,7 +210,7 @@ class BaseNavigationViewController: UINavigationController, UINavigationControll
     
     func setRightButtons() {
         switch screenType {
-        case .homeScreen,.inspectionListScreen,.inventoryListScreen,.routineInspbridgeDetailScreen, .createInventoryScreen, .profile:
+        case .homeScreen,.inspectionListScreen,.inventoryListScreen,.routineInspbridgeDetailScreen, .createInventoryScreen, .selfInspectionScreen, .profile:
             rightBarButtonItems = [.skip,.clientName]
 //        case .friendsScreen:
 //            rightBarButtonItems = [.add]
@@ -294,7 +294,7 @@ class BaseNavigationViewController: UINavigationController, UINavigationControll
             
         }
         
-        if(screenType == .homeScreen || screenType == .inspectionListScreen  || screenType == .routineInspbridgeDetailScreen  || screenType == .inventoryListScreen || screenType == .createInventoryScreen || screenType == .profile){
+        if(screenType == .homeScreen || screenType == .inspectionListScreen  || screenType == .routineInspbridgeDetailScreen  || screenType == .inventoryListScreen || screenType == .createInventoryScreen || screenType == .selfInspectionScreen || screenType == .profile){
             self.navigationBar.frame.size.height = 58
             self.navigationBar.backgroundColor = UIColor.BMS.theme
         }else{
