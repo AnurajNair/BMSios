@@ -92,11 +92,12 @@ class Profile:RequestBody{
 
 
 class RoleObj:RequestBody{
-    var roles = List<Role>()
+    //made private to avoid direct use of it. Use below 'rolesAsEnum' for roles instead.
+    //as it has roles based on active components which is asked to use to decide role
+    private var roles = List<Role>()
     lazy var rolesAsEnum = {
         var roles: [UserRole] = []
-        let comp = getAllDistinctComponents()
-        comp.forEach { comp in
+        distinctComponents.forEach { comp in
             if comp.componentId == ComponentType.performInspection.rawValue {
                 roles.append(.inspector)
             } else if comp.componentId == ComponentType.reviewInspection.rawValue {
@@ -106,7 +107,10 @@ class RoleObj:RequestBody{
         return roles
     }()
     //    @objc dynamic var role :[Role]?
-    
+    lazy var distinctComponents:[Component] = {
+        getAllDistinctComponents()
+    }()
+
     enum ResponseKeys :String{
         case roles  = "roles"
         //      case role = "role"
@@ -119,17 +123,24 @@ class RoleObj:RequestBody{
     }
     
     override static func ignoredProperties() -> [String] {
-            return ["rolesAsEnum"]
+            return ["rolesAsEnum", "distinctComponents"]
     }
-
-    func getAllDistinctComponents() -> Set<Component> {
-        var components: Set<Component> = []
+    
+    private func getAllDistinctComponents() -> [Component] {
+        var components: [Component] = []
         roles.forEach { role in
-            guard components.isEmpty == false else {
-                components = Set(role.components)
-                return
+            components.append(contentsOf: role.components)
+        }
+        components = components.reduce([Component]()) { partialResult, component in
+            guard component.statusAsEnum == .active else {
+                return partialResult
             }
-            components = components.intersection(Set(role.components))
+            if partialResult.contains(where: { $0.componentId == component.componentId }) == false {
+                var merged = partialResult
+                merged.append(component)
+                return merged
+            }
+            return partialResult
         }
         print ("Count - \(components.count) \n set - \(components)")
         return components

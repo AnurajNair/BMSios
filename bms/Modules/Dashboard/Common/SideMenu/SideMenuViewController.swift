@@ -67,14 +67,11 @@ class SideMenuViewController: UIViewController {
         guard let role = SessionDetails.getInstance().currentUser?.role else {
             return []
         }
-        let components = role.getAllDistinctComponents()
+        let components = role.distinctComponents
 
         var menu: [SideMenuModel] = []
         var inspectionSubMenu: [SideMenuModel] = []
         components.forEach { component in
-            guard component.statusAsEnum == .active else {
-                return
-            }
             let title = component.ComponentName
             
             switch component.type {
