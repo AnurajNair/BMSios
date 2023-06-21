@@ -84,7 +84,7 @@ extension Step5Form: UICollectionViewDelegateFlowLayout {
         let availableWidth = collectionView.frame.width - paddingSpace
         let widthPerItem = availableWidth / itemsPerRow
 
-        return CGSize(width: widthPerItem.rounded(.down), height: 70)
+        return CGSize(width: widthPerItem.rounded(.down), height: 90)
     }
 }
 
