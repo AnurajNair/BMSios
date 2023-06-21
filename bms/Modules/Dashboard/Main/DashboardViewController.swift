@@ -245,8 +245,8 @@ extension DashboardViewController{
     func getInspectionStats(){
 //        Utils.showLoadingInView(self.view)
         router.getInspectionStats(params: APIUtils.createAPIRequestParams(dataObject: DashboardDataRequestModel())) { [self] response in
+            Utils.hideLoadingInView(self.view)
             if(response.status == 0){
-                Utils.hideLoadingInView(self.view)
                 if(response.response != ""){
                     guard let dashboardData = Mapper<DashboardData>().map(JSONString: Utils().decryptData(encryptdata: response.response!)) else {
                         print("Could not get dashboard data")
@@ -259,7 +259,6 @@ extension DashboardViewController{
                     Utils.displayAlert(title: "Error", message: response.message ?? "Something went wrong.")
                 }
             }else{
-                Utils.hideLoadingInView(self.view)
                 Utils.displayAlert(title: "Error", message: response.message ?? "Something went wrong.")
             }
         } errorCompletionHandler: { error in
@@ -283,8 +282,8 @@ extension DashboardViewController{
     func getMyActivities(){
 //        Utils.showLoadingInView(self.view)
         router.getMyActivities(params: APIUtils.createAPIRequestParams(dataObject: DashboardDataRequestModel())) { [self] response in
+            Utils.hideLoadingInView(self.view)
             if(response.status == 0){
-                Utils.hideLoadingInView(self.view)
                 if(response.response != ""){
                     let responseJson = Utils.getJsonFromString(string: Utils().decryptData(encryptdata: response.response!))
                     guard let activityArray =  responseJson?["activitylist"] as? [[String: Any]] else {
