@@ -36,9 +36,13 @@ class DashboardViewController: UIViewController {
         
         setupCollectionView()
         setupTableView()
-        getInspectionStats()
-        getMyActivities()
-        DataStore.shared.fetchAllPropertiesMaster()
+        Task {
+            await getInspectionStats()
+            await getMyActivities()
+        }
+        DispatchQueue.global(qos: .utility).async {
+            DataStore.shared.fetchAllPropertiesMaster()
+        }
     }
     
 
@@ -242,7 +246,7 @@ extension DashboardViewController:UITableViewDataSource{
 }
 
 extension DashboardViewController{
-    func getInspectionStats(){
+    func getInspectionStats() async {
 //        Utils.showLoadingInView(self.view)
         router.getInspectionStats(params: APIUtils.createAPIRequestParams(dataObject: DashboardDataRequestModel())) { [self] response in
             Utils.hideLoadingInView(self.view)
@@ -279,7 +283,7 @@ extension DashboardViewController{
 }
 
 extension DashboardViewController{
-    func getMyActivities(){
+    func getMyActivities() async {
 //        Utils.showLoadingInView(self.view)
         router.getMyActivities(params: APIUtils.createAPIRequestParams(dataObject: DashboardDataRequestModel())) { [self] response in
             Utils.hideLoadingInView(self.view)
