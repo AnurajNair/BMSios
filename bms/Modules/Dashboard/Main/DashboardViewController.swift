@@ -115,8 +115,9 @@ extension DashboardViewController:UICollectionViewDelegateFlowLayout{
        sizeForItemAt indexPath: IndexPath
      ) -> CGSize {
        // 2
-         let paddingSpace = (sectionInsets.left+sectionInsets.right) * (itemsPerRow + 1)
-             let availableWidth = view.frame.width - paddingSpace
+         let cellSpacing: CGFloat = 10
+         let paddingSpace = (sectionInsets.left+sectionInsets.right) + ((itemsPerRow - 1) * cellSpacing)
+             let availableWidth = collectionView.bounds.width - paddingSpace
              let widthPerItem = availableWidth / itemsPerRow
              
          return CGSize(width: widthPerItem, height: widthPerItem / 1.8)
