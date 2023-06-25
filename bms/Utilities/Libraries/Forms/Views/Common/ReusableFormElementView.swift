@@ -25,6 +25,7 @@ class ReusableFormElementView: UIView {
     @IBOutlet weak var formElementOverallStackView: UIStackView!
     @IBOutlet weak var formElementErrorStackView: UIStackView!
     
+    @IBOutlet weak var formElementContainerStackView: UIStackView!
     weak var delegate: ReusableFormElementViewDelegate?
     var showErrorMessageInRealTime = true
     var showErrorIcon = true
@@ -131,7 +132,7 @@ class ReusableFormElementView: UIView {
         
         self.formElementTitle.isHidden = true
         self.formElementErrorStackView.isHidden = true
-        
+        self.formElementContainerStackView.alignment = .center
         self.frameWidth = self.frame.size.width
         self.backgroundColor = style.formBackgroundColor
         
@@ -564,7 +565,7 @@ class ReusableFormElementView: UIView {
         self.isEditable = isEditable
         self.showTitleByDefault = showFieldTitleByDefault
         self.formElement = .file
-        
+        self.formElementContainerStackView.alignment = .top
         if let value = isRequiredMessage, !value.isEmpty {
             isRequiredErrorMessage = value
         }
