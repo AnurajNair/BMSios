@@ -35,8 +35,8 @@ class FormsControlllerViewController: UIViewController {
     private var sections: [FormSection] = []
     var inspectionType: InspectionType?
     var isCurrentVcLast: Bool {
-        let count = questionnaireForm?.sections.count
-        guard let count = count, count > 0 else {
+        let count = sections.count
+        guard count > 0 else {
             return currentViewControllerIndex == count
         }
         return currentViewControllerIndex == count - 1
@@ -171,6 +171,10 @@ class FormsControlllerViewController: UIViewController {
     
     @IBAction func onPreviousBtnClick(_ sender: Any) {
         view.endEditing(true)
+        guard isCurrentVcLast == false else { // Save as Draft button for Inspection
+            saveData(isDraftForInspection: inspectionType == .inspect ? true : false)
+            return
+        }
         guard currentViewControllerIndex > 0 else {
             return
         }
@@ -192,29 +196,34 @@ class FormsControlllerViewController: UIViewController {
     }
 
     func setNextButtonTitle() {
-        let title: String
+        let prevTitle: String
+        let nextTitle: String
         if currentViewControllerIndex == generalDetailsSectionIndex {
-            title = "Next"
+            prevTitle = "Previous Page"
+            nextTitle = "Next"
         } else if isCurrentVcLast {
-            title = "Submit"
+            prevTitle = "Draft"
+            nextTitle = "Submit"
         } else {
-            title = "Save & Continue"
-
+            prevTitle = "Previous Page"
+            nextTitle = "Save & Continue"
         }
-        nextBtn.setTitle(title , for: .normal)
+        previousBtn.setTitle(prevTitle , for: .normal)
+        nextBtn.setTitle(nextTitle , for: .normal)
     }
 
-    func saveData() {
+    func saveData(isDraftForInspection: Bool = false) {
         guard currentViewControllerIndex != generalDetailsSectionIndex else  {
             return
         }
         if inspectionType == .inspect {
-            saveInspection(status: isCurrentVcLast ? .submitted : .draft, index: currentViewControllerIndex)
+            saveInspection(status: isCurrentVcLast && !isDraftForInspection ? .submitted : .draft, index: currentViewControllerIndex)
         } else if inspectionType == .review {
             saveReview(status: isCurrentVcLast ? .reviewed : .submitted, index: currentViewControllerIndex)
         }
     }
     func saveInspection(status: InspectionStatus, index: Int) {
+        let isCurrentVcLast = isCurrentVcLast
         let saveRequest = SaveInspectionRequestModel()
         saveRequest.inspectionAssignId = questionnaireForm?.id
         saveRequest.inspectionStatus = status.rawValue
@@ -236,7 +245,7 @@ class FormsControlllerViewController: UIViewController {
         saveRequest.response = responses
         router.saveInspection(params: APIUtils.createAPIRequestParams(dataObject: saveRequest)) { response in
             print("response - \(response.status) - \(response.message ?? "" )")
-            guard status == .submitted else { return }
+            guard isCurrentVcLast else { return }
             if response.status == 0 {
                 self.questionnaireForm?.inspectionStatus = status.rawValue
                  _ = Utils.displayAlertController("Success", message: response.message ?? "", isSingleBtn: true) {
@@ -253,6 +262,7 @@ class FormsControlllerViewController: UIViewController {
     }
 
     func saveReview(status: InspectionStatus, index: Int) {
+        let isCurrentVcLast = isCurrentVcLast
         let saveRequest = SaveReviewRequestModel()
         saveRequest.inspectionAssignId = questionnaireForm?.id
         saveRequest.inspectionStatus = status.rawValue
@@ -272,7 +282,7 @@ class FormsControlllerViewController: UIViewController {
         saveRequest.reviews = reviews
         router.saveReview(params: APIUtils.createAPIRequestParams(dataObject: saveRequest)) { response in
             print("response - \(response.status) - \(response.message ?? "" )")
-            guard status == .reviewed else { return }
+            guard isCurrentVcLast else { return }
             if response.status == 0 {
                  _ = Utils.displayAlertController("Success", message: response.message ?? "", isSingleBtn: true) {
                     Navigate.routeUserBack(self) { /*No Action*/ }
