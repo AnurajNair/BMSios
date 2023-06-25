@@ -352,6 +352,12 @@ extension FormsControlllerViewController: UIPageViewControllerDataSource, UIPage
 }
 
 extension FormsControlllerViewController:UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let direction: UIPageViewController.NavigationDirection = indexPath.item > currentViewControllerIndex  ? .forward : .reverse
+        currentViewControllerIndex = indexPath.item
+        movePage(direction: direction)
+        setNextButtonTitle()
+    }
 }
 
 extension FormsControlllerViewController:UICollectionViewDataSource {
