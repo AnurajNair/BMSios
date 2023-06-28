@@ -106,8 +106,20 @@
                                             </button>
                                         </subviews>
                                     </stackView>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="bog-hQ-gFl">
-                                        <rect key="frame" x="0.0" y="49" width="778" height="972"/>
+                                    <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Search Inventory" translatesAutoresizingMaskIntoConstraints="NO" id="WLK-3r-bY6">
+                                        <rect key="frame" x="0.0" y="49" width="778" height="96.5"/>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <scopeButtonTitles>
+                                            <string>Title</string>
+                                            <string>Title</string>
+                                        </scopeButtonTitles>
+                                        <connections>
+                                            <outlet property="delegate" destination="Y6W-OH-hqX" id="dzg-cX-dbL"/>
+                                        </connections>
+                                    </searchBar>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="bog-hQ-gFl">
+                                        <rect key="frame" x="0.0" y="153.5" width="778" height="867.5"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     </tableView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Powered by @Shivam Concrete" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hcZ-Kc-KED">
@@ -132,6 +144,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="searchBar" destination="WLK-3r-bY6" id="2cK-GZ-4fl"/>
                         <outlet property="tableView" destination="bog-hQ-gFl" id="rLx-sA-vWx"/>
                     </connections>
                 </viewController>

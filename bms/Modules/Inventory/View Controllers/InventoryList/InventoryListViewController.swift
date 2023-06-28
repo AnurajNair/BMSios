@@ -11,12 +11,20 @@ import ObjectMapper
 class InventoryListViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
-    
-    private var inventoryList: [InventoryListObj] = []
+    @IBOutlet weak var searchBar: UISearchBar!
+
+    private var inventoryList: [InventoryListObj] = [] {
+        didSet {
+            updateFilteredInventoryList()
+        }
+    }
+
+    private var filteredInventoryList: [InventoryListObj] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
+        setupSearchBar()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -40,7 +48,11 @@ class InventoryListViewController: UIViewController {
         frame.size.height = .leastNormalMagnitude
         tableView.tableHeaderView = UIView(frame: frame)
     }
-    
+
+    func setupSearchBar() {
+        searchBar.delegate = self
+    }
+
     func getInventoryList() {
         Utils.showLoadingInView(self.view)
         InventoryRouterManager().getInventory(params: getParams()) { response in
@@ -82,22 +94,30 @@ class InventoryListViewController: UIViewController {
        return encrypRequest
     }
 
+    func updateFilteredInventoryList() {
+        searchBar(searchBar, textDidChange: searchBar.text ?? "")
+    }
+
     @IBAction func createInventoryDidTap(_ sender: UIButton) {
         Navigate.routeUserToScreen(screenType: .createInventoryScreen, transitionType: .push)
+    }
+
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
     }
 }
 
 extension InventoryListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        inventoryList.count == 0 ? tableView.setNoDataPlaceholder("No Inventory Found") : tableView.removeNoDataPlaceholder()
+        filteredInventoryList.count == 0 ? tableView.setNoDataPlaceholder("No Inventory Found") : tableView.removeNoDataPlaceholder()
 
-        return inventoryList.count
+        return filteredInventoryList.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: InventoryListTableViewCell.identifier) as? InventoryListTableViewCell else {
             return UITableViewCell()
         }
-        let inventoryObj = inventoryList[indexPath.row]
+        let inventoryObj = filteredInventoryList[indexPath.row]
         cell.configure(srNo: indexPath.row+1, data: inventoryObj)
         cell.onTapEdit = { [weak self] in
             self?.performEditAction(on: inventoryObj)
@@ -109,11 +129,6 @@ extension InventoryListViewController: UITableViewDataSource {
             self?.updateStatusOf(inventoryObj, status: isActive, indexPath: indexPath)
         }
         return cell
-    }
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: InventoryListHeaderView.identifier)
-        return header
     }
 
     func performEditAction(on inventoryObj: InventoryListObj) {
@@ -141,8 +156,12 @@ extension InventoryListViewController: UITableViewDataSource {
         obj.id = inventoryObj.id
         let param = APIUtils.createAPIRequestParams(dataObject: obj)
         updateInventoryBridge(params: param) { [weak self] status in
-            self?.inventoryList.remove(at: indexPath.row)
-            self?.tableView.deleteRows(at: [indexPath], with: .fade)
+            guard let self = self else { return }
+            self.filteredInventoryList.remove(at: indexPath.row)
+            self.tableView.deleteRows(at: [indexPath], with: .fade)
+            self.inventoryList.removeAll {
+                $0 == inventoryObj
+            }
         }
     }
 
@@ -198,7 +217,38 @@ extension InventoryListViewController: UITableViewDataSource {
         }
     }
 }
-
 extension InventoryListViewController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: InventoryListHeaderView.identifier)
+        return header
+    }
+}
+
+extension InventoryListViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        filteredInventoryList = []
+        if searchText == "" {
+            filteredInventoryList = inventoryList
+            searchBar.resignFirstResponder()
+            tableView.reloadData()
+            return
+        }
+        
+        filteredInventoryList = inventoryList.filter {
+            let lowerCasedSearchString = searchText.lowercased()
+            let contains =  $0.projectName?.lowercased().contains(lowerCasedSearchString) ?? false ||
+            $0.projectId.description.lowercased().contains(lowerCasedSearchString) ||
+            $0.buid?.lowercased().contains(lowerCasedSearchString) ?? false ||
+            $0.saveStatusEnum?.text.lowercased().contains(lowerCasedSearchString) ?? false ||
+            $0.bridgeId.description.lowercased().contains(lowerCasedSearchString) ||
+            $0.bridgeName?.lowercased().contains(lowerCasedSearchString) ?? false
+            
+            return contains
+        }
+        tableView.reloadData()
+    }
+
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
 }
