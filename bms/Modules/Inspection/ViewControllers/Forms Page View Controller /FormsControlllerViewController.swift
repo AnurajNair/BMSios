@@ -383,20 +383,10 @@ extension FormsControlllerViewController:UICollectionViewDataSource {
         let section = sections[index]
         cell.configHeader(stepNo: index+1,
                           title: section.sectionName ?? "",
-                          isActive: currentViewControllerIndex == index)
+                          isActive: currentViewControllerIndex == index,
+                          isLastCell: index == sections.count-1)
         return cell
     }
-}
-
-extension FormsControlllerViewController:UICollectionViewDelegateFlowLayout{
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-         let itemsPerRow = CGFloat(questionnaireForm?.sections.count ?? 0)
-         let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
-         let availableWidth = self.view.frame.width - paddingSpace
-             let widthPerItem = availableWidth / itemsPerRow
-             
-         return CGSize(width: widthPerItem, height: 70)
-     }
 }
 
 extension FormsControlllerViewController: formViewControllerDelegate {

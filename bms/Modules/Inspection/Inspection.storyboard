@@ -195,7 +195,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="W8S-xb-YMM"/>
                                         </constraints>
-                                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="LW3-Oo-IUj">
+                                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="LW3-Oo-IUj">
                                             <size key="itemSize" width="128" height="128"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -284,6 +284,10 @@
                                         </constraints>
                                     </stackView>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="OD0-Ei-t7A" firstAttribute="leading" secondItem="hzg-gF-77H" secondAttribute="leading" id="Yk0-bL-Zmp"/>
+                                    <constraint firstAttribute="trailing" secondItem="OD0-Ei-t7A" secondAttribute="trailing" id="apI-Bk-1SJ"/>
+                                </constraints>
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="gQP-d5-O85"/>
