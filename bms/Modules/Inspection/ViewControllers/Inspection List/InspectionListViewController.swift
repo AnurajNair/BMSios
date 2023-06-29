@@ -16,10 +16,17 @@ enum InspectionType {
 class InspectionListViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var searchBar: UISearchBar!
     var selectedBridge:Inspection?
     var inspectionType: InspectionType?
 
-    var inspectionList: [Inspection] = []
+    var inspectionList: [Inspection] = [] {
+        didSet {
+            updateFilteredInspections()
+        }
+    }
+    var filteredInspectionList: [Inspection] = []
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
@@ -81,6 +88,10 @@ class InspectionListViewController: UIViewController {
         return params
     }
 
+    func updateFilteredInspections() {
+        searchBar(searchBar, textDidChange: searchBar.text ?? "")
+    }
+
     func setupTableView(){
         self.tableView.bounces = false
         self.tableView.separatorStyle = .none
@@ -96,6 +107,10 @@ class InspectionListViewController: UIViewController {
         var frame = CGRect.zero
         frame.size.height = .leastNormalMagnitude
         tableView.tableHeaderView = UIView(frame: frame)
+    }
+
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
     }
 }
 
@@ -114,9 +129,9 @@ extension InspectionListViewController:UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let noRecordMessage = inspectionType == .inspect ? "No Inspections are assigned yet" : "No Review Inspections are assigned yet"
-        inspectionList.count == 0 ? tableView.setNoDataPlaceholder(noRecordMessage) : tableView.removeNoDataPlaceholder()
+        filteredInspectionList.count == 0 ? tableView.setNoDataPlaceholder(noRecordMessage) : tableView.removeNoDataPlaceholder()
 
-        return self.inspectionList.count
+        return self.filteredInspectionList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -124,7 +139,7 @@ extension InspectionListViewController:UITableViewDataSource{
             fatalError("xib doesn't exist")
             
         }
-        let data = inspectionList[indexPath.row]
+        let data = filteredInspectionList[indexPath.row]
         let buttonaProperties = getButtonPropertiesFor(status: data.inspectionStatusEnum)
         cell.configTableRow(srNo: indexPath.row+1, tableData: data, inspectionButtonTitle: buttonaProperties.title, inspectionButtonState: buttonaProperties.state)
         cell.delegate = self
@@ -193,5 +208,34 @@ extension InspectionListViewController: InspectionListTableViewCellDelegate{
         obj.inspectionId = inspection.id
         let params = APIUtils.createAPIRequestParams(dataObject: obj)
         return params
+    }
+}
+
+extension InspectionListViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        filteredInspectionList = []
+        if searchText == "" {
+            filteredInspectionList = inspectionList
+            searchBar.resignFirstResponder()
+            tableView.reloadData()
+            return
+        }
+        
+        filteredInspectionList = inspectionList.filter {
+            let lowerCasedSearchString = searchText.lowercased()
+            let contains =  $0.buid?.lowercased().contains(lowerCasedSearchString) ?? false ||
+            $0.inspectionName?.lowercased().contains(lowerCasedSearchString) ?? false ||
+            $0.bridgeName?.lowercased().contains(lowerCasedSearchString) ?? false ||
+            $0.startDateAsString?.lowercased().contains(lowerCasedSearchString) ?? false ||
+            $0.startDateAsString?.lowercased().contains(lowerCasedSearchString) ?? false ||
+            $0.inspectionStatusEnum?.text.lowercased().contains(lowerCasedSearchString) ?? false
+            
+            return contains
+        }
+        tableView.reloadData()
+    }
+
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
     }
 }

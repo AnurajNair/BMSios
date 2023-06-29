@@ -336,8 +336,17 @@
                                                     </label>
                                                 </subviews>
                                             </stackView>
-                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Ozy-Ms-SRk">
-                                                <rect key="frame" x="0.0" y="49" width="712" height="884"/>
+                                            <searchBar contentMode="redraw" placeholder="Search Inspection" id="lHw-zX-obj">
+                                                <rect key="frame" x="0.0" y="49" width="712" height="56"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="Y6W-OH-hqX" id="uav-x4-eZH"/>
+                                                </connections>
+                                            </searchBar>
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Ozy-Ms-SRk">
+                                                <rect key="frame" x="0.0" y="113" width="712" height="820"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             </tableView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Powered by @Shivam Concrete" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l9a-hR-CL2">
@@ -372,13 +381,14 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="searchBar" destination="lHw-zX-obj" id="HA4-WU-YEY"/>
                         <outlet property="tableView" destination="Ozy-Ms-SRk" id="IBK-o6-Az7"/>
                         <outlet property="titleLabel" destination="xfM-Fx-3v4" id="cTe-GV-Sjt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="11.71875" y="54.904831625183014"/>
+            <point key="canvasLocation" x="-208" y="16"/>
         </scene>
         <!--Form View Controller-->
         <scene sceneID="IIu-Kl-1ZK">
