@@ -42,6 +42,8 @@ class InspectionListTableViewCell: UITableViewCell {
     }
 
     func setup() {
+        inspectButton.titleLabel?.textAlignment = .center
+
         let labelStyle = TextStyles.ListItemBlackTitle
         UILabel.style([(view: srNoLabel, style: labelStyle),
                        (view: buidLabel, style: labelStyle),

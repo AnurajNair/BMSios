@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="Inter-VariableFont_slnt,wght.ttf">
+        <array key="Inter-Regular.ttf">
             <string>Inter-Regular</string>
         </array>
     </customFonts>
@@ -70,7 +70,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dPI-8m-w6Z">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="wordWrap" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dPI-8m-w6Z">
                                 <rect key="frame" x="889" y="0.0" width="143" height="28"/>
                                 <color key="backgroundColor" red="0.49803921579999999" green="0.92156863209999995" blue="0.66666668650000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="15"/>
@@ -88,8 +88,8 @@
                 <constraints>
                     <constraint firstItem="71p-fV-swh" firstAttribute="leading" secondItem="iKq-1H-BMp" secondAttribute="trailing" constant="8" id="4GM-bt-vKE"/>
                     <constraint firstItem="iKq-1H-BMp" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="PWv-pW-1v8"/>
-                    <constraint firstItem="iKq-1H-BMp" firstAttribute="centerY" secondItem="71p-fV-swh" secondAttribute="centerY" id="Q0Q-ds-y5D"/>
                     <constraint firstItem="71p-fV-swh" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="U6C-UQ-Sop"/>
+                    <constraint firstItem="iKq-1H-BMp" firstAttribute="centerY" secondItem="71p-fV-swh" secondAttribute="centerY" id="YNM-FW-CtA"/>
                     <constraint firstAttribute="trailing" secondItem="71p-fV-swh" secondAttribute="trailing" constant="14" id="cNT-H3-A24"/>
                     <constraint firstAttribute="bottom" secondItem="71p-fV-swh" secondAttribute="bottom" constant="8" id="yGd-wC-WNG"/>
                 </constraints>
