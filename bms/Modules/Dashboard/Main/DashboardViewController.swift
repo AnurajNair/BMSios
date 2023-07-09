@@ -36,9 +36,13 @@ class DashboardViewController: UIViewController {
         
         setupCollectionView()
         setupTableView()
-        getInspectionStats()
-        getMyActivities()
-        DataStore.shared.fetchAllPropertiesMaster()
+        Task {
+            await getInspectionStats()
+            await getMyActivities()
+        }
+        DispatchQueue.global(qos: .utility).async {
+            DataStore.shared.fetchAllPropertiesMaster()
+        }
     }
     
 
@@ -111,8 +115,9 @@ extension DashboardViewController:UICollectionViewDelegateFlowLayout{
        sizeForItemAt indexPath: IndexPath
      ) -> CGSize {
        // 2
-         let paddingSpace = (sectionInsets.left+sectionInsets.right) * (itemsPerRow + 1)
-             let availableWidth = view.frame.width - paddingSpace
+         let cellSpacing: CGFloat = 10
+         let paddingSpace = (sectionInsets.left+sectionInsets.right) + ((itemsPerRow - 1) * cellSpacing)
+             let availableWidth = collectionView.bounds.width - paddingSpace
              let widthPerItem = availableWidth / itemsPerRow
              
          return CGSize(width: widthPerItem, height: widthPerItem / 1.8)
@@ -242,11 +247,11 @@ extension DashboardViewController:UITableViewDataSource{
 }
 
 extension DashboardViewController{
-    func getInspectionStats(){
+    func getInspectionStats() async {
 //        Utils.showLoadingInView(self.view)
         router.getInspectionStats(params: APIUtils.createAPIRequestParams(dataObject: DashboardDataRequestModel())) { [self] response in
+            Utils.hideLoadingInView(self.view)
             if(response.status == 0){
-                Utils.hideLoadingInView(self.view)
                 if(response.response != ""){
                     guard let dashboardData = Mapper<DashboardData>().map(JSONString: Utils().decryptData(encryptdata: response.response!)) else {
                         print("Could not get dashboard data")
@@ -259,7 +264,6 @@ extension DashboardViewController{
                     Utils.displayAlert(title: "Error", message: response.message ?? "Something went wrong.")
                 }
             }else{
-                Utils.hideLoadingInView(self.view)
                 Utils.displayAlert(title: "Error", message: response.message ?? "Something went wrong.")
             }
         } errorCompletionHandler: { error in
@@ -280,11 +284,11 @@ extension DashboardViewController{
 }
 
 extension DashboardViewController{
-    func getMyActivities(){
+    func getMyActivities() async {
 //        Utils.showLoadingInView(self.view)
         router.getMyActivities(params: APIUtils.createAPIRequestParams(dataObject: DashboardDataRequestModel())) { [self] response in
+            Utils.hideLoadingInView(self.view)
             if(response.status == 0){
-                Utils.hideLoadingInView(self.view)
                 if(response.response != ""){
                     let responseJson = Utils.getJsonFromString(string: Utils().decryptData(encryptdata: response.response!))
                     guard let activityArray =  responseJson?["activitylist"] as? [[String: Any]] else {

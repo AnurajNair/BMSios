@@ -22,27 +22,33 @@ class DataStore {
     }
 
     func fetchAllPropertiesMaster() {
-        Utils.showLoadingInRootView()
+        DispatchQueue.main.async {
+            Utils.showLoadingInRootView()
+        }
         let requestModel = MastersRequestKeys()
         CommonRouterManager().getAllMasters(params: APIUtils.createAPIRequestParams(dataObject: requestModel)) { response in
+            DispatchQueue.main.async {
+                Utils.hideLoadingInRootView()
+            }
             if(response.status == 0){
                 if(response.response != ""){
                     if let masters = Mapper<BridgePropertiesMaster>().map(JSONString: Utils().decryptData(encryptdata: response.response!)) {
                         self.bridgePropertiesMaster = masters
                     }
                 }else{
-                    Utils.displayAlert(title: "Error", message: response.message ?? "Something went wrong.")
+                    DispatchQueue.main.async {
+                        Utils.displayAlert(title: "Error", message: response.message ?? "Something went wrong.")
+                    }
                 }
-                Utils.hideLoadingInRootView()
             } else {
-                Utils.hideLoadingInRootView()
-                
                 Utils.displayAlert(title: "Error", message: response.message ?? "Something went wrong.")
             }
         } errorCompletionHandler: { error in
-            Utils.hideLoadingInRootView()
-            print("error - \(String(describing: error))")
-            Utils.displayAlert(title: "Error", message: "Something went wrong.")
+            DispatchQueue.main.async {
+                Utils.hideLoadingInRootView()
+                print("error - \(String(describing: error))")
+                Utils.displayAlert(title: "Error", message: "Something went wrong.")
+            }
         }
     }
 }

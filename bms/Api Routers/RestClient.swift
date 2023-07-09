@@ -87,21 +87,24 @@ class RestClient {
                 
                 AF.request(router).responseJSON {
                     (response) in
-                    
                     print(response.result)
                     switch response.result {
                     case .success(let value):
                         print(value)
+                        guard handleIfSessionExpired(response: value) == false else {
+                            return
+                        }
                         successCompletionHandler(value)
-                                                case .failure(let error):
-                                                  print(error)
-                  
-                                                default:
-                                                    fatalError("received non-dictionary JSON response")
-                                                }
+
+                    case .failure(let error):
+                        print(error)
+                        
+                    default:
+                        fatalError("received non-dictionary JSON response")
+                    }
                     // print(String(data: response.data!, encoding: String.Encoding.utf8))
-                  
-            }
+                    
+                }
                 
             
 //           AF.request(router).validate(statusCode: 200..<300)
@@ -181,6 +184,9 @@ class RestClient {
                             guard let value = value else {
                                 fatalError("received non-dictionary JSON response")
                             }
+                            guard handleIfSessionExpired(response: value) == false else {
+                                return
+                            }
                             let responseData = try JSONSerialization.jsonObject(with: value)
                             successCompletionHandler(responseData)
                         } catch {
@@ -194,6 +200,21 @@ class RestClient {
                 }
             }
         }
+    }
+
+    private class func handleIfSessionExpired(response: Any) -> Bool {
+        guard let apiResponse = Mapper<APIResponseModel>().map(JSONObject: RestClient.getResultValue(response)), apiResponse.status == 7 else {
+            return false
+        }
+        SessionDetails.clearInstance()
+        _ = Utils.displayAlertController("Error",
+                                     message: apiResponse.message ?? "Invalid Session", isSingleBtn: true) {
+            Navigate.routeUserToScreen(screenType: .loginScreen, transitionType: .root)
+        } cancelclickHandler: {
+            
+        }
+
+        return true
     }
 
     class func handleError(_ response: DataResponse<Any,Error>?,

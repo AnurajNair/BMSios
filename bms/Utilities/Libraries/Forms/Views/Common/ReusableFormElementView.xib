@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ReusableFormElementView" customModule="bms" customModuleProvider="target">
             <connections>
+                <outlet property="formElementContainerStackView" destination="XVP-aH-pHM" id="TnW-R1-VDk"/>
                 <outlet property="formElementError" destination="0ya-Ce-534" id="hV2-6S-8km"/>
                 <outlet property="formElementErrorIcon" destination="XbM-mL-jBc" id="fId-uA-A0l"/>
                 <outlet property="formElementErrorStackView" destination="qZR-PP-OQv" id="nAU-aV-0eB"/>
@@ -28,16 +29,16 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="110"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="hnW-bZ-FOn">
-                            <rect key="frame" x="0.0" y="6.5" width="375" height="97.5"/>
+                            <rect key="frame" x="0.0" y="6.3333333333333357" width="375" height="97.333333333333314"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fj4-TW-xJI">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="20.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="20.333333333333332"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" axis="vertical" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="q8o-ge-6lu">
-                                    <rect key="frame" x="0.0" y="25.5" width="375" height="72"/>
+                                    <rect key="frame" x="0.0" y="25.333333333333336" width="375" height="72"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YF5-Jf-Hhf">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
@@ -56,7 +57,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ya-Ce-534">
-                                                    <rect key="frame" x="20" y="1.5" width="355" height="12"/>
+                                                    <rect key="frame" x="20" y="1.6666666666666572" width="355" height="12"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
