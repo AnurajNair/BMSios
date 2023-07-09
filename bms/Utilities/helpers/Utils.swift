@@ -32,7 +32,7 @@ class Utils{
     
     class func displayAlert(title: String, message: String, senderViewController: UIViewController? = nil, alertDisplayedHandler : @escaping ()-> Void = {}) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let alertAction = UIAlertAction(title: "Ok", style: .destructive) { (action) in
+        let alertAction = UIAlertAction(title: "Ok", style: .default) { (action) in
         }
         alert.addAction(alertAction)
         let delegate = UIApplication.shared.delegate as! AppDelegate
@@ -103,11 +103,15 @@ class Utils{
         if let rootController = UIApplication.shared.delegate?.window??.rootViewController, presentingViewController == nil {
             presentingViewController = rootController
         }
-        
+
         if let viewController = presentingViewController, viewController.presentedViewController == nil {
+            /* Below two lines were added for single image upload in inspection for ipad
+            actionSheet.popoverPresentationController?.sourceView = viewController.view
+            actionSheet.popoverPresentationController?.sourceRect = CGRect(x: 0, y: 0, width: 1, height: 1)
+             */
             viewController.present(actionSheet, animated: true, completion: nil)
         }
-        
+
         return actionSheet
     }
     
@@ -206,8 +210,8 @@ class Utils{
         
         if !text.isEmpty {
             progressView.label.text = text + "..."
-            progressView.label.textColor = UIColor.SORT.fontBlack
-            progressView.label.font = UIFont.SORT.MontserratRegular.withSize(14.0)
+            progressView.label.textColor = UIColor.BMS.fontBlack
+            progressView.label.font = UIFont.BMS.InterRegular.withSize(14.0)
         }
         
         progressView.isUserInteractionEnabled = false
@@ -419,13 +423,21 @@ class Utils{
     
     class func getRandomColor() -> UIColor {
         
-        let colors = [UIColor.SORT.red, UIColor.SORT.green, UIColor.SORT.blue, UIColor.SORT.orange, UIColor.SORT.pink , UIColor.SORT.purple]
+        let colors = [UIColor.BMS.red, UIColor.BMS.green, UIColor.BMS.blue, UIColor.BMS.orange, UIColor.BMS.pink , UIColor.BMS.purple]
         
         let rand = arc4random_uniform(UInt32(colors.count))
         return colors[Int(rand)]
         
     }
+
     
+    class func random3DigitString() -> String {
+        let min: UInt32 = 100
+        let max: UInt32 = 999
+        let i = min + arc4random_uniform(max - min + 1)
+        return String(i)
+    }
+
     static func readJSONFromFile(fileName: String) -> Any?
     {
         var json: Any?
@@ -457,7 +469,20 @@ class Utils{
         }
         return ""
     }
-    
+
+    class func getJsonFromString(string: String) -> [String: Any]? {
+        guard let data = string.data(using: .utf8) else {
+            return nil
+        }
+        do {
+            let json = try JSONSerialization.jsonObject(with: data, options : .allowFragments) as? [String:Any]
+            return json
+        } catch let error as NSError {
+            print(error)
+            return nil
+        }
+    }
+
     //MARK: Encryption and Decryption
     
     func decryptData(encryptdata:String) -> String{
@@ -694,7 +719,7 @@ extension UITableView {
         }
     }
     
-    func getBlankHeaderFooterView(width: CGFloat, height: CGFloat, backgroundColor: UIColor = UIColor.SORT.clear) -> UIView {
+    func getBlankHeaderFooterView(width: CGFloat, height: CGFloat, backgroundColor: UIColor = UIColor.BMS.clear) -> UIView {
         let footerView = UITableViewHeaderFooterView()
         footerView.frame = CGRect(x: 0, y: 0, width: width, height: height)
         footerView.contentView.backgroundColor = backgroundColor
@@ -724,6 +749,25 @@ extension UITableView {
         } else {
             self.addSubview(refreshControl)
         }
+    }
+
+    func setNoDataPlaceholder(_ message: String) {
+        let label = UILabel(frame: CGRect(x: 0, y: 0, width: self.bounds.size.width, height: self.bounds.size.height))
+        UILabel.style([(view: label, style: TextStyles.NoRecordPlaceholderStyle)])
+        label.text = message
+        label.textAlignment = .center
+        // styling
+        label.sizeToFit()
+        
+        self.isScrollEnabled = false
+        self.backgroundView = label
+        self.separatorStyle = .none
+    }
+
+    func removeNoDataPlaceholder() {
+        self.isScrollEnabled = true
+        self.backgroundView = nil
+        self.separatorStyle = .singleLine
     }
 }
 
@@ -903,7 +947,7 @@ else{
         removeAllSubviewsWithTag(1001)
     }
     
-    @discardableResult func addBorders(edges: UIRectEdge, color: UIColor = UIColor.SORT.separatorGray, thickness: CGFloat = 1.0) -> [UIView] {
+    @discardableResult func addBorders(edges: UIRectEdge, color: UIColor = UIColor.BMS.separatorGray, thickness: CGFloat = 1.0) -> [UIView] {
         
         removeAllSubviewsWithTag(1001)
         
@@ -1056,7 +1100,7 @@ else{
     
     //Progress Bar
     
-    func showProgressBar(_ percent: CGFloat, height: CGFloat = 0.0, shadowHeight: CGFloat = 0.0,  backgroundColor: UIColor = UIColor.SORT.white, viewBackgroundColor:UIColor = UIColor.SORT.green) {
+    func showProgressBar(_ percent: CGFloat, height: CGFloat = 0.0, shadowHeight: CGFloat = 0.0,  backgroundColor: UIColor = UIColor.BMS.white, viewBackgroundColor:UIColor = UIColor.BMS.green) {
         
         self.removeAllSubviewsWithTag(1002)
         
@@ -1120,7 +1164,7 @@ else{
         
     }
     
-    func addBadge(title : String , titleStyle : Styler.textStyle  = TextStyles.PlansTabCountStyle, backgroundColor : UIColor = UIColor.SORT.sorttedGreen){
+    func addBadge(title : String , titleStyle : Styler.textStyle  = TextStyles.PlansTabCountStyle, backgroundColor : UIColor = UIColor.BMS.sorttedGreen){
         
         let titleLbl = UILabel()
         titleLbl.textAlignment = .center
@@ -1137,7 +1181,7 @@ else{
         titleLbl.setAsRounded(cornerRadius: 14)
     }
     
-    func addTitle(title : String , titleStyle : Styler.textStyle  = TextStyles.HomeButtonTitleStyle, backgroundColor : UIColor = UIColor.SORT.clear){
+    func addTitle(title : String , titleStyle : Styler.textStyle  = TextStyles.HomeButtonTitleStyle, backgroundColor : UIColor = UIColor.BMS.clear){
         
         let titleLbl = UILabel()
         titleLbl.textAlignment = .center
@@ -1151,7 +1195,7 @@ else{
         titleLbl.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 16).isActive = true
     }
     
-    func addTitleTag(title : String , titleStyle : Styler.textStyle  = TextStyles.HomeButtonTitleStyle, backgroundColor : UIColor = UIColor.SORT.clear){
+    func addTitleTag(title : String , titleStyle : Styler.textStyle  = TextStyles.HomeButtonTitleStyle, backgroundColor : UIColor = UIColor.BMS.clear){
         
         let titleLbl = UILabel()
         titleLbl.textAlignment = .center
@@ -1748,7 +1792,7 @@ extension WKWebView {
     
     private func setAuthorizationHeaderField(_ mutableURLRequest : NSMutableURLRequest) {
         
-        if mutableURLRequest.url?.host == URL(string: Constants.apiBaseUrl)?.host {
+        if mutableURLRequest.url?.host == URL(string: APIConstants.apiBaseUrl)?.host {
             let headers = Router.getAuthorizationHeaders()
             
             for header in headers {

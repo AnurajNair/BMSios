@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Inter-SemiBold.ttf">
+            <string>Inter-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" restorationIdentifier="SideMenuFooter" id="iN0-l3-epB" customClass="SideMenuFooter" customModule="bms" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="390" height="80"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pCs-5W-4Bs">
+                    <rect key="frame" x="0.0" y="0.0" width="390" height="80"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="19w-Ki-tya">
+                            <rect key="frame" x="20" y="19.666666666666657" width="45" height="42.333333333333329"/>
+                            <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="45" id="6YX-9m-7GG"/>
+                                <constraint firstAttribute="height" constant="45" id="lhX-td-eIe"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fqi-Vk-XbO">
+                            <rect key="frame" x="81" y="18" width="292" height="45"/>
+                            <fontDescription key="fontDescription" name="Inter-SemiBold" family="Inter" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="19w-Ki-tya" secondAttribute="bottom" constant="17" id="15G-45-HZm"/>
+                        <constraint firstItem="19w-Ki-tya" firstAttribute="top" secondItem="pCs-5W-4Bs" secondAttribute="top" constant="18" id="MzD-RY-8YT"/>
+                        <constraint firstItem="Fqi-Vk-XbO" firstAttribute="top" secondItem="pCs-5W-4Bs" secondAttribute="top" constant="18" id="RB4-7b-UKV"/>
+                        <constraint firstAttribute="trailing" secondItem="Fqi-Vk-XbO" secondAttribute="trailing" constant="17" id="TUU-AI-wro"/>
+                        <constraint firstItem="Fqi-Vk-XbO" firstAttribute="leading" secondItem="19w-Ki-tya" secondAttribute="trailing" constant="16" id="faz-XA-6zk"/>
+                        <constraint firstItem="19w-Ki-tya" firstAttribute="leading" secondItem="pCs-5W-4Bs" secondAttribute="leading" constant="20" id="nDf-e1-zMr"/>
+                        <constraint firstAttribute="bottom" secondItem="Fqi-Vk-XbO" secondAttribute="bottom" constant="17" id="ni2-1U-iDE"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <constraints>
+                <constraint firstItem="pCs-5W-4Bs" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="L6C-Bs-5RH"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="pCs-5W-4Bs" secondAttribute="bottom" id="NwM-Kf-x95"/>
+                <constraint firstItem="pCs-5W-4Bs" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="mNR-CP-OL7"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="pCs-5W-4Bs" secondAttribute="trailing" id="zYN-db-90g"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="44.615384615384613" y="-249.52606635071089"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="person" catalog="system" width="128" height="121"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

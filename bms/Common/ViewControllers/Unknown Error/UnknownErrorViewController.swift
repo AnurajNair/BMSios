@@ -9,23 +9,25 @@ import UIKit
 import Alamofire
 
 class UnknownErrorViewController: UIViewController, ReusableEmptyStateViewDelegate {
-    var emptyView: ReusableEmptyStateView = ReusableEmptyStateView()
+    lazy var emptyView: ReusableEmptyStateView = ReusableEmptyStateView()
     var manager: NetworkReachabilityManager? = nil
     var emptyStateData: EmptyStateViewStyler.EmptyViewData?
     
     //MARK: Default Functions
     override func viewDidLoad() {
         super.viewDidLoad()
+        isModalInPresentation = true
         setupView()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        if let networkManager = manager {
-            networkManager.stopListening()
-            manager = nil
-        }
+//        if let networkManager = manager {
+//            networkManager.stopListening()
+//            manager = nil
+//            Utils.hideLoadingInRootView()
+//        }
     }
     
     //MARK: Setup Functions

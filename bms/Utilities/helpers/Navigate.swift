@@ -156,7 +156,7 @@ class Navigate {
                 if let topMostController = topController as? LGSideMenuController {
                     
                     if let value = topMostController.rootViewController as? BaseNavigationViewController {
-                        if value.viewControllers[0].classForCoder != destinationViewController.classForCoder {
+                        if screenType == .inspectionListScreen || value.viewControllers[0].classForCoder != destinationViewController.classForCoder {
                             topMostController.rootViewController = rootNavigationController
                         }
                     }
@@ -299,7 +299,7 @@ class Navigate {
 
         let sideMenuController = LGSideMenuController(rootViewController: viewController, leftViewController: menuViewController, rightViewController: nil)
 
-        sideMenuController.leftViewWidth = 300
+        sideMenuController.leftViewWidth = 340
         sideMenuController.leftViewAnimationDuration = 0.5
 
         return sideMenuController

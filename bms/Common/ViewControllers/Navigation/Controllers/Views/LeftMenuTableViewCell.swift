@@ -22,11 +22,11 @@ class LeftMenuItemTableViewCell: UITableViewCell {
         super.awakeFromNib()
         
         
-        self.menuName.font = UIFont.SORT.MontserratRegular.withSize(13)
-        self.menuName.textColor = UIColor.SORT.fontBlack
+        self.menuName.font = UIFont.BMS.InterRegular.withSize(13)
+        self.menuName.textColor = UIColor.BMS.fontBlack
         
-        self.menuDescription.font = UIFont.SORT.MontserratRegular.withSize(10.0)
-        self.menuDescription.textColor = UIColor.SORT.fontBlack.withAlphaComponent(0.4)
+        self.menuDescription.font = UIFont.BMS.InterRegular.withSize(10.0)
+        self.menuDescription.textColor = UIColor.BMS.fontBlack.withAlphaComponent(0.4)
         
     }
 

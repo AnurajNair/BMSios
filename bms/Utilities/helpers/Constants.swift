@@ -13,16 +13,7 @@ class Constants {
     
      static let osType = "iOS"
     
-    //MARK:- API Helpers
-    static let apiBaseUrl = Utils.getSchemeKey("API_BASE_URL")
-   
-
-    //MARK:- Third Party Helpers
-    
-//    static let googlePlacesClientApiKey = Utils.getSchemeKey("GOOGLE_GMS_PLACES_CLIENT_API_KEY")
-//    static let googleServicesApiKey = Utils.getSchemeKey("GOOGLE_GMS_SERVICES_API_KEY")
-////    static let googleSignInClientKey = Utils.getSchemeKey("GOOGLE_SIGNIN_CLIENT_KEY")
-//    static let googleServiceInfoPlist = Utils.getSchemeKey("GOOGLE_SERVICE_INFO_PLIST")
+  
     
 
     //MARK:- General Helpers
@@ -124,7 +115,6 @@ class Constants {
         static let MINIMUM_DISTANCE_TO_ATTEND : CLLocationDistance = 500
     }
     
-//    static let appStoreLocation : String = "itms://itunes.apple.com/us/app/apple-store/sortted/id1462857356?ls=1"
     
     
  

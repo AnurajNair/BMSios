@@ -12,6 +12,7 @@ import SwiftValidator
     @objc optional func refreshView(index: Any)
     @objc optional func setValues(index: Any, item: Any)
     @objc optional func setError(index: Any, error: String)
+    @objc optional func uploadFilesDidTap(index: Any, files: [Any])
 }
 
 class ReusableFormElementView: UIView {
@@ -24,6 +25,7 @@ class ReusableFormElementView: UIView {
     @IBOutlet weak var formElementOverallStackView: UIStackView!
     @IBOutlet weak var formElementErrorStackView: UIStackView!
     
+    @IBOutlet weak var formElementContainerStackView: UIStackView!
     weak var delegate: ReusableFormElementViewDelegate?
     var showErrorMessageInRealTime = true
     var showErrorIcon = true
@@ -38,6 +40,7 @@ class ReusableFormElementView: UIView {
         case file
         case slider
         case checkbox
+        case dropdown
     }
     
     var index: Any = ""
@@ -129,9 +132,9 @@ class ReusableFormElementView: UIView {
         
         self.formElementTitle.isHidden = true
         self.formElementErrorStackView.isHidden = true
-        
+        self.formElementContainerStackView.alignment = .center
         self.frameWidth = self.frame.size.width
-        //self.backgroundColor = style.formBackgroundColor
+        self.backgroundColor = style.formBackgroundColor
         
     }
     
@@ -562,7 +565,7 @@ class ReusableFormElementView: UIView {
         self.isEditable = isEditable
         self.showTitleByDefault = showFieldTitleByDefault
         self.formElement = .file
-        
+        self.formElementContainerStackView.alignment = .top
         if let value = isRequiredMessage, !value.isEmpty {
             isRequiredErrorMessage = value
         }
@@ -728,7 +731,31 @@ class ReusableFormElementView: UIView {
         }
         
     }
-    
+
+    func setupDropdownField(id: Any = "",
+                            fieldTitle: String = "",
+                            options: [DropDownModel] = [],
+                            placeHolder: String = "",
+                            showFieldTitleByDefault: Bool = true,
+                            isEditable: Bool = true,
+                            items: [Any] = [],
+                            selectedIndex: Int? = nil,
+                            height:CGFloat = 43.5,
+                            style: FormElementStyler.formDropDownStyle = TTDropDownStyle.defaultStyle) {
+        
+        self.index = id
+        self.isEditable = isEditable
+        self.formElement = .segmentedController
+        
+        setupTitleField(fieldTitle, isRequired: true, shouldShowByDefault: showFieldTitleByDefault)
+        
+        let field = ReusableDropDown(frame: CGRect(x: 0, y: 0, width: self.formElementFieldView.frame.size.width, height: height))
+        field.delegate = self
+        field.setupDropDown(options: options, placeHolder: placeHolder, selectedItemIndex: selectedIndex, style: style)
+        
+        setupFieldCompleted(field: field)
+    }
+
     //MARK:- Helper Functions
     
     func setTitleSpacing(spacing:CGFloat? = nil) {
@@ -751,7 +778,7 @@ class ReusableFormElementView: UIView {
         
         var text = title
         if isRequired && !text.isEmpty {
-            text += "*"
+            text += ""
         }
         return text
         
@@ -1063,6 +1090,10 @@ extension ReusableFormElementView: ReusableFormFileFieldDelegate {
     func fileViewDidCancelAddingFiles(_ fileView: ReusableFormFileField, files: [Any]) {
         validateRequiredItems(files)
     }
+
+    func uploadFilesDidTap(_ files: [Any]) {
+        self.delegate?.uploadFilesDidTap?(index: self.index, files: files)
+    }
 }
 
 extension ReusableFormElementView: ReusableFormSliderFieldDelegate {
@@ -1090,3 +1121,8 @@ extension ReusableFormElementView: TTReusableFormCheckboxFieldDelegate {
     
 }
 
+extension ReusableFormElementView: ReusableDropDownDelegate {
+    func didSelectOption(option: DropDownModel) {
+        delegate?.setValues?(index: index, item: option)
+    }
+}

@@ -96,21 +96,19 @@ class ReusableEmptyStateView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        fromNib()
-        self.setupView()
+       _ = initFromNib()
+        setupView()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        fromNib()
-        self.setupView()
+        _ = initFromNib()
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         self.setupView()
     }
-    
     //MARK:- Setup Functions
     
     func setupView() {

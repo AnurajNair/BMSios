@@ -31,7 +31,7 @@ class NavigationRoute: Navigate {
         serverDownScreen,
         imagePicker,
         imageCropper,
-        
+        profile,
         popUpView,
         
         //Onboarding
@@ -45,14 +45,17 @@ class NavigationRoute: Navigate {
         //Home
         homeScreen,
         dashboardScreen,
+
         inspectionListScreen,
-        inventoryListScreen,
-        
-       
+        selfInspectionScreen,
+        registerBridge,
+
         // Routine Inspection
-        routineInspbridgeDetailScreen
+        routineInspbridgeDetailScreen,
         
-        
+        //Create Inventory
+        inventoryListScreen,
+        createInventoryScreen
         
         func viewControllerDetails(_ data:[String:Any] = [:], transitionType: Navigate.TransitionType = .undecided) -> (viewController: UIViewController, title: String) {
             switch self {
@@ -60,15 +63,18 @@ class NavigationRoute: Navigate {
             
             case .loginScreen : return (NavigationRoute.getLoginScreen(), "" )
             case .forgotPasswordScreen : return (NavigationRoute.getForgotPasswordScreen(), "" )
-            case .otpScreen :  return (NavigationRoute.getVerifyOTPScreen(), "" )
+            case .otpScreen :  return (NavigationRoute.getVerifyOTPScreen(data), "" )
             case .resetPasswordScreen: return (NavigationRoute.getResetPasswordScreen(), "" )
             case .passwordResetSuccessScreen: return (NavigationRoute.getPasswordSuccessfullScreen(), "" )
             case .homeScreen :return (NavigationRoute.getHomeViewController(), "" )
-            case .inspectionListScreen :return (NavigationRoute.getInspectionList(), "" )
-                
+            case .inspectionListScreen :return (NavigationRoute.getInspectionList(data), "" )
+            case .selfInspectionScreen :return (NavigationRoute.getSelfInspection(), "" )
+            case .registerBridge: return (NavigationRoute.getRegisterBridge(data), "" )
+            case .profile : return (NavigationRoute.getProfile(), "" )
             case .routineInspbridgeDetailScreen :return (NavigationRoute.getRoutineInspBridgeDetail(data), "")
 
             case.inventoryListScreen:return (NavigationRoute.getInventoryList(), "" )
+            case.createInventoryScreen:return (NavigationRoute.getCreateInvenotry(data), "" )
             case.popUpView:return (NavigationRoute.getPopUpView(), "" )
 //            case .webView: return (NavigationRoute.getBaseWebViewController(data), "")
 //            case .appFeedbackWebView: return (NavigationRoute.getBaseWebViewController(data), "App Feedback".localized())
@@ -233,8 +239,13 @@ class NavigationRoute: Navigate {
         return onboardingStoryboard().instantiateViewController(withIdentifier: "ForgotPasswordViewController") as! ForgotPasswordViewController
     }
     
-    class func getVerifyOTPScreen(_ data:[String:Any] = [:]) -> VerifyOTPViewController {
-        return onboardingStoryboard().instantiateViewController(withIdentifier: "VerifyOTPViewController") as! VerifyOTPViewController
+    class func getVerifyOTPScreen(_ data:[String:Any] = [:]) -> CheckEmailViewController {
+        let viewController = onboardingStoryboard().instantiateViewController(withIdentifier: "VerifyOTPViewController") as! CheckEmailViewController
+        if let value = data["resentLinkTo"] {
+         
+            viewController.resetPassEmailSendTo = value as? String
+        }
+        return viewController
     }
     
     class func getResetPasswordScreen(_ data:[String:Any] = [:]) -> ResetPasswordViewController {
@@ -261,20 +272,61 @@ class NavigationRoute: Navigate {
         
     }
     
-    
+    class func getCreateInvenotry(_ data:[String:Any] = [:]) -> CreateInventoryViewController {
+        let viewController =  inventoryStoryboard().instantiateViewController(withIdentifier: "CreateInventoryViewController") as! CreateInventoryViewController
+        if let inventory = data["inventory"] as? Inventory {
+            viewController.inventory = inventory
+        }
+        return viewController
+    }
+
     class func getInspectionList(_ data:[String:Any] = [:]) -> InspectionListViewController {
         
         let viewController =  inspectionsStoryboard().instantiateViewController(withIdentifier: "InspectionListViewController") as! InspectionListViewController
       
-        
+        if let component = data["component"] as? ComponentType {
+            if component == .reviewInspection {
+                viewController.inspectionType = .review
+            } else if component == .performInspection {
+                viewController.inspectionType = .inspect
+            }
+        }
         return viewController
         
     }
+
+    class func getSelfInspection(_ data:[String:Any] = [:]) -> SelfInspectionViewController {
+        
+        let viewController =  inspectionsStoryboard().instantiateViewController(withIdentifier: "SelfInspectionViewController") as! SelfInspectionViewController
+        return viewController
+        
+    }
+
+    class func getRegisterBridge(_ data:[String:Any] = [:]) -> RegisterBridgeViewController {
+        
+        let viewController =  inspectionsStoryboard().instantiateViewController(withIdentifier: "RegisterBridgeViewController") as! RegisterBridgeViewController
+            if let delegate = data["delegate"] as? RegisterBridgeViewControllerDelegate {
+                viewController.delegate = delegate
+            }
+        return viewController
+        
+    }
+
+    
+    class func getProfile(_ data:[String:Any] = [:]) -> UserProfileViewController
+    {
+        let vc = UIStoryboard.init(name: "User", bundle: Bundle.main).instantiateViewController(withIdentifier: "UserProfileViewController") as! UserProfileViewController
+        return vc
+    }
+    
     class func getRoutineInspBridgeDetail(_ data:[String:Any] = [:]) -> FormsControlllerViewController {
         let viewController =  inspectionsStoryboard().instantiateViewController(withIdentifier: "FormsControlllerViewController") as! FormsControlllerViewController
         
-        if let value = data["BridgeDetail"] as? InspectionBridgeListModel {
-            viewController.bridgeData = value
+        if let value = data["inspectionQues"] as? InspectionQuestionnaire {
+            viewController.questionnaireForm = value
+        }
+        if let value = data["inspectionType"] as? InspectionType {
+            viewController.inspectionType = value
         }
         
         return viewController

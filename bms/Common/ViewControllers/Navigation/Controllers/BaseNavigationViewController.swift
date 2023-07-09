@@ -31,20 +31,20 @@ class BaseNavigationViewController: UINavigationController, UINavigationControll
     
     struct NavigationStyles {
         
-        private static var baseNavigationStyle: NavigationBarStyle = (barTintColor: UIColor.SORT.white,
-                                                                      tintColor: UIColor.SORT.black,
+        private static var baseNavigationStyle: NavigationBarStyle = (barTintColor: UIColor.BMS.white,
+                                                                      tintColor: UIColor.BMS.black,
                                                                       backgroundImage: nil,
                                                                       shadowImage: nil,
-                                                                      titleTextColor: UIColor.SORT.fontBlack,
-                                                                      titleFont: UIFont.SORT.InterBold.withSize(16),
-                                                                      searchBarTextColor: UIColor.SORT.fontBlack)
+                                                                      titleTextColor: UIColor.BMS.fontBlack,
+                                                                      titleFont: UIFont.BMS.InterBold.withSize(16),
+                                                                      searchBarTextColor: UIColor.BMS.fontBlack)
         
         private static var baseTransparentNavigationStyle: NavigationBarStyle {
             get {
                 var navStyle = NavigationStyles.baseNavigationStyle
-                navStyle.barTintColor = UIColor.SORT.clear
+                navStyle.barTintColor = UIColor.BMS.clear
                 navStyle.backgroundImage = UIImage()
-                navStyle.shadowImage = UIImage().imageWithColor(UIColor.SORT.clear)
+                navStyle.shadowImage = UIImage().imageWithColor(UIColor.BMS.clear)
                 return navStyle
             }
         }
@@ -67,7 +67,7 @@ class BaseNavigationViewController: UINavigationController, UINavigationControll
         static var transparentNavBlackTint: NavigationBarStyle {
             get {
                 var navStyle = NavigationStyles.baseTransparentNavigationStyle
-                navStyle.tintColor = UIColor.SORT.black
+                navStyle.tintColor = UIColor.BMS.black
                 return navStyle
             }
         }
@@ -75,7 +75,7 @@ class BaseNavigationViewController: UINavigationController, UINavigationControll
         static var transparentNavWhiteTint: NavigationBarStyle {
             get {
                 var navStyle = NavigationStyles.baseTransparentNavigationStyle
-                navStyle.tintColor = UIColor.SORT.white
+                navStyle.tintColor = UIColor.BMS.white
                 return navStyle
             }
         }
@@ -83,9 +83,9 @@ class BaseNavigationViewController: UINavigationController, UINavigationControll
         static var basicThemeNav: NavigationBarStyle {
             get {
                 var navStyle = NavigationStyles.baseNavigationStyle
-                navStyle.barTintColor = UIColor.SORT.theme
+                navStyle.barTintColor = UIColor.BMS.theme
 //                navStyle.backgroundImage = UIImage()
-                navStyle.shadowImage = UIImage().imageWithColor(UIColor.SORT.clear)
+                navStyle.shadowImage = UIImage().imageWithColor(UIColor.BMS.clear)
                 return navStyle
             }
         }
@@ -210,7 +210,7 @@ class BaseNavigationViewController: UINavigationController, UINavigationControll
     
     func setRightButtons() {
         switch screenType {
-        case .homeScreen,.inspectionListScreen,.inventoryListScreen,.routineInspbridgeDetailScreen:
+        case .homeScreen,.inspectionListScreen,.inventoryListScreen,.routineInspbridgeDetailScreen, .createInventoryScreen, .selfInspectionScreen, .profile:
             rightBarButtonItems = [.skip,.clientName]
 //        case .friendsScreen:
 //            rightBarButtonItems = [.add]
@@ -223,8 +223,8 @@ class BaseNavigationViewController: UINavigationController, UINavigationControll
     
     func getNavigationStyle() -> BaseNavigationViewController.NavigationStyle {
         switch screenType {
-            
-        case .dashboardScreen,.inspectionListScreen,.routineInspbridgeDetailScreen:
+
+        case .dashboardScreen,.inspectionListScreen,.routineInspbridgeDetailScreen, .inventoryListScreen, .createInventoryScreen, .profile:
             return .baseThemeTint
         case .homeScreen:
             return .baseThemeTint
@@ -294,21 +294,19 @@ class BaseNavigationViewController: UINavigationController, UINavigationControll
             
         }
         
-        if(screenType == .homeScreen || screenType == .inspectionListScreen  || screenType == .routineInspbridgeDetailScreen  || screenType == .inventoryListScreen){
+        if(screenType == .homeScreen || screenType == .inspectionListScreen  || screenType == .routineInspbridgeDetailScreen  || screenType == .inventoryListScreen || screenType == .createInventoryScreen || screenType == .selfInspectionScreen || screenType == .profile){
             self.navigationBar.frame.size.height = 58
-            self.navigationBar.backgroundColor = UIColor.SORT.theme
+            self.navigationBar.backgroundColor = UIColor.BMS.theme
         }else{
-            self.navigationBar.backgroundColor = UIColor.SORT.clear
+            self.navigationBar.backgroundColor = UIColor.BMS.clear
         }
        
-        
         customizeSideMenu()
         
         if (screenType == .loginScreen || screenType == .tutorialScreen) {
             // && (transitionType == .root || transitionType == .rootSlider)
             self.navigationBar.isHidden = true
         }
-            
         else {
             self.navigationBar.isHidden = false
         }
@@ -371,7 +369,7 @@ class BaseNavigationViewController: UINavigationController, UINavigationControll
         for item in rightBarButtonItems {
             
             if item == RightBarButtons.skip {
-                let skipButton = self.createRightSideNameItem(title: "Cyberian Consulting Pvt. Ltd.")
+                let skipButton = self.createRightSideNameItem(title: "Shivam Concrete Pvt. Ltd.")
                 skipButton.isEnabled = false
      
                 rightButtons.append(skipButton)
@@ -428,7 +426,7 @@ class BaseNavigationViewController: UINavigationController, UINavigationControll
                 break
             }
             else if item == RightBarButtons.clientName {
-                let clientTitle = self.createRightSideNameItem(title: "Cyberian Consulting Pvt. Ltd.")
+                let clientTitle = self.createRightSideNameItem(title: "Shivam Concrete Pvt. Ltd.")
                 clientTitle.isEnabled = false
                 rightButtons.append(clientTitle)
                 break
@@ -677,8 +675,8 @@ class BaseNavigationViewController: UINavigationController, UINavigationControll
         
         if withBadge {
             if let badgeButtonItem = BBBadgeBarButtonItem(customUIButton: barButton) {
-                badgeButtonItem.badgeFont = UIFont.SORT.InterBold.withSize(10)
-                badgeButtonItem.badgeBGColor = UIColor.SORT.green
+                badgeButtonItem.badgeFont = UIFont.BMS.InterBold.withSize(10)
+                badgeButtonItem.badgeBGColor = UIColor.BMS.green
                 badgeButtonItem.badgeValue = "1"
                 badgeButtonItem.badgeMinSize = 10
                 badgeButtonItem.badgeTextColor = UIColor.clear
@@ -723,8 +721,8 @@ class BaseNavigationViewController: UINavigationController, UINavigationControll
         
         if withBadge {
             if let badgeButtonItem = BBBadgeBarButtonItem(customUIButton: barButton) {
-                badgeButtonItem.badgeFont = UIFont.SORT.InterBold.withSize(10)
-                badgeButtonItem.badgeBGColor = UIColor.SORT.green
+                badgeButtonItem.badgeFont = UIFont.BMS.InterBold.withSize(10)
+                badgeButtonItem.badgeBGColor = UIColor.BMS.green
                 badgeButtonItem.badgeValue = "1"
                 badgeButtonItem.badgeMinSize = 10
                 badgeButtonItem.badgeTextColor = UIColor.clear
@@ -743,18 +741,18 @@ class BaseNavigationViewController: UINavigationController, UINavigationControll
     
     func createUIBarButtonItem(title: String, action: Selector?) -> UIBarButtonItem {
         let barButtonItem = UIBarButtonItem(title: title, style: .plain, target: self, action: action)
-        barButtonItem.setTitleTextAttributes([NSAttributedString.Key.font : UIFont.SORT.InterBold.withSize(12.0)], for: .normal)
-        barButtonItem.setTitleTextAttributes([NSAttributedString.Key.font : UIFont.SORT.InterBold.withSize(12.0)], for: .highlighted)
+        barButtonItem.setTitleTextAttributes([NSAttributedString.Key.font : UIFont.BMS.InterBold.withSize(12.0)], for: .normal)
+        barButtonItem.setTitleTextAttributes([NSAttributedString.Key.font : UIFont.BMS.InterBold.withSize(12.0)], for: .highlighted)
         return barButtonItem
     }
     
     func createRightSideNameItem(title: String) -> UIBarButtonItem {
         let barButtonItem = UIBarButtonItem(title: title, style: .plain, target: nil, action: nil)
 
-        barButtonItem.setTitleTextAttributes([NSAttributedString.Key.font : UIFont.SORT.InterBold.withSize(36.0),NSAttributedString.Key.foregroundColor: UIColor.SORT.white], for: .normal)
+        barButtonItem.setTitleTextAttributes([NSAttributedString.Key.font : UIFont.BMS.InterBold.withSize(36.0),NSAttributedString.Key.foregroundColor: UIColor.BMS.white], for: .normal)
    
         
-        barButtonItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor : UIColor.SORT.white], for: .disabled)
+        barButtonItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor : UIColor.BMS.white], for: .disabled)
         return barButtonItem
     }
     
@@ -793,7 +791,7 @@ class BaseNavigationViewController: UINavigationController, UINavigationControll
         navBarTitle.contentMode = .right
         navBarTitle.text = "Cyberian Consulting Pvt. Ltd."
 //        navBarTitle.text
-        navBarTitle.textColor = UIColor.SORT.white
+        navBarTitle.textColor = UIColor.BMS.white
         navBarTitle.textAlignment = .right
         viewController.navigationItem.titleView = navBarTitle
         viewController.navigationItem.titleView?.contentMode = .right

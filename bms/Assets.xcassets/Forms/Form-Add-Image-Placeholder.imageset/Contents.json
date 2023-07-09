@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "Form-Add-Image-Placeholder.png",
+      "filename" : "baseline_add_photo_alternate_white_36pt_1x.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "Form-Add-Image-Placeholder@2x.png",
+      "filename" : "baseline_add_photo_alternate_white_36pt_2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "Form-Add-Image-Placeholder@3x.png",
+      "filename" : "baseline_add_photo_alternate_white_36pt_3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

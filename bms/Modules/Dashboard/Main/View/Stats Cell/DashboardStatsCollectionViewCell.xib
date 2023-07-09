@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Inter-Medium.ttf">
+            <string>Inter-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="DashboardStatsCollectionViewCell" reuseIdentifier="DashboardStatsCollectionViewCell" id="gTV-IL-0wX" customClass="DashboardStatsCollectionViewCell" customModule="bms" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="278" height="141"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="278" height="141"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jnw-M2-lvZ">
+                        <rect key="frame" x="0.0" y="0.0" width="278" height="141"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Utu-2J-Dps">
+                                <rect key="frame" x="8" y="31.666666666666664" width="262" height="77.666666666666686"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="24" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M0w-VC-gMI">
+                                        <rect key="frame" x="106" y="0.0" width="50" height="55.666666666666664"/>
+                                        <fontDescription key="fontDescription" name="TimesNewRomanPS-BoldMT" family="Times New Roman" pointSize="50"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Inspections" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YbS-Nl-aYR">
+                                        <rect key="frame" x="0.0" y="60.666666666666657" width="262" height="17"/>
+                                        <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="14"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="YbS-Nl-aYR" secondAttribute="trailing" id="n0S-Ze-69k"/>
+                                    <constraint firstItem="YbS-Nl-aYR" firstAttribute="leading" secondItem="Utu-2J-Dps" secondAttribute="leading" id="pB7-mV-Geg"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Utu-2J-Dps" secondAttribute="trailing" constant="8" id="NU0-hA-f0s"/>
+                            <constraint firstItem="Utu-2J-Dps" firstAttribute="centerY" secondItem="jnw-M2-lvZ" secondAttribute="centerY" id="T5Z-Ms-2ZE"/>
+                            <constraint firstItem="Utu-2J-Dps" firstAttribute="leading" secondItem="jnw-M2-lvZ" secondAttribute="leading" constant="8" id="VRV-5o-LAX"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstItem="jnw-M2-lvZ" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="1km-Hg-oaY"/>
+                <constraint firstAttribute="bottom" secondItem="jnw-M2-lvZ" secondAttribute="bottom" id="47P-8n-xkZ"/>
+                <constraint firstAttribute="trailing" secondItem="jnw-M2-lvZ" secondAttribute="trailing" id="Esa-AK-iJh"/>
+                <constraint firstItem="jnw-M2-lvZ" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="hlL-vI-0SH"/>
+            </constraints>
+            <size key="customSize" width="278" height="141"/>
+            <connections>
+                <outlet property="countNumber" destination="M0w-VC-gMI" id="6rS-5q-jIV"/>
+                <outlet property="statName" destination="YbS-Nl-aYR" id="pAK-bc-ncg"/>
+                <outlet property="statsCard" destination="jnw-M2-lvZ" id="8Oa-ws-uib"/>
+            </connections>
+            <point key="canvasLocation" x="-27.69230769230769" y="25.236966824644547"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

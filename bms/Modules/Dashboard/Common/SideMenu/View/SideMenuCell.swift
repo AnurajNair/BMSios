@@ -13,17 +13,23 @@ class SideMenuCell: UITableViewCell {
 
     @IBOutlet weak var menuIcon: UIImageView!
     
+    @IBOutlet weak var arrowIcon: UIImageView!
     @IBOutlet weak var menCellView: UIView!
     @IBOutlet weak var menuLabel: UILabel!
     
+    @IBOutlet weak var menuView: UIView!
     @IBOutlet weak var cellStack: UIStackView!
     @IBOutlet weak var subMenuTable: UITableView!
     
-    var subMenu:[SideMenuModel]?
+    @IBOutlet weak var menStackView: UIStackView!
+    
+    var subMenu:[SideMenuModel] = []
     
      var delegate:SideMenuCellDelegate?
     
     var title:String?
+    
+    var isOpen:Bool?
     
     class var identifier: String { return String(describing: self) }
 
@@ -50,16 +56,29 @@ class SideMenuCell: UITableViewCell {
     }
     
   
-    func configureCell(image:String,title:String,menu:[SideMenuModel]?){
-        let optionClosure = {(action: UIAction) in print("hello")}
-        self.menuIcon.image = UIImage(named: image)
+    func configureCell(image:UIImage?, title:String, menu:[SideMenuModel], isSelected:Bool){
+        _ = {(action: UIAction) in print("hello")}
+        self.menuIcon.image = image?.withRenderingMode(.alwaysTemplate)
         self.menuLabel.text = title
         self.subMenu = menu
+//        self.cellStack.addConstraint(self.cellStack.heightAnchor.constraint(equalToConstant: <#T##CGFloat#>))
 //        self.title = title
 //        print(title , menu)
         setupTableView()
-        
-      
+        menuIcon.tintColor = isSelected ? .white : .black
+        if isSelected {
+            self.menuView.backgroundColor = UIColor.BMS.theme
+            self.menuView.setAsRounded(cornerRadius: 5.0)
+            self.menuLabel.textColor = UIColor.BMS.white
+            if subMenu.count > 0 {
+                self.arrowIcon.image = UIImage(named: "chevron-down")
+            }
+        } else {
+            self.menuView.backgroundColor = UIColor.BMS.white
+            self.menuLabel.textColor = UIColor.BMS.black
+            self.arrowIcon.image = UIImage(named: "forwardArrowIcon")
+        }
+
 //        if(title == "Inspection"){
 //            subMenuTable.isHidden = false
 //        }else{
@@ -102,6 +121,8 @@ class SideMenuCell: UITableViewCell {
   self.subMenuTable.reloadData()
     }
     
+  
+    
     
 }
 
@@ -110,7 +131,7 @@ extension SideMenuCell{
         self.title = title
         if title == "Inspection"{
             self.subMenuTable.isHidden = false
-            changeBackground()
+//            changeBackground()
         }else{
             self.subMenuTable.isHidden = true
         }
@@ -118,7 +139,7 @@ extension SideMenuCell{
     
     func changeBackground (){
        
-        self.menCellView.backgroundColor = UIColor.SORT.theme
+        self.menCellView.backgroundColor = UIColor.BMS.theme
         
     }
     
@@ -137,23 +158,19 @@ extension SideMenuCell: UITableViewDelegate{
 
 extension SideMenuCell: UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if(self.subMenu != nil){
-        return self.subMenu!.count
-        }else{
-            return 0
-        }
+        subMenu.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: SideMenuCell.identifier, for: indexPath) as? SideMenuCell else { fatalError("xib doesn't exist") }
-        let sectionData = self.subMenu![indexPath.row]
+        let sectionData = self.subMenu[indexPath.row]
         cell.delegate = self.delegate;
         print(sectionData)
      
         
        
         
-        cell.configureCell(image:sectionData.icon, title: sectionData.title,menu: [])
+        cell.configureCell(image:sectionData.icon, title: sectionData.title,menu: [],isSelected: false)
 
         // Highlighted color
 //        let myCustomSelectionColorView = UIView()
@@ -167,9 +184,6 @@ extension SideMenuCell: UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
       print(indexPath)
-        let sectionData = self.subMenu![indexPath.row]
         delegate?.onSideSubMenuClick(indexPath.row)
-        Navigate.routeUserToScreen(screenType: sectionData.route, transitionType: sectionData.transition)
-        
     }
 }

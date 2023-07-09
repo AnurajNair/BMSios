@@ -23,8 +23,8 @@ class NavigationPopMenuTableViewCell: UITableViewCell {
     //MARK:- Setup Functions
     
     func setupView() {
-        self.optionNameLabel.font = UIFont.SORT.MontserratRegular.withSize(12.0)
-        self.optionNameLabel.textColor = UIColor.SORT.fontBlack.withAlphaComponent(0.75)
+        self.optionNameLabel.font = UIFont.BMS.InterRegular.withSize(12.0)
+        self.optionNameLabel.textColor = UIColor.BMS.fontBlack.withAlphaComponent(0.75)
     }
     
     //MARK:- Update Functions

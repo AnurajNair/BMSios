@@ -145,12 +145,12 @@ extension LeftMenuViewController: UITableViewDataSource {
             headerView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 40)
             
             let separator = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 1))
-            separator.backgroundColor = UIColor.SORT.separatorGray
+            separator.backgroundColor = UIColor.BMS.separatorGray
             headerView.addSubview(separator)
             
             let titleLabel = UILabel(frame: CGRect(x: 15, y: 15, width: self.view.frame.width, height: 15))
-            titleLabel.font = UIFont.SORT.MontserratRegular.withSize(12.5)
-            titleLabel.textColor = UIColor.SORT.blue
+            titleLabel.font = UIFont.BMS.InterRegular.withSize(12.5)
+            titleLabel.textColor = UIColor.BMS.blue
             titleLabel.text = sectionName
             headerView.addSubview(titleLabel)
             
@@ -186,7 +186,7 @@ extension LeftMenuViewController: UITableViewDataSource {
         }
         
         let backgroundView = UIView()
-        backgroundView.backgroundColor = UIColor.SORT.green.withAlphaComponent(0.1)
+        backgroundView.backgroundColor = UIColor.BMS.green.withAlphaComponent(0.1)
         cell.selectedBackgroundView = backgroundView
         
        // cell.configureCell(image: image, name: title, description: description)

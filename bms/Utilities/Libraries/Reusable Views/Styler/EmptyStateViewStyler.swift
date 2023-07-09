@@ -11,10 +11,10 @@ import UIKit
 class EmptyStateViewStyler {
     
     static var emptyViewCenterConstraint: CGFloat = 0.0
-    static var emptyTitleFont: UIFont { return UIFont.SORT.InterBold.withSize(24) }
-    static var emptyTitleColor: UIColor { return UIColor.SORT.fontBlack }
-    static var emptyDescriptionFont: UIFont { return UIFont.SORT.InterBold.withSize(15) }
-    static var emptyDescriptionColor: UIColor { return UIColor.SORT.fontBlack }
+    static var emptyTitleFont: UIFont { return UIFont.BMS.InterBold.withSize(24) }
+    static var emptyTitleColor: UIColor { return UIColor.BMS.fontBlack }
+    static var emptyDescriptionFont: UIFont { return UIFont.BMS.InterBold.withSize(15) }
+    static var emptyDescriptionColor: UIColor { return UIColor.BMS.fontBlack }
     static var emptyFirstButtonStyle: Styler.buttonBackgroundStyle  { return ButtonStyles.emptyStateButton }
     static var emptyDefaultImage: String { return "logo-vertical-black" }
     static var emptyImageContentMode: UIView.ContentMode  { return UIView.ContentMode.scaleAspectFit }

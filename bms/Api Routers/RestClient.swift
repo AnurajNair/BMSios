@@ -72,16 +72,37 @@ class RestClient {
                 //To be enabled when you want to send the user token with API Calls
 //                SessionDetails.getUserToken(isTokenRequired: isTokenRequired, successCompletionHandler: {
                 
-                AF.request(router).response { response in
+//                AF.request(router).response { response in
+//                    switch response.result {
+//                              case .success(let value as Any):
+//                        successCompletionHandler(response)
+//                              case .failure(let error):
+//                                print(error)
+//
+//                              default:
+//                                  fatalError("received non-dictionary JSON response")
+//                              }
+//
+//                }
+                
+                AF.request(router).responseJSON {
+                    (response) in
+                    print(response.result)
                     switch response.result {
-                              case .success(let value as Any):
-                        successCompletionHandler(response)
-                              case .failure(let error):
-                                print(error)
+                    case .success(let value):
+                        print(value)
+                        guard handleIfSessionExpired(response: value) == false else {
+                            return
+                        }
+                        successCompletionHandler(value)
 
-                              default:
-                                  fatalError("received non-dictionary JSON response")
-                              }
+                    case .failure(let error):
+                        print(error)
+                        
+                    default:
+                        fatalError("received non-dictionary JSON response")
+                    }
+                    // print(String(data: response.data!, encoding: String.Encoding.utf8))
                     
                 }
                 
@@ -115,7 +136,87 @@ class RestClient {
        // manager?.up()
         
     }
-    
+
+    class func upload(_ uploadRouter: UploadFileRouterProtocol,
+                      imageData: Data,
+                      isTokenRequired: Bool = true,
+                      isBackgroundCall: Bool = false,
+                      successCompletionHandler : @escaping (_ res : Any) -> Void,
+                      errorCompletionHandler : @escaping (_ error: ApiError?) -> Void ){
+        
+        var manager = NetworkReachabilityManager(host: "www.apple.com")
+        
+        if !isConnected {
+            ///Internet is not available; handle error
+            handleUnknownError(manager: manager)
+        }
+        
+        manager?.startListening { status in
+            
+            switch status {
+            case .notReachable: handleUnknownError(manager: manager)
+                
+            case .unknown: handleUnknownError(manager: manager)
+                
+            default:
+                manager?.stopListening()
+                manager = nil
+                
+                print("resp")
+                let (isVisible, viewController) = isUnknownErrorControllerVisible()
+                
+                if isVisible && viewController != nil {
+                    viewController!.dismiss(animated: false, completion: {
+                    })
+                }
+                let request = Router.uploadFileRouterHandler(uploadRouter)
+                AF.upload(multipartFormData: { (multipartFormData) in
+                    for (key, value) in uploadRouter.formData ?? [:] {
+                        multipartFormData.append((value as! String).data(using: String.Encoding.utf8)!, withName: key)
+                    }
+                    multipartFormData.append(imageData, withName: "")
+                }, with: request).response {
+                    (response) in
+                    print(response.result)
+                    switch response.result {
+                    case .success(let value):
+                        do {
+                            guard let value = value else {
+                                fatalError("received non-dictionary JSON response")
+                            }
+                            guard handleIfSessionExpired(response: value) == false else {
+                                return
+                            }
+                            let responseData = try JSONSerialization.jsonObject(with: value)
+                            successCompletionHandler(responseData)
+                        } catch {
+                            fatalError("received non-dictionary JSON response")
+                        }
+                    case .failure(let error):
+                        print(error)
+                    }
+                    // print(String(data: response.data!, encoding: String.Encoding.utf8))
+                    
+                }
+            }
+        }
+    }
+
+    private class func handleIfSessionExpired(response: Any) -> Bool {
+        guard let apiResponse = Mapper<APIResponseModel>().map(JSONObject: RestClient.getResultValue(response)), apiResponse.status == 7 else {
+            return false
+        }
+        SessionDetails.clearInstance()
+        _ = Utils.displayAlertController("Error",
+                                     message: apiResponse.message ?? "Invalid Session", isSingleBtn: true) {
+            Navigate.routeUserToScreen(screenType: .loginScreen, transitionType: .root)
+        } cancelclickHandler: {
+            
+        }
+
+        return true
+    }
+
     class func handleError(_ response: DataResponse<Any,Error>?,
                            isBackgroundCall: Bool = false,
                            manager: NetworkReachabilityManager?,
@@ -218,7 +319,7 @@ class RestClient {
                 data["errorData"] = value
             }
             
-            NavigationRoute.routeUserToScreen(screenType: .unknownError, transitionType: .root, data: data)
+            NavigationRoute.routeUserToScreen(screenType: .unknownError, transitionType: .modal, data: data)
         }
     }
     
@@ -229,11 +330,11 @@ class RestClient {
     
     //MARK: Data Extraction Functions
     
-    class func getResultValue(_ res : DataResponse<Any,Error>?) -> Any {
-        
+    class func getResultValue(_ res : Any) -> Any {
+        print("got it her")
         var data:Any = ""
         
-        if let result = res?.value as? Dictionary<String,Any> {
+        if let result = res as? Dictionary<String,Any> {
             if let value = result["data"] {
                 data = value
             } else {
@@ -241,7 +342,7 @@ class RestClient {
             }
         }
         
-        else if let result = res?.value as? [Any] {
+        else if let result = res as? [Any] {
             data = result
         }
         

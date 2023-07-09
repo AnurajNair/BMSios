@@ -92,8 +92,8 @@ class ImageUtils {
 //    }
     
     class func clearImageCache(){
-        SDImageCache.shared().clearMemory()
-        SDImageCache.shared().clearDisk()
+        SDImageCache.shared.clearMemory()
+        SDImageCache.shared.clearDisk()
     }
     
     class func setupPhotoBrowser(_ urls: [Any] = [], selectedIndex: Int = 0, shouldTransition:Bool = true) -> IDMPhotoBrowser {
@@ -235,11 +235,11 @@ class ImageUtils {
     }
     
     class func getImageUrl(_ endPoint : String) -> String{
-        return "\(Constants.apiBaseUrl)\(endPoint)"
+        return "\(APIConstants.apiBaseUrl)\(endPoint)"
     }
     
     class func getMultipleUrl(_ imageDirectoryUrl : String , _ endPoint : String ) -> String{
-        return "\(Constants.apiBaseUrl)\(imageDirectoryUrl)\(endPoint)"
+        return "\(APIConstants.apiBaseUrl)\(imageDirectoryUrl)\(endPoint)"
     }
 }
 
@@ -254,7 +254,7 @@ extension UIImageView {
      - parameter imageBackgroundColor:  Placeholder image background color which will be displayed when image rendering fails.
      - note: Pass 'isRandomPlaceholder' as 'false' if you are passing your custom imageBackgroundColor. And dont even pass placeHolderImage in this case.
      */
-    func cacheImage(url: String, isRounded: Bool = false, placeholderImage: String = "", isRandomPlaceholder: Bool = false, imageBackgroundColor: UIColor = UIColor.SORT.imageBackgroundColor) {
+    func cacheImage(url: String, isRounded: Bool = false, placeholderImage: String = "", isRandomPlaceholder: Bool = false, imageBackgroundColor: UIColor = UIColor.BMS.imageBackgroundColor) {
         
         if isRounded {
             self.setRoundedImage()

@@ -9,13 +9,13 @@ import Foundation
 import SwiftyMenu
 
 struct DropDownModel {
-    let id: Any?
-    let name: String?
+    let id: Any
+    let name: String
 }
 
 extension DropDownModel: SwiftyMenuDisplayable {
     var displayableValue: String {
-        return self.name ?? ""
+        return self.name
     }
     
     var retrievableValue: Any {
